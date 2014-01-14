@@ -1,0 +1,414 @@
+<Reports>
+<Report 
+	name="ICB Universal Report" 
+	issued="2013-12-25T00:00:00" 
+	updated="2013-12-09T00:00:00" 
+	month="12" quarter="4" year="2013" 
+	LastInquiryDate="23.08.2013" 
+	UsageIdentity="14128156">
+	<Subject>
+		<CreditinfoId>50902760</CreditinfoId>
+		<SubjectType Id="241">Individual</SubjectType>
+		<TaxpayerNumber>3028914947</TaxpayerNumber>
+		<Passport>МЕ058287</Passport>
+		<DateOfBirth>1982-12-05T00:00:00</DateOfBirth>
+		<Gender ImportCode="2">Жіноча</Gender>
+		<Surname>СЕМЕНЮК</Surname>
+		<Name>ОКСАНА</Name>
+		<FathersName>МИКОЛАЇВНА</FathersName>
+		<BirthName>ЗАБЛОЦЬКА</BirthName>
+		<NegativeStatus>
+			<ImportCode>0</ImportCode>
+		</NegativeStatus>
+		<Residency ImportCode="1">Резидент </Residency>
+		<Nationality>UA</Nationality>
+		<Education ImportCode="5">Базова вища освіта</Education>
+		<Classification ImportCode="1">Фiзична особа</Classification>
+	</Subject>
+	<Addresses>
+		<Address>
+			<AddressType ImportCode="1">Адреса реєстрації</AddressType>
+			<Street>03148, КИЇВ, , КИЇВ, ВУЛ. А.КОРОЛЬОВА, 1А, КВ.52</Street>
+			<City>Не определен</City>
+			<Zipcode>03148     </Zipcode>
+			<Region>Не определен</Region>
+			<Country>Украина</Country>
+			<District>Не определен</District>
+		</Address>
+	</Addresses>
+	<Identifications>
+		<Identification>
+			<IdType ImportCode="2">Ідентифікаційний номер</IdType>
+			<DocumentNumber>3028914947</DocumentNumber>
+		</Identification>
+		<Identification>
+			<IdType ImportCode="4">Громадянський паспорт</IdType>
+			<DocumentNumber>МЕ058287</DocumentNumber>
+			<IssuedBy>СВЯТОШИНСЬКИМ РУГУ МВС УКР В М. КИЄ</IssuedBy>
+			<IssueDate>2002-05-23T00:00:00</IssueDate>
+		</Identification>
+	</Identifications>
+	<Relations>
+		<Relation>
+			<State>Поточний</State>
+			<ProviderCode>B-2</ProviderCode>
+		</Relation>
+	</Relations>
+	<SummaryInformation>
+		<NegativeInfoType>ALL</NegativeInfoType>
+		<NumberOfUsersReportingNegativeStatus>0</NumberOfUsersReportingNegativeStatus>
+	</SummaryInformation>
+	<SummaryInformation>
+		<SummaryType>SummaryInformationDebtor</SummaryType>
+		<NumberOfExistingContracts>1</NumberOfExistingContracts>
+		<TotalOutstandingDebt>
+			<TotalOutstandingDebt>0</TotalOutstandingDebt>
+		</TotalOutstandingDebt>
+		<NumberOfTerminatedContracts>0</NumberOfTerminatedContracts>
+		<TotalDebtOverdue>
+			<Amount>
+				<Currency>UAH</Currency>
+				<Value>33994.34</Value>
+			</Amount>
+		</TotalDebtOverdue>
+		<NumberOfUnsolvedApplications>0</NumberOfUnsolvedApplications>
+		<NumberOfUnpaidInstalments>1</NumberOfUnpaidInstalments>
+		<NumberOfRejectedApplications>0</NumberOfRejectedApplications>
+		<NumberOfRevokedApplications>0</NumberOfRevokedApplications>
+		<NumberOfUsersReportingNegativeStatus>0</NumberOfUsersReportingNegativeStatus>
+	</SummaryInformation>
+	<SummaryInformation>
+		<ContractType>Contract.Type.Financial.Credit_by_installments</ContractType>
+		<SummaryType>SummaryInformationDebtor</SummaryType>
+		<NumberOfExistingContracts>1</NumberOfExistingContracts>
+		<TotalOutstandingDebt>
+			<Amount>
+				<Currency>UAH</Currency>
+				<Value>0</Value>
+			</Amount>
+		</TotalOutstandingDebt>
+		<NumberOfTerminatedContracts>0</NumberOfTerminatedContracts>
+		<TotalDebtOverdue>
+			<Amount>
+				<Currency>UAH</Currency>
+				<Value>33994.34</Value>
+			</Amount>
+		</TotalDebtOverdue>
+		<NumberOfUnsolvedApplications>0</NumberOfUnsolvedApplications>
+		<NumberOfUnpaidInstalments>1</NumberOfUnpaidInstalments>
+		<NumberOfRejectedApplications>0</NumberOfRejectedApplications>
+		<NumberOfUsersReportingNegativeStatus>0</NumberOfUsersReportingNegativeStatus>
+		<NumberOfRevokedApplications>0</NumberOfRevokedApplications>
+	</SummaryInformation>
+	<SummaryInformation>
+		<ContractType>Contract.Type.Financial.Credit_by_non-installment_over_draught_etc.</ContractType>
+		<NumberOfExistingContracts>0</NumberOfExistingContracts>
+		<TotalOutstandingDebt>
+			<Amount>
+				<Currency>UAH</Currency>
+				<Value>0</Value>
+			</Amount>
+		</TotalOutstandingDebt>
+		<NumberOfTerminatedContracts>0</NumberOfTerminatedContracts>
+		<TotalDebtOverdue>
+			<Amount>
+				<Currency>UAH</Currency>
+				<Value>0</Value>
+			</Amount>
+		</TotalDebtOverdue>
+		<NumberOfUnsolvedApplications>0</NumberOfUnsolvedApplications>
+		<NumberOfRejectedApplications>0</NumberOfRejectedApplications>
+		<NumberOfUsersReportingNegativeStatus>0</NumberOfUsersReportingNegativeStatus>
+		<NumberOfRevokedApplications>0</NumberOfRevokedApplications>
+	</SummaryInformation>
+	<SummaryInformation>
+		<ContractType>Contract.Type.Financial.Credit_Card_or_renewable_credit</ContractType>
+		<NumberOfExistingContracts>0</NumberOfExistingContracts>
+		<TotalOutstandingDebt>
+			<Amount>
+				<Currency>UAH</Currency>
+				<Value>0</Value>
+			</Amount>
+		</TotalOutstandingDebt>
+		<NumberOfTerminatedContracts>0</NumberOfTerminatedContracts>
+		<TotalDebtOverdue>
+			<Amount>
+				<Currency>UAH</Currency>
+				<Value>0</Value>
+			</Amount>
+		</TotalDebtOverdue>
+		<NumberOfUnsolvedApplications>0</NumberOfUnsolvedApplications>
+		<NumberOfRejectedApplications>0</NumberOfRejectedApplications>
+		<NumberOfUsersReportingNegativeStatus>0</NumberOfUsersReportingNegativeStatus>
+		<NumberOfRevokedApplications>0</NumberOfRevokedApplications>
+	</SummaryInformation>
+	<SummaryInformation>
+		<ContractType>Contract.Type.Financial.Financial_or_operating_leasing</ContractType>
+		<NumberOfExistingContracts>0</NumberOfExistingContracts>
+		<TotalOutstandingDebt>
+			<Amount>
+				<Currency>UAH</Currency>
+				<Value>0</Value>
+			</Amount>
+		</TotalOutstandingDebt>
+		<NumberOfTerminatedContracts>0</NumberOfTerminatedContracts>
+		<TotalDebtOverdue>
+			<Amount>
+				<Currency>UAH</Currency>
+				<Value>0</Value>
+			</Amount>
+		</TotalDebtOverdue>
+		<NumberOfUnsolvedApplications>0</NumberOfUnsolvedApplications>
+		<NumberOfUnpaidInstalments>0</NumberOfUnpaidInstalments>
+		<NumberOfRejectedApplications>0</NumberOfRejectedApplications>
+		<NumberOfUsersReportingNegativeStatus>0</NumberOfUsersReportingNegativeStatus>
+		<NumberOfRevokedApplications>0</NumberOfRevokedApplications>
+	</SummaryInformation>
+	<SummaryInformation>
+		<ContractType>Contract.Type.Financial.Financial_obligation_on_the_basis_of_contract</ContractType>
+		<NumberOfExistingContracts>0</NumberOfExistingContracts>
+		<TotalOutstandingDebt>
+			<Amount>
+				<Currency>UAH</Currency>
+				<Value>0</Value>
+			</Amount>
+		</TotalOutstandingDebt>
+		<NumberOfTerminatedContracts>0</NumberOfTerminatedContracts>
+		<TotalDebtOverdue>
+			<Amount>
+				<Currency>UAH</Currency>
+				<Value>0</Value>
+			</Amount>
+		</TotalDebtOverdue>
+		<NumberOfUnpaidInstalments>0</NumberOfUnpaidInstalments>
+		<NumberOfRejectedApplications>0</NumberOfRejectedApplications>
+		<NumberOfUsersReportingNegativeStatus>0</NumberOfUsersReportingNegativeStatus>
+		<NumberOfRevokedApplications>0</NumberOfRevokedApplications>
+	</SummaryInformation>
+	<SummaryInformation>
+		<ContractType>Contract.Type.Financial.Financial_obligation_on_the_basis_of_account</ContractType>
+		<NumberOfExistingContracts>0</NumberOfExistingContracts>
+		<TotalOutstandingDebt>
+			<Amount>
+				<Currency>UAH</Currency>
+				<Value>0</Value>
+			</Amount>
+		</TotalOutstandingDebt>
+		<NumberOfTerminatedContracts>0</NumberOfTerminatedContracts>
+		<TotalDebtOverdue>
+			<Amount>
+				<Currency>UAH</Currency>
+				<Value>0</Value>
+			</Amount>
+		</TotalDebtOverdue>
+		<NumberOfUnpaidInstalments>0</NumberOfUnpaidInstalments>
+		<NumberOfRejectedApplications>0</NumberOfRejectedApplications>
+		<NumberOfRevokedApplications>0</NumberOfRevokedApplications>
+	</SummaryInformation>
+	<Contracts>
+		<Contract>
+			<ExportCode>Contract.Type.Financial.Credit_by_installments</ExportCode>
+			<ImportCode>1</ImportCode>
+			<ContractType>Existing</ContractType>
+			<ContractPosition>1</ContractPosition>
+			<ContractRole>RoleBorrowerCoholder</ContractRole>
+			<ContractPhase ImportCode="4">Поточний</ContractPhase>
+			<CodeOfContract>0470005UAH000744</CodeOfContract>
+			<PurposeOfCredit ImportCode=""></PurposeOfCredit>
+			<CurrencyCode Code="UAH">Гривня</CurrencyCode>
+			<NegativeStatus>
+				<ExportCode>Contract.ContractLookup.ContractStatus.[None]</ExportCode>
+				<ImportCode>0</ImportCode>
+				<Value>Негативний статус відсутній</Value>
+			</NegativeStatus>
+			<SubjectRole ImportCode="1">Позичальник</SubjectRole>
+			<ContractStatus>
+				<ExportCode>Contract.ContractLookup.ContractStatus.[None]</ExportCode>
+				<ImportCode>0</ImportCode>
+				<Value>Негативний статус відсутній</Value>
+			</ContractStatus>
+			<DateOfApplication>2007-11-29T00:00:00</DateOfApplication>
+			<CreditStartDate>2007-11-29T00:00:00</CreditStartDate>
+			<ContractEndDate>2012-11-05T00:00:00</ContractEndDate>
+			<TotalAmount>
+				<AmountType>TotalAmount</AmountType>
+				<Currency>UAH</Currency>
+				<Value>20000.0000</Value>
+			</TotalAmount>
+			<NumberOfOutstandingInstalments>57</NumberOfOutstandingInstalments>
+			<PereodicityOfPayments ImportCode="2">Щомісячні платежі - 30 днів</PereodicityOfPayments>
+			<OutstandingAmount>
+				<Currency>UAH</Currency>
+				<Value>0.0000</Value>
+			</OutstandingAmount>
+			<MethodOfPayments ImportCode=""></MethodOfPayments>
+			<NumberOfInstalments>1</NumberOfInstalments>
+			<NumberOfOverdueInstalments>1</NumberOfOverdueInstalments>
+			<NumberOfInstalmentsNotPaidAccordingToInterestRate>1</NumberOfInstalmentsNotPaidAccordingToInterestRate>
+			<MonthlyInstalmentAmount>
+				<Currency>UAH</Currency>
+				<Value>0.0000</Value>
+			</MonthlyInstalmentAmount>
+			<OverdueAmount>
+				<Currency>UAH</Currency>
+				<Value>16997.1700</Value>
+				<PaymentCount>1</PaymentCount>
+			</OverdueAmount>
+			<DueInterestAmount>
+				<Currency>UAH</Currency>
+				<Value>16997.1700</Value>
+			</DueInterestAmount>
+			<Roles>
+				<Role>
+					<ExportCode>Contract.Relational.Role.Borrower</ExportCode>
+					<ImportCode>1</ImportCode>
+					<SubjectRole>Позичальник</SubjectRole>
+					<LastUpdateSubject>2013-12-09T22:43:15</LastUpdateSubject>
+					<Identification>
+						<IdentificationType>Report.CoDebtorTaxId</IdentificationType>
+						<IdentificationValue>3028914947</IdentificationValue>
+					</Identification>
+				</Role>
+			</Roles>
+			<Creditor>B-2</Creditor>
+			<InteresRate>0</InteresRate>
+			<LastUpdateContract>2013-12-01T00:00:00</LastUpdateContract>
+			<AccountingDate>2013-12-01T00:00:00</AccountingDate>
+			<DateOfSignature>2007-11-29T00:00:00</DateOfSignature>
+			<HistoricalCalendar months="-12">
+				<Months>
+					<Description>/</Description>
+					<Month1>
+						<Month>1/13</Month>
+					</Month1>
+					<Month2>
+						<Month>2/13</Month>
+					</Month2>
+					<Month3>
+						<Month>3/13</Month>
+					</Month3>
+					<Month4>
+						<Month>4/13</Month>
+					</Month4>
+					<Month5>
+						<Month>5/13</Month>
+					</Month5>
+					<Month6>
+						<Month>6/13</Month>
+					</Month6>
+					<Month7>
+						<Month>7/13</Month>
+					</Month7>
+					<Month8>
+						<Month>8/13</Month>
+					</Month8>
+					<Month9><Month>9/13</Month></Month9>
+					<Month10><Month>10/13</Month></Month10>
+					<Month11><Month>11/13</Month></Month11>
+					<Month12><Month>12/13</Month></Month12>
+				</Months>
+				<HCTotalNumberOfOverdueInstalments>
+					<Description>Сумарна кількість просторочених платежів</Description>
+					<Month1>
+						<Month>1/13</Month>
+						<Value>1,00</Value>
+					</Month1>
+					<Month2><Month>2/13</Month><Value>1,00</Value></Month2>
+					<Month3><Month>3/13</Month><Value>1,00</Value></Month3>
+					<Month4><Month>4/13</Month><Value>1,00</Value></Month4>
+					<Month5><Month>5/13</Month><Value>1,00</Value></Month5>
+					<Month6><Month>6/13</Month><Value>1,00</Value></Month6>
+					<Month7><Month>7/13</Month><Value>1,00</Value></Month7>
+					<Month8><Month>8/13</Month><Value>1,00</Value></Month8>
+					<Month9><Month>9/13</Month><Value>1,00</Value></Month9>
+					<Month10><Month>10/13</Month><Value>1,00</Value></Month10>
+					<Month11><Month>11/13</Month><Value>1,00</Value></Month11>
+					<Month12><Month>12/13</Month><Value>1,00</Value></Month12>
+				</HCTotalNumberOfOverdueInstalments>
+				<HCTotalOverdueAmount>
+					<Description>Несплачена прострочена сума платежів</Description>
+					<Month1><Month>1/13</Month><Value>16 997,17</Value></Month1>
+					<Month2><Month>2/13</Month><Value>16 997,17</Value></Month2>
+					<Month3><Month>3/13</Month><Value>16 997,17</Value></Month3>
+					<Month4><Month>4/13</Month><Value>16 997,17</Value></Month4>
+					<Month5><Month>5/13</Month><Value>16 997,17</Value></Month5>
+					<Month6><Month>6/13</Month><Value>16 997,17</Value></Month6>
+					<Month7><Month>7/13</Month><Value>16 997,17</Value></Month7>
+					<Month8><Month>8/13</Month><Value>16 997,17</Value></Month8>
+					<Month9><Month>9/13</Month><Value>16 997,17</Value></Month9>
+					<Month10><Month>10/13</Month><Value>16 997,17</Value></Month10>
+					<Month11><Month>11/13</Month><Value>16 997,17</Value></Month11>
+					<Month12><Month>12/13</Month><Value>16 997,17</Value></Month12>
+				</HCTotalOverdueAmount>
+			</HistoricalCalendar>
+			<HistoricalCalendar months="-24">
+				<Months>
+					<Description>/</Description>
+					<Month1><Month>1/12</Month></Month1>
+					<Month2><Month>2/12</Month></Month2>
+					<Month3><Month>3/12</Month></Month3>
+					<Month4><Month>4/12</Month></Month4>
+					<Month5><Month>5/12</Month></Month5>
+					<Month6><Month>6/12</Month></Month6>
+					<Month7><Month>7/12</Month></Month7>
+					<Month8><Month>8/12</Month></Month8>
+					<Month9><Month>9/12</Month></Month9>
+					<Month10><Month>10/12</Month></Month10>
+					<Month11><Month>11/12</Month></Month11>
+					<Month12><Month>12/12</Month></Month12>
+				</Months>
+				<HCTotalNumberOfOverdueInstalments>
+					<Description>Сумарна кількість просторочених платежів</Description>
+					<Month1><Month>1/12</Month><Value>-</Value></Month1>
+					<Month2><Month>2/12</Month><Value>-</Value></Month2>
+					<Month3><Month>3/12</Month><Value>1,00</Value></Month3>
+					<Month4><Month>4/12</Month><Value>-</Value></Month4>
+					<Month5><Month>5/12</Month><Value>-</Value></Month5>
+					<Month6><Month>6/12</Month><Value>-</Value></Month6>
+					<Month7><Month>7/12</Month><Value>1,00</Value></Month7>
+					<Month8><Month>8/12</Month><Value>1,00</Value></Month8>
+					<Month9><Month>9/12</Month><Value>1,00</Value></Month9>
+					<Month10><Month>10/12</Month><Value>1,00</Value></Month10>
+					<Month11><Month>11/12</Month><Value>1,00</Value></Month11>
+					<Month12><Month>12/12</Month><Value>1,00</Value></Month12>
+				</HCTotalNumberOfOverdueInstalments>
+				<HCTotalOverdueAmount>
+					<Description>Несплачена прострочена сума платежів</Description>
+					<Month1><Month>1/12</Month><Value>-</Value></Month1>
+					<Month2><Month>2/12</Month><Value>-</Value></Month2>
+					<Month3><Month>3/12</Month><Value>23 923,30</Value></Month3>
+					<Month4><Month>4/12</Month><Value>-</Value></Month4>
+					<Month5><Month>5/12</Month><Value>-</Value></Month5>
+					<Month6><Month>6/12</Month><Value>-</Value></Month6>
+					<Month7><Month>7/12</Month><Value>16 997,17</Value></Month7>
+					<Month8><Month>8/12</Month><Value>16 997,17</Value></Month8>
+					<Month9><Month>9/12</Month><Value>16 997,17</Value></Month9>
+					<Month10><Month>10/12</Month><Value>16 997,17</Value></Month10>
+					<Month11><Month>11/12</Month><Value>16 997,17</Value></Month11>
+					<Month12><Month>12/12</Month><Value>16 997,17</Value></Month12>
+				</HCTotalOverdueAmount>
+			</HistoricalCalendar>
+		</Contract>
+	</Contracts>
+	<SearchInquiries>
+		<InquiryList>
+			<SearchInquiry>
+				<Date>2013-12-25T12:49:00</Date>
+				<Subscriber>B-1</Subscriber>
+				<SubscriberType code="1">Комерційний банк</SubscriberType>
+			</SearchInquiry>
+		</InquiryList>
+		<Summary>
+			<SubscriberType type="Комерційні банки" code="1" count="1" />
+		</Summary>
+		<Total>1</Total>
+	</SearchInquiries>
+	<Inquiers>
+		<NumberOfInquiers>1</NumberOfInquiers>
+		<Inquiery><Year>2013</Year><Quarter>4</Quarter><Value>0</Value></Inquiery>
+		<Inquiery><Year>2013</Year><Quarter>3</Quarter><Value>1</Value></Inquiery>
+		<Inquiery><Year>2013</Year><Quarter>2</Quarter><Value>0</Value></Inquiery>
+		<Inquiery><Year>2013</Year><Quarter>1</Quarter><Value>0</Value></Inquiery>
+	</Inquiers>
+</Report>
+</Reports>

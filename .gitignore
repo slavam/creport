@@ -1,0 +1,13 @@
+/protected/runtime/*.*
+/assets/
+
+/nbproject
+/nbproject/project.properties
+/nbproject/private
+/index.php
+/css/dropdownmenu/default.advanced.css
+/css/dropdownmenu/default2.css
+
+/js
+/jqgrid
+/images

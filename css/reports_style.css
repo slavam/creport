@@ -1,0 +1,17 @@
+/* 
+    Document   : reports_style
+    Created on : 28.09.2012, 17:05:59
+    Author     : v.kriuchkov
+*/
+
+.template { 
+    background:#999!important;
+}
+.group { 
+    background:#999!important;
+}
+.report{
+    overflow:auto;
+    height: 500px;
+}
+

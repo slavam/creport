@@ -1,0 +1,526 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doc>
+    <r key="100000">
+        <trace logicstart="1383739452.17" authoriz="1383739452.28" getclient="1383739453.37" getdeal="1383739453.68" loging="1383739454.22" deals="1383739454.22" interest="1383739454.28" urat="1383739454.46" phone="1383739454.46" pball="0.00" ldocs="1383739454.46" photo="1383739454.57" logicfinish="1383739454.87" ReqID="req#0030515895"/>
+    </r>
+    
+            <r key="5">
+                        <LST errcode="null" errtext="null" CLDATE="2013-07-09" DB="1977-07-02" OKPO="2830705279" FamilySt="" Sex="M" uaLName="МАСЛАК" uaFName="ОЛЕКСАНДР" uaMName="ЮРІЙОВИЧ" FIOEn="" ruLName="МАСЛАК" ruFName="АЛЕКСАНДР" ruMName="ЮРЬЕВИЧ" WOKPO="" clWName="" clWDate="" Address1="49130 UA ДНIПРОПЕТРОВСЬКА  ДНIПРОПЕТРОВСЬК           МИРУ   4  100" Address2="              " Address3="49130 UA ДНIПРОПЕТРОВСЬКА  ДНIПРОПЕТРОВСЬК           МИРУ   4  100" DDS="2011-11-09" DSer="АО" DNum="005314" DWho="ІНДУСТРІАЛЬНИМ РВ ДМУ ГУМВС УКРАЇНИ В ДНІПРОПЕТРОВСЬКІЙ ОБЛ."/>
+                    </r>
+        
+        
+        <r key="8">
+                        <LSTHS errcode="null" errtext="null" CLDATE="2013-07-09" DB="1977-07-02" OKPO="2830705279" FamilySt="" Sex="M" uaLName="МАСЛАК" uaFName="ОЛЕКСАНДР" uaMName="ЮРІЙОВИЧ" FIOEn="" ruLName="" ruFName="" ruMName="" WOKPO="" clWName="" clWDate=""/>
+                        <LSTHS errcode="null" errtext="null" CLDATE="2013-07-09" DB="1977-07-02" OKPO="2830705279" FamilySt="" Sex="M" uaLName="" uaFName="" uaMName="" FIOEn="" ruLName="МАСЛАК" ruFName="АЛЕКСАНДР" ruMName="ЮРЬЕВИЧ" WOKPO="" clWName="" clWDate=""/>
+                        <LSTHS errcode="null" errtext="null" CLDATE="2013-03-20" DB="1977-07-02" OKPO="2830705279" FamilySt="" Sex="M" uaLName="МАСЛАК" uaFName="ОЛЕКСАНДР" uaMName="ЮРІЙОВИЧ" FIOEn="" ruLName="" ruFName="" ruMName="" WOKPO="" clWName="" clWDate=""/>
+                        <LSTHS errcode="null" errtext="null" CLDATE="2013-03-20" DB="1977-07-02" OKPO="2830705279" FamilySt="" Sex="M" uaLName="" uaFName="" uaMName="" FIOEn="" ruLName="МАСЛАК" ruFName="АЛЕКСАНДР" ruMName="ЮРЬЕВИЧ" WOKPO="" clWName="" clWDate=""/>
+                        <LSTHS errcode="null" errtext="null" CLDATE="2009-11-16" DB="1977-07-02" OKPO="2830705279" FamilySt="" Sex="M" uaLName="МАСЛАК" uaFName="ОЛЕКСАНДР" uaMName="ЮРІЙОВИЧ" FIOEn="" ruLName="" ruFName="" ruMName="" WOKPO="" clWName="" clWDate=""/>
+                        <LSTHS errcode="null" errtext="null" CLDATE="2009-11-16" DB="1977-07-02" OKPO="2830705279" FamilySt="" Sex="M" uaLName="" uaFName="" uaMName="" FIOEn="" ruLName="МАСЛАК" ruFName="АЛЕКСАНДР" ruMName="ЮРЬЕВИЧ" WOKPO="" clWName="" clWDate=""/>
+                        <LSTHS errcode="null" errtext="null" CLDATE="2006-04-02" DB="1977-07-02" OKPO="2830705279" FamilySt="" Sex="M" uaLName="МАСЛАК" uaFName="ОЛЕКСАНДР" uaMName="ЮРIЙОВИЧ" FIOEn="" ruLName="" ruFName="" ruMName="" WOKPO="" clWName="" clWDate=""/>
+                        <LSTHS errcode="null" errtext="null" CLDATE="2006-04-02" DB="1977-07-02" OKPO="2830705279" FamilySt="" Sex="M" uaLName="" uaFName="" uaMName="" FIOEn="" ruLName="МАСЛАК" ruFName="АЛЕКСАНДР" ruMName="ЮРЬЕВИЧ" WOKPO="" clWName="" clWDate=""/>
+                    </r>
+        
+            <r key="9">
+                
+            <DOCH errcode="null" errtext="null" DTM="2012-03-19" DDS="2011-11-09" DSer="АО" DNum="005314" DWho="ІНДУСТРІАЛЬНИМ РВ ДМУ ГУМВС УКРАЇНИ В ДНІПРОПЕТРОВСЬКІЙ ОБЛ."/>
+                
+            <DOCH errcode="null" errtext="null" DTM="2011-08-30" DDS="2010-11-22" DSer="АК" DNum="212028" DWho="ІНДУСТРІАЛЬНИМ РВ ДМУ ГУМВС УКРАЇНИ В ДНІПРОПЕТРОВСЬКІЙ ОБЛ."/>
+                
+            <DOCH errcode="null" errtext="null" DTM="2011-04-22" DDS="2010-11-22" DSer="АН" DNum="908395" DWho="ІНДУСТРІАЛЬНИМ РВ ДМУ ГУМВС УКРАЇНИ В ДНІПРОПЕТРОВСЬКІЙ ОБЛ."/>
+                
+            <DOCH errcode="null" errtext="null" DTM="2009-02-20" DDS="1998-07-01" DSer="АК" DNum="212028" DWho="ИНДУСТРИАЛЬНЫМ РО ДГУ УМВД УКРАИНЫ В ДНЕПРОПЕТРОВСКОЙ ОБЛ."/>
+                
+            <DOCH errcode="null" errtext="null" DTM="2006-04-02" DDS="1998-07-01" DSer="АК" DNum="212028" DWho="ИНДУСТРИАЛЬНЫМ РОДГУУМВД УКР"/>
+                    </r>
+        
+            <r key="10">
+               
+            <ADDRH errcode="null" errtext="null" Type="1" DTM="2012-03-01" Address="UA ДНIПРОПЕТРОВСЬКА  ДНIПРОПЕТРОВСЬК           МИРУ   4  100"/>
+               
+            <ADDRH errcode="null" errtext="null" Type="1" DTM="2011-04-22" Address="UA ДНIПРОПЕТРОВСЬКА  ДНIПРОПЕТРОВСЬК           МИРУ   4  100"/>
+               
+            <ADDRH errcode="null" errtext="null" Type="1" DTM="1900-01-01" Address="UA ДНЕПРОПЕТРОВСКАЯ  ДНЕПРОПЕТРОВСК           ПР МИРА   4  100"/>
+               
+            <ADDRH errcode="null" errtext="null" Type="2" DTM="2012-03-01" Address="UA ДНIПРОПЕТРОВСЬКА  ДНIПРОПЕТРОВСЬК           МИРУ   4  100"/>
+               
+            <ADDRH errcode="null" errtext="null" Type="2" DTM="2011-04-22" Address="UA ДНIПРОПЕТРОВСЬКА  ДНIПРОПЕТРОВСЬК           МИРУ   4  100"/>
+               
+            <ADDRH errcode="null" errtext="null" Type="2" DTM="1900-01-01" Address="UA ДНЕПРОПЕТРОВСКАЯ  ДНЕПРОПЕТРОВСК           ПР МИРА   4  100"/>
+               
+            <ADDRH errcode="null" errtext="null" Type="3" DTM="" Address="             "/>
+                    </r>
+        
+            <r key="15">
+               
+                        <CONTH Type="1" VersionDate="2012-05-01" Number="+380563746684"/>
+               
+                        <CONTH Type="1" VersionDate="2010-09-15" Number="+380562267868"/>
+               
+                        <CONTH Type="1" VersionDate="2009-11-12" Number="+380563746684"/>
+               
+                        <CONTH Type="2" VersionDate="2010-09-15" Number="+380562520263"/>
+               
+                        <CONTH Type="2" VersionDate="1900-01-01" Number="+380563746684"/>
+               
+                        <CONTH Type="3" VersionDate="2013-08-21" Number="+380676303892"/>
+               
+                        <CONTH Type="3" VersionDate="2013-07-23" Number="+380676303892"/>
+               
+                        <CONTH Type="3" VersionDate="2013-04-13" Number="+380676303892"/>
+               
+                        <CONTH Type="3" VersionDate="2012-10-10" Number="+380676303892"/>
+               
+                        <CONTH Type="3" VersionDate="2012-02-21" Number="+380676303892"/>
+               
+                        <CONTH Type="3" VersionDate="2011-12-09" Number="+380675649718"/>
+               
+                        <CONTH Type="3" VersionDate="2011-07-17" Number="+380676303892"/>
+               
+                        <CONTH Type="3" VersionDate="2010-09-15" Number="+380675649718"/>
+               
+                        <CONTH Type="3" VersionDate="1900-01-01" Number="+380676303892"/>
+                    </r>
+    
+            <r key="2">
+                        <DEAL errcode="null" errtext="null" Reference="PB.UAH.DDN9AS.2300015" DS="2006-12-05" DE="null" CR_Type="00" Curr="980" crSetAmount="0" Amount="2500" FlClose="Y" AmtCurr="0" AmtExp="0" DaysExp="0" DateCalc="2012-12-31" NBreak1="0" NBreak2="1" NBreak3="0" NBreak4="0" NBreak5="0" Donor="BNK"/>
+                            <DEAL errcode="null" errtext="null" Reference="PB.UAH.DDN9AS.8350291" DS="2008-07-31" DE="null" CR_Type="00" Curr="980" crSetAmount="3263.06" Amount="100000" FlClose="Y" AmtCurr="0" AmtExp="0" DaysExp="0" DateCalc="2009-07-31" NBreak1="1" NBreak2="2" NBreak3="0" NBreak4="0" NBreak5="0" Donor="BNK"/>
+                            <DEAL errcode="null" errtext="null" Reference="PB.USD.DDN9AS.4557271" DS="2007-03-29" DE="null" CR_Type="01" Curr="840" crSetAmount="906.74" Amount="10000" FlClose="Y" AmtCurr="0" AmtExp="0" DaysExp="0" DateCalc="2007-09-30" NBreak1="0" NBreak2="0" NBreak3="0" NBreak4="0" NBreak5="0" Donor="BNK"/>
+                            <DEAL errcode="null" errtext="null" Reference="PB.USD.DNK4MB.1530529" DS="2005-09-08" DE="null" CR_Type="04" Curr="840" crSetAmount="314.34" Amount="22389" FlClose="Y" AmtCurr="0" AmtExp="0" DaysExp="0" DateCalc="2008-10-31" NBreak1="0" NBreak2="3" NBreak3="1" NBreak4="0" NBreak5="0" Donor="BNK"/>
+                            <DEAL errcode="null" errtext="null" Reference="PB.USD.DNK4MB.1788676" DS="2006-11-17" DE="2013-08-20" CR_Type="04" Curr="840" crSetAmount="0" Amount="12971.8" FlClose="N" AmtCurr="0" AmtExp="0" DaysExp="0" DateCalc="2013-10-26" NBreak1="0" NBreak2="8" NBreak3="7" NBreak4="7" NBreak5="16" Donor="BNK"/>
+                            <DEAL errcode="null" errtext="null" Reference="SAMDN08000009382526" DS="2006-10-05" DE="2105-10-05" CR_Type="05" Curr="980" crSetAmount="0" Amount="0" FlClose="N" AmtCurr="0" AmtExp="0" DaysExp="0" DateCalc="2013-10-26" NBreak1="0" NBreak2="0" NBreak3="0" NBreak4="0" NBreak5="0" Donor="BNK"/>
+                            <DEAL errcode="null" errtext="null" Reference="SAMDN08000015721715" DS="2007-08-29" DE="2106-08-29" CR_Type="05" Curr="980" crSetAmount="0" Amount="0" FlClose="N" AmtCurr="0" AmtExp="0" DaysExp="0" DateCalc="2013-10-26" NBreak1="0" NBreak2="0" NBreak3="0" NBreak4="0" NBreak5="0" Donor="BNK"/>
+                            <DEAL errcode="null" errtext="null" Reference="SAMDN08000027351467" DS="2009-04-17" DE="2108-04-17" CR_Type="05" Curr="980" crSetAmount="0" Amount="0" FlClose="N" AmtCurr="0" AmtExp="0" DaysExp="0" DateCalc="2013-10-26" NBreak1="0" NBreak2="0" NBreak3="0" NBreak4="0" NBreak5="0" Donor="BNK"/>
+                            <DEAL errcode="null" errtext="null" Reference="SAMDN20000004614592" DS="2005-11-18" DE="null" CR_Type="00" Curr="980" crSetAmount="0" Amount="3500" FlClose="Y" AmtCurr="0" AmtExp="0" DaysExp="0" DateCalc="2013-10-26" NBreak1="0" NBreak2="0" NBreak3="0" NBreak4="0" NBreak5="0" Donor="BNK"/>
+                            <DEAL errcode="null" errtext="null" Reference="SAMDN23000015779069" DS="2007-09-03" DE="null" CR_Type="00" Curr="840" crSetAmount="0" Amount="10000" FlClose="Y" AmtCurr="0" AmtExp="0" DaysExp="0" DateCalc="2012-08-31" NBreak1="0" NBreak2="2" NBreak3="1" NBreak4="1" NBreak5="4" Donor="BNK"/>
+                            <DEAL errcode="null" errtext="null" Reference="SAMDN34000022292379" DS="2008-06-23" DE="null" CR_Type="05" Curr="980" crSetAmount="0" Amount="0" FlClose="Y" AmtCurr="0" AmtExp="0" DaysExp="0" DateCalc="2013-10-26" NBreak1="0" NBreak2="0" NBreak3="0" NBreak4="0" NBreak5="0" Donor="BNK"/>
+                        </r>
+        
+            <r key="6">
+                            <CL_DEAL errcode="null" errtext="null" Year="2006" Month="12" Reference="PB.UAH.DDN9AS.2300015" FlPay="N" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2007" Month="1" Reference="PB.UAH.DDN9AS.2300015" FlPay="Y" FlBreak="N" FlClose="N" FlUse="Y" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2007" Month="2" Reference="PB.UAH.DDN9AS.2300015" FlPay="N" FlBreak="N" FlClose="N" FlUse="Y" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2007" Month="3" Reference="PB.UAH.DDN9AS.2300015" FlPay="N" FlBreak="N" FlClose="N" FlUse="Y" AmtCurr="-20.32" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2007" Month="4" Reference="PB.UAH.DDN9AS.2300015" FlPay="Y" FlBreak="N" FlClose="N" FlUse="Y" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2007" Month="5" Reference="PB.UAH.DDN9AS.2300015" FlPay="N" FlBreak="N" FlClose="N" FlUse="Y" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2007" Month="6" Reference="PB.UAH.DDN9AS.2300015" FlPay="N" FlBreak="N" FlClose="N" FlUse="Y" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2007" Month="7" Reference="PB.UAH.DDN9AS.2300015" FlPay="Y" FlBreak="N" FlClose="N" FlUse="Y" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2007" Month="8" Reference="PB.UAH.DDN9AS.2300015" FlPay="Y" FlBreak="N" FlClose="N" FlUse="Y" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2007" Month="9" Reference="PB.UAH.DDN9AS.2300015" FlPay="Y" FlBreak="N" FlClose="N" FlUse="Y" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2007" Month="10" Reference="PB.UAH.DDN9AS.2300015" FlPay="Y" FlBreak="N" FlClose="N" FlUse="Y" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2007" Month="11" Reference="PB.UAH.DDN9AS.2300015" FlPay="N" FlBreak="N" FlClose="N" FlUse="Y" AmtCurr="-302.99" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2007" Month="12" Reference="PB.UAH.DDN9AS.2300015" FlPay="Y" FlBreak="N" FlClose="N" FlUse="Y" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2008" Month="1" Reference="PB.UAH.DDN9AS.2300015" FlPay="Y" FlBreak="N" FlClose="N" FlUse="Y" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2008" Month="2" Reference="PB.UAH.DDN9AS.2300015" FlPay="Y" FlBreak="N" FlClose="N" FlUse="Y" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2008" Month="3" Reference="PB.UAH.DDN9AS.2300015" FlPay="Y" FlBreak="N" FlClose="N" FlUse="Y" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2008" Month="4" Reference="PB.UAH.DDN9AS.2300015" FlPay="N" FlBreak="N" FlClose="N" FlUse="Y" AmtCurr="-0.58" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2008" Month="5" Reference="PB.UAH.DDN9AS.2300015" FlPay="Y" FlBreak="N" FlClose="N" FlUse="Y" AmtCurr="-175.7" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2008" Month="6" Reference="PB.UAH.DDN9AS.2300015" FlPay="Y" FlBreak="N" FlClose="N" FlUse="Y" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2008" Month="7" Reference="PB.UAH.DDN9AS.2300015" FlPay="Y" FlBreak="N" FlClose="N" FlUse="Y" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2008" Month="8" Reference="PB.UAH.DDN9AS.2300015" FlPay="N" FlBreak="N" FlClose="N" FlUse="Y" AmtCurr="-316.01" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2008" Month="9" Reference="PB.UAH.DDN9AS.2300015" FlPay="Y" FlBreak="N" FlClose="N" FlUse="Y" AmtCurr="-317.96" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2008" Month="10" Reference="PB.UAH.DDN9AS.2300015" FlPay="N" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-317.96" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2008" Month="11" Reference="PB.UAH.DDN9AS.2300015" FlPay="N" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-317.96" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2008" Month="12" Reference="PB.UAH.DDN9AS.2300015" FlPay="Y" FlBreak="N" FlClose="Y" FlUse="Y" AmtCurr="-317.96" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2012" Month="10" Reference="PB.UAH.DDN9AS.2300015" FlPay="N" FlBreak="Y" FlClose="N" FlUse="Y" AmtCurr="-30.09" AmtExp="-30.09" DaysExp="8"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2012" Month="11" Reference="PB.UAH.DDN9AS.2300015" FlPay="Y" FlBreak="N" FlClose="N" FlUse="Y" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2012" Month="12" Reference="PB.UAH.DDN9AS.2300015" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2008" Month="7" Reference="PB.UAH.DDN9AS.8350291" FlPay="N" FlBreak="N" FlClose="N" FlUse="Y" AmtCurr="-100000" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2008" Month="8" Reference="PB.UAH.DDN9AS.8350291" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-98070.27" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2008" Month="9" Reference="PB.UAH.DDN9AS.8350291" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-96964.76" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2008" Month="10" Reference="PB.UAH.DDN9AS.8350291" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-95511.71" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2008" Month="11" Reference="PB.UAH.DDN9AS.8350291" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-94222.56" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2008" Month="12" Reference="PB.UAH.DDN9AS.8350291" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-92969.58" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2009" Month="1" Reference="PB.UAH.DDN9AS.8350291" FlPay="N" FlBreak="Y" FlClose="N" FlUse="N" AmtCurr="-92969.58" AmtExp="-1465.65" DaysExp="11"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2009" Month="2" Reference="PB.UAH.DDN9AS.8350291" FlPay="Y" FlBreak="Y" FlClose="N" FlUse="N" AmtCurr="-91503.93" AmtExp="-1371.98" DaysExp="6"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2009" Month="3" Reference="PB.UAH.DDN9AS.8350291" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-88551.35" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2009" Month="4" Reference="PB.UAH.DDN9AS.8350291" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-87701.04" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2009" Month="5" Reference="PB.UAH.DDN9AS.8350291" FlPay="N" FlBreak="Y" FlClose="N" FlUse="N" AmtCurr="-89394.12" AmtExp="-3281.86" DaysExp="10"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2009" Month="6" Reference="PB.UAH.DDN9AS.8350291" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-1532.06" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2009" Month="7" Reference="PB.UAH.DDN9AS.8350291" FlPay="Y" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2007" Month="3" Reference="PB.USD.DDN9AS.4557271" FlPay="N" FlBreak="N" FlClose="N" FlUse="Y" AmtCurr="-10000" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2007" Month="4" Reference="PB.USD.DDN9AS.4557271" FlPay="N" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-10000" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2007" Month="5" Reference="PB.USD.DDN9AS.4557271" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-9255.76" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2007" Month="6" Reference="PB.USD.DDN9AS.4557271" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-8465.62" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2007" Month="7" Reference="PB.USD.DDN9AS.4557271" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-7671.79" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2007" Month="8" Reference="PB.USD.DDN9AS.4557271" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2007" Month="9" Reference="PB.USD.DDN9AS.4557271" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2006" Month="1" Reference="PB.USD.DNK4MB.1530529" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-15360.18" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2006" Month="2" Reference="PB.USD.DNK4MB.1530529" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-15256.4" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2006" Month="3" Reference="PB.USD.DNK4MB.1530529" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-15130.77" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2006" Month="4" Reference="PB.USD.DNK4MB.1530529" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-15023.61" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2006" Month="5" Reference="PB.USD.DNK4MB.1530529" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-14908.59" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2006" Month="6" Reference="PB.USD.DNK4MB.1530529" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-14798.68" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2006" Month="7" Reference="PB.USD.DNK4MB.1530529" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-14680.74" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2006" Month="8" Reference="PB.USD.DNK4MB.1530529" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-14567.75" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2006" Month="9" Reference="PB.USD.DNK4MB.1530529" FlPay="Y" FlBreak="N" FlClose="N" FlUse="Y" AmtCurr="-14455.44" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2006" Month="10" Reference="PB.USD.DNK4MB.1530529" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-14347.05" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2006" Month="11" Reference="PB.USD.DNK4MB.1530529" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-14216.6" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2006" Month="12" Reference="PB.USD.DNK4MB.1530529" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-14090.97" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2007" Month="1" Reference="PB.USD.DNK4MB.1530529" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-13969.8" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2007" Month="2" Reference="PB.USD.DNK4MB.1530529" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-13847.92" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2007" Month="3" Reference="PB.USD.DNK4MB.1530529" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-13705.81" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2007" Month="4" Reference="PB.USD.DNK4MB.1530529" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-13579.5" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2007" Month="5" Reference="PB.USD.DNK4MB.1530529" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-13463.8" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2007" Month="6" Reference="PB.USD.DNK4MB.1530529" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-13315.89" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2007" Month="7" Reference="PB.USD.DNK4MB.1530529" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-13178.21" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2007" Month="8" Reference="PB.USD.DNK4MB.1530529" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-13044.64" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2007" Month="9" Reference="PB.USD.DNK4MB.1530529" FlPay="Y" FlBreak="N" FlClose="N" FlUse="Y" AmtCurr="-13790.03" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2007" Month="10" Reference="PB.USD.DNK4MB.1530529" FlPay="Y" FlBreak="Y" FlClose="N" FlUse="N" AmtCurr="-13649.11" AmtExp="-859.3" DaysExp="23"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2007" Month="11" Reference="PB.USD.DNK4MB.1530529" FlPay="Y" FlBreak="Y" FlClose="N" FlUse="N" AmtCurr="-13536.32" AmtExp="-884.57" DaysExp="53"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2007" Month="12" Reference="PB.USD.DNK4MB.1530529" FlPay="Y" FlBreak="Y" FlClose="N" FlUse="N" AmtCurr="-12638.65" AmtExp="-132.48" DaysExp="11"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2008" Month="1" Reference="PB.USD.DNK4MB.1530529" FlPay="Y" FlBreak="Y" FlClose="N" FlUse="N" AmtCurr="-12498.84" AmtExp="-134.62" DaysExp="10"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2008" Month="2" Reference="PB.USD.DNK4MB.1530529" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-12219.56" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2008" Month="3" Reference="PB.USD.DNK4MB.1530529" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-12063.59" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2008" Month="4" Reference="PB.USD.DNK4MB.1530529" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-11913.71" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2008" Month="5" Reference="PB.USD.DNK4MB.1530529" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-11760.26" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2008" Month="6" Reference="PB.USD.DNK4MB.1530529" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-11604.8" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2008" Month="7" Reference="PB.USD.DNK4MB.1530529" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-11444.72" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2008" Month="8" Reference="PB.USD.DNK4MB.1530529" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2008" Month="9" Reference="PB.USD.DNK4MB.1530529" FlPay="N" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2008" Month="10" Reference="PB.USD.DNK4MB.1530529" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2006" Month="11" Reference="PB.USD.DNK4MB.1788676" FlPay="N" FlBreak="N" FlClose="N" FlUse="Y" AmtCurr="-10599" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2006" Month="12" Reference="PB.USD.DNK4MB.1788676" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-10449" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2007" Month="1" Reference="PB.USD.DNK4MB.1788676" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-10312.75" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2007" Month="2" Reference="PB.USD.DNK4MB.1788676" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-10176.26" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2007" Month="3" Reference="PB.USD.DNK4MB.1788676" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-10029.92" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2007" Month="4" Reference="PB.USD.DNK4MB.1788676" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-9890.1" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2007" Month="5" Reference="PB.USD.DNK4MB.1788676" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-9749.84" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2007" Month="6" Reference="PB.USD.DNK4MB.1788676" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-9605.24" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2007" Month="7" Reference="PB.USD.DNK4MB.1788676" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-9458.96" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2007" Month="8" Reference="PB.USD.DNK4MB.1788676" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-9314.19" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2007" Month="9" Reference="PB.USD.DNK4MB.1788676" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-9174.1" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2007" Month="10" Reference="PB.USD.DNK4MB.1788676" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-9025.14" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2007" Month="11" Reference="PB.USD.DNK4MB.1788676" FlPay="Y" FlBreak="N" FlClose="N" FlUse="Y" AmtCurr="-9488.69" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2007" Month="12" Reference="PB.USD.DNK4MB.1788676" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-9331.84" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2008" Month="1" Reference="PB.USD.DNK4MB.1788676" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-9166.64" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2008" Month="2" Reference="PB.USD.DNK4MB.1788676" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-9000.1" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2008" Month="3" Reference="PB.USD.DNK4MB.1788676" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-8970.75" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2008" Month="4" Reference="PB.USD.DNK4MB.1788676" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-8659.19" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2008" Month="5" Reference="PB.USD.DNK4MB.1788676" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-8631.67" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2008" Month="6" Reference="PB.USD.DNK4MB.1788676" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-8315.21" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2008" Month="7" Reference="PB.USD.DNK4MB.1788676" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-8139.62" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2008" Month="8" Reference="PB.USD.DNK4MB.1788676" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-8113.26" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2008" Month="9" Reference="PB.USD.DNK4MB.1788676" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-7938.24" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2008" Month="10" Reference="PB.USD.DNK4MB.1788676" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-7759.48" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2008" Month="11" Reference="PB.USD.DNK4MB.1788676" FlPay="Y" FlBreak="N" FlClose="N" FlUse="Y" AmtCurr="-8121.44" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2008" Month="12" Reference="PB.USD.DNK4MB.1788676" FlPay="Y" FlBreak="Y" FlClose="N" FlUse="N" AmtCurr="-7619.3" AmtExp="-37.02" DaysExp="16"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2009" Month="1" Reference="PB.USD.DNK4MB.1788676" FlPay="Y" FlBreak="Y" FlClose="N" FlUse="N" AmtCurr="-7416.64" AmtExp="-13.58" DaysExp="47"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2009" Month="2" Reference="PB.USD.DNK4MB.1788676" FlPay="N" FlBreak="Y" FlClose="N" FlUse="N" AmtCurr="-7416.64" AmtExp="-194.67" DaysExp="75"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2009" Month="3" Reference="PB.USD.DNK4MB.1788676" FlPay="Y" FlBreak="Y" FlClose="N" FlUse="N" AmtCurr="-7221.97" AmtExp="-190.28" DaysExp="9"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2009" Month="4" Reference="PB.USD.DNK4MB.1788676" FlPay="Y" FlBreak="Y" FlClose="N" FlUse="N" AmtCurr="-7130.79" AmtExp="-244.29" DaysExp="38"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2009" Month="5" Reference="PB.USD.DNK4MB.1788676" FlPay="N" FlBreak="Y" FlClose="N" FlUse="N" AmtCurr="-7204.2" AmtExp="-510.27" DaysExp="69"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2009" Month="6" Reference="PB.USD.DNK4MB.1788676" FlPay="Y" FlBreak="Y" FlClose="N" FlUse="N" AmtCurr="-6997.9" AmtExp="-491.52" DaysExp="69"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2009" Month="7" Reference="PB.USD.DNK4MB.1788676" FlPay="Y" FlBreak="Y" FlClose="N" FlUse="N" AmtCurr="-6396.36" AmtExp="-82.39" DaysExp="10"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2009" Month="8" Reference="PB.USD.DNK4MB.1788676" FlPay="N" FlBreak="Y" FlClose="N" FlUse="N" AmtCurr="-6464.9" AmtExp="-344.62" DaysExp="41"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2009" Month="9" Reference="PB.USD.DNK4MB.1788676" FlPay="N" FlBreak="Y" FlClose="N" FlUse="N" AmtCurr="-6533.92" AmtExp="-547.56" DaysExp="71"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2009" Month="10" Reference="PB.USD.DNK4MB.1788676" FlPay="N" FlBreak="Y" FlClose="N" FlUse="N" AmtCurr="-6605.9" AmtExp="-759.53" DaysExp="102"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2009" Month="11" Reference="PB.USD.DNK4MB.1788676" FlPay="N" FlBreak="Y" FlClose="N" FlUse="Y" AmtCurr="-7063.7" AmtExp="-1006.37" DaysExp="132"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2009" Month="12" Reference="PB.USD.DNK4MB.1788676" FlPay="N" FlBreak="Y" FlClose="N" FlUse="N" AmtCurr="-7153.65" AmtExp="-1831.27" DaysExp="163"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2010" Month="1" Reference="PB.USD.DNK4MB.1788676" FlPay="N" FlBreak="Y" FlClose="N" FlUse="N" AmtCurr="-7237.83" AmtExp="-2125.57" DaysExp="194"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2010" Month="2" Reference="PB.USD.DNK4MB.1788676" FlPay="N" FlBreak="Y" FlClose="N" FlUse="N" AmtCurr="-7324.29" AmtExp="-2423.15" DaysExp="222"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2010" Month="3" Reference="PB.USD.DNK4MB.1788676" FlPay="N" FlBreak="Y" FlClose="N" FlUse="N" AmtCurr="-7429.99" AmtExp="-2734.2" DaysExp="253"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2010" Month="4" Reference="PB.USD.DNK4MB.1788676" FlPay="N" FlBreak="Y" FlClose="N" FlUse="N" AmtCurr="-7525.99" AmtExp="-3044.18" DaysExp="283"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2010" Month="5" Reference="PB.USD.DNK4MB.1788676" FlPay="N" FlBreak="Y" FlClose="N" FlUse="N" AmtCurr="-7635.34" AmtExp="-3365.07" DaysExp="314"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2010" Month="6" Reference="PB.USD.DNK4MB.1788676" FlPay="N" FlBreak="Y" FlClose="N" FlUse="N" AmtCurr="-7740.85" AmtExp="-3687.12" DaysExp="344"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2010" Month="7" Reference="PB.USD.DNK4MB.1788676" FlPay="N" FlBreak="Y" FlClose="N" FlUse="N" AmtCurr="-7849.63" AmtExp="-4014.78" DaysExp="375"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2010" Month="8" Reference="PB.USD.DNK4MB.1788676" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-2976.41" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2010" Month="9" Reference="PB.USD.DNK4MB.1788676" FlPay="N" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-3006.29" AmtExp="-30.88" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2010" Month="10" Reference="PB.USD.DNK4MB.1788676" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-2789.87" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2010" Month="11" Reference="PB.USD.DNK4MB.1788676" FlPay="Y" FlBreak="N" FlClose="N" FlUse="Y" AmtCurr="-2786.57" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2010" Month="12" Reference="PB.USD.DNK4MB.1788676" FlPay="N" FlBreak="Y" FlClose="N" FlUse="N" AmtCurr="-2816.81" AmtExp="-104.36" DaysExp="10"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2011" Month="1" Reference="PB.USD.DNK4MB.1788676" FlPay="N" FlBreak="Y" FlClose="N" FlUse="N" AmtCurr="-2847.03" AmtExp="-366.58" DaysExp="41"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2011" Month="2" Reference="PB.USD.DNK4MB.1788676" FlPay="N" FlBreak="Y" FlClose="N" FlUse="N" AmtCurr="-2878.03" AmtExp="-633.65" DaysExp="69"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2011" Month="3" Reference="PB.USD.DNK4MB.1788676" FlPay="Y" FlBreak="Y" FlClose="N" FlUse="Y" AmtCurr="-3001.03" AmtExp="-992.76" DaysExp="100"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2011" Month="4" Reference="PB.USD.DNK4MB.1788676" FlPay="Y" FlBreak="Y" FlClose="N" FlUse="Y" AmtCurr="-2849.42" AmtExp="-70.2" DaysExp="130"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2011" Month="5" Reference="PB.USD.DNK4MB.1788676" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-2700.25" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2011" Month="6" Reference="PB.USD.DNK4MB.1788676" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-2620.76" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2011" Month="7" Reference="PB.USD.DNK4MB.1788676" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-2540.03" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2011" Month="8" Reference="PB.USD.DNK4MB.1788676" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-2462.44" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2011" Month="9" Reference="PB.USD.DNK4MB.1788676" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-2383.39" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2011" Month="10" Reference="PB.USD.DNK4MB.1788676" FlPay="Y" FlBreak="Y" FlClose="N" FlUse="N" AmtCurr="-2376.06" AmtExp="-72.44" DaysExp="10"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2011" Month="11" Reference="PB.USD.DNK4MB.1788676" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-2224.24" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2011" Month="12" Reference="PB.USD.DNK4MB.1788676" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-2068.92" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2012" Month="1" Reference="PB.USD.DNK4MB.1788676" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-2065.8" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2012" Month="2" Reference="PB.USD.DNK4MB.1788676" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-1985.66" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2012" Month="3" Reference="PB.USD.DNK4MB.1788676" FlPay="Y" FlBreak="Y" FlClose="N" FlUse="N" AmtCurr="-1983.4" AmtExp="-76.33" DaysExp="10"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2012" Month="4" Reference="PB.USD.DNK4MB.1788676" FlPay="Y" FlBreak="Y" FlClose="N" FlUse="N" AmtCurr="-1965.19" AmtExp="-1965.19" DaysExp="40"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2012" Month="5" Reference="PB.USD.DNK4MB.1788676" FlPay="Y" FlBreak="Y" FlClose="N" FlUse="N" AmtCurr="-1609.57" AmtExp="-1609.57" DaysExp="38"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2012" Month="6" Reference="PB.USD.DNK4MB.1788676" FlPay="Y" FlBreak="Y" FlClose="N" FlUse="N" AmtCurr="-1499.67" AmtExp="0" DaysExp="68"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2012" Month="7" Reference="PB.USD.DNK4MB.1788676" FlPay="Y" FlBreak="Y" FlClose="N" FlUse="N" AmtCurr="-1391.84" AmtExp="0" DaysExp="99"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2012" Month="8" Reference="PB.USD.DNK4MB.1788676" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-1287.96" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2012" Month="9" Reference="PB.USD.DNK4MB.1788676" FlPay="Y" FlBreak="Y" FlClose="N" FlUse="N" AmtCurr="-1287.76" AmtExp="-107.21" DaysExp="160"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2012" Month="10" Reference="PB.USD.DNK4MB.1788676" FlPay="Y" FlBreak="Y" FlClose="N" FlUse="N" AmtCurr="-1175.05" AmtExp="-101.77" DaysExp="191"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2012" Month="11" Reference="PB.USD.DNK4MB.1788676" FlPay="Y" FlBreak="Y" FlClose="N" FlUse="N" AmtCurr="-1026.63" AmtExp="-60.64" DaysExp="221"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2012" Month="12" Reference="PB.USD.DNK4MB.1788676" FlPay="Y" FlBreak="Y" FlClose="N" FlUse="N" AmtCurr="-974.9" AmtExp="-974.9" DaysExp="41"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2013" Month="1" Reference="PB.USD.DNK4MB.1788676" FlPay="N" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-974.9" AmtExp="-974.9" DaysExp="72"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2013" Month="2" Reference="PB.USD.DNK4MB.1788676" FlPay="Y" FlBreak="Y" FlClose="N" FlUse="N" AmtCurr="-834.97" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2013" Month="3" Reference="PB.USD.DNK4MB.1788676" FlPay="Y" FlBreak="Y" FlClose="N" FlUse="N" AmtCurr="-695.05" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2013" Month="4" Reference="PB.USD.DNK4MB.1788676" FlPay="Y" FlBreak="Y" FlClose="N" FlUse="N" AmtCurr="-555.12" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2013" Month="5" Reference="PB.USD.DNK4MB.1788676" FlPay="Y" FlBreak="Y" FlClose="N" FlUse="N" AmtCurr="-415.17" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2013" Month="6" Reference="PB.USD.DNK4MB.1788676" FlPay="N" FlBreak="Y" FlClose="N" FlUse="N" AmtCurr="-415.21" AmtExp="-136.65" DaysExp="10"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2013" Month="7" Reference="PB.USD.DNK4MB.1788676" FlPay="Y" FlBreak="Y" FlClose="N" FlUse="N" AmtCurr="-215.21" AmtExp="-75.96" DaysExp="9"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2013" Month="8" Reference="PB.USD.DNK4MB.1788676" FlPay="Y" FlBreak="Y" FlClose="N" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2013" Month="9" Reference="PB.USD.DNK4MB.1788676" FlPay="N" FlBreak="Y" FlClose="N" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2013" Month="10" Reference="PB.USD.DNK4MB.1788676" FlPay="N" FlBreak="Y" FlClose="N" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2013" Month="10" Reference="SAMDN08000009382526" FlPay="N" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2013" Month="10" Reference="SAMDN08000015721715" FlPay="N" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2013" Month="10" Reference="SAMDN08000027351467" FlPay="N" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2006" Month="12" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2007" Month="1" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2007" Month="2" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2007" Month="3" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2007" Month="4" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2007" Month="5" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2007" Month="6" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2007" Month="7" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2007" Month="8" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2007" Month="9" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2007" Month="10" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2007" Month="11" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2007" Month="12" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2008" Month="1" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2008" Month="2" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2008" Month="3" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2008" Month="4" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2008" Month="5" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2008" Month="6" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2008" Month="7" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2008" Month="9" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2008" Month="10" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2008" Month="11" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2008" Month="12" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2009" Month="1" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2009" Month="2" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2009" Month="3" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2009" Month="4" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2009" Month="5" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2009" Month="6" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2009" Month="7" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2009" Month="8" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2009" Month="9" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2009" Month="10" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2009" Month="11" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2009" Month="12" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2010" Month="1" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2010" Month="2" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2010" Month="3" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2010" Month="4" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2010" Month="5" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2010" Month="6" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2010" Month="7" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2010" Month="8" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2010" Month="9" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2010" Month="10" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2010" Month="11" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2010" Month="12" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2011" Month="1" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2011" Month="2" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2011" Month="3" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2011" Month="4" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2011" Month="5" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2011" Month="6" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2011" Month="7" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2011" Month="8" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2011" Month="9" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2011" Month="10" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2011" Month="11" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2011" Month="12" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2012" Month="1" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2012" Month="2" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2012" Month="3" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2012" Month="4" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2012" Month="5" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2012" Month="6" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2012" Month="7" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2012" Month="8" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2012" Month="9" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2012" Month="10" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2012" Month="11" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2012" Month="12" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2013" Month="1" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2013" Month="2" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2013" Month="3" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2013" Month="4" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2013" Month="5" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2013" Month="6" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2013" Month="7" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2013" Month="8" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2013" Month="9" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2013" Month="10" Reference="SAMDN20000004614592" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2007" Month="9" Reference="SAMDN23000015779069" FlPay="N" FlBreak="N" FlClose="N" FlUse="Y" AmtCurr="-10000" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2007" Month="10" Reference="SAMDN23000015779069" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-9646.99" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2007" Month="11" Reference="SAMDN23000015779069" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-9285.26" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2007" Month="12" Reference="SAMDN23000015779069" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-8914.99" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2008" Month="1" Reference="SAMDN23000015779069" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-8554.95" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2008" Month="2" Reference="SAMDN23000015779069" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-8168.42" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2008" Month="3" Reference="SAMDN23000015779069" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-7780.78" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2008" Month="4" Reference="SAMDN23000015779069" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-7401.43" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2008" Month="5" Reference="SAMDN23000015779069" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-7001.44" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2008" Month="6" Reference="SAMDN23000015779069" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-6605.54" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2008" Month="7" Reference="SAMDN23000015779069" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-6207.27" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2008" Month="8" Reference="SAMDN23000015779069" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-5795.93" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2008" Month="9" Reference="SAMDN23000015779069" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-5384.45" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2008" Month="10" Reference="SAMDN23000015779069" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-4967.66" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2008" Month="11" Reference="SAMDN23000015779069" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-4543.42" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2008" Month="12" Reference="SAMDN23000015779069" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-4113.87" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2009" Month="1" Reference="SAMDN23000015779069" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-3680.67" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2009" Month="2" Reference="SAMDN23000015779069" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-3241.87" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2009" Month="3" Reference="SAMDN23000015779069" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-2793.35" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2009" Month="4" Reference="SAMDN23000015779069" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-2344.25" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2009" Month="5" Reference="SAMDN23000015779069" FlPay="N" FlBreak="Y" FlClose="N" FlUse="N" AmtCurr="-2387.24" AmtExp="-501" DaysExp="25"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2009" Month="6" Reference="SAMDN23000015779069" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="-1424.26" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2009" Month="7" Reference="SAMDN23000015779069" FlPay="N" FlBreak="Y" FlClose="N" FlUse="N" AmtCurr="-1457.01" AmtExp="-500.69" DaysExp="24"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2009" Month="8" Reference="SAMDN23000015779069" FlPay="N" FlBreak="Y" FlClose="N" FlUse="N" AmtCurr="-1509.19" AmtExp="-1509.19" DaysExp="55"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2009" Month="9" Reference="SAMDN23000015779069" FlPay="N" FlBreak="Y" FlClose="N" FlUse="N" AmtCurr="-1566.16" AmtExp="-1566.16" DaysExp="85"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2009" Month="10" Reference="SAMDN23000015779069" FlPay="Y" FlBreak="Y" FlClose="N" FlUse="N" AmtCurr="-1421.44" AmtExp="-1421.44" DaysExp="116"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2009" Month="11" Reference="SAMDN23000015779069" FlPay="Y" FlBreak="Y" FlClose="N" FlUse="N" AmtCurr="-793.23" AmtExp="-793.23" DaysExp="116"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2009" Month="12" Reference="SAMDN23000015779069" FlPay="N" FlBreak="Y" FlClose="N" FlUse="N" AmtCurr="-821.06" AmtExp="-821.06" DaysExp="147"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2010" Month="1" Reference="SAMDN23000015779069" FlPay="Y" FlBreak="Y" FlClose="N" FlUse="N" AmtCurr="-445.58" AmtExp="-445.58" DaysExp="156"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2010" Month="2" Reference="SAMDN23000015779069" FlPay="Y" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2010" Month="3" Reference="SAMDN23000015779069" FlPay="N" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2010" Month="4" Reference="SAMDN23000015779069" FlPay="N" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2010" Month="5" Reference="SAMDN23000015779069" FlPay="N" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2010" Month="6" Reference="SAMDN23000015779069" FlPay="N" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2010" Month="7" Reference="SAMDN23000015779069" FlPay="N" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2010" Month="8" Reference="SAMDN23000015779069" FlPay="N" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2010" Month="9" Reference="SAMDN23000015779069" FlPay="N" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2010" Month="10" Reference="SAMDN23000015779069" FlPay="N" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2010" Month="11" Reference="SAMDN23000015779069" FlPay="N" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2010" Month="12" Reference="SAMDN23000015779069" FlPay="N" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2011" Month="1" Reference="SAMDN23000015779069" FlPay="N" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2011" Month="2" Reference="SAMDN23000015779069" FlPay="N" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2011" Month="3" Reference="SAMDN23000015779069" FlPay="N" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2011" Month="4" Reference="SAMDN23000015779069" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2011" Month="5" Reference="SAMDN23000015779069" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2011" Month="6" Reference="SAMDN23000015779069" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2011" Month="7" Reference="SAMDN23000015779069" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2011" Month="8" Reference="SAMDN23000015779069" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2011" Month="9" Reference="SAMDN23000015779069" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2011" Month="10" Reference="SAMDN23000015779069" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2011" Month="11" Reference="SAMDN23000015779069" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2011" Month="12" Reference="SAMDN23000015779069" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2012" Month="1" Reference="SAMDN23000015779069" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2012" Month="2" Reference="SAMDN23000015779069" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2012" Month="3" Reference="SAMDN23000015779069" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2012" Month="4" Reference="SAMDN23000015779069" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2012" Month="5" Reference="SAMDN23000015779069" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2012" Month="6" Reference="SAMDN23000015779069" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2012" Month="7" Reference="SAMDN23000015779069" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2012" Month="8" Reference="SAMDN23000015779069" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2008" Month="6" Reference="SAMDN34000022292379" FlPay="N" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2008" Month="7" Reference="SAMDN34000022292379" FlPay="N" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2008" Month="9" Reference="SAMDN34000022292379" FlPay="N" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2008" Month="10" Reference="SAMDN34000022292379" FlPay="N" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2008" Month="11" Reference="SAMDN34000022292379" FlPay="N" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2008" Month="12" Reference="SAMDN34000022292379" FlPay="N" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2009" Month="1" Reference="SAMDN34000022292379" FlPay="N" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2009" Month="2" Reference="SAMDN34000022292379" FlPay="N" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2009" Month="3" Reference="SAMDN34000022292379" FlPay="N" FlBreak="N" FlClose="N" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2009" Month="4" Reference="SAMDN34000022292379" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2009" Month="5" Reference="SAMDN34000022292379" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2009" Month="6" Reference="SAMDN34000022292379" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2009" Month="7" Reference="SAMDN34000022292379" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2009" Month="8" Reference="SAMDN34000022292379" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2009" Month="9" Reference="SAMDN34000022292379" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2009" Month="10" Reference="SAMDN34000022292379" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2009" Month="11" Reference="SAMDN34000022292379" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2009" Month="12" Reference="SAMDN34000022292379" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2010" Month="1" Reference="SAMDN34000022292379" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2010" Month="2" Reference="SAMDN34000022292379" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2010" Month="3" Reference="SAMDN34000022292379" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2010" Month="4" Reference="SAMDN34000022292379" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2010" Month="5" Reference="SAMDN34000022292379" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2010" Month="6" Reference="SAMDN34000022292379" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2010" Month="7" Reference="SAMDN34000022292379" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2010" Month="8" Reference="SAMDN34000022292379" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2010" Month="9" Reference="SAMDN34000022292379" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2010" Month="10" Reference="SAMDN34000022292379" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2010" Month="11" Reference="SAMDN34000022292379" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2010" Month="12" Reference="SAMDN34000022292379" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2011" Month="1" Reference="SAMDN34000022292379" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2011" Month="2" Reference="SAMDN34000022292379" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2011" Month="3" Reference="SAMDN34000022292379" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2011" Month="4" Reference="SAMDN34000022292379" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2011" Month="5" Reference="SAMDN34000022292379" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2011" Month="6" Reference="SAMDN34000022292379" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2011" Month="7" Reference="SAMDN34000022292379" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2011" Month="8" Reference="SAMDN34000022292379" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2011" Month="9" Reference="SAMDN34000022292379" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2011" Month="10" Reference="SAMDN34000022292379" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2011" Month="11" Reference="SAMDN34000022292379" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2011" Month="12" Reference="SAMDN34000022292379" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2012" Month="1" Reference="SAMDN34000022292379" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2012" Month="2" Reference="SAMDN34000022292379" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2012" Month="3" Reference="SAMDN34000022292379" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2012" Month="4" Reference="SAMDN34000022292379" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2012" Month="5" Reference="SAMDN34000022292379" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2012" Month="6" Reference="SAMDN34000022292379" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2012" Month="7" Reference="SAMDN34000022292379" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2012" Month="8" Reference="SAMDN34000022292379" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2012" Month="9" Reference="SAMDN34000022292379" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2012" Month="10" Reference="SAMDN34000022292379" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2012" Month="11" Reference="SAMDN34000022292379" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2012" Month="12" Reference="SAMDN34000022292379" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2013" Month="1" Reference="SAMDN34000022292379" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2013" Month="2" Reference="SAMDN34000022292379" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2013" Month="3" Reference="SAMDN34000022292379" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2013" Month="4" Reference="SAMDN34000022292379" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2013" Month="5" Reference="SAMDN34000022292379" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2013" Month="6" Reference="SAMDN34000022292379" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2013" Month="7" Reference="SAMDN34000022292379" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2013" Month="8" Reference="SAMDN34000022292379" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2013" Month="9" Reference="SAMDN34000022292379" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                                    <CL_DEAL errcode="null" errtext="null" Year="2013" Month="10" Reference="SAMDN34000022292379" FlPay="N" FlBreak="N" FlClose="Y" FlUse="N" AmtCurr="0" AmtExp="0" DaysExp="0"/>
+                            </r>
+    
+            <r key="13">
+            <URATING errcode="null" errtext="null" scoreinn="2830705279" scorerlname="МАСЛАК" scorerfname="АЛЕКСАНДР" scorermname="ЮРЬЕВИЧ" scoreulname="МАСЛАК" scoreufname="ОЛЕКСАНДР" scoreumname="ЮРІЙОВИЧ" scorebdate="1977-07-02" score="321" scorelast="364" scoredate="2013-11-06" scoredatelast="2013-10-29" scorelevel="2" scoredelta="-43" scoretendency="-">
+                <DINFO all="11" open="4" opentext="ПриватБанк, ПриватБанк (кредитная карта)" close="7" expyear="Да" maxnowexp="Нет" datelastupdate="26.10.2013"/>
+                <COMMENTS count="3">
+                                        <COMMENT id="1" text="Низкий показатель Кредитного рейтинга УБКИ может говорить о молодой кредитной истории, наличии нескольких открытых кредитов или о нарушениях в оплате кредитов.  Следует получить свой кредитный отчет и рекомендации по улучшению рейтинга в бюро."/>
+                                            <COMMENT id="2" text="Рейтинг выше, чем у 5% украинцев."/>
+                                            <COMMENT id="3" text="Вероятность дефолта в ближайшие полгода 38.1%"/>
+                                        </COMMENTS>
+                <PFACTORS count="3" text="Положительные факторы">
+                                        <COMMENT text="Вы имеете зрелую кредитную историю. Возраст кредитной истории  положительно влияет на показатель рейтинга."/>
+                                            <COMMENT text="На текущий момент у Вас нет просрочек или они незначительны. Не стоит допускать просрочек и в будущем."/>
+                                            <COMMENT text="На сегодня у Вас открыты кредиты с оптимальной суммой задолженности, поэтому Ваша кредитная нагрузка оптимальна."/>
+                                        </PFACTORS>
+                <NFACTORS count="4" text="Отрицательные факторы">
+                                        <COMMENT text=" У Вас есть открытые кредиты на большие сроки (авто\ипотека и прочие), которые временно, до закрытия кредита, понижают кредитный рейтинг."/>
+                                            <COMMENT text="За последний год Вы не закрыли ни одного кредита и у Вас есть 2 и более открытых кредитов в кредитной истории, что временно снижает кредитный рейтинг, но сохраняет актуальность кредитной истории. Не стоит злоупотреблять большим количеством одновременно открытых кредитов."/>
+                                            <COMMENT text="За последний год у Вас были просрочки, которые повлияли на понижение кредитного рейтинга. Не допускайте просрочек в будущем."/>
+                                            <COMMENT text="Несколько Ваших кредитов как открытых, так и закрытых, содержит хотя бы одну просрочку. Это отрицательно сказывается на Вашей кредитной репутации."/>
+                                        </NFACTORS>
+            </URATING>
+        </r>
+    
+            <r key="4">
+            <ZINT errcode="null" errtext="null" hr="0" da="0" wk="0" mn="1" qw="1" ye="3" yu="0"/>
+        </r>
+        
+            <r key="1">
+                            <ZINTHIS errcode="null" errtext="null" ReqID="req#0021722930" ReqDateTime="2013-03-31" ReqType="PHIS" PartnerType="BNK"/>
+                            <ZINTHIS errcode="null" errtext="null" ReqID="req#0024015276" ReqDateTime="2013-06-02" ReqType="PHIS" PartnerType="BNK"/>
+                            <ZINTHIS errcode="null" errtext="null" ReqID="req#0025451164" ReqDateTime="2013-07-09" ReqType="PHIS" PartnerType="BNK"/>
+                            <ZINTHIS errcode="null" errtext="null" ReqID="req#0027222086" ReqDateTime="2013-08-18" ReqType="PHIS" PartnerType="BNK"/>
+                            <ZINTHIS errcode="null" errtext="null" ReqID="req#0030196243" ReqDateTime="2013-10-29" ReqType="PHIS" PartnerType="BNK"/>
+                    </r>
+        
+                        <r key="11">
+                <BPHONE errcode="null" errtext="null" found="-" address="null"/>
+            </r>
+                
+    
+            <r key="7">
+                    <BLDOC_LST found="-" DTS="null" DS="null" OKPO="null" LName="null" FName="null" MName="null" DSer="null" DNum="null" DCountry="null" DWho="null"/>
+                </r>
+        
+                    <r key="12">
+            <CL_FOTO errcode="null" errtext="null" fotolink="null" fotobase64=""/>
+        </r>
+                
+                    <r key="14">
+            <CKIComment errcode="nocomment" errtext="nocomment" CKIComment="null" CKIDate="null"/>
+        </r>
+            </doc>

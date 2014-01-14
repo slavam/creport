@@ -1,0 +1,119 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html,body {
+	width: 100%;
+	height: 100%;
+/*	background-color: #b7b7b7; */
+	background-color: #FFFFFF; 
+        font-size: 16px;
+}
+
+.float {
+	min-width: 600px;
+	min-height: 100%;
+        height: 100%;
+/*	background-color: white;*/
+	
+	position: relative;
+        padding-bottom: 0px;
+}
+
+.header {
+	width: 100%;
+	height: 40px;
+	padding: 0px;
+	margin: 0px;
+        background: url("../images/bg_form.jpg") repeat-x bottom #fff; /*added 07.05.2013*/
+}
+
+.content {
+/*	padding: 20px 10px 70px; */
+/*	display: inline-block; */
+/*	overflow: hidden; */
+        height: 100%;
+}
+
+.rightCol {
+	float: right;
+	width: 180px;
+	background-color: #cccccc;
+	margin-left: 20px;
+	padding: 10px;
+}
+
+.main {
+	overflow: hidden;
+	padding-left: 10px;
+}
+
+.leftCol {
+	float: left;
+	width: 180px;
+	background-color: #cccccc;
+	margin-right: 20px;
+	padding: 10px;
+}
+
+.center {
+	overflow: hidden;
+}
+
+.footer {
+	width: 100%;
+	height: 50px;
+	background: #434343;
+/*	background: #000000; */
+/*	position: absolute; */
+	display: inline-block;
+	bottom: 0;
+}
+
+ul, ol{
+    padding: 0 10px;
+    list-style-position: inside;
+}
+/*DIV#panes-layout{
+    height:100%;
+}*/
+
+#panes-layout{ height: 100%; width: 100%; } 
+#accordion{
+    height: 100%;
+}
+#accordion div{
+    height: auto !important;
+}
+/* insert by pkv 2013_02_06
+*
+*/
+.info_layout {
+	width: 100%;
+	height: 300px;
+	border: 1px solid #999999;
+	background-color: #FEFEFE;
+	top: 0px;
+	left: 0px;
+	position: absolute;
+	z-index: 99999;
+	display: none;
+}
+.toggle_info_layout {
+	width: 100px;
+	height: 5px;
+	border: 1px solid #999999;
+	background-color: #DEDEDE;
+	top: 0px;
+	left: 50%;
+	position: absolute;
+	z-index: 99999;
+	text-align:center;
+	vertical-align:middle;
+	font: 8px helvetiva;
+	color: #808080;
+}
+/*
+* end insert by pkv
+*/
