@@ -7,6 +7,7 @@ $cs->registerCssFile(Yii::app()->request->baseUrl.'/jqgrid/themes/redmond/jquery
 $cs->registerScriptFile(Yii::app()->request->baseUrl.'/jqgrid/js/jquery.js');
 $cs->registerScriptFile(Yii::app()->request->baseUrl.'/jqgrid/js/i18n/grid.locale-ru.js');
 $cs->registerScriptFile(Yii::app()->request->baseUrl.'/jqgrid/js/jquery.jqGrid.min.js');
+//$cs->registerScriptFile(Yii::app()->request->baseUrl.'/jqgrid/js/jquery.jqGrid.js');
 $cs->registerScriptFile(Yii::app()->request->baseUrl.'/jqgrid/js/jquery-ui-custom.min.js');
 $cs->registerScriptFile(Yii::app()->request->baseUrl.'/js/jquery.form.js');
 
@@ -59,118 +60,65 @@ echo '<h3>Личная информация</h3>';
 ?>
 <table class="table_edit">
     <tr>
-    	<td>
-            Фамилия:
-        </td>
-    	<td>
-            <?php echo $report->surname; ?>
-        </td>
-    	<td>
-            Классификация:
-        </td>
-    	<td>
-            <?php echo $report->classification; ?>
-        </td>
+    	<td>Фамилия:</td>
+    	<td><?php echo $report->surname; ?></td>
+    	<td>Классификация:</td>
+    	<td><?php echo $report->classification; ?></td>
     <tr>
-    	<td>
-            Имя:
-        </td>
-    	<td>
-            <?php echo $report->name; ?>
-        </td>
-    	<td>
-            Дата рождения:
-        </td>
-    	<td>
-            <?php echo $report->dateOfBirth; ?>
-        </td>
+    	<td>Имя:</td>
+    	<td><?php echo $report->name; ?></td>
+    	<td>Дата рождения:</td>
+    	<td><?php echo $report->dateOfBirth; ?></td>
     <tr>
-    	<td>
-            Отчество:
-        </td>
-    	<td>
-            <?php echo $report->fathersName; ?>
-        </td>
-    	<td>
-            Пол:
-        </td>
-    	<td>
-            <?php echo $report->gender; ?>
-        </td>
+    	<td>Отчество:</td>
+    	<td><?php echo $report->fathersName; ?></td>
+    	<td>Пол:</td>
+    	<td><?php echo $report->gender; ?></td>
     <tr>
-    	<td>
-            Фамилия при рождении:
-        </td>
-    	<td>
-            <?php echo $report->birthName; ?>
-        </td>
-    	<td>
-            Резидент?:
-        </td>
-    	<td>
-            <?php echo $report->residency; ?>
-        </td>
+    	<td>Фамилия при рождении:</td>
+    	<td><?php echo $report->birthName; ?></td>
+    	<td>Резидент?:</td>
+    	<td><?php echo $report->residency; ?></td>
     <tr>
-    	<td>
-            Идентификационный номер:
-        </td>
-    	<td>
-            <?php echo $report->taxpayerNumber; ?>
-        </td>
-    	<td>
-            Гражданство:
-        </td>
-    	<td>
-            <?php echo $report->nationality; ?>
-        </td>
+    	<td>Идентификационный номер:</td>
+    	<td><?php echo $report->taxpayerNumber; ?></td>
+    	<td>Гражданство:</td>
+    	<td><?php echo $report->nationality; ?></td>
     <tr>
-    	<td>
-            Гражданский паспорт:
-        </td>
-    	<td>
-            <?php echo $report->passport; ?>
-        </td>
-    	<td>
-            Образование:
-        </td>
-    	<td>
-            <?php echo $report->education; ?>
-        </td>
+    	<td>Гражданский паспорт:</td>
+    	<td><?php echo $report->passport; ?></td>
+    	<td>Образование:</td>
+    	<td><?php echo $report->education; ?></td>
 </table>
 <table id="list"></table> 
 <div id="pager"></div> 
 
 <script type="text/javascript">
-//function myFmatter (cellvalue, options, rowObject)
-//{
-////    alert(JSON.stringify(rowObject))
-//    return cellvalue;
-//}    
 $(function() {
-//    var lastSel = 0;
     var grid=$("#list");
-//    var pager_selector = "#pager";
     grid.jqGrid( {
         url: "<?php  echo Yii::app()->createUrl('reportMBKI/getAddresses',
                 array('addresses'=>$report->addresses))?>",
         datatype : 'json',
         width : '1000',
+        shrinktofit:false,
+//        autowidth:true,
         height : 'auto',
         mtype : 'GET',
-        groupingView: {
-            groupField: ['block_name'],
-            groupColumnShow: [false],
-            groupText: ['<b> Блок: {0}</b>'],
-            groupSummary: [true]
-        },
+//        groupingView: {
+//            groupField: ['block_name'],
+//            groupColumnShow: [false],
+//            groupText: ['<b> Блок: {0}</b>'],
+//            groupSummary: [true]
+//        },
         colNames : ['ID','Тип адреса','Улица','Город','Индекс','Район','Область','Страна'],
         colModel : [
             {name:'id',index:'id', width:20, hidden:true},
             {name:'block_id',index:'id', width:80},
             {name:'factor_id',index:'factor_id', width:200},
-            {name:'block_name',index:'block_name', width:100},
+            {name:'block_name',index:'block_name', width:80},
             {name:'block_weight', width:40},
-            {name:'factor_name', width:100},
+            {name:'factor_name', width:80},
             {name:'factor_weight', width:100},
             {name:'rate', width:100}
         ],
@@ -178,7 +126,7 @@ $(function() {
         rowNum : 300000,
         pgbuttons: false,     // disable page control like next, back button
         pgtext: null,  
-        pager: '#pager',
+//        pager: '#pager',
         gridComplete: function () {
             if(grid.getGridParam("reccount")===0){
                 alert("Эта матрица еще не рассчитана");

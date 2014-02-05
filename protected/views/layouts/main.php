@@ -30,6 +30,7 @@
 			'items'=>array(
 				array('label'=>'Справочники', 'url'=>array('/CrField/indexJq')),
 				array('label'=>'Test', 'url'=>array('/CrField/loadXML')),
+                                array('label'=>'Загрузка', 'url'=>array('/CrField/Multipleupload')),
 				array('label'=>'Отчеты', 'url'=>array('/reportMBKI/getINN')),
 				array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
 				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
