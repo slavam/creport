@@ -63,7 +63,7 @@ echo '<h3>Личная информация</h3>';
     	<td>Фамилия:</td>
     	<td><?php echo $report->surname; ?></td>
     	<td>Классификация:</td>
-    	<td><?php echo $report->classification; ?></td>
+    	<td><?php echo $report->classificationName; ?></td>
     <tr>
     	<td>Имя:</td>
     	<td><?php echo $report->name; ?></td>
@@ -73,12 +73,12 @@ echo '<h3>Личная информация</h3>';
     	<td>Отчество:</td>
     	<td><?php echo $report->fathersName; ?></td>
     	<td>Пол:</td>
-    	<td><?php echo $report->gender; ?></td>
+    	<td><?php echo $report->genderName; ?></td>
     <tr>
     	<td>Фамилия при рождении:</td>
     	<td><?php echo $report->birthName; ?></td>
-    	<td>Резидент?:</td>
-    	<td><?php echo $report->residency; ?></td>
+    	<td>Резидент?</td>
+    	<td><?php echo $report->residencyName; ?></td>
     <tr>
     	<td>Идентификационный номер:</td>
     	<td><?php echo $report->taxpayerNumber; ?></td>
@@ -88,62 +88,75 @@ echo '<h3>Личная информация</h3>';
     	<td>Гражданский паспорт:</td>
     	<td><?php echo $report->passport; ?></td>
     	<td>Образование:</td>
-    	<td><?php echo $report->education; ?></td>
+    	<td><?php echo $report->educationName; ?></td>
 </table>
 <table id="list"></table> 
-<div id="pager"></div> 
 
 <script type="text/javascript">
 $(function() {
     var grid=$("#list");
     grid.jqGrid( {
-        url: "<?php  echo Yii::app()->createUrl('reportMBKI/getAddresses',
-                array('addresses'=>$report->addresses))?>",
-        datatype : 'json',
+        datatype: 'local',
         width : '1000',
         shrinktofit:false,
-//        autowidth:true,
         height : 'auto',
         mtype : 'GET',
-//        groupingView: {
-//            groupField: ['block_name'],
-//            groupColumnShow: [false],
-//            groupText: ['<b> Блок: {0}</b>'],
-//            groupSummary: [true]
-//        },
-        colNames : ['ID','Тип адреса','Улица','Город','Индекс','Район','Область','Страна'],
+        colNames : ['Тип адреса','Улица','Город','Индекс','Район','Область','Страна'],
         colModel : [
-            {name:'id',index:'id', width:20, hidden:true},
-            {name:'block_id',index:'id', width:80},
-            {name:'factor_id',index:'factor_id', width:200},
-            {name:'block_name',index:'block_name', width:80},
-            {name:'block_weight', width:40},
-            {name:'factor_name', width:80},
-            {name:'factor_weight', width:100},
-            {name:'rate', width:100}
+            {name:'type', width:80},
+            {name:'street', width:200},
+            {name:'city', width:80},
+            {name:'zip', width:40},
+            {name:'region', width:80},
+            {name:'area', width:100},
+            {name:'country', width:100}
         ],
         caption : 'Адреса',
         rowNum : 300000,
         pgbuttons: false,     // disable page control like next, back button
         pgtext: null,  
-//        pager: '#pager',
-        gridComplete: function () {
-            if(grid.getGridParam("reccount")===0){
-                alert("Эта матрица еще не рассчитана");
-                window.location.href = "<?echo Yii::app()->createUrl('/performance/getViewParams');?>";
-            }
-        },
     	loadError: function(xhr, status, error) {alert('status: '+status+" error: "+error)}
-    }).navGrid('#pager',{search:false, view:false, del:false, add:false, edit:false, refresh:false},
-    {}, // default settings for edit
-    {}, // default settings for add
-    {}, // delete
-    {}, // search options
-    {}
-    ); //, cloneToTop:true});
+    }); 
+    var data = <? echo CJavaScript::encode($report->addresses); ?>;
+//    alert(data[0])
+//    console.log(data);
+    for(var i = 0;i < data.length; i++){
+        $('#list').jqGrid('addRowData',i+1,data[i]);
+    }    
+});
+</script>
+<br>
+<table id="co_list"></table> 
+
+<script type="text/javascript">
+$(function() {
+    var grid=$("#co_list");
+    grid.jqGrid( {
+        datatype : 'local',
+        width : '500',
+        height : 'auto',
+        mtype : 'GET',
+        colNames : ['Тип контакта','Номер'],
+        colModel : [
+            {name:'name', width:100},
+            {name:'value', width:100},
+        ],
+        caption : 'Контакты',
+        rowNum : 300000,
+        pgbuttons: false,     // disable page control like next, back button
+        pgtext: null,  
+    	loadError: function(xhr, status, error) {alert('status: '+status+" error: "+error)}
+    }); 
+    var data = <? echo CJavaScript::encode($report->contacts); ?>;
+//    alert(data[0])
+//    console.log(data);
+    for(var i = 0;i < data.length; i++){
+        $('#co_list').jqGrid('addRowData',i+1,data[i]);
+    }    
     
 });
 </script>
+
 <br>
 <table id="id_list"></table> 
 
@@ -151,24 +164,16 @@ $(function() {
 $(function() {
     var grid=$("#id_list");
     grid.jqGrid( {
-        url: "<?php  echo Yii::app()->createUrl('reportMBKI/getIdDocs',
-                array('idDocs'=>$report->identifications))?>",
-        datatype : 'json',
+        datatype : 'local',
         width : '1000',
         height : 'auto',
         mtype : 'GET',
-//        groupingView: {
-//            groupField: ['block_name'],
-//            groupColumnShow: [false],
-//            groupText: ['<b> Блок: {0}</b>'],
-//            groupSummary: [true]
-//        },
         colNames : ['Тип идентификатора','Номер документа','Дата выдачи','Кем выдан','Дата регистрации','Дата окончания действия'],
         colModel : [
-            {name:'type',index:'type', width:100},
-            {name:'number',index:'number', width:80},
-            {name:'date_issue',index:'date_issue', width:80},
-            {name:'issue_by',index:'issue_by', width:100},
+            {name:'idDocName', width:100},
+            {name:'docNumber', width:80},
+            {name:'issuedDate', width:80},
+            {name:'issuedBy', width:100},
             {name:'reg_date', width:80},
             {name:'stop_date', width:80}
         ],
@@ -176,21 +181,14 @@ $(function() {
         rowNum : 300000,
         pgbuttons: false,     // disable page control like next, back button
         pgtext: null,  
-//        pager: '#pager',
-        gridComplete: function () {
-            if(grid.getGridParam("reccount")===0){
-                alert("Эта матрица еще не рассчитана");
-                window.location.href = "<?echo Yii::app()->createUrl('/performance/getViewParams');?>";
-            }
-        },
     	loadError: function(xhr, status, error) {alert('status: '+status+" error: "+error)}
-    }).navGrid('#pager',{search:false, view:false, del:false, add:false, edit:false, refresh:false},
-    {}, // default settings for edit
-    {}, // default settings for add
-    {}, // delete
-    {}, // search options
-    {}
-    ); //, cloneToTop:true});
+    }); 
+    var data = <? echo CJavaScript::encode($report->identifications); ?>;
+//    alert(data[0])
+//    console.log(data);
+    for(var i = 0;i < data.length; i++){
+        $('#id_list').jqGrid('addRowData',i+1,data[i]);
+    }    
     
 });
 </script>
@@ -201,17 +199,15 @@ $(function() {
 $(function() {
     var grid=$("#rel_list");
     grid.jqGrid( {
-        url: "<?php  echo Yii::app()->createUrl('reportMBKI/getRelations',
-                array('relations'=>$report->relations))?>",
-        datatype : 'json',
+        datatype : 'local',
         width : '1000',
         height : 'auto',
         mtype : 'GET',
         colNames : ['Состояние','Источник','Должность','Название','Номер','Дата начала', 'Адрес', 'Занятость'],
         colModel : [
-            {name:'state',index:'type', width:80},
-            {name:'provider',index:'number', width:80},
-            {name:'jobTitle',index:'date_issue', width:80},
+            {name:'state', width:80},
+            {name:'providerCode', width:80},
+            {name:'jobTitle', width:80},
             {name:'companyName',index:'issue_by', width:100},
             {name:'reg_number', width:80},
             {name:'start_date', width:80},
@@ -222,20 +218,14 @@ $(function() {
         rowNum : 300000,
         pgbuttons: false,     // disable page control like next, back button
         pgtext: null,  
-//        gridComplete: function () {
-//            if(grid.getGridParam("reccount")===0){
-//                alert("Эта матрица еще не рассчитана");
-//                window.location.href = "<?echo Yii::app()->createUrl('/performance/getViewParams');?>";
-//            }
-//        },
     	loadError: function(xhr, status, error) {alert('status: '+status+" error: "+error)}
-    }).navGrid('#pager',{search:false, view:false, del:false, add:false, edit:false, refresh:false},
-    {}, // default settings for edit
-    {}, // default settings for add
-    {}, // delete
-    {}, // search options
-    {}
-    ); //, cloneToTop:true});
+    }); //, cloneToTop:true});
+    var data = <? echo CJavaScript::encode($report->relations); ?>;
+//    alert(data[0])
+//    console.log(data);
+    for(var i = 0;i < data.length; i++){
+        $('#rel_list').jqGrid('addRowData',i+1,data[i]);
+    }    
     
 });
 </script>
@@ -259,7 +249,7 @@ echo "Количество пользователей МБКИ, которые �
             Общая непогашенная сумма:
         </td>
     	<td>
-            <?php echo $report->totalOutstandingDebt; ?>
+            <?php echo $report->totalOutstandingDebtValue.' '.$report->totalOutstandingDebtCurrency; ?>
         </td>
     <tr>
     	<td>
@@ -311,42 +301,36 @@ if (count($report->summaryInformations)>0){
 $(function() {
     var grid=$('#si_list');
     grid.jqGrid( {
-        url: "<?php  echo Yii::app()->createUrl('reportMBKI/getSummaryInformations',
-                array('summaryInformations'=>$report->summaryInformations))?>",
-        datatype : 'json',
+        datatype : 'local',
         width : '1000',
         height : 'auto',
         mtype : 'GET',
         colNames : ['Тип','Действующих договоров','Завершенных договоров','Необработанных заявлений','Отказанных заявлений','Аннулированных заявлений', 'Непогашенная сумма', 'Сумма просроченных выплат','Количество просроченных выплат'],
         colModel : [
-            {name:'type',index:'type', width:80},
-            {name:'f1', width:80},
-            {name:'f2', width:80},
-            {name:'f3', width:100},
-            {name:'f4', width:80},
-            {name:'f5', width:80},
-            {name:'f6', width:80},
-            {name:'f7', width:80},
-            {name:'f8', width:80}
+            {name:'contractType', width:80},
+            {name:'numberOfExistingContracts', width:80},
+            {name:'numberOfTerminatedContracts', width:80},
+            {name:'numberOfUnsolvedApplications', width:100},
+            {name:'numberOfRejectedApplications', width:80},
+            {name:'numberOfRevokedApplications', width:80},
+            {name:'totalValue', width:80},
+            {name:'value', width:80},
+            {name:'numberOfUnpaidInstalments', width:80}
         ],
         caption : 'По типам договоров',
         rowNum : 300000,
         pgbuttons: false,     // disable page control like next, back button
         pgtext: null,  
-//        gridComplete: function () {
-//            if(grid.getGridParam("reccount")===0){
-//                alert("Эта матрица еще не рассчитана");
-//                window.location.href = "<?echo Yii::app()->createUrl('/performance/getViewParams');?>";
-//            }
-//        },
     	loadError: function(xhr, status, error) {alert('status: '+status+" error: "+error)}
-    }).navGrid('#pager',{search:false, view:false, del:false, add:false, edit:false, refresh:false},
-    {}, // default settings for edit
-    {}, // default settings for add
-    {}, // delete
-    {}, // search options
-    {}
-    ); //, cloneToTop:true});
+    }); //, cloneToTop:true});
+    var data = <? echo CJavaScript::encode($report->summaryInformations); ?>;
+//    alert(data[0])
+//    console.log(data);
+    for(var i = 0;i < data.length; i++){
+        data[i]['totalValue']=data[i]['totalValue']+' '+data[i]['totalCurrency'];
+        data[i]['value']=data[i]['value']+' '+data[i]['currency'];
+        $('#si_list').jqGrid('addRowData',i+1,data[i]);
+    }    
     
 });
 </script>
@@ -354,13 +338,32 @@ $(function() {
 }    
 ?>
 <br>
-<h3>Детальная информация о действующих контрактах</h3>
+
 <?
+$ct=$report->contracts[0]['contractType'];
+switch ($ct) {
+    case 'Existing':
+        echo '<h3>Детальная информация о действующих контрактах</h3>';
+        break;
+    case 'Terminated':
+        echo '<h3>Детальная информация о завершенных контрактах</h3>';
+        break;
+    case 'Rejected':
+        echo '<h3>Детальная информация об отказанных контрактах</h3>';
+        break;
+}
+
 foreach ($report->contracts as $c) {
-    if ($c['contractType']=='Existing'){
-        echo $c['exportCode'];
-        echo '<br>Номер договора: '.$c['codeOfContract'];
-        echo '<br>Комментарий субъекта: ';
+    if ($c['contractType']!=$ct){
+        $ct=$c['contractType'];
+        if((string)$c['contractType']=='Terminated')
+            echo '<h3>Детальная информация о завершенных контрактах</h3>';
+        else 
+            echo '<h3>Детальная информация об отказанных контрактах</h3>';
+    }
+    echo $c['exportCode'];
+    echo '<br>Номер договора: '.$c['codeOfContract'];
+    echo '<br>Комментарий субъекта: ';
 ?>
 <br>
 <br>
@@ -554,104 +557,119 @@ echo '<br>Роль субъекта: '.$c['subjectRole'].'<br>';
 <h4>Ежегодный исторический календарь платежей:</h4>
 <table class ="my-table">
     <tr>
-    	<th>
-            месяц/год:
-        </th>
-        <th><?echo $c['months']['month1'];?></th>
-        <th><?echo $c['months']['month2'];?></th>
-        <th><?echo $c['months']['month3'];?></th>
-        <th><?echo $c['months']['month4'];?></th>
-        <th><?echo $c['months']['month5'];?></th>
-        <th><?echo $c['months']['month6'];?></th>
-        <th><?echo $c['months']['month7'];?></th>
-        <th><?echo $c['months']['month8'];?></th>
-        <th><?echo $c['months']['month9'];?></th>
-        <th><?echo $c['months']['month10'];?></th>
-        <th><?echo $c['months']['month11'];?></th>
-        <th><?echo $c['months']['month12'];?></th>
+        <?  foreach ($c['months'] as $ms) 
+                foreach ($ms as $m) 
+            {?>
+            <th><?echo $m;?></th>
+        <?}?>
     </tr>
+    <?if($c['hCResidualAmount']['description']>''){?>
+    <tr>
+        <?foreach ($c['hCResidualAmount'] as $m) 
+            if(isset($m[0]['value'])){?>
+                <td><?echo $m[0]['value'];?></td>
+            <?} else {?>
+                <td><?echo $m;?></td>
+            <?}?>
+    </tr>
+    <?}?>
+    <?if($c['hCTotalNumberOfOverdueInstalments']['description']>''){?>
     <tr>
         <td><?echo $c['hCTotalNumberOfOverdueInstalments']['description']; ?></td>
-        <td><?echo $c['hCTotalNumberOfOverdueInstalments']['month1'][0]['value']; ?></td>
-        <td><?echo $c['hCTotalNumberOfOverdueInstalments']['month2'][0]['value']; ?></td>
-        <td><?echo $c['hCTotalNumberOfOverdueInstalments']['month3'][0]['value']; ?></td>
-        <td><?echo $c['hCTotalNumberOfOverdueInstalments']['month4'][0]['value']; ?></td>
-        <td><?echo $c['hCTotalNumberOfOverdueInstalments']['month5'][0]['value']; ?></td>
-        <td><?echo $c['hCTotalNumberOfOverdueInstalments']['month6'][0]['value']; ?></td>
-        <td><?echo $c['hCTotalNumberOfOverdueInstalments']['month7'][0]['value']; ?></td>
-        <td><?echo $c['hCTotalNumberOfOverdueInstalments']['month8'][0]['value']; ?></td>
-        <td><?echo $c['hCTotalNumberOfOverdueInstalments']['month9'][0]['value']; ?></td>
-        <td><?echo $c['hCTotalNumberOfOverdueInstalments']['month10'][0]['value']; ?></td>
-        <td><?echo $c['hCTotalNumberOfOverdueInstalments']['month11'][0]['value']; ?></td>
-        <td><?echo $c['hCTotalNumberOfOverdueInstalments']['month12'][0]['value']; ?></td>
+        <td><?echo $c['hCTotalNumberOfOverdueInstalments']['month1']['value']; ?></td>
+        <td><?echo $c['hCTotalNumberOfOverdueInstalments']['month2']['value']; ?></td>
+        <td><?echo $c['hCTotalNumberOfOverdueInstalments']['month3']['value']; ?></td>
+        <td><?echo $c['hCTotalNumberOfOverdueInstalments']['month4']['value']; ?></td>
+        <td><?echo $c['hCTotalNumberOfOverdueInstalments']['month5']['value']; ?></td>
+        <td><?echo $c['hCTotalNumberOfOverdueInstalments']['month6']['value']; ?></td>
+        <td><?echo $c['hCTotalNumberOfOverdueInstalments']['month7']['value']; ?></td>
+        <td><?echo $c['hCTotalNumberOfOverdueInstalments']['month8']['value']; ?></td>
+        <td><?echo $c['hCTotalNumberOfOverdueInstalments']['month9']['value']; ?></td>
+        <td><?echo $c['hCTotalNumberOfOverdueInstalments']['month10']['value']; ?></td>
+        <td><?echo $c['hCTotalNumberOfOverdueInstalments']['month11']['value']; ?></td>
+        <td><?echo $c['hCTotalNumberOfOverdueInstalments']['month12']['value']; ?></td>
     </tr>
-    <tr >
+    <?}?>
+    <?if($c['hCCreditCardUsedInMonth']['description']>''){?>
+    <tr>
+        <td><?echo $c['hCCreditCardUsedInMonth']['description']; ?></td>
+        <td><?echo $c['hCCreditCardUsedInMonth']['month1']['value']; ?></td>
+        <td><?echo $c['hCCreditCardUsedInMonth']['month2']['value']; ?></td>
+        <td><?echo $c['hCCreditCardUsedInMonth']['month3']['value']; ?></td>
+        <td><?echo $c['hCCreditCardUsedInMonth']['month4']['value']; ?></td>
+        <td><?echo $c['hCCreditCardUsedInMonth']['month5']['value']; ?></td>
+        <td><?echo $c['hCCreditCardUsedInMonth']['month6']['value']; ?></td>
+        <td><?echo $c['hCCreditCardUsedInMonth']['month7']['value']; ?></td>
+        <td><?echo $c['hCCreditCardUsedInMonth']['month8']['value']; ?></td>
+        <td><?echo $c['hCCreditCardUsedInMonth']['month9']['value']; ?></td>
+        <td><?echo $c['hCCreditCardUsedInMonth']['month10']['value']; ?></td>
+        <td><?echo $c['hCCreditCardUsedInMonth']['month11']['value']; ?></td>
+        <td><?echo $c['hCCreditCardUsedInMonth']['month12']['value']; ?></td>
+    </tr>
+    <?}?>
+    <tr>
         <td><?echo $c['hCTotalOverdueAmount']['description']; ?></td>
-        <td><?echo $c['hCTotalOverdueAmount']['month1'][0]['value']; ?></td>
-        <td><?echo $c['hCTotalOverdueAmount']['month2'][0]['value']; ?></td>
-        <td><?echo $c['hCTotalOverdueAmount']['month3'][0]['value']; ?></td>
-        <td><?echo $c['hCTotalOverdueAmount']['month4'][0]['value']; ?></td>
-        <td><?echo $c['hCTotalOverdueAmount']['month5'][0]['value']; ?></td>
-        <td><?echo $c['hCTotalOverdueAmount']['month6'][0]['value']; ?></td>
-        <td><?echo $c['hCTotalOverdueAmount']['month7'][0]['value']; ?></td>
-        <td><?echo $c['hCTotalOverdueAmount']['month8'][0]['value']; ?></td>
-        <td><?echo $c['hCTotalOverdueAmount']['month9'][0]['value']; ?></td>
-        <td><?echo $c['hCTotalOverdueAmount']['month10'][0]['value']; ?></td>
-        <td><?echo $c['hCTotalOverdueAmount']['month11'][0]['value']; ?></td>
-        <td><?echo $c['hCTotalOverdueAmount']['month12'][0]['value']; ?></td>
+        <td><?echo $c['hCTotalOverdueAmount']['month1']['value']; ?></td>
+        <td><?echo $c['hCTotalOverdueAmount']['month2']['value']; ?></td>
+        <td><?echo $c['hCTotalOverdueAmount']['month3']['value']; ?></td>
+        <td><?echo $c['hCTotalOverdueAmount']['month4']['value']; ?></td>
+        <td><?echo $c['hCTotalOverdueAmount']['month5']['value']; ?></td>
+        <td><?echo $c['hCTotalOverdueAmount']['month6']['value']; ?></td>
+        <td><?echo $c['hCTotalOverdueAmount']['month7']['value']; ?></td>
+        <td><?echo $c['hCTotalOverdueAmount']['month8']['value']; ?></td>
+        <td><?echo $c['hCTotalOverdueAmount']['month9']['value']; ?></td>
+        <td><?echo $c['hCTotalOverdueAmount']['month10']['value']; ?></td>
+        <td><?echo $c['hCTotalOverdueAmount']['month11']['value']; ?></td>
+        <td><?echo $c['hCTotalOverdueAmount']['month12']['value']; ?></td>
     </tr>
 </table>
+<?if(isset($c['months24']))
+    {?>
 <table class ="my-table">
     <tr>
-    	<th>
-            месяц/год:
-        </th>
-        <th><?echo $c['months24']['month1'];?></th>
-        <th><?echo $c['months24']['month2'];?></th>
-        <th><?echo $c['months24']['month3'];?></th>
-        <th><?echo $c['months24']['month4'];?></th>
-        <th><?echo $c['months24']['month5'];?></th>
-        <th><?echo $c['months24']['month6'];?></th>
-        <th><?echo $c['months24']['month7'];?></th>
-        <th><?echo $c['months24']['month8'];?></th>
-        <th><?echo $c['months24']['month9'];?></th>
-        <th><?echo $c['months24']['month10'];?></th>
-        <th><?echo $c['months24']['month11'];?></th>
-        <th><?echo $c['months24']['month12'];?></th>
+        <?  foreach ($c['months24'] as $ms) 
+            if(isset ($ms))
+                foreach ($ms as $m) 
+            {?>
+            <th><?echo $m;?></th>
+        <?}?>
     </tr>
+    <?if($c['hCTotalNumberOfOverdueInstalments24']['description']>''){?>
     <tr>
         <td><?echo $c['hCTotalNumberOfOverdueInstalments24']['description']; ?></td>
-        <td><?echo $c['hCTotalNumberOfOverdueInstalments24']['month1'][0]['value']; ?></td>
-        <td><?echo $c['hCTotalNumberOfOverdueInstalments24']['month2'][0]['value']; ?></td>
-        <td><?echo $c['hCTotalNumberOfOverdueInstalments24']['month3'][0]['value']; ?></td>
-        <td><?echo $c['hCTotalNumberOfOverdueInstalments24']['month4'][0]['value']; ?></td>
-        <td><?echo $c['hCTotalNumberOfOverdueInstalments24']['month5'][0]['value']; ?></td>
-        <td><?echo $c['hCTotalNumberOfOverdueInstalments24']['month6'][0]['value']; ?></td>
-        <td><?echo $c['hCTotalNumberOfOverdueInstalments24']['month7'][0]['value']; ?></td>
-        <td><?echo $c['hCTotalNumberOfOverdueInstalments24']['month8'][0]['value']; ?></td>
-        <td><?echo $c['hCTotalNumberOfOverdueInstalments24']['month9'][0]['value']; ?></td>
-        <td><?echo $c['hCTotalNumberOfOverdueInstalments24']['month10'][0]['value']; ?></td>
-        <td><?echo $c['hCTotalNumberOfOverdueInstalments24']['month11'][0]['value']; ?></td>
-        <td><?echo $c['hCTotalNumberOfOverdueInstalments24']['month12'][0]['value']; ?></td>
+        <td><?echo $c['hCTotalNumberOfOverdueInstalments24']['month1']['value']; ?></td>
+        <td><?echo $c['hCTotalNumberOfOverdueInstalments24']['month2']['value']; ?></td>
+        <td><?echo $c['hCTotalNumberOfOverdueInstalments24']['month3']['value']; ?></td>
+        <td><?echo $c['hCTotalNumberOfOverdueInstalments24']['month4']['value']; ?></td>
+        <td><?echo $c['hCTotalNumberOfOverdueInstalments24']['month5']['value']; ?></td>
+        <td><?echo $c['hCTotalNumberOfOverdueInstalments24']['month6']['value']; ?></td>
+        <td><?echo $c['hCTotalNumberOfOverdueInstalments24']['month7']['value']; ?></td>
+        <td><?echo $c['hCTotalNumberOfOverdueInstalments24']['month8']['value']; ?></td>
+        <td><?echo $c['hCTotalNumberOfOverdueInstalments24']['month9']['value']; ?></td>
+        <td><?echo $c['hCTotalNumberOfOverdueInstalments24']['month10']['value']; ?></td>
+        <td><?echo $c['hCTotalNumberOfOverdueInstalments24']['month11']['value']; ?></td>
+        <td><?echo $c['hCTotalNumberOfOverdueInstalments24']['month12']['value']; ?></td>
     </tr>
+<?}?>
     <tr >
         <td><?echo $c['hCTotalOverdueAmount24']['description']; ?></td>
-        <td><?echo $c['hCTotalOverdueAmount24']['month1'][0]['value']; ?></td>
-        <td><?echo $c['hCTotalOverdueAmount24']['month2'][0]['value']; ?></td>
-        <td><?echo $c['hCTotalOverdueAmount24']['month3'][0]['value']; ?></td>
-        <td><?echo $c['hCTotalOverdueAmount24']['month4'][0]['value']; ?></td>
-        <td><?echo $c['hCTotalOverdueAmount24']['month5'][0]['value']; ?></td>
-        <td><?echo $c['hCTotalOverdueAmount24']['month6'][0]['value']; ?></td>
-        <td><?echo $c['hCTotalOverdueAmount24']['month7'][0]['value']; ?></td>
-        <td><?echo $c['hCTotalOverdueAmount24']['month8'][0]['value']; ?></td>
-        <td><?echo $c['hCTotalOverdueAmount24']['month9'][0]['value']; ?></td>
-        <td><?echo $c['hCTotalOverdueAmount24']['month10'][0]['value']; ?></td>
-        <td><?echo $c['hCTotalOverdueAmount24']['month11'][0]['value']; ?></td>
-        <td><?echo $c['hCTotalOverdueAmount24']['month12'][0]['value']; ?></td>
+        <td><?echo $c['hCTotalOverdueAmount24']['month1']['value']; ?></td>
+        <td><?echo $c['hCTotalOverdueAmount24']['month2']['value']; ?></td>
+        <td><?echo $c['hCTotalOverdueAmount24']['month3']['value']; ?></td>
+        <td><?echo $c['hCTotalOverdueAmount24']['month4']['value']; ?></td>
+        <td><?echo $c['hCTotalOverdueAmount24']['month5']['value']; ?></td>
+        <td><?echo $c['hCTotalOverdueAmount24']['month6']['value']; ?></td>
+        <td><?echo $c['hCTotalOverdueAmount24']['month7']['value']; ?></td>
+        <td><?echo $c['hCTotalOverdueAmount24']['month8']['value']; ?></td>
+        <td><?echo $c['hCTotalOverdueAmount24']['month9']['value']; ?></td>
+        <td><?echo $c['hCTotalOverdueAmount24']['month10']['value']; ?></td>
+        <td><?echo $c['hCTotalOverdueAmount24']['month11']['value']; ?></td>
+        <td><?echo $c['hCTotalOverdueAmount24']['month12']['value']; ?></td>
     </tr>
 </table>
+<?}?>
 <?    
-    }
+    //}
 }
 ?>
 

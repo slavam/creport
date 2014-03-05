@@ -4,7 +4,7 @@
     <br>
     <div class="row">
 	<?php echo "ИНН клиента: "; ?>
-        <?php echo CHtml::textField('inn', $inn, array('size'=> 20)); ?>
+        <?php echo CHtml::textField('inn', $inn, array('size'=> 20,'maxlength'=>10)); ?>
     </div>
     <br>
     <div class="row buttons">

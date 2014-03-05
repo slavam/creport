@@ -8,83 +8,141 @@ class MbkiReport {
     public $inquiers = array();
     public $contracts = array();
     public $roles = array();
+    public $contacts = array();
+//    public $summaryInformations = array();
+//    public $contractTerminatedSummaryInformations = array();
+//    public $contractExistingSummaryInformations = array();
 //    public $months = array();
     public function __construct ($xml){
+        $this->usageIdentity = (string)$xml->Report['UsageIdentity'];
+        $this->issueDate = (string)$xml->Report['issued'];
+        $this->updated = (string)$xml->Report['updated'];
         $this->mbkiId = (string)$xml->Report->Subject->CreditinfoId;
         // Subject
         $this->dateOfBirth = (string)$xml->Report->Subject->DateOfBirth;
         $this->taxpayerNumber = (string)$xml->Report->Subject->TaxpayerNumber;
         $this->passport = (string)$xml->Report->Subject->Passport;
 	$this->gender = (string)$xml->Report->Subject->Gender['ImportCode'];
+        $this->genderName = (string)$xml->Report->Subject->Gender;
         $this->surname = (string)$xml->Report->Subject->Surname;
         $this->name = (string)$xml->Report->Subject->Name;
         $this->fathersName = (string)$xml->Report->Subject->FathersName;
         $this->birthName = (string)$xml->Report->Subject->BirthName;
 //        $this->negativeStatus = (string)$xml->Report->Subject->NegativeStatus['ImportCode'];
         $this->residency = (string)$xml->Report->Subject->Residency['ImportCode'];
+        $this->residencyName = (string)$xml->Report->Subject->Residency;
         $this->nationality = (string)$xml->Report->Subject->Nationality;
 	$this->education = (string)$xml->Report->Subject->Education['ImportCode'];
+        $this->educationName = (string)$xml->Report->Subject->Education;
 	$this->classification = (string)$xml->Report->Subject->Classification['ImportCode'];
-        foreach ($xml->Report->Addresses as $a) {
-            $this->addresses[] = array('type'=>$a->Address->AddressType, 
-                'street'=>$a->Address->Street, 
-                'city'=>$a->Address->City, 
-                'zip'=>$a->Address->Zipcode,
-                'region'=>$a->Address->Region, 
-                'country'=>$a->Address->Country,
-                'area'=>$a->Address->District);
-        }
+        $this->classificationName = (string)$xml->Report->Subject->Classification;
+//        var_dump($xml->Report->Addresses);
+        if (isset($xml->Report->Addresses))
+        foreach ($xml->Report->Addresses->Address as $a) 
+            $this->addresses[] = array(
+                'type'=>(string)$a->AddressType,
+                'id_type'=>(string)$a->AddressType['ImportCode'],
+                'street'=>(string)$a->Street, 
+                'city'=>(string)$a->City, 
+                'zip'=>(string)$a->Zipcode,
+                'region'=>(string)$a->Region, 
+                'area'=>(string)$a->District,
+                'country'=>(string)$a->Country,
+                );
+        if (isset($xml->Report->Contacts))
+            foreach ($xml->Report->Contacts->Contact as $c) 
+                $this->contacts[] = array(
+                    'code'=>(string)$c->ImportCode, 
+                    'name'=>(string)$c->Name, 
+                    'value'=>(string)$c->Value
+                    );
+        if (isset($xml->Report->Identifications))
         foreach ($xml->Report->Identifications->Identification as $i) {
-            $this->identifications[] = array('idType'=>$i->IdType['ImportCode'],
-                'idDocName'=>$i->IdType,
-                'docNumber'=>$i->DocumentNumber,
-                'issuedBy'=>$i->IssuedBy,
-                'issuedDate'=>$i->IssueDate);
+            $this->identifications[] = array(
+                'idType'=>(string)$i->IdType['ImportCode'],
+                'idDocName'=>(string)$i->IdType,
+                'docNumber'=>(string)$i->DocumentNumber,
+                'issuedBy'=>(string)$i->IssuedBy,
+                'issuedDate'=>(string)$i->IssueDate);
         }
-        foreach ($xml->Report->Relations->Relation as $r) {
-            $this->relations[] = array(
-                'state'=>               (string)$r->State,
-                'jobTitle'=>            (string)$r->JobTitle,
-                'companyName'=>         (string)$r->CompanyName,
-                'subjectsPosition'=>    (string)$r->SubjectsPosition,
-                'registrationNumber'=>  (string)$r->RegistrationNumber,
-                'startDate'=>           (string)$r->StartDate,
-                'address'=>             (string)$r->Address,
-                'providerCode'=>        (string)$r->ProviderCode);
-        }
+        if(isset($xml->Report->Relations))
+            foreach ($xml->Report->Relations->Relation as $r) {
+                $this->relations[] = array(
+                    'state'=>               (string)$r->State,
+                    'jobTitle'=>            (string)$r->JobTitle,
+                    'companyName'=>         (string)$r->CompanyName,
+                    'subjectsPosition'=>    (string)$r->SubjectsPosition,
+                    'registrationNumber'=>  (string)$r->RegistrationNumber,
+                    'startDate'=>           (string)$r->StartDate,
+                    'address'=>             (string)$r->Address,
+                    'providerCode'=>        (string)$r->ProviderCode);
+            }
         $this->negativeInfoType = (string)$xml->Report->SummaryInformation->NegativeInfoType;
         $this->numberOfUsersReportingNegativeStatus = (string)$xml->Report->SummaryInformation->NumberOfUsersReportingNegativeStatus;
         
         foreach ($xml->xpath('//SummaryInformation') as $si) 
-            if ($si->NumberOfExistingContracts>'0')
-                if ($si->SummaryType == 'SummaryInformationDebtor') 
-                    if (!isset($si->ContractType)) { // total
-                        $this->numberOfExistingContracts = $si->NumberOfExistingContracts;
-                        $this->totalOutstandingDebt = $si->TotalOutstandingDebt->TotalOutstandingDebt;
-                        $this->numberOfTerminatedContracts = $si->NumberOfTerminatedContracts;
-                        $this->currency = $si->TotalDebtOverdue->Amount->Currency;
-                        $this->value = $si->TotalDebtOverdue->Amount->Value;
-                        $this->numberOfUnsolvedApplications = $si->NumberOfUnsolvedApplications;
-                        $this->numberOfUnpaidInstalments = $si->NumberOfUnpaidInstalments;
-                        $this->numberOfRejectedApplications = $si->NumberOfRejectedApplications;
-                        $this->numberOfRevokedApplications = $si->NumberOfRevokedApplications;
-                        $this->numberOfUsersReportingNegativeStatus = $si->NumberOfUsersReportingNegativeStatus;
-                    } else {
-                        $this->summaryInformations[] = array(
-                            'contractType'=>    (string)$si->ContractType,
-                            'numberOfExistingContracts' => $si->NumberOfExistingContracts,
-                            'totalCurrency' => $si->TotalOutstandingDebt->Amount->Currency,
-                            'totalValue' => $si->TotalOutstandingDebt->Amount->Value,
-                            'numberOfTerminatedContracts' => $si->NumberOfTerminatedContracts,
-                            'currency' => $si->TotalDebtOverdue->Amount->Currency,
-                            'value' => $si->TotalDebtOverdue->Amount->Value,
-                            'numberOfUnsolvedApplications' => $si->NumberOfUnsolvedApplications,
-                            'numberOfUnpaidInstalments' => $si->NumberOfUnpaidInstalments,
-                            'numberOfRejectedApplications' => $si->NumberOfRejectedApplications,
-                            'numberOfRevokedApplications' => $si->NumberOfRevokedApplications,
-                            'numberOfUsersReportingNegativeStatus' => $si->NumberOfUsersReportingNegativeStatus
-                        );
-                    }
+            if ($si->SummaryType == 'SummaryInformationDebtor') {
+                if (!isset($si->ContractType)) { // total
+                    $this->numberOfExistingContracts = (string)$si->NumberOfExistingContracts;
+                    $this->totalOutstandingDebtCurrency = (string)$si->TotalOutstandingDebt->Amount->Currency;
+                    $this->totalOutstandingDebtValue = (string)$si->TotalOutstandingDebt->Amount->Value;
+                    $this->numberOfTerminatedContracts = (string)$si->NumberOfTerminatedContracts;
+                    $this->currency = (string)$si->TotalDebtOverdue->Amount->Currency;
+                    $this->value = (string)$si->TotalDebtOverdue->Amount->Value;
+                    $this->numberOfUnsolvedApplications = (string)$si->NumberOfUnsolvedApplications;
+                    $this->numberOfUnpaidInstalments = (string)$si->NumberOfUnpaidInstalments;
+                    $this->numberOfRejectedApplications = (string)$si->NumberOfRejectedApplications;
+                    $this->numberOfRevokedApplications = (string)$si->NumberOfRevokedApplications;
+                    $this->numberOfUsersReportingNegativeStatus = (string)$si->NumberOfUsersReportingNegativeStatus;
+                } else {
+                    $this->summaryInformations[] = array(
+                        'contractType'=>    (string)$si->ContractType,
+                        'numberOfExistingContracts' => (string)$si->NumberOfExistingContracts,
+                        'totalCurrency' => (string)$si->TotalOutstandingDebt->Amount->Currency,
+                        'totalValue' => (string)$si->TotalOutstandingDebt->Amount->Value,
+                        'numberOfTerminatedContracts' => (string)$si->NumberOfTerminatedContracts,
+                        'currency' => (string)$si->TotalDebtOverdue->Amount->Currency,
+                        'value' => (string)$si->TotalDebtOverdue->Amount->Value,
+                        'numberOfUnsolvedApplications' => (string)$si->NumberOfUnsolvedApplications,
+                        'numberOfUnpaidInstalments' => (string)$si->NumberOfUnpaidInstalments,
+                        'numberOfRejectedApplications' => (string)$si->NumberOfRejectedApplications,
+                        'numberOfRevokedApplications' => (string)$si->NumberOfRevokedApplications,
+                        'numberOfUsersReportingNegativeStatus' => (string)$si->NumberOfUsersReportingNegativeStatus
+                    );
+                }
+//            }else {
+//                if($si->NumberOfExistingContracts>'0')
+//                    $this->contractExistingSummaryInformations[] = array(
+//                            'contractType' => (string)$si->ContractType,
+//                            'numberOfExistingContracts' => (string)$si->NumberOfExistingContracts,
+//                            'totalCurrency' => (string)$si->TotalOutstandingDebt->Amount->Currency,
+//                            'totalValue' => (string)$si->TotalOutstandingDebt->Amount->Value,
+//                            'numberOfTerminatedContracts' => (string)$si->NumberOfTerminatedContracts,
+//                            'currency' => (string)$si->TotalDebtOverdue->Amount->Currency,
+//                            'value' => (string)$si->TotalDebtOverdue->Amount->Value,
+//                            'numberOfUnsolvedApplications' => (string)$si->NumberOfUnsolvedApplications,
+//                            'numberOfUnpaidInstalments' => (string)$si->NumberOfUnpaidInstalments,
+//                            'numberOfRejectedApplications' => (string)$si->NumberOfRejectedApplications,
+//                            'numberOfRevokedApplications' => (string)$si->NumberOfRevokedApplications,
+//                            'numberOfUsersReportingNegativeStatus' => (string)$si->NumberOfUsersReportingNegativeStatus
+//                        );
+//                if($si->NumberOfTerminatedContracts>'0')
+//                    $this->contractTerminatedSummaryInformations[] = array(
+//                            'contractType' => (string)$si->ContractType,
+//                            'numberOfExistingContracts' => (string)$si->NumberOfExistingContracts,
+//                            'totalCurrency' => (string)$si->TotalOutstandingDebt->Amount->Currency,
+//                            'totalValue' => (string)$si->TotalOutstandingDebt->Amount->Value,
+//                            'numberOfTerminatedContracts' => (string)$si->NumberOfTerminatedContracts,
+//                            'currency' => (string)$si->TotalDebtOverdue->Amount->Currency,
+//                            'value' => (string)$si->TotalDebtOverdue->Amount->Value,
+//                            'numberOfUnsolvedApplications' => (string)$si->NumberOfUnsolvedApplications,
+//                            'numberOfUnpaidInstalments' => (string)$si->NumberOfUnpaidInstalments,
+//                            'numberOfRejectedApplications' => (string)$si->NumberOfRejectedApplications,
+//                            'numberOfRevokedApplications' => (string)$si->NumberOfRevokedApplications,
+//                            'numberOfUsersReportingNegativeStatus' => (string)$si->NumberOfUsersReportingNegativeStatus
+//                        );
+            }
+        if(isset($xml->Report->Contracts))
         foreach ($xml->Report->Contracts->Contract as $c) {
             $this->contracts[] = array(
 		'exportCode'=>(string)$c->ExportCode,
@@ -152,68 +210,19 @@ class MbkiReport {
 		'accountingDate'=>(string)$c->AccountingDate,
 		'dateOfSignature'=>(string)$c->DateOfSignature,
                 'historicalCalendar'=>(string)$c->HistoricalCalendar,
-                'months'=>  $this->getMonths($c->HistoricalCalendar->Months),
+                'months'=>  array($this->getMonths($c->HistoricalCalendar->Months)),
                 'hCTotalNumberOfOverdueInstalments'=>$this->getNumberOfOverdueInstalments($c->HistoricalCalendar->HCTotalNumberOfOverdueInstalments),
-//                'hCTotalOverdueAmount'=>$this->getNumberOfOverdueInstalments($c->HistoricalCalendar->HCTotalOverdueAmount),
                 'hCTotalOverdueAmount'=>$this->getNumberOfOverdueInstalments($this->query_attribute($c->HistoricalCalendar, 'months', '-12')->HCTotalOverdueAmount),
-                'months24'=>$this->getMonths($this->query_attribute($c->HistoricalCalendar,'months', '-24')->Months),
+                'hCResidualAmount'=>$this->getNumberOfOverdueInstalments($this->query_attribute($c->HistoricalCalendar, 'months', '-12')->HCResidualAmount),
+                'hCCreditCardUsedInMonth'=>$this->getNumberOfOverdueInstalments($this->query_attribute($c->HistoricalCalendar, 'months', '-12')->HCCreditCardUsedInMonth),
+                
+                'months24'=>array($this->getMonths($this->query_attribute($c->HistoricalCalendar,'months', '-24')->Months)),
                 'hCTotalNumberOfOverdueInstalments24'=>$this->getNumberOfOverdueInstalments($this->query_attribute($c->HistoricalCalendar, 'months', '-24')->HCTotalNumberOfOverdueInstalments),
                 'hCTotalOverdueAmount24'=>$this->getNumberOfOverdueInstalments($this->query_attribute($c->HistoricalCalendar, 'months', '-24')->HCTotalOverdueAmount),
 //                'hCTotalOverdueAmount'=>$this->getOverdueAmounts($c->HistoricalCalendar->HCTotalOverdueAmount)
                     );
         }
-/*
-			</HistoricalCalendar>
-			<HistoricalCalendar months="-24">
-				<Months>
-					<Description>/</Description>
-					<Month1><Month>1/12</Month></Month1>
-					<Month2><Month>2/12</Month></Month2>
-					<Month3><Month>3/12</Month></Month3>
-					<Month4><Month>4/12</Month></Month4>
-					<Month5><Month>5/12</Month></Month5>
-					<Month6><Month>6/12</Month></Month6>
-					<Month7><Month>7/12</Month></Month7>
-					<Month8><Month>8/12</Month></Month8>
-					<Month9><Month>9/12</Month></Month9>
-					<Month10><Month>10/12</Month></Month10>
-					<Month11><Month>11/12</Month></Month11>
-					<Month12><Month>12/12</Month></Month12>
-				</Months>
-				<HCTotalNumberOfOverdueInstalments>
-					<Description>Сумарна кількість просторочених платежів</Description>
-					<Month1><Month>1/12</Month><Value>-</Value></Month1>
-					<Month2><Month>2/12</Month><Value>-</Value></Month2>
-					<Month3><Month>3/12</Month><Value>1,00</Value></Month3>
-					<Month4><Month>4/12</Month><Value>-</Value></Month4>
-					<Month5><Month>5/12</Month><Value>-</Value></Month5>
-					<Month6><Month>6/12</Month><Value>-</Value></Month6>
-					<Month7><Month>7/12</Month><Value>1,00</Value></Month7>
-					<Month8><Month>8/12</Month><Value>1,00</Value></Month8>
-					<Month9><Month>9/12</Month><Value>1,00</Value></Month9>
-					<Month10><Month>10/12</Month><Value>1,00</Value></Month10>
-					<Month11><Month>11/12</Month><Value>1,00</Value></Month11>
-					<Month12><Month>12/12</Month><Value>1,00</Value></Month12>
-				</HCTotalNumberOfOverdueInstalments>
-				<HCTotalOverdueAmount>
-					<Description>Несплачена прострочена сума платежів</Description>
-					<Month1><Month>1/12</Month><Value>-</Value></Month1>
-					<Month2><Month>2/12</Month><Value>-</Value></Month2>
-					<Month3><Month>3/12</Month><Value>23 923,30</Value></Month3>
-					<Month4><Month>4/12</Month><Value>-</Value></Month4>
-					<Month5><Month>5/12</Month><Value>-</Value></Month5>
-					<Month6><Month>6/12</Month><Value>-</Value></Month6>
-					<Month7><Month>7/12</Month><Value>16 997,17</Value></Month7>
-					<Month8><Month>8/12</Month><Value>16 997,17</Value></Month8>
-					<Month9><Month>9/12</Month><Value>16 997,17</Value></Month9>
-					<Month10><Month>10/12</Month><Value>16 997,17</Value></Month10>
-					<Month11><Month>11/12</Month><Value>16 997,17</Value></Month11>
-					<Month12><Month>12/12</Month><Value>16 997,17</Value></Month12>
-				</HCTotalOverdueAmount>
-			</HistoricalCalendar>
- 
- * 
- */                    
+        if(isset($xml->Report->SearchInquiries->InquiryList->SearchInquiry))
         foreach ($xml->Report->SearchInquiries->InquiryList->SearchInquiry as $si) 
             $this->inquiryList[] = array(
                 'date'=> (string)$si->Date,
@@ -225,6 +234,7 @@ class MbkiReport {
         $this->summarySubscriberCode = (string)$xml->Report->SearchInquiries->Summary->SubscriberType['code'];
         $this->summarySubscriberCount = (string)$xml->Report->SearchInquiries->Summary->SubscriberType['count'];
         $this->numberOfInquiers = (string)$xml->Report->Inquiers->NumberOfInquiers;
+        if (isset($xml->Report->Inquiers))
         foreach ($xml->Report->Inquiers->Inquiery as $i) 
             $this->inquiers[] = array(
                 'year'=> (string)$i->Year,
@@ -235,8 +245,9 @@ class MbkiReport {
 //        var_dump($this->identifications);
     }
     public function getMonths($xmlMonths){
+        if(!isset($xmlMonths)) return null;
         $months = array();
-        $months['description'] = (string)$xmlMonths->Description;
+        $months['description'] = 'месяц/год:'; //(string)$xmlMonths->Description;
         $months['month1'] = (string)$xmlMonths->Month1->Month;
         $months['month2'] = (string)$xmlMonths->Month2->Month;
         $months['month3'] = (string)$xmlMonths->Month3->Month;
@@ -252,20 +263,21 @@ class MbkiReport {
         return $months;
     }
     public function getNumberOfOverdueInstalments($xmlData){
+        if(!isset($xmlData->Description)) return null;
         $numberOfOverdueInstalments = array();
 	$numberOfOverdueInstalments['description']=(string)$xmlData->Description;
-        $numberOfOverdueInstalments['month1'][] = array('month'=>(string)$xmlData->Month1->Month, 'value'=>(string)$xmlData->Month1->Value);
-        $numberOfOverdueInstalments['month2'][] = array('month'=>(string)$xmlData->Month2->Month, 'value'=>(string)$xmlData->Month2->Value);
-        $numberOfOverdueInstalments['month3'][] = array('month'=>(string)$xmlData->Month3->Month, 'value'=>(string)$xmlData->Month3->Value);
-        $numberOfOverdueInstalments['month4'][] = array('month'=>(string)$xmlData->Month4->Month, 'value'=>(string)$xmlData->Month4->Value);
-        $numberOfOverdueInstalments['month5'][] = array('month'=>(string)$xmlData->Month5->Month, 'value'=>(string)$xmlData->Month5->Value);
-        $numberOfOverdueInstalments['month6'][] = array('month'=>(string)$xmlData->Month6->Month, 'value'=>(string)$xmlData->Month6->Value);
-        $numberOfOverdueInstalments['month7'][] = array('month'=>(string)$xmlData->Month7->Month, 'value'=>(string)$xmlData->Month7->Value);
-        $numberOfOverdueInstalments['month8'][] = array('month'=>(string)$xmlData->Month8->Month, 'value'=>(string)$xmlData->Month8->Value);
-        $numberOfOverdueInstalments['month9'][] = array('month'=>(string)$xmlData->Month9->Month, 'value'=>(string)$xmlData->Month9->Value);
-        $numberOfOverdueInstalments['month10'][] = array('month'=>(string)$xmlData->Month10->Month, 'value'=>(string)$xmlData->Month10->Value);
-        $numberOfOverdueInstalments['month11'][] = array('month'=>(string)$xmlData->Month11->Month, 'value'=>(string)$xmlData->Month11->Value);
-        $numberOfOverdueInstalments['month12'][] = array('month'=>(string)$xmlData->Month12->Month, 'value'=>(string)$xmlData->Month12->Value);
+        $numberOfOverdueInstalments['month1'] = array('month'=>(string)$xmlData->Month1->Month, 'value'=>(string)$xmlData->Month1->Value);
+        $numberOfOverdueInstalments['month2'] = array('month'=>(string)$xmlData->Month2->Month, 'value'=>(string)$xmlData->Month2->Value);
+        $numberOfOverdueInstalments['month3'] = array('month'=>(string)$xmlData->Month3->Month, 'value'=>(string)$xmlData->Month3->Value);
+        $numberOfOverdueInstalments['month4'] = array('month'=>(string)$xmlData->Month4->Month, 'value'=>(string)$xmlData->Month4->Value);
+        $numberOfOverdueInstalments['month5'] = array('month'=>(string)$xmlData->Month5->Month, 'value'=>(string)$xmlData->Month5->Value);
+        $numberOfOverdueInstalments['month6'] = array('month'=>(string)$xmlData->Month6->Month, 'value'=>(string)$xmlData->Month6->Value);
+        $numberOfOverdueInstalments['month7'] = array('month'=>(string)$xmlData->Month7->Month, 'value'=>(string)$xmlData->Month7->Value);
+        $numberOfOverdueInstalments['month8'] = array('month'=>(string)$xmlData->Month8->Month, 'value'=>(string)$xmlData->Month8->Value);
+        $numberOfOverdueInstalments['month9'] = array('month'=>(string)$xmlData->Month9->Month, 'value'=>(string)$xmlData->Month9->Value);
+        $numberOfOverdueInstalments['month10'] = array('month'=>(string)$xmlData->Month10->Month, 'value'=>(string)$xmlData->Month10->Value);
+        $numberOfOverdueInstalments['month11'] = array('month'=>(string)$xmlData->Month11->Month, 'value'=>(string)$xmlData->Month11->Value);
+        $numberOfOverdueInstalments['month12'] = array('month'=>(string)$xmlData->Month12->Month, 'value'=>(string)$xmlData->Month12->Value);
         return $numberOfOverdueInstalments;
     }
     private function query_attribute($xmlNode, $attr_name, $attr_value) {

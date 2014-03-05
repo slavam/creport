@@ -1,0 +1,31 @@
+<?xml version ='1.0' encoding ='UTF-8' ?> 
+<definitions targetNamespace="http://ws.creditinfo.com/">
+	<types>
+	<xsd:schema targetNamespace="http://ws.creditinfo.com/">
+	<xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+	<xsd:import namespace="http://schemas.xmlsoap.org/wsdl/"/>
+	<xsd:complexType name="GetPhoto">
+	<xsd:all>
+	<xsd:element name="username" type="xsd:string"/>
+	<xsd:element name="resultcode" type="xsd:int"/>
+	<xsd:element name="message" type="xsd:string"/>
+	<xsd:element name="base64photo" type="xsd:string"/>
+	</xsd:all>
+	</xsd:complexType>
+	<xsd:complexType name="Entity">
+	<xsd:all>
+	<xsd:element name="Creditinfoid" type="xsd:int"/>
+	<xsd:element name="Number" type="xsd:string"/>
+	<xsd:element name="Name" type="xsd:string"/>
+	<xsd:element name="Surname" type="xsd:string"/>
+	<xsd:element name="Fathername" type="xsd:string"/></xsd:all></xsd:complexType><xsd:complexType name="Queryresult"><xsd:all><xsd:element name="Username" type="xsd:string"/><xsd:element name="Entity" type="tns:Entity"/><xsd:element name="Lastsearch" type="xsd:dateTime"/><xsd:element name="Selfsearch" type="xsd:dateTime"/><xsd:element name="Resultcode" type="xsd:int"/><xsd:element name="Message" type="xsd:string"/></xsd:all></xsd:complexType></xsd:schema></types>
+	<message name="GetPhotoRequest"><part name="username" type="xsd:string"/><part name="password" type="xsd:string"/><part name="taxid" type="xsd:string"/></message>
+	<message name="GetPhotoResponse"><part name="return" type="tns:GetPhoto"/></message><message name="QueryresultRequest"><part name="Username" type="xsd:string"/><part name="Password" type="xsd:string"/><part name="Number" type="xsd:string"/><part name="NumberType" type="xsd:int"/></message><message name="QueryresultResponse"><part name="return" type="tns:Queryresult"/></message>
+	<portType name="ICBPortType">
+	<operation name="GetPhoto">
+		<documentation>Return photo by Id</documentation>
+		<input message="tns:GetPhotoRequest"/>
+		<output message="tns:GetPhotoResponse"/>
+	</operation>
+	<operation name="Queryresult"><documentation>Return search result</documentation><input message="tns:QueryresultRequest"/><output message="tns:QueryresultResponse"/></operation></portType><binding name="ICBBinding" type="tns:ICBPortType"><soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/><operation name="GetPhoto"><soap:operation soapAction="https://secure.credithistory.com.ua/service/api/index.php/GetPhoto" style="rpc"/><input><soap:body use="encoded" namespace="http://ws.creditinfo.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input><output><soap:body use="encoded" namespace="http://ws.creditinfo.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output></operation><operation name="Queryresult"><soap:operation soapAction="https://secure.credithistory.com.ua/service/api/index.php/Queryresult" style="rpc"/><input><soap:body use="encoded" namespace="http://ws.creditinfo.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input><output><soap:body use="encoded" namespace="http://ws.creditinfo.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output></operation></binding><service name="ICB"><port name="ICBPort" binding="tns:ICBBinding"><soap:address location="https://secure.credithistory.com.ua:443/service/api/index.php"/></port></service>
+</definitions>

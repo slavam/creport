@@ -115,55 +115,34 @@ class CrFieldController extends Controller
                 if (!$this->is_report_in_db($xml)) {
                     $id = $xml->r->trace['ReqID'];
                     $model->attributes = array();
+                    $model->created_at = date("Y-m-d H:i:s", time());
+                    $model->xml_report = (string)$xml->asXML();
                     if (isset($id)){ // UBKI
                         $model->tax_payer_number = $xml->r[1]->LST['OKPO'];
-    //                    query_attribute($xml->r, "key", "5")->LST['DSer']
-                        $model->xml_report = (string)$xml->asXML();
                         $model->bureau_id = 2;
-                        $model->created_at = date("Y-m-d H:i:s", time());
                         $model->chb_report_id = $id;
-                        $model->save();
-    //                    var_dump($model);
                     } else { // mbki
                         $model->tax_payer_number = $xml->Report->Subject->TaxpayerNumber;
-                        $model->xml_report = (string)$xml->asXML();
                         $model->bureau_id = 3;
-                        $model->created_at = date("Y-m-d H:i:s", time());
                         $model->chb_report_id = $xml->Report->Subject->CreditinfoId;
-                        $model->save();                    
                     }
+                    $model->save();                    
                 }
             }
-//            $images = CUploadedFile::getInstancesByName('image_name');
         }
-
 //        var_dump("out side if");
         $this->render('multipleupload',array('model'=>$model));
     }    
-   // Uncomment the following methods and override them if needed
-	/*
-	public function filters()
-	{
-		// return the filter configuration for this controller, e.g.:
-		return array(
-			'inlineFilterName',
-			array(
-				'class'=>'path.to.FilterClass',
-				'propertyName'=>'propertyValue',
-			),
-		);
-	}
+    public function actionMySoapClient(){
+        $this->render('mySoapClient');
+    }
 
-	public function actions()
-	{
-		// return external action classes, e.g.:
-		return array(
-			'action1'=>'path.to.ActionClass',
-			'action2'=>array(
-				'class'=>'path.to.AnotherActionClass',
-				'propertyName'=>'propertyValue',
-			),
-		);
-	}
-	*/
+    public function actionCurlUbki(){
+        $this->render('curlUbki');
+    }
+
+//    public function actionSaveToDb(){
+//        
+//    }
+
 }

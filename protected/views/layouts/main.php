@@ -28,10 +28,13 @@
 	<div id="mainmenu">
 		<?php $this->widget('zii.widgets.CMenu',array(
 			'items'=>array(
-				array('label'=>'Справочники', 'url'=>array('/CrField/indexJq')),
-				array('label'=>'Test', 'url'=>array('/CrField/loadXML')),
+//				array('label'=>'Справочники', 'url'=>array('/CrField/indexJq')),
+				array('label'=>'Test', 'url'=>array('/CrField/curlUbki')),
+                                array('label'=>'Просмотр', 'url'=>array('/reportMBKI/inn')),
+                                array('label'=>'Запрос', 'url'=>array('/reportMBKI/innForQuery')),
+                                array('label'=>'Анализ', 'url'=>array('/reportMBKI/getParamForAnalyze')),
+//				array('label'=>'Отчеты', 'url'=>array('/reportMBKI/getINN')),
                                 array('label'=>'Загрузка', 'url'=>array('/CrField/Multipleupload')),
-				array('label'=>'Отчеты', 'url'=>array('/reportMBKI/getINN')),
 				array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
 				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
 			),

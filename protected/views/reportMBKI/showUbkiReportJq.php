@@ -55,6 +55,7 @@ $cs->registerScriptFile(Yii::app()->request->baseUrl.'/js/jquery.form.js');
 <h2>Украинское Бюро Кредитных Историй</h2>
 
 <h3>1.Идентификация Субъекта Кредитной Истории (СКИ)</h3>
+<? echo isset($report->photo) ? ('<img src="'.$report->photo.'"></img>'): ( ''); ?>
 <table class="table_edit">
     <tr>
     	<td>Ф.И.О. субъекта (рус):</td>
@@ -153,6 +154,7 @@ $(function() {
     for(var i = 0;i < data.length; i++){
         if (data[i]['sex']=='M')
             data[i]['sex']='мужской';
+        data[i]['sex']=(data[i]['sex']=='M'? 'мужской':(data[i]['sex']=='F'? 'женский':''));
         data[i]['full_name']=data[i]['ruLName']+' '+data[i]['ruFName']+' '+data[i]['ruMName']+' (рус)<br>'+
                 data[i]['uaLName']+' '+data[i]['uaFName']+' '+data[i]['uaMName']+' (укр)<br>'+data[i]['fioEn']+' (eng)';
         data[i]['family']=data[i]['familySt']=='Y'? 'женат/замужем': data[i]['familySt']=='N'? 'не женат/не замужем':'';
@@ -293,7 +295,7 @@ $(function() {
                 c2_data[i]['type'] = 'Домашний тел.';
                 break;
             case '2':
-                c2_data[i]['type'] = '';
+                c2_data[i]['type'] = 'Рабочий тел.';
                 break;
             case '3':
                 c2_data[i]['type'] = 'Мобильный тел.';
@@ -394,7 +396,7 @@ $(function() {
             {name:'year', width:60},
             {name:'flPay', width:100},
             {name:'amtCurr', width:100},
-            {name:'', width:100},
+            {name:'crSetAmount', width:100},
             {name:'daysExp', width:100},
             {name:'amtExp', width:100},
             {name:'flUse', width:100}
@@ -481,13 +483,12 @@ $(function() {
 <table style="border:1px solid #DAD8D7;" cellpadding="0" cellspacing="0" height="187" width="640">
     <tbody><tr><td width="30%">    
     <table style="border-right:1px solid #DAD8D7;" bgcolor="#EFEFEF" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%">    
-        <tbody>
-            <tr height="30%">	     
+        <tbody><tr height="30%">	     
                 <td align="center"><font style="font-size:12px;FONT-FAMILY:Arial Black;"><?echo $report->rating['scorerlname'].' '.$report->rating['scorerfname'].' '.$report->rating['scorermname'].' ('.$report->rating['scoreinn'].')'?></font>
                     <br><font style="font-size:16px;FONT-FAMILY:Arial Black;">Кредитный&nbsp;рейтинг&nbsp;УБКИ:</font></td>
             </tr>    
             <tr height="30%">       
-                <td align="center"><font style="font-size:60px;FONT-FAMILY:Arial,sans-serif;" color="#CDCD00"><?echo $report->rating['score']?></font></td>	  
+                <td align="center"><font style="font-size:60px;FONT-FAMILY:Arial,sans-serif;" ><?echo $report->rating['score']?></font></td>	  
             </tr>     
             <tr height="30%">	     
                 <td colspan="3" align="center"><font style="font-size:10px;FONT-FAMILY:Arial;"><b>Дата расчета :</b>&nbsp;<?echo $report->rating['scoredate']?></font></td>	  
@@ -498,10 +499,21 @@ $(function() {
         <td width="30%"> 	  
             <table bgcolor="white" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%">     
                 <tbody><tr>	     
-                        <td align="center"><font style="font-size:15px;FONT-FAMILY:Arial Black,sans-serif;color:#72B773;"><font style="font-size:18px;" color="#CDCD00">средний</font></font></td>	  
-                    </tr>     
+                        <td align="center"><font style="font-size:15px;FONT-FAMILY:Arial Black,sans-serif;color:#72B773;">
+                            <?if((int)$report->rating['score']<251){?>
+                                <font style="font-size:18px;" color="#FF0000">очень низкий</font>
+                            <?}elseif (((int)$report->rating['score']>250) and ((int)$report->rating['score']<351)) { ?>
+                                <font style="font-size:18px;" color="#FC9900">низкий</font>
+                            <?}elseif (((int)$report->rating['score']>350) and ((int)$report->rating['score']<451)) { ?>
+                                <font style="font-size:18px;" color="#CDCD00">средний</font>
+                            <?}elseif (((int)$report->rating['score']>450) and ((int)$report->rating['score']<551)) { ?>
+                                <font style="font-size:18px;" color="#99CC00">выше среднего</font>
+                            <?}else{?>
+                                <font style="font-size:18px;" color="#339966">высокий</font>
+                            <?}?>
+                    </font></td></tr>     
                     <tr>       
-                        <td align="center"><img src="../images/CreditBall3.jpg" alt="" border="0" height="126" width="248"></td></tr>
+                        <td align="center"><img src="<?php echo Yii::app()->request->baseUrl.'/images/CreditBa.png';?>" alt="" border="0" height="126" width="248"></td></tr>
                     <tr>	     
                         <td>&nbsp;</td>	  </tr>	  
                 </tbody>

@@ -7,25 +7,27 @@ class UbkiReport {
     public $credits = array();
 //    public $payments = array();
     public function __construct ($xml){
-        $this->ruLName=$xml->r[1]->LST['ruLName'];
-        $this->ruFName=$xml->r[1]->LST['ruFName'];
-        $this->ruMName=$xml->r[1]->LST['ruMName'];
-        $this->uaLName=$xml->r[1]->LST['uaLName'];
-        $this->uaFName=$xml->r[1]->LST['uaFName'];
-        $this->uaMName=$xml->r[1]->LST['uaMName'];
-        $this->okpo=$xml->r[1]->LST['OKPO'];
-        $this->familySt=$xml->r[1]->LST['FamilySt'];
-        $this->db=$xml->r[1]->LST['DB'];
-        $this->dser=$xml->r[1]->LST['DSer'];
-        $this->dnum=$xml->r[1]->LST['DNum'];
-        $this->sex=$xml->r[1]->LST['Sex'];
-        $this->dds=$xml->r[1]->LST['DDS'];
-        $this->clDate=$xml->r[1]->LST['CLDATE'];
-        $this->wokpo=$xml->r[1]->LST['WOKPO'];
-        $this->clWName=$xml->r[1]->LST['clWName'];
-        $this->address1=$xml->r[1]->LST['Address1'];
-        $this->address2=$xml->r[1]->LST['Address2'];
-        $this->address3=$xml->r[1]->LST['Address3'];
+        $this->ruLName=(string)$xml->r[1]->LST['ruLName'];
+        $this->ruFName=(string)$xml->r[1]->LST['ruFName'];
+        $this->ruMName=(string)$xml->r[1]->LST['ruMName'];
+        $this->uaLName=(string)$xml->r[1]->LST['uaLName'];
+        $this->uaFName=(string)$xml->r[1]->LST['uaFName'];
+        $this->uaMName=(string)$xml->r[1]->LST['uaMName'];
+        $this->okpo=(string)$xml->r[1]->LST['OKPO'];
+        $this->familySt=(string)$xml->r[1]->LST['FamilySt'];
+        $this->db=(string)$xml->r[1]->LST['DB'];
+        $this->dser=(string)$xml->r[1]->LST['DSer'];
+        $this->dnum=(string)$xml->r[1]->LST['DNum'];
+        $this->sex=(string)$xml->r[1]->LST['Sex'];
+        $this->dds=(string)$xml->r[1]->LST['DDS'];
+        $this->clDate=(string)$xml->r[1]->LST['CLDATE'];
+        $this->wokpo=(string)$xml->r[1]->LST['WOKPO'];
+        $this->clWName=(string)$xml->r[1]->LST['clWName'];
+        $this->clWDate=(string)$ah['clWDate'];
+        $this->address1=(string)$xml->r[1]->LST['Address1'];
+        $this->address2=(string)$xml->r[1]->LST['Address2'];
+        $this->address3=(string)$xml->r[1]->LST['Address3'];
+        if (isset($xml->r[2]))
         foreach ($xml->r[2] as $ah) 
             $this->auth_hist[] = array(
                 'clDate'=>(string)$ah['CLDATE'],
@@ -43,6 +45,7 @@ class UbkiReport {
                 'wokpo'=>(string)$ah['WOKPO'],
                 'clWName'=>(string)$ah['clWName'],
                 'clWDate'=>(string)$ah['clWDate']);
+        if (isset($xml->r[3]))
         foreach ($xml->r[3] as $dh) 
             $this->doc_hist[] = array(
                 'dtm'=>(string)$dh['DTM'], // date
@@ -51,18 +54,21 @@ class UbkiReport {
                 'dnum'=>(string)$dh['DNum'], // doc number
                 'dwho'=>(string)$dh['DWho'], // who doc issue
                 );
+        if (isset($xml->r[4]))
         foreach ($xml->r[4] as $ch) 
             $this->contact_hist[] = array(
                 'type'=>(string)$ch['Type'], 
                 'date'=>(string)$ch['DTM'],
                 'address'=>(string)$ch['Address'],
                 );
+        if (isset($xml->r[5]))
         foreach ($xml->r[5] as $c) 
             $this->contacts[] = array(
                 'type'=>(string)$c['Type'], 
                 'versionDate'=>(string)$c['VersionDate'],
                 'number'=>(string)$c['Number'],
                 );
+        if (isset($xml->r[6]))
         foreach ($xml->r[6] as $cr) 
             $this->credits[] = array(
                 'reference'=>(string)$cr['Reference'], 
@@ -72,7 +78,7 @@ class UbkiReport {
                 'creditTypeName'=>  $this->creditTypeCode2Name((string)$cr['CR_Type']),
                 'currencyCode'=>((string)$cr['Curr']=='980'? 'UAH':((string)$cr['Curr']=='840'? 'USD':(string)$cr['Curr'])),
                 'crSetAmount'=>(string)$cr['crSetAmount'],
-                'crSetAmount'=>(string)$cr['crSetAmount'],
+//                'crSetAmount'=>(string)$cr['crSetAmount'],
                 'amount'=>(string)$cr['Amount'],
                 'flClose'=>(string)$cr['FlClose'],
                 'amtCurr'=>(string)$cr['AmtCurr'],
@@ -85,7 +91,7 @@ class UbkiReport {
                 'nBreak4'=>(string)$cr['NBreak4'],
                 'nBreak5'=>(string)$cr['NBreak5'],
                 'donor'=>(string)$cr['Donor'],
-                'payments'=>$this->getPayments($xml->r[7],(string)$cr['Reference'])
+                'payments'=>$this->getPayments($xml->r[7],(string)$cr['Reference'],(string)$cr['crSetAmount'])
                 );
             $this->rating = array(
                 'scoreinn'=>(string)$xml->r[8]->URATING['scoreinn'],
@@ -113,6 +119,7 @@ class UbkiReport {
                 'ye'=>(string)$xml->r[9]->ZINT['ye'],
                 'yu'=>(string)$xml->r[9]->ZINT['yu'],
             );
+        if (isset($xml->r[10]))
         foreach ($xml->r[10] as $qh) 
             $this->query_hist[] = array(
                 'reqID'=>(string)$qh['ReqID'], 
@@ -120,8 +127,9 @@ class UbkiReport {
                 'reqType'=>(string)$qh['ReqType'],
                 'partnerType'=>(string)$qh['PartnerType'],
                 );
+            $this->photo = (string)$xml->r[13]->CL_FOTO['fotobase64'];
     }  
-    private function getPayments($xml_in, $creditName){
+    private function getPayments($xml_in, $creditName, $crSetAmount){
         $payments = array();
         $ps =$xml_in->xpath('//CL_DEAL[@Reference="'.$creditName.'"]');
         foreach ($ps as $v) 
@@ -136,6 +144,7 @@ class UbkiReport {
                 'amtCurr'=>(string)$v['AmtCurr'],
                 'amtExp'=>(string)$v['AmtExp'],
                 'daysExp'=>(string)$v['DaysExp'],
+                'crSetAmount'=>$crSetAmount,
                     );      
         return $payments;
     }
