@@ -1,0 +1,16 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:crep="http://localhost/creport/soapserver/creport.wsdl">
+  <soapenv:Header>
+  <wsse:Security xmlns:wsse="http://schemas.xmlsoap.org/ws/2002/07/secext">
+   <wsse:UsernameToken xmlns:wsu="http://schemas.xmlsoap.org/ws/2002/07/utility">
+    <wsse:Username>test</wsse:Username>
+    <wsse:Password Type="wsse:PasswordText">1234-zxcv</wsse:Password>
+   </wsse:UsernameToken>
+  </wsse:Security>
+  </soapenv:Header>
+   <soapenv:Body>
+      <crep:AnalyzeCreditHistoryRequest>
+         <taxpayer_number>12345678</taxpayer_number>
+         <pawn_credit>T</pawn_credit>
+      </crep:AnalyzeCreditHistoryRequest>
+   </soapenv:Body>
+</soapenv:Envelope>

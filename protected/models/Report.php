@@ -105,8 +105,8 @@ class Report extends CActiveRecord
             return count($res)>0? $res:null;
         }
         public function getLastReportByInn($inn){
-            $sql = "select * from reports where taxpayer_number = '".$inn."' and report_type_id !=3 order by created_at desc, issue_date desc limit 1";
+            $sql = "select * from reports where taxpayer_number = '".$inn."' and report_type_id !=3 order by issue_date desc, created_at desc limit 1";
             $res = $this->model()->findAllBySql($sql);
-            return count($res)>0? $res:null;
+            return count($res)>0? $res[0]:null;
         }
 }

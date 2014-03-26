@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions  xmlns="http://schemas.xmlsoap.org/wsdl/"  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"  xmlns:xsdLocal1="http://siebel.com/"  targetNamespace="http://siebel.com/"  xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"  xmlns:xsd="http://www.w3.org/2001/XMLSchema"  xmlns:tns="http://siebel.com/" >
+	<types >
+		<xsd:schema  elementFormDefault="qualified"  attributeFormDefault="unqualified"  xmlns:xsdLocal1="http://siebel.com/"  targetNamespace="http://siebel.com/"  xmlns:xsd="http://www.w3.org/2001/XMLSchema" >
+			<xsd:annotation >
+				<xsd:documentation >Copyright (C) 2001-2004 Siebel Systems, Inc. All rights reserved. Siebel XSD Generation</xsd:documentation >
+			</xsd:annotation >
+			<xsd:element  name="webResponses"  type="xsdLocal1:webResponses" />
+			<xsd:complexType  name="webResponsesTopElmt" >
+				<xsd:sequence >
+					<xsd:element  name="webResponses"  maxOccurs="1"  minOccurs="1"  type="xsdLocal1:webResponses" />
+				</xsd:sequence >
+			</xsd:complexType >
+			<xsd:complexType  name="webResponses" >
+				<xsd:sequence >
+					<xsd:element  name="wr"  maxOccurs="unbounded"  minOccurs="0"  type="xsdLocal1:wr" />
+				</xsd:sequence >
+			</xsd:complexType >
+			<xsd:complexType  name="wr" >
+				<xsd:sequence >
+					<xsd:element  name="activityUID"  maxOccurs="1"  minOccurs="0"  type="xsd:string" />
+					<xsd:element  name="emailSenderName"  maxOccurs="1"  minOccurs="0"  type="xsd:string" />
+					<xsd:element  name="description"  maxOccurs="1"  minOccurs="0"  type="xsd:string" />
+					<xsd:element  name="type"  maxOccurs="1"  minOccurs="0"  type="xsd:string" />
+					<xsd:element  name="mailBody"  maxOccurs="1"  minOccurs="0"  type="xsd:string" />
+					<xsd:element  name="attachments"  maxOccurs="unbounded"  minOccurs="0"  type="xsdLocal1:attachments" />
+					<xsd:element  name="personID"  maxOccurs="1"  minOccurs="0"  type="xsd:string" />
+					<xsd:element  name="lastName"  maxOccurs="1"  minOccurs="0"  type="xsd:string" />
+					<xsd:element  name="firstName"  maxOccurs="1"  minOccurs="0"  type="xsd:string" />
+					<xsd:element  name="middleName"  maxOccurs="1"  minOccurs="0"  type="xsd:string" />
+					<xsd:element  name="phone"  maxOccurs="1"  minOccurs="0"  type="xsd:string" />
+					<xsd:element  name="interestFANumber"  maxOccurs="1"  minOccurs="0"  type="xsd:string" />
+					<xsd:element  name="interestProduct"  maxOccurs="1"  minOccurs="0"  type="xsd:string" />
+				</xsd:sequence >
+			</xsd:complexType >
+			<xsd:complexType  name="attachments" >
+				<xsd:sequence >
+					<xsd:element  name="attach"  maxOccurs="unbounded"  minOccurs="0"  type="xsdLocal1:attach" />
+				</xsd:sequence >
+			</xsd:complexType >
+			<xsd:complexType  name="attach" >
+				<xsd:sequence >
+					<xsd:element  name="name"  maxOccurs="1"  minOccurs="0"  type="xsd:string" />
+					<xsd:element  name="exten"  maxOccurs="1"  minOccurs="0"  type="xsd:string" />
+					<xsd:element  name="file"  maxOccurs="1"  minOccurs="0"  type="xsd:base64Binary" />
+				</xsd:sequence >
+			</xsd:complexType >
+		</xsd:schema >
+		<xsd:schema  elementFormDefault="qualified"  attributeFormDefault="unqualified"  targetNamespace="http://siebel.com/"  xmlns:xsd="http://www.w3.org/2001/XMLSchema" >
+			<xsd:import  namespace="" />
+			<xsd:element  name="VBR_spcAction_spcWR_spcUpsert_Input" >
+				<xsd:complexType >
+					<xsd:sequence >
+						<xsd:element  ref="xsdLocal1:webResponses" />
+					</xsd:sequence >
+				</xsd:complexType >
+			</xsd:element >
+			<xsd:element  name="VBR_spcAction_spcWR_spcUpsert_Output" >
+				<xsd:complexType >
+					<xsd:sequence >
+						<xsd:element  name="Error_spcCode"  type="xsd:string" />
+						<xsd:element  name="Error_spcMessage"  type="xsd:string" />
+					</xsd:sequence >
+				</xsd:complexType >
+			</xsd:element >
+		</xsd:schema >
+	</types >
+	<message  name="VBR_spcAction_spcWR_spcUpsert_Input" >
+		<part  name="VBR_spcAction_spcWR_spcUpsert_Input"  element="tns:VBR_spcAction_spcWR_spcUpsert_Input" />
+	</message >
+	<message  name="VBR_spcAction_spcWR_spcUpsert_Output" >
+		<part  name="VBR_spcAction_spcWR_spcUpsert_Output"  element="tns:VBR_spcAction_spcWR_spcUpsert_Output" />
+	</message >
+	<portType  name="VBR_spcAction_spcWeb_spcResponses_spcUpsert" >
+		<operation  name="VBR_spcAction_spcWR_spcUpsert" >
+			<input  message="tns:VBR_spcAction_spcWR_spcUpsert_Input" />
+			<output  message="tns:VBR_spcAction_spcWR_spcUpsert_Output" />
+		</operation >
+	</portType >
+	<binding  name="VBR_spcAction_spcWeb_spcResponses_spcUpsert"  type="tns:VBR_spcAction_spcWeb_spcResponses_spcUpsert" >
+		<soap:binding  transport="http://schemas.xmlsoap.org/soap/http"  style="document" />
+		<operation  name="VBR_spcAction_spcWR_spcUpsert" >
+			<soap:operation  soapAction="document/http://siebel.com/:VBR_spcAction_spcWR_spcUpsert" />
+			<input >
+				<soap:body  use="literal" />
+			</input >
+			<output >
+				<soap:body  use="literal" />
+			</output >
+		</operation >
+	</binding >
+	<service  name="VBR_spcAction_spcWeb_spcResponses_spcUpsert" >
+		<port  binding="tns:VBR_spcAction_spcWeb_spcResponses_spcUpsert"  name="VBR_spcAction_spcWeb_spcResponses_spcUpsert" >
+			<soap:address  location="http://TZ-SBDEV-APP/eai_anon_rus/start.swe?SWEExtSource=SecureWebService&amp;SWEExtCmd=Execute" />
+		</port >
+	</service >
+</definitions >

@@ -1,9 +1,11 @@
 <?php
 
-class InnForm extends CFormModel
+class AnalyzeForm extends CFormModel
 {
 	public $inn;
         public $requested_amount;
+        public $number_months;
+        public $credit_type_id;
 
         /**
 	 * Declares the validation rules.
@@ -14,17 +16,18 @@ class InnForm extends CFormModel
 	{
 		return array(
                     array('inn', 'required'),
-                    array('inn', 'numerical', 'integerOnly'=>true),
-                    array('inn', 'validateIsReport', 'on'=>'my_test'),
+                    array('inn, number_months, credit_type_id', 'numerical', 'integerOnly'=>true),
+                    array('requested_amount','numerical'),
+                    array('inn', 'validateIsReport'), //, 'on'=>'my_test'),
 		);
 	}
         public function validateIsReport($attribute,$params)
         {       
-            $r = XmlReport::model()->getLastReport($this->inn);
-            if (count($r)>0)
+            $r = Report::model()->getLastReportByInn($this->inn);
+            if (isset($r))
                  return true;
             else
-                $this->addError($attribute, 'Для этого ИНН в базе нет данных');
+                $this->addError($attribute, 'Для этого ИНН в системе нет данных. Выполните запрос в БКИ и повторите анализ');
         }
         
 }

@@ -1,7 +1,55 @@
 <?php
 
+//require_once('log.php');
+//require_once('wsse.php');
+//require_once('creport.php');
+
 class ReportMBKIController extends Controller
 {
+    private function query_attribute($xmlNode, $attr_name, $attr_value) {
+        foreach($xmlNode as $node) { 
+            switch($node[$attr_name]) {
+                case $attr_value:
+                    return $node;
+            }
+        }
+    }
+    private function is_report_in_db($xml){
+        $inn_ubki = $this->query_attribute($xml->r, "key", "5")->LST['OKPO'];
+        if (isset($inn_ubki))
+            $sql = "select * from xml_reports where tax_payer_number=".$inn_ubki." and chb_report_id='".$xml->r->trace['ReqID']."'";
+        else 
+            $sql = "select * from xml_reports where tax_payer_number=".$xml->Report->Subject->TaxpayerNumber." and chb_report_id='".$xml->Report->Subject->CreditinfoId."'";
+        $report = XmlReport::model()->findAllBySql($sql);
+        return count($report)>0? true:false;
+    }
+    public function actionMultipleupload(){
+        $model= new XmlReport;
+        if (isset($_POST['my_button'])){
+            foreach ($_FILES['image_name']['tmp_name'] as $key => $value) {
+                $xml = simplexml_load_file($value);
+                if (!$this->is_report_in_db($xml)) {
+                    $id = $xml->r->trace['ReqID'];
+                    $model->attributes = array();
+                    $model->created_at = date("Y-m-d H:i:s", time());
+                    $model->xml_report = (string)$xml->asXML();
+                    if (isset($id)){ // UBKI
+                        $model->tax_payer_number = $xml->r[1]->LST['OKPO'];
+                        $model->bureau_id = 2;
+                        $model->chb_report_id = $id;
+                    } else { // mbki
+                        $model->tax_payer_number = $xml->Report->Subject->TaxpayerNumber;
+                        $model->bureau_id = 3;
+                        $model->chb_report_id = $xml->Report->Subject->CreditinfoId;
+                    }
+                    $model->save();                    
+                }
+                $this->actionSaveCreditReport($xml);
+            }
+        }
+        $this->render('multipleupload',array('model'=>$model));
+    }
+    
     public function actionInn()
     {
         $model=new InnForm;
@@ -202,8 +250,8 @@ class ReportMBKIController extends Controller
                             $contract->ch_subject_id = $ch_subject->id;
                             $contract->report_id = $report->id;
                             $contract->created_at=$current_time;
-                            $contract->contract_type_id = $ctr['creditType'];
-                            $contract->is_onen = $ctr['flClose']=='N'? true:false;
+                            $contract->contract_type_code = $ctr['creditType'];
+                            $contract->is_open = $ctr['flClose']=='N'? true:false;
                             $contract->code=$ctr['reference'];
                             $contract->currency_id=$ctr['currencyCode']=='UAH'? 1:($ctr['currencyCode']=='USD'? 2: ($ctr['currencyCode']=='EUR'? 3:null));
                             $contract->role_id=1; //$ctr['subjectRoleCode']=='1'? 1:null;
@@ -211,7 +259,7 @@ class ReportMBKIController extends Controller
                             $contract->credit_start_date =  $ctr['startDate']>''? $ctr['startDate']:null;
                             $contract->credit_end_date=  $ctr['stopDate'] == 'null'? null:$ctr['stopDate'];
                             $contract->total_amount=$ctr['amount'];
-                            $contract->outstanding_amount=$ctr['AmtCurr'];
+                            $contract->outstanding_amount=$ctr['amtCurr'];
 //                            $contract->monthly_instalment_amount=$ctr['monthlyInstalmentAmountValue'];
                             $contract->overdue_amount=$ctr['amtExp'];
 //                            var_dump($ctr['crSetAmount']);
@@ -223,6 +271,7 @@ class ReportMBKIController extends Controller
                                 $hist->year = $p['year'];
                                 $hist->value=$p['flPay'];
                                 $hist->factor_id=5;
+                                $hist->payment_date=$p['year'].'-'.$p['month'].'-01';
                                 $hist->save();
                                 
                                 $hist = new HistoryContract();
@@ -231,6 +280,7 @@ class ReportMBKIController extends Controller
                                 $hist->year = $p['year'];
                                 $hist->value=$p['amtCurr'];
                                 $hist->factor_id=6;
+                                $hist->payment_date=$p['year'].'-'.$p['month'].'-01';
                                 $hist->save();
                                 
                                 $hist = new HistoryContract();
@@ -239,6 +289,7 @@ class ReportMBKIController extends Controller
                                 $hist->year = $p['year'];
                                 $hist->value=$p['amtExp'];
                                 $hist->factor_id=10;
+                                $hist->payment_date=$p['year'].'-'.$p['month'].'-01';
                                 $hist->save();
                                 
                                 $hist = new HistoryContract();
@@ -247,6 +298,7 @@ class ReportMBKIController extends Controller
                                 $hist->year = $p['year'];
                                 $hist->value=$ctr['crSetAmount'];
                                 $hist->factor_id=7;
+                                $hist->payment_date=$p['year'].'-'.$p['month'].'-01';
                                 $hist->save();
                                 
                                 $hist = new HistoryContract();
@@ -255,6 +307,7 @@ class ReportMBKIController extends Controller
                                 $hist->year = $p['year'];
                                 $hist->value=$p['daysExp'];
                                 $hist->factor_id=8;
+                                $hist->payment_date=$p['year'].'-'.$p['month'].'-01';
                                 $hist->save();
                                 
                                 $hist = new HistoryContract();
@@ -263,6 +316,7 @@ class ReportMBKIController extends Controller
                                 $hist->year = $p['year'];
                                 $hist->value=$p['flUse'];
                                 $hist->factor_id=9;
+                                $hist->payment_date=$p['year'].'-'.$p['month'].'-01';
                                 $hist->save();
                             }
                         }
@@ -360,8 +414,8 @@ class ReportMBKIController extends Controller
                             $contract->ch_subject_id = $ch_subject->id;
                             $contract->report_id = $report->id;
                             $contract->created_at=$current_time;
-                            $contract->contract_type_id = $ctr['importCode'];
-                            $contract->is_onen = $ctr['contractType']=='Existing'? true:false;
+                            $contract->contract_type_code = $ctr['importCode'];
+                            $contract->is_open = $ctr['contractType']=='Existing'? true:false;
                             $contract->code=$ctr['codeOfContract'];
                             $contract->currency_id=$ctr['currencyCode']=='UAH'? 1:($ctr['currencyCode']=='USD'? 2: ($ctr['currencyCode']=='EUR'? 3:null));
                             $contract->role_id=$ctr['subjectRoleCode']=='1'? 1:null;
@@ -482,18 +536,6 @@ class ReportMBKIController extends Controller
          } else 
              return false;
      }
-     public function actionGetParamForAnalyze(){
-        $model=new AnalyzeForm;
-        if(isset($_POST['InnForm'])){
-            $model->attributes=$_POST['InnForm'];
-            if($model->validate())
-                $this->redirect(array('analyze','inn'=>$model->inn)); //$_POST['inn']));
-        }
-        $this->render('getParamForAnalyze',array('model'=>$model));
-     }
-     public function actionAnalyze(){
-         $inn = $_GET['inn'];
-     }   
      public function actionHistoryIsAbsent($inn, $date){
          $this->render('historyIsAbsent',array('inn'=>$inn, 'date'=>$date));
      }
@@ -507,7 +549,7 @@ class ReportMBKIController extends Controller
                 
                 if(isset($native_report)){
                     $curr_date = new DateTime("now");
-                    $get_report_date = new DateTime($native_report[0]->created_at); //issue_date);
+                    $get_report_date = new DateTime($native_report->created_at); //issue_date);
                     if($curr_date->diff($get_report_date)->days<31) // report is actual
                         if($native_report->report_type_id!=3)   // report is real
                             $this->redirect(array('getReportByINN','inn'=>$model->inn)); // show report
@@ -527,7 +569,9 @@ class ReportMBKIController extends Controller
                     $this->actionSaveCreditReport($mbkiResponse); // save report into DB
 
                 // send request into ubki
-                $ubkiResponse = $this->getDataFromUbki($model->inn); // request
+                // ONLY TESTING MODE
+                $ubkiResponse = $this->getDataFromUbki($model->inn); // request // ONLY TESTING MODE
+                // ONLY TESTING MODE
                 $this->actionSaveCreditReport($ubkiResponse); // save report into DB
                 
                 $mbki_report_date = isset($mbkiResponse)? new DateTime($mbkiResponse->Report['issued']):null;
@@ -596,4 +640,207 @@ class ReportMBKIController extends Controller
         }
         $model->save();                    
     }
+    public function actionGetParamForAnalyze(){
+        $model=new AnalyzeForm;
+        if(isset($_POST['AnalyzeForm'])){
+            $model->attributes=$_POST['AnalyzeForm'];
+            if($model->validate()){
+                $this->redirect(array('showAnalyzeResult','inn'=>$model->inn));
+//                $this->analyze(Report::model()->getLastReportByInn($model->inn));
+//                exit;
+            }
+//                $this->redirect(array('analyze','inn'=>$model->inn)); //$_POST['inn']));
+        }
+        $this->render('getParamForAnalyze',array('model'=>$model));
+     }
+     
+    public function actionCrmService(){
+        $soap = new DOMDocument();
+        $soap->loadXML(file_get_contents("php://input"));
+//        loggerClass::write('++++++++++++> : '.serialize($soap->saveXML()),2);
+//        loggerClass::write('++++++++++++> : '.(string)$_REQUEST,2);
+        ini_set("soap.wsdl_cache_enabled", "0"); // 0 - disable while debug, ENABLE in production
+        //create new SOAP server
+        $server = new SoapServer("creport.wsdl",
+                                array(
+                                        'soap_version' => SOAP_1_1,
+                                        'encoding'=>'UTF-8',
+                                        'cache_wsdl' => WSDL_CACHE_NONE
+                                )
+                                );
+
+        $auth = new dummyAuthenticationClass();
+
+        $s = new WSSESoapServer($soap, $auth);
+        try {
+            if ($s->process()) {
+                $server->setClass("creportSoapServerClass");
+                $server->handle($s->saveXML());
+                exit;
+            }
+        } catch (Exception $e) {
+            /* Any exception handling */
+            loggerClass::write('-> AnalyzeCrediHistory(): '.serialize($e),2);
+        }
+
+        //!!! can be overriden
+        loggerClass::write("[!] Server fault: 0x80000001, Authentication failed!",1);
+        $server->fault(0x80000001, "Authentication failed!");
+
+    }
+     
+     public function actionShowAnalyzeResult(){
+         $header_report = Report::model()->getLastReportByInn($_GET['inn']);
+         $log = '<br>Последний кредитный отчет поступил из '.($header_report->bureau_id==2? 'УБКИ':'МБКИ').'. ReportID='.$header_report->id;
+         $contracts = Contract::model()->getContractsByReport($header_report->id);
+         $res = 'History is POSITIVE';
+         $curr_date = new DateTime('now');
+         $lastPaymentDate = new DateTime(Contract::model()->getLastPaymentDate($header_report->id));
+         $fromLastPaymentDays = $lastPaymentDate->diff($curr_date)->days;
+         foreach ($contracts as $contract) {
+            $isUnsecuredCredit = Contract::model()->isUnsecuredCredit($contract->contract_type_code, $header_report->bureau_id); // беззалоговый?
+            if($this->isPositiveContractVar3($contract->id, $fromLastPaymentDays, $isUnsecuredCredit)){ // позитив, т.к. история отсутствует
+                $log .= '<br>Variant 3 POSITIVE. History is absent. Contract=>'.$contract->id.' ('.$contract->code.')';
+            }else {
+                $log .= '<br>Variant 3 History present. Control continue. Contract=>'.$contract->id.' ('.$contract->code.')';
+                if(HistoryContract::model()->getFirstOverdueSum($contract->id, $fromLastPaymentDays, $isUnsecuredCredit)<=50){ // нужно проверить по последнему варианту
+                    if($this->isPositiveContractVar4($contract->id, $fromLastPaymentDays, $isUnsecuredCredit))
+                        $log .= '<br>Variant 4 POSITIVE. Contract=>'.$contract->id.' ('.$contract->code.')';
+                    else
+                        $log .= '<br>Variant 4 NEGATIVE. Contract=>'.$contract->id.' ('.$contract->code.')';
+                } else{
+                    if($this->isPositiveContractVar1($contract->id) )
+                        $log .= '<br>Variant 1 POSITIVE. Contract=>'.$contract->id.' ('.$contract->code.')';
+                    else{
+                        $log .= '<br>Variant 1 NEGATIVE. Contract=>'.$contract->id.' ('.$contract->code.')';
+                    }
+                    $lastDelayDate = HistoryContract::model()->getLastDelayDateByContract($contract->id);
+                    if(isset($lastDelayDate)){
+                        if($this->isPositiveContractVar2($header_report->bureau_id, $contract, $lastDelayDate))
+                            $log .= '<br>Variant 2 POSITIVE. Contract=>'.$contract->id.' ('.$contract->code.')';
+                        else
+                            $log .= '<br>Variant 2 NEGATIVE. Contract=>'.$contract->id.' ('.$contract->code.')';
+                    }
+                }
+            }
+        }
+        $this->render('showAnalyzeResult',array('inn'=>$_GET['inn'],'log'=>$log, 'verdict'=>$res)); //'model'=>$model));
+    }
+
+    private function isPositiveContractVar4($contract_id, $days, $isUnsecuredCredit){
+        return HistoryContract::model()->getMaxOverdue($contract_id, $days, $isUnsecuredCredit)<=100? true:false;
+    }
+    private function isPositiveContractVar2($bureau_id, $contract, $lastDelayDate){
+        if(($bureau_id == 2 and $contract->contract_type_code == 5) or ($bureau_id == 3 and $contract->contract_type_code == 4))
+            $monthly_instalment_amount = $contract->total_amount*0.07;  // C C
+        else {
+            $e_d = isset($contract->credit_end_date)?(new DateTime($contract->credit_end_date)):(new DateTime('2100-01-01'));
+            $s_d = new DateTime($contract->credit_start_date);
+            $days_of_credit = $s_d->diff($e_d)->days;
+            $m_p = 30*$contract->total_amount/$days_of_credit;
+            $monthly_instalment_amount = ($m_p>$contract->monthly_instalment_amount)? $m_p:$contract->monthly_instalment_amount;
+        }         
+        $curr_date = new DateTime('now');
+        $l_d = new DateTime($lastDelayDate);
+        if($curr_date->diff($l_d)->days<365){
+            $treshold = ($monthly_instalment_amount*2)<1000? 1000:$monthly_instalment_amount*2;
+        }else{
+            $treshold = ($monthly_instalment_amount*2)<1000? 1000:$monthly_instalment_amount*2;
+            $years_of_credit = $days_of_credit/365;
+            $k90 = HistoryContract::model()->getExceedingDurationCountByContract($contract->id, 61, 90);
+            $kmax = HistoryContract::model()->getExceedingDurationCountByContract($contract->id, 91, 1200);
+            if ((HistoryContract::model()->getMaxAmountOfDelayByContract($contract->id)>$treshold) or
+                    $k90>5+$years_of_credit or
+                    $kmax>$years_of_credit or
+                    HistoryContract::model()->getLastDelayByContract($contract->id)>0)
+                return false;
+        }
+     }
+
+     private function isPositiveContractVar1($contract_id){
+         // проверка прироста задолженности
+         if (HistoryContract::model()->isGrowthArrearsByContractCritical($contract_id))
+             return false;
+         // максимальная сумма просроченной задолженности
+         if (HistoryContract::model()->getMaxAmountOfDelayByContract($contract_id)>1000)
+             return false;
+         return true;
+     }
+
+     public function analyze($header_report){
+//         $contracts = Contract::model()->getContractsByReport($header_report->id);
+//         foreach ($contracts as $contract) {
+//             if($this->isPositiveContractVar1($contract->id) )
+//             ;
+//         }
+//         var_dump ($header_report->attributes);
+         $monthlyPayment = $this->getMonthlyPayment($header_report->id, $header_report->bureau_id);
+         echo 'Последний кредитный отчет поступил из '.($header_report->bureau_id==2? 'УБКИ':'МБКИ');
+         echo '<br>ИНН: '.$header_report->taxpayer_number;
+         echo '<br>Ежемесячные платежи (затраты по истории) = '.$monthlyPayment;
+         echo '<br>Размер кредитной истории (максимальная кредитная нагрузка) = '.$this->getMaxLoanBurden($header_report->id);
+         $low = 61;
+         $high = 90;
+         echo '<br>Просрочки платежа от '.$low.' до '.$high.' дней = '.HistoryContract::model()->getExceedingDurationCount($header_report->id, $low, $high);
+         $low = 51;
+         $high = 1000;
+         echo '<br>Количество просрочек на сумму от '.$low.' до '.$high.' = '.HistoryContract::model()->getSumOfDelayCount($header_report->id, $low, $high);
+         $sum=100;
+         echo '<br>Количество дней с момента последней просрочки на сумму более '.$sum.' = '.HistoryContract::model()->getLastDelayBySumDays($header_report->id, $sum);
+         echo '<br>Размер позитивной истории в днях после последней просрочки ='.HistoryContract::model()->getSizePositiveHistory($header_report->id);
+         echo '<br>Рост задолженности превышает 100(50)грн.=>'.HistoryContract::model()->isGrowthDelayCritical($header_report->id);
+         echo '<br>Max просрочка = '.HistoryContract::model()->getMaxAmountOfDelay($header_report->id);
+     }   
+     private function getMonthlyPayment($report_id, $bureau_id){
+         $res=0;
+         $contracts = Contract::model()->getContractsByReport($report_id);
+         foreach ($contracts as $key => $contract) {
+            if(($bureau_id == 2 and $contract->contract_type_code == 5) or ($bureau_id == 3 and $contract->contract_type_code == 4))
+                 $res += $contract->total_amount*0.07;  // C C
+            else {
+                $e_d = isset($contract->credit_end_date)?(new DateTime($contract->credit_end_date)):(new DateTime('2100-01-01'));
+                $s_d = new DateTime($contract->credit_start_date);
+                $ms = $e_d->diff($s_d)->days;
+                $m_p = 30*$contract->total_amount/$ms;
+                $res += ($m_p>$contract->monthly_instalment_amount)? $m_p:$contract->monthly_instalment_amount;
+            }
+         }
+         return $res;
+     }
+     private function getMaxLoanBurden($report_id){
+         $res=0;
+         $d = Contract::model()->getLoanBurdenData($report_id);
+         $s=0;
+         foreach ($d as $v) {
+             $s = ($v->flag == 'S')? ($s+$v->money):($s-$v->money);
+             if ($s>$res)
+                 $res=$s;
+         }
+         return $res;
+     }
+     private function isExceedingDuration(){
+         
+     }
+     private function getTotalDebt(){
+         
+     }
+     private function getMin36Date(){
+         $curr_date = new DateTime('now');
+         return $curr_date->sub(date_interval_create_from_date_string('3 years')); ;
+     }
+     private function getMin60Date(){
+         $curr_date = new DateTime('now');
+         return $curr_date->sub(date_interval_create_from_date_string('5 years')); ;
+     }
+     private function getMin12Date(){
+         $curr_date = new DateTime('now');
+         return $curr_date->sub(date_interval_create_from_date_string('12 months')); ;
+     }
+     private function isHistoryByContract($contract_id){
+         if (HistoryContract::model()->isGrowthArrearsByContractCritical($contract_id))
+             return false;
+     }
+     private function isPositiveContractVar3($contract_id, $days, $isUnsecuredCredit){
+         return HistoryContract::model()->isHistoryByContract($contract_id, $days, $isUnsecuredCredit);
+     }
 }
