@@ -29,14 +29,14 @@
 		<?php $this->widget('zii.widgets.CMenu',array(
 			'items'=>array(
 //				array('label'=>'Справочники', 'url'=>array('/CrField/indexJq')),
-				array('label'=>'Test', 'url'=>array('/CrField/crmTestForm')), //'/reportMBKI/crmService')),
-                                array('label'=>'Просмотр', 'url'=>array('/reportMBKI/inn')),
-                                array('label'=>'Запрос', 'url'=>array('/reportMBKI/innForQuery')),
-                                array('label'=>'Анализ', 'url'=>array('/reportMBKI/getParamForAnalyze')),
+//				array('label'=>'Test', 'url'=>array('/CrField/crmTestForm')), //'/reportMBKI/crmService')),
+                                array('label'=>'Просмотр', 'url'=>array('/report/inn')),
+                                array('label'=>'Запрос', 'url'=>array('/report/innForQuery')),
+                                array('label'=>'Анализ', 'url'=>array('/report/getParamForAnalyze')),
 //				array('label'=>'Отчеты', 'url'=>array('/reportMBKI/getINN')),
-                                array('label'=>'Загрузка', 'url'=>array('/reportMBKI/Multipleupload')), //array('/CrField/Multipleupload')),
-				array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
-				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
+                                array('label'=>'Загрузка', 'url'=>array('/report/Multipleupload')), //array('/CrField/Multipleupload')),
+//				array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
+//				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
 			),
 		)); ?>
 	</div><!-- mainmenu -->

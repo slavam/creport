@@ -566,8 +566,8 @@ echo '<br>Роль субъекта: '.$c['subjectRole'].'<br>';
     <?if($c['hCResidualAmount']['description']>''){?>
     <tr>
         <?foreach ($c['hCResidualAmount'] as $m) 
-            if(isset($m[0]['value'])){?>
-                <td><?echo $m[0]['value'];?></td>
+            if(isset($m['value'])){?>
+                <td><?echo $m['value'];?></td>
             <?} else {?>
                 <td><?echo $m;?></td>
             <?}?>
@@ -623,8 +623,9 @@ echo '<br>Роль субъекта: '.$c['subjectRole'].'<br>';
         <td><?echo $c['hCTotalOverdueAmount']['month12']['value']; ?></td>
     </tr>
 </table>
-<?if(isset($c['months24']))
-    {?>
+<?if(isset($c['months24'][0]))
+    {
+?>
 <table class ="my-table">
     <tr>
         <?  foreach ($c['months24'] as $ms) 

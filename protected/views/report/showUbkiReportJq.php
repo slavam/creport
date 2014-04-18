@@ -310,6 +310,7 @@ $(function() {
 <h3>3. Финансовые обязательства СКИ</h3>
 <h3>Кредиты</h3>
 <?
+//if(count($report->credits>0))
 foreach ($report->credits as $key => $v) {
 ?>    
 <table class="cel" border="0" cellpadding="0" cellspacing="0" width="100%">
@@ -391,9 +392,12 @@ $(function() {
         shrinktofit:false,
         height : 'auto',
         mtype : 'GET',
+        sortname : 'year',
+        sortorder : 'desc',
+//        loadonce: true,
         colNames : ['Период','Исполнение платежа','Сумма задолж.','Сумма обяз. платежа','Срок просрочки','Сумма просрочки','Кредитный транш'],
         colModel : [
-            {name:'year', width:60},
+            {name:'year', width:60, index:'year', sorttype: 'text', sortable: true},
             {name:'flPay', width:100},
             {name:'amtCurr', width:100},
             {name:'crSetAmount', width:100},
@@ -434,7 +438,7 @@ $(function() {
             data[i]['daysExp'] = 'свыше 90 дней';
         $('#payment'+<?echo $key;?>+'_list').jqGrid('addRowData',i+1,data[i]);
     }
-
+    grid.jqGrid("sortGrid", "year", true); 
 });
 </script>
 

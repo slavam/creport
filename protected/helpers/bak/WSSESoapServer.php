@@ -98,6 +98,8 @@ class WSSESoapServer {
 */
 		$this->authClass = $auth_class;
 
+loggerClass::write('!'.serialize($doc),2);
+
         $this->soapDoc = $doc; 
         $this->envelope = $doc->documentElement; 
         $this->soapNS = $this->envelope->namespaceURI; 

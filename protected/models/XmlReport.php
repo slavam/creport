@@ -96,9 +96,10 @@ class XmlReport extends CActiveRecord
 		));
 	}
         public function getLastReport($inn){
-            $sql ='
+            $sql ="
                 select * from xml_reports 
-                where tax_payer_number='.$inn.' order by created_at desc limit 1';
+                where tax_payer_number='".$inn."' order by created_at desc limit 1";
+//            var_dump($sql);
             return $this->findBySql($sql);
         }
 }

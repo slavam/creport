@@ -15,7 +15,7 @@
 		<?php echo $form->textField($model,'inn'); ?>
 		<?php echo $form->error($model,'inn'); ?>
 	</div>
-        <div class="row">
+<!--        <div class="row">
             <b>Сумма кредита, запрошенная клиентом: </b>
             <br>
 		<?php echo $form->textField($model,'requested_amount'); ?>
@@ -26,7 +26,7 @@
             <br>
 		<?php echo $form->textField($model,'number_months'); ?>
 		<?php echo $form->error($model,'number_months'); ?>
-	</div>
+	</div>-->
         <div class="row">
             <b>Тип кредита: </b>
             <br>

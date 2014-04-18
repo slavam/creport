@@ -23,7 +23,7 @@ class UbkiReport {
         $this->clDate=(string)$xml->r[1]->LST['CLDATE'];
         $this->wokpo=(string)$xml->r[1]->LST['WOKPO'];
         $this->clWName=(string)$xml->r[1]->LST['clWName'];
-        $this->clWDate=(string)$ah['clWDate'];
+        $this->clWDate=(string)$xml->r[1]->LST['clWDate'];
         $this->address1=(string)$xml->r[1]->LST['Address1'];
         $this->address2=(string)$xml->r[1]->LST['Address2'];
         $this->address3=(string)$xml->r[1]->LST['Address3'];
@@ -119,15 +119,19 @@ class UbkiReport {
                 'ye'=>(string)$xml->r[9]->ZINT['ye'],
                 'yu'=>(string)$xml->r[9]->ZINT['yu'],
             );
-        if (isset($xml->r[10]))
-        foreach ($xml->r[10] as $qh) 
-            $this->query_hist[] = array(
-                'reqID'=>(string)$qh['ReqID'], 
-                'reqDateTime'=>(string)$qh['ReqDateTime'],
-                'reqType'=>(string)$qh['ReqType'],
-                'partnerType'=>(string)$qh['PartnerType'],
-                );
-            $this->photo = (string)$xml->r[13]->CL_FOTO['fotobase64'];
+        if (isset($xml->r[10])){
+            if($xml->r[10]->ZINTHIS['errcode']=='nozinthis')
+                $this->query_hist = array();
+            else
+                foreach ($xml->r[10] as $qh) 
+                    $this->query_hist[] = array(
+                        'reqID'=>(string)$qh['ReqID'], 
+                        'reqDateTime'=>(string)$qh['ReqDateTime'],
+                        'reqType'=>(string)$qh['ReqType'],
+                        'partnerType'=>(string)$qh['PartnerType'],
+                        );
+        }
+        $this->photo = (string)$xml->r[13]->CL_FOTO['fotobase64'];
     }  
     private function getPayments($xml_in, $creditName, $crSetAmount){
         $payments = array();

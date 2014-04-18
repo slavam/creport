@@ -25,11 +25,6 @@ class creportSoapServerClass {
 			return $this->raiseServiceError(0x80000003,sprintf('Element: %s not found in AnalyzeCreditHistoryRequest!','request_issuer'),'AnalyzeCrediHistory');
 		else $p_request_issuer = $request->request_issuer;
 
-                if(preg_match_all("/([^0-9])/",$request->taxpayer_number,$matches))
-			return $this->raiseServiceError(0x80000004,sprintf('Element: %s has wrong format!','taxpayer_number'),'AnalyzeCrediHistory');
-                
-                if(preg_match_all("/([^a-z.])/",$request->request_issuer,$matches))
-			return $this->raiseServiceError(0x80000004,sprintf('Element: %s has wrong format!','request_issuer'),'AnalyzeCrediHistory');
 		
 		
 
@@ -49,9 +44,7 @@ class creportSoapServerClass {
 		
 //build correct response
 		$response = new AnalyzeCreditHistoryResponse();
-//		$response->positive = 'T';
 		$response->positive = (+$p_taxpayer_number%2==0)? 'T':'F';// 'T';
-
 
 		loggerClass::write('<- AnalyzeCrediHistory(): '.serialize($response),2);
 

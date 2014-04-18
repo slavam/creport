@@ -20,6 +20,7 @@
  * @property string $overdue_amount
  * @property string $created_at
  * @property integer $report_id
+ * @property integer $credit_type_id
  */
 class Contract extends CActiveRecord
 {
@@ -52,11 +53,11 @@ class Contract extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('contract_type_code, ch_subject_id, currency_id, role_id, report_id', 'numerical', 'integerOnly'=>true),
+			array('contract_type_code, ch_subject_id, currency_id, role_id, report_id, credit_type_id', 'numerical', 'integerOnly'=>true),
 			array('is_open, code, application_date, credit_start_date, credit_end_date, total_amount, outstanding_amount, monthly_instalment_amount, overdue_amount, created_at', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, contract_type_code, ch_subject_id, is_open, code, currency_id, role_id, application_date, credit_start_date, credit_end_date, total_amount, outstanding_amount, monthly_instalment_amount, overdue_amount, created_at, report_id', 'safe', 'on'=>'search'),
+			array('id, contract_type_code, ch_subject_id, is_open, code, currency_id, role_id, application_date, credit_start_date, credit_end_date, total_amount, outstanding_amount, monthly_instalment_amount, overdue_amount, created_at, report_id, credit_type_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -93,6 +94,7 @@ class Contract extends CActiveRecord
 			'overdue_amount' => 'Overdue Amount',
 			'created_at' => 'Created At',
 			'report_id' => 'Report',
+                        'credit_type_id' => 'Credit type',
 		);
 	}
 
@@ -123,6 +125,7 @@ class Contract extends CActiveRecord
 		$criteria->compare('overdue_amount',$this->overdue_amount,true);
 		$criteria->compare('created_at',$this->created_at,true);
 		$criteria->compare('report_id',$this->report_id);
+                $criteria->compare('credit_type_id',$this->credit_type_id);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -153,22 +156,57 @@ class Contract extends CActiveRecord
             $min_start_date = $c->credit_start_date;
             //??????????
         }
-        public function getLastPaymentDate($report_id){
-            $sql = "select h_c.payment_date as application_date from history_contracts h_c
+        public function getLastPaymentDate($report_id, $bureau_id){
+            if($bureau_id==2){ //ubki
+                $sql = "select h_c.payment_date as application_date from history_contracts h_c
+                            join contracts c on c.id=h_c.contract_id and report_id=".$report_id."
+                            where factor_id=5 and value = 'Y' 
+                            order by payment_date desc limit 1";
+                $c = $this->model()->findBySql($sql);
+                return count($c)>0? $c->application_date : '';
+            }else{
+                $sql="select h_c.payment_date as application_date from history_contracts h_c
                         join contracts c on c.id=h_c.contract_id and report_id=".$report_id."
-                        where factor_id=5 and value = 'Y' 
+                        where contract_id>0 and factor_id=2 and (CAST(coalesce(value, '0') AS real))=0
                         order by payment_date desc limit 1";
-            $c = $this->model()->findBySql($sql);
-            return count($c)>0? $c->application_date : '';
+                $c = $this->model()->findBySql($sql);
+                return count($c)>0? $c->application_date : '';
+            }
         }
         public function isUnsecuredCredit($contract_type_code, $bureau_id){ // беззалоговый?
-
+            if(isset($this->credit_type_id))
+                return $this->credit_type_id==1? true:false;
             if($bureau_id == 2){ //ubki
                 if(($contract_type_code==1) or ($contract_type_code==3) or ($contract_type_code==4))
+                    return false;
+                else 
+                    return true;
+            }else{ // mbki
+                if($contract_type_code==1)
                     return false;
                 else 
                     return true;
             }
             return true;
         }
+        public function getMonthlyPayment($contract, $bureau_id, $days, $isUnsecuredCredit){
+            if(($bureau_id == 2 and $contract->contract_type_code == 5) or ($bureau_id == 3 and $contract->contract_type_code == 4))
+                $res = $contract->total_amount*0.07;  // C C
+            else {
+                if(isset($contract->credit_end_date))
+                    $e_d = new DateTime($contract->credit_end_date); 
+                else {
+                    $e_d = new DateTime(HistoryContract::model()->getLastPaymentDate($contract->id, $days, $isUnsecuredCredit));
+                }
+                $s_d = new DateTime($contract->credit_start_date);
+                $days_of_credit = $s_d->diff($e_d)->days;
+                $m_p = 30*$contract->total_amount/$days_of_credit;
+                $res = ($m_p>$contract->monthly_instalment_amount)? $m_p:$contract->monthly_instalment_amount;
+            }
+            if($res==0)
+                return ($days<366)? 500:1000;
+            else
+                return $res;
+        }
+                
 }

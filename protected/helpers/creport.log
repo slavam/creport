@@ -1,334 +1,438 @@
-2014-03-19 19:37:42: !O:11:"DOMDocument":0:{}
-2014-03-19 19:37:42: [i] dummyAthenticationClass object created
-2014-03-19 19:37:42: !O:11:"DOMDocument":0:{}
-2014-03-19 19:37:42: [!] Server fault: 0x80000001, Authentication failed!
-2014-03-19 19:38:36: !s:726:"<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:crep="http://localhost/demos/creport/soapserver/creport.wsdl">
-  <soapenv:Header>
-  <wsse:Security xmlns:wsse="http://schemas.xmlsoap.org/ws/2002/07/secext">
-   <wsse:UsernameToken xmlns:wsu="http://schemas.xmlsoap.org/ws/2002/07/utility">
-    <wsse:Username>test</wsse:Username>
-    <wsse:Password Type="wsse:PasswordText">1234-zxcv</wsse:Password>
-   </wsse:UsernameToken>
-  </wsse:Security>
-  </soapenv:Header>
-   <soapenv:Body>
-      <crep:AnalyzeCreditHistoryRequest>
-         <taxpayer_number>12345678</taxpayer_number>
-         <pawn_credit>T</pawn_credit>
-      </crep:AnalyzeCreditHistoryRequest>
-   </soapenv:Body>
-</soapenv:Envelope>";
-2014-03-19 19:38:36: [i] dummyAthenticationClass object created
-2014-03-19 19:38:36: !O:11:"DOMDocument":0:{}
-2014-03-19 19:38:36: [!] Server fault: 0x80000001, Authentication failed!
-2014-03-19 19:39:13: !O:11:"DOMDocument":0:{}
-2014-03-19 19:39:13: [i] dummyAthenticationClass object created
-2014-03-19 19:39:13: !O:11:"DOMDocument":0:{}
-2014-03-19 19:39:13: <- auth(): b:1;
-2014-03-19 19:39:13: [i] Authentication credentials: username=test password=1234-zxcv
-2014-03-19 19:39:37: !O:11:"DOMDocument":0:{}
-2014-03-19 19:39:37: [i] dummyAthenticationClass object created
-2014-03-19 19:39:37: !O:11:"DOMDocument":0:{}
-2014-03-19 19:39:37: <- auth(): b:1;
-2014-03-19 19:39:37: [i] Authentication credentials: username=test password=1234-zxcv
-2014-03-19 19:39:37: [i] creportSoapServerClass object created
-2014-03-19 19:39:37: -> AnalyzeCrediHistory(): O:8:"stdClass":2:{s:15:"taxpayer_number";s:8:"12345678";s:11:"pawn_credit";s:1:"T";}
-2014-03-19 19:39:37: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"T";}
-2014-03-19 19:39:47: !O:11:"DOMDocument":0:{}
-2014-03-19 19:39:47: [i] dummyAthenticationClass object created
-2014-03-19 19:39:47: !O:11:"DOMDocument":0:{}
-2014-03-19 19:39:47: <- auth(): b:1;
-2014-03-19 19:39:47: [i] Authentication credentials: username=test password=1234-zxcv
-2014-03-19 19:39:47: [i] creportSoapServerClass object created
-2014-03-19 19:39:47: -> AnalyzeCrediHistory(): O:8:"stdClass":2:{s:15:"taxpayer_number";s:8:"12345678";s:11:"pawn_credit";s:1:"T";}
-2014-03-19 19:39:47: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"F";}
-2014-03-20 09:18:33: [i] dummyAthenticationClass object created
-2014-03-20 09:18:33: !O:11:"DOMDocument":0:{}
-2014-03-20 09:18:33: <- auth(): b:1;
-2014-03-20 09:18:33: [i] Authentication credentials: username=test password=1234-zxcv
-2014-03-20 09:18:33: [i] creportSoapServerClass object created
-2014-03-20 09:18:33: -> AnalyzeCrediHistory(): O:8:"stdClass":2:{s:15:"taxpayer_number";s:8:"12345678";s:11:"pawn_credit";s:1:"T";}
-2014-03-20 09:18:33: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"T";}
-2014-03-20 09:23:12: [i] dummyAthenticationClass object created
-2014-03-20 09:23:12: !O:11:"DOMDocument":0:{}
-2014-03-20 09:23:12: <- auth(): b:1;
-2014-03-20 09:23:12: [i] Authentication credentials: username=test password=1234-zxcv
-2014-03-20 09:23:12: [i] creportSoapServerClass object created
-2014-03-20 09:23:12: -> AnalyzeCrediHistory(): O:8:"stdClass":2:{s:15:"taxpayer_number";s:8:"12345678";s:11:"pawn_credit";s:1:"T";}
-2014-03-20 09:23:12: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"T";}
-2014-03-20 09:28:57: [i] dummyAthenticationClass object created
-2014-03-20 09:28:57: !O:11:"DOMDocument":0:{}
-2014-03-20 09:28:57: <- auth(): b:1;
-2014-03-20 09:28:57: [i] Authentication credentials: username=test password=1234-zxcv
-2014-03-20 09:28:57: [i] creportSoapServerClass object created
-2014-03-20 09:28:57: -> AnalyzeCrediHistory(): O:8:"stdClass":2:{s:15:"taxpayer_number";s:8:"12345678";s:11:"pawn_credit";s:1:"T";}
-2014-03-20 09:28:57: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"T";}
-2014-03-20 09:31:36: ++++++++++++> : O:11:"DOMDocument":0:{}
-2014-03-20 09:31:36: [i] dummyAthenticationClass object created
-2014-03-20 09:31:36: !O:11:"DOMDocument":0:{}
-2014-03-20 09:31:36: <- auth(): b:1;
-2014-03-20 09:31:36: [i] Authentication credentials: username=test password=1234-zxcv
-2014-03-20 09:31:36: [i] creportSoapServerClass object created
-2014-03-20 09:31:36: -> AnalyzeCrediHistory(): O:8:"stdClass":2:{s:15:"taxpayer_number";s:8:"12345678";s:11:"pawn_credit";s:1:"T";}
-2014-03-20 09:31:36: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"T";}
-2014-03-20 09:33:58: ++++++++++++> : s:749:"<?xml version="1.0"?>
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:crep="http://localhost/demos/creport/soapserver/creport.wsdl">
-  <soapenv:Header>
-  <wsse:Security xmlns:wsse="http://schemas.xmlsoap.org/ws/2002/07/secext">
-   <wsse:UsernameToken xmlns:wsu="http://schemas.xmlsoap.org/ws/2002/07/utility">
-    <wsse:Username>test</wsse:Username>
-    <wsse:Password Type="wsse:PasswordText">1234-zxcv</wsse:Password>
-   </wsse:UsernameToken>
-  </wsse:Security>
-  </soapenv:Header>
-   <soapenv:Body>
-      <crep:AnalyzeCreditHistoryRequest>
-         <taxpayer_number>12345678</taxpayer_number>
-         <pawn_credit>T</pawn_credit>
-      </crep:AnalyzeCreditHistoryRequest>
-   </soapenv:Body>
-</soapenv:Envelope>
-";
-2014-03-20 09:33:58: [i] dummyAthenticationClass object created
-2014-03-20 09:33:58: !O:11:"DOMDocument":0:{}
-2014-03-20 09:33:58: <- auth(): b:1;
-2014-03-20 09:33:58: [i] Authentication credentials: username=test password=1234-zxcv
-2014-03-20 09:33:58: [i] creportSoapServerClass object created
-2014-03-20 09:33:58: -> AnalyzeCrediHistory(): O:8:"stdClass":2:{s:15:"taxpayer_number";s:8:"12345678";s:11:"pawn_credit";s:1:"T";}
-2014-03-20 09:33:58: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"T";}
-2014-03-20 09:35:13: ++++++++++++> : a:0:{}
-2014-03-20 09:35:13: [i] dummyAthenticationClass object created
-2014-03-20 09:35:13: !O:11:"DOMDocument":0:{}
-2014-03-20 09:35:13: <- auth(): b:1;
-2014-03-20 09:35:13: [i] Authentication credentials: username=test password=1234-zxcv
-2014-03-20 09:35:13: [i] creportSoapServerClass object created
-2014-03-20 09:35:13: -> AnalyzeCrediHistory(): O:8:"stdClass":2:{s:15:"taxpayer_number";s:8:"12345678";s:11:"pawn_credit";s:1:"T";}
-2014-03-20 09:35:13: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"T";}
-2014-03-20 09:36:18: ++++++++++++> : Array
-2014-03-20 09:36:18: [i] dummyAthenticationClass object created
-2014-03-20 09:36:18: !O:11:"DOMDocument":0:{}
-2014-03-20 09:36:18: <- auth(): b:1;
-2014-03-20 09:36:18: [i] Authentication credentials: username=test password=1234-zxcv
-2014-03-20 09:36:18: [i] creportSoapServerClass object created
-2014-03-20 09:36:18: -> AnalyzeCrediHistory(): O:8:"stdClass":2:{s:15:"taxpayer_number";s:8:"12345678";s:11:"pawn_credit";s:1:"T";}
-2014-03-20 09:36:18: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"T";}
-2014-03-20 09:36:44: ++++++++++++> : 
-2014-03-20 09:36:44: [i] dummyAthenticationClass object created
-2014-03-20 09:36:44: !O:11:"DOMDocument":0:{}
-2014-03-20 09:36:44: <- auth(): b:1;
-2014-03-20 09:36:44: [i] Authentication credentials: username=test password=1234-zxcv
-2014-03-20 09:36:44: [i] creportSoapServerClass object created
-2014-03-20 09:36:44: -> AnalyzeCrediHistory(): O:8:"stdClass":2:{s:15:"taxpayer_number";s:8:"12345678";s:11:"pawn_credit";s:1:"T";}
-2014-03-20 09:36:44: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"T";}
-2014-03-20 09:37:25: ++++++++++++> : 
-2014-03-20 09:37:25: [i] dummyAthenticationClass object created
-2014-03-20 09:37:25: !O:11:"DOMDocument":0:{}
-2014-03-20 09:37:25: <- auth(): b:1;
-2014-03-20 09:37:25: [i] Authentication credentials: username=test password=1234-zxcv
-2014-03-20 09:37:25: [i] creportSoapServerClass object created
-2014-03-20 09:37:25: -> AnalyzeCrediHistory(): O:8:"stdClass":2:{s:15:"taxpayer_number";s:8:"12345678";s:11:"pawn_credit";s:1:"T";}
-2014-03-20 09:37:25: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"T";}
-2014-03-20 09:38:33: ++++++++++++> : Array
-2014-03-20 09:38:33: [i] dummyAthenticationClass object created
-2014-03-20 09:38:33: !O:11:"DOMDocument":0:{}
-2014-03-20 09:38:33: <- auth(): b:1;
-2014-03-20 09:38:33: [i] Authentication credentials: username=test password=1234-zxcv
-2014-03-20 09:38:33: [i] creportSoapServerClass object created
-2014-03-20 09:38:33: -> AnalyzeCrediHistory(): O:8:"stdClass":2:{s:15:"taxpayer_number";s:8:"12345678";s:11:"pawn_credit";s:1:"T";}
-2014-03-20 09:38:33: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"T";}
-2014-03-25 15:19:42: [i] dummyAthenticationClass object created
-2014-03-25 15:19:42: !O:11:"DOMDocument":0:{}
-2014-03-25 15:19:42: <- auth(): b:1;
-2014-03-25 15:19:42: [i] Authentication credentials: username=test password=1234-zxcv
-2014-03-25 15:19:42: [i] creportSoapServerClass object created
-2014-03-25 15:19:42: -> AnalyzeCrediHistory(): O:8:"stdClass":2:{s:15:"taxpayer_number";s:8:"12345678";s:11:"pawn_credit";s:1:"T";}
-2014-03-25 15:19:42: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"T";}
-2014-03-25 15:19:42: ++++++++++++> : s:440:"<?xml version="1.0"?>
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:crep="http://localhost/demos/creport/soapserver/creport.wsdl">
-  <soapenv:Header>
-  
-  </soapenv:Header>
-   <soapenv:Body>
-      <crep:AnalyzeCreditHistoryRequest>
-         <taxpayer_number>12345678</taxpayer_number>
-         <pawn_credit>T</pawn_credit>
-      </crep:AnalyzeCreditHistoryRequest>
-   </soapenv:Body>
-</soapenv:Envelope>
-";
-2014-03-25 15:19:51: [i] dummyAthenticationClass object created
-2014-03-25 15:19:51: !O:11:"DOMDocument":0:{}
-2014-03-25 15:19:51: <- auth(): b:1;
-2014-03-25 15:19:51: [i] Authentication credentials: username=test password=1234-zxcv
-2014-03-25 15:19:51: [i] creportSoapServerClass object created
-2014-03-25 15:19:51: -> AnalyzeCrediHistory(): O:8:"stdClass":2:{s:15:"taxpayer_number";s:8:"12345677";s:11:"pawn_credit";s:1:"T";}
-2014-03-25 15:19:51: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"F";}
-2014-03-25 15:19:51: ++++++++++++> : s:440:"<?xml version="1.0"?>
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:crep="http://localhost/demos/creport/soapserver/creport.wsdl">
-  <soapenv:Header>
-  
-  </soapenv:Header>
-   <soapenv:Body>
-      <crep:AnalyzeCreditHistoryRequest>
-         <taxpayer_number>12345677</taxpayer_number>
-         <pawn_credit>T</pawn_credit>
-      </crep:AnalyzeCreditHistoryRequest>
-   </soapenv:Body>
-</soapenv:Envelope>
-";
-2014-03-25 15:33:55: [i] dummyAthenticationClass object created
-2014-03-25 15:33:55: !O:11:"DOMDocument":0:{}
-2014-03-25 15:33:55: <- auth(): b:1;
-2014-03-25 15:33:55: [i] Authentication credentials: username=test password=1234-zxcv
-2014-03-25 15:33:55: [i] creportSoapServerClass object created
-2014-03-25 15:33:55: -> AnalyzeCrediHistory(): O:8:"stdClass":2:{s:15:"taxpayer_number";s:8:"12345677";s:11:"pawn_credit";s:1:"T";}
-2014-03-25 15:33:55: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"F";}
-2014-03-25 15:33:55: ++++++++++++> : N;
-2014-03-25 15:34:53: [i] dummyAthenticationClass object created
-2014-03-25 15:34:53: !O:11:"DOMDocument":0:{}
-2014-03-25 15:34:53: <- auth(): b:1;
-2014-03-25 15:34:53: [i] Authentication credentials: username=test password=1234-zxcv
-2014-03-25 15:34:53: [i] creportSoapServerClass object created
-2014-03-25 15:34:53: -> AnalyzeCrediHistory(): O:8:"stdClass":2:{s:15:"taxpayer_number";s:8:"12345677";s:11:"pawn_credit";s:1:"T";}
-2014-03-25 15:34:53: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"F";}
-2014-03-25 15:34:53: ++++++++++++> : N;
-2014-03-25 15:41:16: [i] dummyAthenticationClass object created
-2014-03-25 15:41:16: !O:11:"DOMDocument":0:{}
-2014-03-25 15:41:16: <- auth(): b:1;
-2014-03-25 15:41:16: [i] Authentication credentials: username=test password=1234-zxcv
-2014-03-25 15:41:16: [i] creportSoapServerClass object created
-2014-03-25 15:41:16: -> AnalyzeCrediHistory(): O:8:"stdClass":2:{s:15:"taxpayer_number";s:8:"12345677";s:11:"pawn_credit";s:1:"T";}
-2014-03-25 15:41:16: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"F";}
-2014-03-25 15:41:16: ++++++++++++> : __construct
-2014-03-25 15:41:16: ++++++++++++> : AnalyzeCreditHistory
-2014-03-25 15:44:09: [i] dummyAthenticationClass object created
-2014-03-25 15:44:09: !O:11:"DOMDocument":0:{}
-2014-03-25 15:44:09: <- auth(): b:1;
-2014-03-25 15:44:09: [i] Authentication credentials: username=test password=1234-zxcv
-2014-03-25 15:44:09: [i] creportSoapServerClass object created
-2014-03-25 15:44:09: ==================> AnalyzeCrediHistory(): O:8:"stdClass":2:{s:15:"taxpayer_number";s:8:"12345677";s:11:"pawn_credit";s:1:"T";}
-2014-03-25 15:44:09: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"F";}
-2014-03-25 15:45:14: [i] dummyAthenticationClass object created
-2014-03-25 15:45:14: !O:11:"DOMDocument":0:{}
-2014-03-25 15:45:14: <- auth(): b:1;
-2014-03-25 15:45:14: [i] Authentication credentials: username=test password=1234-zxcv
-2014-03-25 15:45:14: [i] creportSoapServerClass object created
-2014-03-25 15:45:14: ==================> AnalyzeCrediHistory(): O:8:"stdClass":2:{s:15:"taxpayer_number";s:8:"12345677";s:11:"pawn_credit";s:1:"T";}
-2014-03-25 15:45:14: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"F";}
-2014-03-25 15:50:48: [i] dummyAthenticationClass object created
-2014-03-25 15:50:48: !O:11:"DOMDocument":0:{}
-2014-03-25 15:50:48: <- auth(): b:1;
-2014-03-25 15:50:48: [i] Authentication credentials: username=test password=1234-zxcv
-2014-03-25 15:50:48: [i] creportSoapServerClass object created
-2014-03-25 15:50:48: ==================> AnalyzeCrediHistory(): O:8:"stdClass":2:{s:15:"taxpayer_number";s:8:"12345677";s:11:"pawn_credit";s:1:"T";}
-2014-03-25 15:55:14: [i] dummyAthenticationClass object created
-2014-03-25 15:55:14: !O:11:"DOMDocument":0:{}
-2014-03-25 15:55:14: <- auth(): b:1;
-2014-03-25 15:55:14: [i] Authentication credentials: username=test password=1234-zxcv
-2014-03-25 15:55:14: [i] creportSoapServerClass object created
-2014-03-25 15:55:14: ==================> AnalyzeCrediHistory(): O:8:"stdClass":2:{s:15:"taxpayer_number";s:8:"12345677";s:11:"pawn_credit";s:1:"T";}
-2014-03-25 15:56:08: [i] dummyAthenticationClass object created
-2014-03-25 15:56:08: !O:11:"DOMDocument":0:{}
-2014-03-25 15:56:08: <- auth(): b:1;
-2014-03-25 15:56:08: [i] Authentication credentials: username=test password=1234-zxcv
-2014-03-25 15:56:08: [i] creportSoapServerClass object created
-2014-03-25 15:56:08: ==================> AnalyzeCrediHistory(): O:8:"stdClass":2:{s:15:"taxpayer_number";s:8:"12345677";s:11:"pawn_credit";s:1:"T";}
-2014-03-25 15:59:22: [i] dummyAthenticationClass object created
-2014-03-25 15:59:22: !O:11:"DOMDocument":0:{}
-2014-03-25 15:59:22: <- auth(): b:1;
-2014-03-25 15:59:22: [i] Authentication credentials: username=test password=1234-zxcv
-2014-03-25 15:59:22: [i] creportSoapServerClass object created
-2014-03-25 15:59:22: ==================> AnalyzeCrediHistory(): O:8:"stdClass":2:{s:15:"taxpayer_number";s:8:"12345677";s:11:"pawn_credit";s:1:"T";}
-2014-03-25 15:59:22: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:66:"/demos/creport/index.php/ReportMBKI/ShowAnalyzeResult?inn=12345677";}
-2014-03-25 16:05:28: [i] dummyAthenticationClass object created
-2014-03-25 16:05:28: !O:11:"DOMDocument":0:{}
-2014-03-25 16:05:28: <- auth(): b:1;
-2014-03-25 16:05:28: [i] Authentication credentials: username=test password=1234-zxcv
-2014-03-25 16:05:28: [i] creportSoapServerClass object created
-2014-03-25 16:05:28: ==================> AnalyzeCrediHistory(): O:8:"stdClass":2:{s:15:"taxpayer_number";s:10:"2315515892";s:11:"pawn_credit";s:1:"T";}
-2014-03-25 16:05:28: ==================> AnalyzeCrediHistory(): O:6:"Report":12:{s:18:" CActiveRecord _md";N;s:19:" CActiveRecord _new";b:0;s:26:" CActiveRecord _attributes";a:7:{s:2:"id";i:129;s:9:"bureau_id";i:2;s:10:"created_at";s:22:"2014-03-24 12:20:39+02";s:16:"code_from_bureau";s:14:"req#0036070219";s:10:"issue_date";s:22:"2010-03-10 00:00:00+02";s:15:"taxpayer_number";s:10:"2315515892";s:14:"report_type_id";i:2;}s:23:" CActiveRecord _related";a:0:{}s:17:" CActiveRecord _c";N;s:18:" CActiveRecord _pk";i:129;s:21:" CActiveRecord _alias";s:1:"t";s:15:" CModel _errors";a:0:{}s:19:" CModel _validators";N;s:17:" CModel _scenario";s:6:"update";s:14:" CComponent _e";N;s:14:" CComponent _m";N;}
-2014-03-25 16:05:28: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"F";}
-2014-03-25 16:11:01: [i] dummyAthenticationClass object created
-2014-03-25 16:11:01: !O:11:"DOMDocument":0:{}
-2014-03-25 16:11:01: <- auth(): b:1;
-2014-03-25 16:11:01: [i] Authentication credentials: username=test password=1234-zxcv
-2014-03-25 16:12:25: [i] dummyAthenticationClass object created
-2014-03-25 16:12:25: !O:11:"DOMDocument":0:{}
-2014-03-25 16:12:25: <- auth(): b:1;
-2014-03-25 16:12:25: [i] Authentication credentials: username=test password=1234-zxcv
-2014-03-25 16:12:25: [i] creportSoapServerClass object created
-2014-03-25 16:12:25: ==================> AnalyzeCrediHistory(): O:8:"stdClass":2:{s:15:"taxpayer_number";s:10:"2315515892";s:11:"pawn_credit";s:1:"T";}
-2014-03-25 16:12:25: ==================> AnalyzeCrediHistory(): O:6:"Report":12:{s:18:" CActiveRecord _md";N;s:19:" CActiveRecord _new";b:0;s:26:" CActiveRecord _attributes";a:7:{s:2:"id";i:129;s:9:"bureau_id";i:2;s:10:"created_at";s:22:"2014-03-24 12:20:39+02";s:16:"code_from_bureau";s:14:"req#0036070219";s:10:"issue_date";s:22:"2010-03-10 00:00:00+02";s:15:"taxpayer_number";s:10:"2315515892";s:14:"report_type_id";i:2;}s:23:" CActiveRecord _related";a:0:{}s:17:" CActiveRecord _c";N;s:18:" CActiveRecord _pk";i:129;s:21:" CActiveRecord _alias";s:1:"t";s:15:" CModel _errors";a:0:{}s:19:" CModel _validators";N;s:17:" CModel _scenario";s:6:"update";s:14:" CComponent _e";N;s:14:" CComponent _m";N;}
-2014-03-25 16:12:25: <- AnalyzeCrediHistory(): $p_taxpayer_number%2=1 O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"F";}
-2014-03-25 16:13:10: [i] dummyAthenticationClass object created
-2014-03-25 16:13:10: !O:11:"DOMDocument":0:{}
-2014-03-25 16:13:10: <- auth(): b:1;
-2014-03-25 16:13:10: [i] Authentication credentials: username=test password=1234-zxcv
-2014-03-25 16:13:10: [i] creportSoapServerClass object created
-2014-03-25 16:13:10: ==================> AnalyzeCrediHistory(): O:8:"stdClass":2:{s:15:"taxpayer_number";s:10:"2315515892";s:11:"pawn_credit";s:1:"T";}
-2014-03-25 16:13:10: ==================> AnalyzeCrediHistory(): O:6:"Report":12:{s:18:" CActiveRecord _md";N;s:19:" CActiveRecord _new";b:0;s:26:" CActiveRecord _attributes";a:7:{s:2:"id";i:129;s:9:"bureau_id";i:2;s:10:"created_at";s:22:"2014-03-24 12:20:39+02";s:16:"code_from_bureau";s:14:"req#0036070219";s:10:"issue_date";s:22:"2010-03-10 00:00:00+02";s:15:"taxpayer_number";s:10:"2315515892";s:14:"report_type_id";i:2;}s:23:" CActiveRecord _related";a:0:{}s:17:" CActiveRecord _c";N;s:18:" CActiveRecord _pk";i:129;s:21:" CActiveRecord _alias";s:1:"t";s:15:" CModel _errors";a:0:{}s:19:" CModel _validators";N;s:17:" CModel _scenario";s:6:"update";s:14:" CComponent _e";N;s:14:" CComponent _m";N;}
-2014-03-25 16:13:10: <- AnalyzeCrediHistory(): $p_taxpayer_number=2315515892 O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"F";}
-2014-03-25 16:16:45: [i] dummyAthenticationClass object created
-2014-03-25 16:16:45: !O:11:"DOMDocument":0:{}
-2014-03-25 16:16:45: <- auth(): b:1;
-2014-03-25 16:16:45: [i] Authentication credentials: username=test password=1234-zxcv
-2014-03-25 16:16:45: [i] creportSoapServerClass object created
-2014-03-25 16:16:45: ==================> AnalyzeCrediHistory(): O:8:"stdClass":2:{s:15:"taxpayer_number";s:10:"2315515892";s:11:"pawn_credit";s:1:"T";}
-2014-03-25 16:16:45: ==================> AnalyzeCrediHistory(): O:6:"Report":12:{s:18:" CActiveRecord _md";N;s:19:" CActiveRecord _new";b:0;s:26:" CActiveRecord _attributes";a:7:{s:2:"id";i:129;s:9:"bureau_id";i:2;s:10:"created_at";s:22:"2014-03-24 12:20:39+02";s:16:"code_from_bureau";s:14:"req#0036070219";s:10:"issue_date";s:22:"2010-03-10 00:00:00+02";s:15:"taxpayer_number";s:10:"2315515892";s:14:"report_type_id";i:2;}s:23:" CActiveRecord _related";a:0:{}s:17:" CActiveRecord _c";N;s:18:" CActiveRecord _pk";i:129;s:21:" CActiveRecord _alias";s:1:"t";s:15:" CModel _errors";a:0:{}s:19:" CModel _validators";N;s:17:" CModel _scenario";s:6:"update";s:14:" CComponent _e";N;s:14:" CComponent _m";N;}
-2014-03-25 16:16:45: <- AnalyzeCrediHistory(): $p_taxpayer_number=F O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"F";}
-2014-03-25 16:17:51: [i] dummyAthenticationClass object created
-2014-03-25 16:17:51: !O:11:"DOMDocument":0:{}
-2014-03-25 16:17:51: <- auth(): b:1;
-2014-03-25 16:17:51: [i] Authentication credentials: username=test password=1234-zxcv
-2014-03-25 16:17:51: [i] creportSoapServerClass object created
-2014-03-25 16:17:51: ==================> AnalyzeCrediHistory(): O:8:"stdClass":2:{s:15:"taxpayer_number";s:10:"2315515891";s:11:"pawn_credit";s:1:"T";}
-2014-03-25 16:17:51: ==================> AnalyzeCrediHistory(): N;
-2014-03-25 16:17:51: <- AnalyzeCrediHistory(): $p_taxpayer_number=F O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"F";}
-2014-03-25 16:18:05: [i] dummyAthenticationClass object created
-2014-03-25 16:18:05: !O:11:"DOMDocument":0:{}
-2014-03-25 16:18:05: <- auth(): b:1;
-2014-03-25 16:18:05: [i] Authentication credentials: username=test password=1234-zxcv
-2014-03-25 16:18:05: [i] creportSoapServerClass object created
-2014-03-25 16:18:05: ==================> AnalyzeCrediHistory(): O:8:"stdClass":2:{s:15:"taxpayer_number";s:10:"2315515892";s:11:"pawn_credit";s:1:"T";}
-2014-03-25 16:18:05: ==================> AnalyzeCrediHistory(): O:6:"Report":12:{s:18:" CActiveRecord _md";N;s:19:" CActiveRecord _new";b:0;s:26:" CActiveRecord _attributes";a:7:{s:2:"id";i:129;s:9:"bureau_id";i:2;s:10:"created_at";s:22:"2014-03-24 12:20:39+02";s:16:"code_from_bureau";s:14:"req#0036070219";s:10:"issue_date";s:22:"2010-03-10 00:00:00+02";s:15:"taxpayer_number";s:10:"2315515892";s:14:"report_type_id";i:2;}s:23:" CActiveRecord _related";a:0:{}s:17:" CActiveRecord _c";N;s:18:" CActiveRecord _pk";i:129;s:21:" CActiveRecord _alias";s:1:"t";s:15:" CModel _errors";a:0:{}s:19:" CModel _validators";N;s:17:" CModel _scenario";s:6:"update";s:14:" CComponent _e";N;s:14:" CComponent _m";N;}
-2014-03-25 16:18:05: <- AnalyzeCrediHistory(): $p_taxpayer_number=F O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"F";}
-2014-03-25 16:18:16: [i] dummyAthenticationClass object created
-2014-03-25 16:18:16: !O:11:"DOMDocument":0:{}
-2014-03-25 16:18:16: <- auth(): b:1;
-2014-03-25 16:18:16: [i] Authentication credentials: username=test password=1234-zxcv
-2014-03-25 16:18:16: [i] creportSoapServerClass object created
-2014-03-25 16:18:16: ==================> AnalyzeCrediHistory(): O:8:"stdClass":2:{s:15:"taxpayer_number";s:10:"2315515891";s:11:"pawn_credit";s:1:"T";}
-2014-03-25 16:18:16: ==================> AnalyzeCrediHistory(): N;
-2014-03-25 16:18:16: <- AnalyzeCrediHistory(): $p_taxpayer_number=F O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"F";}
-2014-03-25 16:18:26: [i] dummyAthenticationClass object created
-2014-03-25 16:18:26: !O:11:"DOMDocument":0:{}
-2014-03-25 16:18:26: <- auth(): b:1;
-2014-03-25 16:18:26: [i] Authentication credentials: username=test password=1234-zxcv
-2014-03-25 16:18:26: [i] creportSoapServerClass object created
-2014-03-25 16:18:26: ==================> AnalyzeCrediHistory(): O:8:"stdClass":2:{s:15:"taxpayer_number";s:10:"2315515892";s:11:"pawn_credit";s:1:"T";}
-2014-03-25 16:18:26: ==================> AnalyzeCrediHistory(): O:6:"Report":12:{s:18:" CActiveRecord _md";N;s:19:" CActiveRecord _new";b:0;s:26:" CActiveRecord _attributes";a:7:{s:2:"id";i:129;s:9:"bureau_id";i:2;s:10:"created_at";s:22:"2014-03-24 12:20:39+02";s:16:"code_from_bureau";s:14:"req#0036070219";s:10:"issue_date";s:22:"2010-03-10 00:00:00+02";s:15:"taxpayer_number";s:10:"2315515892";s:14:"report_type_id";i:2;}s:23:" CActiveRecord _related";a:0:{}s:17:" CActiveRecord _c";N;s:18:" CActiveRecord _pk";i:129;s:21:" CActiveRecord _alias";s:1:"t";s:15:" CModel _errors";a:0:{}s:19:" CModel _validators";N;s:17:" CModel _scenario";s:6:"update";s:14:" CComponent _e";N;s:14:" CComponent _m";N;}
-2014-03-25 16:18:26: <- AnalyzeCrediHistory(): $p_taxpayer_number=F O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"F";}
-2014-03-25 16:20:16: [i] dummyAthenticationClass object created
-2014-03-25 16:20:16: !O:11:"DOMDocument":0:{}
-2014-03-25 16:20:16: <- auth(): b:1;
-2014-03-25 16:20:16: [i] Authentication credentials: username=test password=1234-zxcv
-2014-03-25 16:20:16: [i] creportSoapServerClass object created
-2014-03-25 16:20:16: ==================> AnalyzeCrediHistory(): O:8:"stdClass":2:{s:15:"taxpayer_number";s:10:"2315515892";s:11:"pawn_credit";s:1:"T";}
-2014-03-25 16:20:17: ==================> AnalyzeCrediHistory(): O:6:"Report":12:{s:18:" CActiveRecord _md";N;s:19:" CActiveRecord _new";b:0;s:26:" CActiveRecord _attributes";a:7:{s:2:"id";i:129;s:9:"bureau_id";i:2;s:10:"created_at";s:22:"2014-03-24 12:20:39+02";s:16:"code_from_bureau";s:14:"req#0036070219";s:10:"issue_date";s:22:"2010-03-10 00:00:00+02";s:15:"taxpayer_number";s:10:"2315515892";s:14:"report_type_id";i:2;}s:23:" CActiveRecord _related";a:0:{}s:17:" CActiveRecord _c";N;s:18:" CActiveRecord _pk";i:129;s:21:" CActiveRecord _alias";s:1:"t";s:15:" CModel _errors";a:0:{}s:19:" CModel _validators";N;s:17:" CModel _scenario";s:6:"update";s:14:" CComponent _e";N;s:14:" CComponent _m";N;}
-2014-03-25 16:20:17: <- AnalyzeCrediHistory(): $p_taxpayer_number=F O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"F";}
-2014-03-25 16:25:12: [i] dummyAthenticationClass object created
-2014-03-25 16:25:12: !O:11:"DOMDocument":0:{}
-2014-03-25 16:25:12: <- auth(): b:1;
-2014-03-25 16:25:12: [i] Authentication credentials: username=test password=1234-zxcv
-2014-03-25 16:25:13: [i] creportSoapServerClass object created
-2014-03-25 16:25:13: ==================> AnalyzeCrediHistory(): O:8:"stdClass":2:{s:15:"taxpayer_number";s:10:"2315515892";s:11:"pawn_credit";s:1:"T";}
-2014-03-25 16:25:13: ==================> AnalyzeCrediHistory(): O:6:"Report":12:{s:18:" CActiveRecord _md";N;s:19:" CActiveRecord _new";b:0;s:26:" CActiveRecord _attributes";a:7:{s:2:"id";i:129;s:9:"bureau_id";i:2;s:10:"created_at";s:22:"2014-03-24 12:20:39+02";s:16:"code_from_bureau";s:14:"req#0036070219";s:10:"issue_date";s:22:"2010-03-10 00:00:00+02";s:15:"taxpayer_number";s:10:"2315515892";s:14:"report_type_id";i:2;}s:23:" CActiveRecord _related";a:0:{}s:17:" CActiveRecord _c";N;s:18:" CActiveRecord _pk";i:129;s:21:" CActiveRecord _alias";s:1:"t";s:15:" CModel _errors";a:0:{}s:19:" CModel _validators";N;s:17:" CModel _scenario";s:6:"update";s:14:" CComponent _e";N;s:14:" CComponent _m";N;}
-2014-03-25 16:25:13: <- AnalyzeCrediHistory(): $p_taxpayer_number=F O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"T";}
-2014-03-25 16:25:22: [i] dummyAthenticationClass object created
-2014-03-25 16:25:22: !O:11:"DOMDocument":0:{}
-2014-03-25 16:25:22: <- auth(): b:1;
-2014-03-25 16:25:22: [i] Authentication credentials: username=test password=1234-zxcv
-2014-03-25 16:25:22: [i] creportSoapServerClass object created
-2014-03-25 16:25:22: ==================> AnalyzeCrediHistory(): O:8:"stdClass":2:{s:15:"taxpayer_number";s:10:"2315515891";s:11:"pawn_credit";s:1:"T";}
-2014-03-25 16:25:23: ==================> AnalyzeCrediHistory(): N;
-2014-03-25 16:25:23: <- AnalyzeCrediHistory(): $p_taxpayer_number=F O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"F";}
+2014-03-20 13:01:51: !O:11:"DOMDocument":0:{}
+2014-03-20 13:01:51: !b:1;
+2014-03-20 13:01:51: [i] dummyAthenticationClass object created
+2014-03-20 13:01:51: <- auth(): b:1;
+2014-03-20 13:01:51: [i] Authentication credentials: username=test password=1234-zxcv
+2014-03-20 13:01:51: [i] creportSoapServerClass object created
+2014-03-20 13:01:51: -> AnalyzeCrediHistory(): O:8:"stdClass":2:{s:15:"taxpayer_number";s:8:"12345678";s:11:"pawn_credit";s:1:"T";}
+2014-03-20 13:01:51: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"T";}
+2014-03-20 13:03:07: [i] dummyAthenticationClass object created
+2014-03-20 13:03:07: [i] Authentication credentials: username=test password=1234-zxcv
+2014-03-20 13:03:07: <- auth(): b:1;
+2014-03-20 13:03:07: [i] creportSoapServerClass object created
+2014-03-20 13:03:07: -> AnalyzeCrediHistory(): O:8:"stdClass":2:{s:15:"taxpayer_number";s:8:"12345678";s:11:"pawn_credit";s:1:"T";}
+2014-03-20 13:03:07: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"T";}
+2014-03-20 14:22:29: [i] dummyAthenticationClass object created
+2014-03-20 14:22:29: [i] Authentication credentials: username=test password=1234-zxcv
+2014-03-20 14:22:29: <- auth(): b:1;
+2014-03-20 14:22:29: [i] creportSoapServerClass object created
+2014-03-20 14:22:29: -> AnalyzeCrediHistory(): O:8:"stdClass":3:{s:15:"taxpayer_number";s:1:"?";s:11:"pawn_credit";s:1:"?";s:14:"request_issuer";s:1:"?";}
+2014-03-20 14:22:29: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"T";}
+2014-03-20 14:22:37: [i] dummyAthenticationClass object created
+2014-03-20 14:22:37: [i] Authentication credentials: username=test password=1234-zxcv
+2014-03-20 14:22:37: <- auth(): b:1;
+2014-03-20 14:22:37: [i] creportSoapServerClass object created
+2014-03-20 14:22:37: -> AnalyzeCrediHistory(): O:8:"stdClass":2:{s:15:"taxpayer_number";s:1:"?";s:11:"pawn_credit";s:1:"?";}
+2014-03-20 14:22:37: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"T";}
+2014-03-20 14:23:36: [i] dummyAthenticationClass object created
+2014-03-20 14:23:36: [i] Authentication credentials: username=test password=1234-zxcv
+2014-03-20 14:23:36: <- auth(): b:1;
+2014-03-20 14:23:36: [i] creportSoapServerClass object created
+2014-03-20 14:23:36: -> AnalyzeCrediHistory(): O:8:"stdClass":3:{s:15:"taxpayer_number";s:1:"?";s:11:"pawn_credit";s:1:"?";s:14:"request_issuer";s:1:"?";}
+2014-03-20 14:23:36: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"T";}
+2014-03-20 14:23:38: [i] dummyAthenticationClass object created
+2014-03-20 14:23:38: [i] Authentication credentials: username=test password=1234-zxcv
+2014-03-20 14:23:38: <- auth(): b:1;
+2014-03-20 14:23:38: [i] creportSoapServerClass object created
+2014-03-20 14:23:38: -> AnalyzeCrediHistory(): O:8:"stdClass":3:{s:15:"taxpayer_number";s:1:"?";s:11:"pawn_credit";s:1:"?";s:14:"request_issuer";s:1:"?";}
+2014-03-20 14:23:38: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"T";}
+2014-03-20 14:24:06: [i] dummyAthenticationClass object created
+2014-03-20 14:24:06: [i] Authentication credentials: username=test password=1234-zxcv
+2014-03-20 14:24:06: <- auth(): b:1;
+2014-03-20 14:24:06: [i] creportSoapServerClass object created
+2014-03-20 14:24:06: -> AnalyzeCrediHistory(): O:8:"stdClass":2:{s:15:"taxpayer_number";s:1:"?";s:11:"pawn_credit";s:1:"?";}
+2014-03-20 14:24:06: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"T";}
+2014-03-20 14:24:07: [i] dummyAthenticationClass object created
+2014-03-20 14:24:07: [i] Authentication credentials: username=test password=1234-zxcv
+2014-03-20 14:24:07: <- auth(): b:1;
+2014-03-20 14:24:07: [i] creportSoapServerClass object created
+2014-03-20 14:24:07: -> AnalyzeCrediHistory(): O:8:"stdClass":2:{s:15:"taxpayer_number";s:1:"?";s:11:"pawn_credit";s:1:"?";}
+2014-03-20 14:24:07: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"T";}
+2014-03-20 14:24:21: [i] dummyAthenticationClass object created
+2014-03-20 14:24:21: [i] Authentication credentials: username=test password=1234-zxcv
+2014-03-20 14:24:21: <- auth(): b:1;
+2014-03-20 14:24:21: [i] creportSoapServerClass object created
+2014-03-20 14:24:21: -> AnalyzeCrediHistory(): O:8:"stdClass":3:{s:15:"taxpayer_number";s:21:"111111111111111111111";s:11:"pawn_credit";s:1:"?";s:14:"request_issuer";s:1:"?";}
+2014-03-20 14:24:21: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"T";}
+2014-03-20 14:32:04: [i] dummyAthenticationClass object created
+2014-03-20 14:32:04: [i] Authentication credentials: username=test password=1234-zxcv
+2014-03-20 14:32:04: <- auth(): b:1;
+2014-03-20 14:32:04: [i] creportSoapServerClass object created
+2014-03-20 14:32:04: -> AnalyzeCrediHistory(): O:8:"stdClass":3:{s:15:"taxpayer_number";s:21:"111111111111111111111";s:11:"pawn_credit";s:2:"?1";s:14:"request_issuer";s:1:"?";}
+2014-03-20 14:32:04: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"T";}
+2014-03-20 14:40:48: [i] dummyAthenticationClass object created
+2014-03-20 14:40:48: [i] Authentication credentials: username=test password=1234-zxcv
+2014-03-20 14:40:48: <- auth(): b:1;
+2014-03-20 14:41:07: [i] dummyAthenticationClass object created
+2014-03-20 14:41:07: [i] Authentication credentials: username=test password=1234-zxcv
+2014-03-20 14:41:07: <- auth(): b:1;
+2014-03-20 14:41:44: [i] dummyAthenticationClass object created
+2014-03-20 14:41:44: [i] Authentication credentials: username=test password=1234-zxcv
+2014-03-20 14:41:44: <- auth(): b:1;
+2014-03-20 14:41:54: [i] dummyAthenticationClass object created
+2014-03-20 14:41:54: [i] Authentication credentials: username=test password=1234-zxcv
+2014-03-20 14:41:54: <- auth(): b:1;
+2014-03-20 14:41:54: [i] creportSoapServerClass object created
+2014-03-20 14:41:54: -> AnalyzeCrediHistory(): O:8:"stdClass":2:{s:11:"pawn_credit";s:2:"?1";s:14:"request_issuer";s:1:"?";}
+2014-03-20 14:41:54: [!] Server fault: Ошибка в работе функции AnalyzeCrediHistory: a:2:{s:9:"errorCode";d:2147483651;s:12:"errorMessage";s:45:"Element taxpayer_number not found in request!";}
+2014-03-20 14:43:22: [i] dummyAthenticationClass object created
+2014-03-20 14:43:22: [i] Authentication credentials: username=test password=1234-zxcv
+2014-03-20 14:43:22: <- auth(): b:1;
+2014-03-20 14:43:22: [i] creportSoapServerClass object created
+2014-03-20 14:43:22: -> AnalyzeCrediHistory(): O:8:"stdClass":3:{s:15:"taxpayer_number";s:21:"111111111111111111111";s:11:"pawn_credit";s:2:"?1";s:14:"request_issuer";s:1:"?";}
+2014-03-20 14:43:22: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"T";}
+2014-03-20 14:43:33: [i] dummyAthenticationClass object created
+2014-03-20 14:43:33: [i] Authentication credentials: username=test password=1234-zxcv
+2014-03-20 14:43:33: <- auth(): b:1;
+2014-03-20 14:43:33: [i] creportSoapServerClass object created
+2014-03-20 14:43:33: -> AnalyzeCrediHistory(): O:8:"stdClass":2:{s:15:"taxpayer_number";s:21:"111111111111111111111";s:11:"pawn_credit";s:2:"?1";}
+2014-03-20 14:43:33: [!] Server fault: Ошибка в работе функции AnalyzeCrediHistory: a:2:{s:9:"errorCode";d:2147483651;s:12:"errorMessage";s:44:"Element request_issuer not found in request!";}
+2014-03-20 19:42:54: [i] dummyAthenticationClass object created
+2014-03-20 19:42:54: [i] Authentication credentials: username=test1 password=1234-zxcv
+2014-03-20 19:42:54: <- auth(): b:0;
+2014-03-20 19:42:54: [!] Server fault: 0x80000001, Authentication failed!
+2014-03-25 13:43:57: [i] dummyAthenticationClass object created
+2014-03-25 13:43:57: [!] Server fault: 0x80000001, Authentication failed!
+2014-03-25 13:44:43: [i] dummyAthenticationClass object created
+2014-03-25 13:44:43: [!] Server fault: 0x80000001, Authentication failed!
+2014-03-25 13:44:45: [i] dummyAthenticationClass object created
+2014-03-25 13:44:45: [!] Server fault: 0x80000001, Authentication failed!
+2014-03-25 13:45:13: [i] dummyAthenticationClass object created
+2014-03-25 13:45:13: [!] Server fault: 0x80000001, Authentication failed!
+2014-03-25 13:45:15: [i] dummyAthenticationClass object created
+2014-03-25 13:45:15: [!] Server fault: 0x80000001, Authentication failed!
+2014-03-25 13:45:54: [i] dummyAthenticationClass object created
+2014-03-25 13:45:54: [i] Authentication credentials: username=test password=1234-zxcv
+2014-03-25 13:45:54: <- auth(): b:1;
+2014-03-25 13:45:54: [i] creportSoapServerClass object created
+2014-03-25 13:45:54: -> AnalyzeCrediHistory(): O:8:"stdClass":3:{s:15:"taxpayer_number";s:8:"12345678";s:11:"pawn_credit";s:1:"T";s:14:"request_issuer";s:1:"T";}
+2014-03-25 13:45:54: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"T";}
+2014-03-25 13:46:07: [i] dummyAthenticationClass object created
+2014-03-25 13:46:07: [i] Authentication credentials: username=test password=1234-zxcv
+2014-03-25 13:46:07: <- auth(): b:1;
+2014-03-25 13:46:07: [i] creportSoapServerClass object created
+2014-03-25 13:46:07: -> AnalyzeCrediHistory(): O:8:"stdClass":3:{s:15:"taxpayer_number";s:8:"12345678";s:11:"pawn_credit";s:1:"T";s:14:"request_issuer";s:1:"F";}
+2014-03-25 13:46:07: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"T";}
+2014-03-25 13:46:12: [i] dummyAthenticationClass object created
+2014-03-25 13:46:12: [i] Authentication credentials: username=test password=1234-zxcv
+2014-03-25 13:46:12: <- auth(): b:1;
+2014-03-25 13:46:12: [i] creportSoapServerClass object created
+2014-03-25 13:46:12: -> AnalyzeCrediHistory(): O:8:"stdClass":3:{s:15:"taxpayer_number";s:8:"12345678";s:11:"pawn_credit";s:1:"T";s:14:"request_issuer";s:1:"T";}
+2014-03-25 13:46:12: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"T";}
+2014-03-25 14:41:50: [i] dummyAthenticationClass object created
+2014-03-25 14:41:50: [!] Server fault: 0x80000001, Authentication failed!
+2014-03-25 15:04:37: [i] dummyAthenticationClass object created
+2014-03-25 15:04:37: [!] Server fault: 0x80000001, Authentication failed!
+2014-03-25 15:18:42: [i] dummyAthenticationClass object created
+2014-03-25 15:18:42: [i] Authentication credentials: username=test password=1234-zxcv
+2014-03-25 15:18:42: <- auth(): b:1;
+2014-03-26 10:02:56: [i] dummyAthenticationClass object created
+2014-03-26 10:02:56: [!] Server fault: 0x80000001, Authentication failed!
+2014-03-26 10:03:18: [i] dummyAthenticationClass object created
+2014-03-26 10:03:18: [i] Authentication credentials: username=test password=1234-zxcv
+2014-03-26 10:03:18: <- auth(): b:1;
+2014-03-26 10:03:18: [i] creportSoapServerClass object created
+2014-03-26 10:03:18: -> AnalyzeCrediHistory(): O:8:"stdClass":3:{s:15:"taxpayer_number";s:1:"?";s:11:"pawn_credit";s:1:"?";s:14:"request_issuer";s:1:"?";}
+2014-03-26 10:03:18: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"T";}
+2014-03-26 10:13:57: [i] dummyAthenticationClass object created
+2014-03-26 10:13:57: [!] Server fault: 0x80000001, Authentication failed!
+2014-03-26 10:21:12: [i] dummyAthenticationClass object created
+2014-03-26 10:21:12: [i] Authentication credentials: username=test password=1234-zxcv
+2014-03-26 10:21:12: <- auth(): b:1;
+2014-03-26 10:21:12: [i] creportSoapServerClass object created
+2014-03-26 10:21:12: -> AnalyzeCrediHistory(): O:8:"stdClass":3:{s:15:"taxpayer_number";s:10:"0000000000";s:11:"pawn_credit";s:1:"T";s:14:"request_issuer";s:1:"T";}
+2014-03-26 10:21:12: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"T";}
+2014-03-26 12:04:39: [i] dummyAthenticationClass object created
+2014-03-26 12:04:39: [i] Authentication credentials: username=test password=1234-zxcv
+2014-03-26 12:04:39: <- auth(): b:1;
+2014-03-26 12:04:39: [i] creportSoapServerClass object created
+2014-03-26 12:04:39: -> AnalyzeCrediHistory(): O:8:"stdClass":3:{s:15:"taxpayer_number";s:10:"0000000000";s:11:"pawn_credit";s:1:"T";s:14:"request_issuer";s:1:"T";}
+2014-03-26 12:04:39: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"T";}
+2014-03-26 12:09:29: [i] dummyAthenticationClass object created
+2014-03-26 12:09:29: [i] Authentication credentials: username=test password=1234-zxcv
+2014-03-26 12:09:29: <- auth(): b:1;
+2014-03-26 12:09:29: [i] creportSoapServerClass object created
+2014-03-26 12:09:29: -> AnalyzeCrediHistory(): O:8:"stdClass":3:{s:15:"taxpayer_number";s:10:"0000000000";s:11:"pawn_credit";s:1:"T";s:14:"request_issuer";s:1:"T";}
+2014-03-26 12:09:29: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"T";}
+2014-03-26 12:14:43: [i] dummyAthenticationClass object created
+2014-03-26 12:14:43: [i] Authentication credentials: username=test password=1234-zxcv
+2014-03-26 12:14:43: <- auth(): b:1;
+2014-03-26 12:14:43: [i] creportSoapServerClass object created
+2014-03-26 12:14:43: -> AnalyzeCrediHistory(): O:8:"stdClass":3:{s:15:"taxpayer_number";s:10:"0000000000";s:11:"pawn_credit";s:1:"T";s:14:"request_issuer";s:1:"T";}
+2014-03-26 12:14:43: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"T";}
+2014-03-26 12:25:13: [i] dummyAthenticationClass object created
+2014-03-26 12:25:13: [i] Authentication credentials: username=test password=1234-zxcv
+2014-03-26 12:25:13: <- auth(): b:1;
+2014-03-26 12:25:13: [i] creportSoapServerClass object created
+2014-03-26 12:25:13: -> AnalyzeCrediHistory(): O:8:"stdClass":3:{s:15:"taxpayer_number";s:10:"0000000000";s:11:"pawn_credit";s:1:"T";s:14:"request_issuer";s:1:"T";}
+2014-03-26 12:25:13: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"T";}
+2014-03-26 12:55:44: [i] dummyAthenticationClass object created
+2014-03-26 12:55:44: [i] Authentication credentials: username=test password=1234-zxcv
+2014-03-26 12:55:44: <- auth(): b:1;
+2014-03-26 12:55:44: [i] creportSoapServerClass object created
+2014-03-26 12:55:44: -> AnalyzeCrediHistory(): O:8:"stdClass":3:{s:15:"taxpayer_number";s:10:"0000000000";s:11:"pawn_credit";s:1:"T";s:14:"request_issuer";s:1:"T";}
+2014-03-26 12:55:44: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"T";}
+2014-03-26 13:08:54: [i] dummyAthenticationClass object created
+2014-03-26 13:08:54: [i] Authentication credentials: username=test password=1234-zxcv
+2014-03-26 13:08:54: <- auth(): b:1;
+2014-03-26 13:08:54: [i] creportSoapServerClass object created
+2014-03-26 13:08:54: -> AnalyzeCrediHistory(): O:8:"stdClass":3:{s:15:"taxpayer_number";s:10:"0000000000";s:11:"pawn_credit";s:1:"T";s:14:"request_issuer";s:1:"T";}
+2014-03-26 13:08:54: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"T";}
+2014-03-26 13:18:45: [i] dummyAthenticationClass object created
+2014-03-26 13:18:45: [i] Authentication credentials: username=test password=1234-zxcv
+2014-03-26 13:18:45: <- auth(): b:1;
+2014-03-26 13:18:45: [i] creportSoapServerClass object created
+2014-03-26 13:18:45: -> AnalyzeCrediHistory(): O:8:"stdClass":3:{s:15:"taxpayer_number";s:10:"0000000000";s:11:"pawn_credit";s:1:"T";s:14:"request_issuer";s:1:"T";}
+2014-03-26 13:18:45: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"T";}
+2014-03-26 13:32:26: [i] dummyAthenticationClass object created
+2014-03-26 13:32:26: [i] Authentication credentials: username=test password=1234-zxcv
+2014-03-26 13:32:26: <- auth(): b:1;
+2014-03-26 13:32:26: [i] creportSoapServerClass object created
+2014-03-26 13:32:26: -> AnalyzeCrediHistory(): O:8:"stdClass":3:{s:15:"taxpayer_number";s:10:"0000000000";s:11:"pawn_credit";s:1:"T";s:14:"request_issuer";s:1:"T";}
+2014-03-26 13:32:26: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"T";}
+2014-03-26 15:19:04: [i] dummyAthenticationClass object created
+2014-03-26 15:19:04: [i] Authentication credentials: username=test password=1234-zxcv
+2014-03-26 15:19:04: <- auth(): b:1;
+2014-03-26 15:19:04: [i] creportSoapServerClass object created
+2014-03-26 15:19:04: -> AnalyzeCrediHistory(): O:8:"stdClass":3:{s:15:"taxpayer_number";s:10:"1234567890";s:11:"pawn_credit";s:1:"T";s:14:"request_issuer";s:1:"T";}
+2014-03-26 15:19:04: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"T";}
+2014-03-26 15:20:24: [i] dummyAthenticationClass object created
+2014-03-26 15:20:24: [i] Authentication credentials: username=test password=1234-zxcv
+2014-03-26 15:20:24: <- auth(): b:1;
+2014-03-26 15:20:24: [i] creportSoapServerClass object created
+2014-03-26 15:20:24: -> AnalyzeCrediHistory(): O:8:"stdClass":3:{s:15:"taxpayer_number";s:10:"1234567890";s:11:"pawn_credit";s:1:"T";s:14:"request_issuer";s:1:"T";}
+2014-03-26 15:20:24: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"T";}
+2014-03-26 15:20:45: [i] dummyAthenticationClass object created
+2014-03-26 15:20:45: [i] Authentication credentials: username=test password=1234-zxcv
+2014-03-26 15:20:45: <- auth(): b:1;
+2014-03-26 15:20:45: [i] creportSoapServerClass object created
+2014-03-26 15:20:45: -> AnalyzeCrediHistory(): O:8:"stdClass":3:{s:15:"taxpayer_number";s:10:"1234567890";s:11:"pawn_credit";s:1:"T";s:14:"request_issuer";s:1:"T";}
+2014-03-26 15:20:45: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"T";}
+2014-03-26 15:21:18: [i] dummyAthenticationClass object created
+2014-03-26 15:21:18: [i] Authentication credentials: username=test password=1234-zxcv
+2014-03-26 15:21:18: <- auth(): b:1;
+2014-03-26 15:21:18: [i] creportSoapServerClass object created
+2014-03-26 15:21:18: -> AnalyzeCrediHistory(): O:8:"stdClass":3:{s:15:"taxpayer_number";s:10:"1234567890";s:11:"pawn_credit";s:1:"T";s:14:"request_issuer";s:1:"T";}
+2014-03-26 15:21:18: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"T";}
+2014-03-26 15:32:16: [i] dummyAthenticationClass object created
+2014-03-26 15:32:16: [i] Authentication credentials: username=test password=1234-zxcv
+2014-03-26 15:32:16: <- auth(): b:1;
+2014-03-26 15:32:16: [i] creportSoapServerClass object created
+2014-03-26 15:32:16: -> AnalyzeCrediHistory(): O:8:"stdClass":3:{s:15:"taxpayer_number";s:10:"1234567890";s:11:"pawn_credit";s:1:"T";s:14:"request_issuer";s:1:"T";}
+2014-03-26 15:32:16: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"T";}
+2014-03-26 15:34:47: [i] dummyAthenticationClass object created
+2014-03-26 15:34:47: [i] Authentication credentials: username=test password=1234-zxcv
+2014-03-26 15:34:47: <- auth(): b:1;
+2014-03-26 15:34:47: [i] creportSoapServerClass object created
+2014-03-26 15:34:47: -> AnalyzeCrediHistory(): O:8:"stdClass":3:{s:15:"taxpayer_number";s:10:"1234567890";s:11:"pawn_credit";s:1:"T";s:14:"request_issuer";s:1:"T";}
+2014-03-26 15:34:47: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"T";}
+2014-03-26 15:40:39: [i] dummyAthenticationClass object created
+2014-03-26 15:40:39: [i] Authentication credentials: username=test password=1234-zxcv
+2014-03-26 15:40:39: <- auth(): b:1;
+2014-03-26 15:40:39: [i] creportSoapServerClass object created
+2014-03-26 15:40:39: -> AnalyzeCrediHistory(): O:8:"stdClass":3:{s:15:"taxpayer_number";s:10:"1234567890";s:11:"pawn_credit";s:1:"T";s:14:"request_issuer";s:1:"T";}
+2014-03-26 15:40:39: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"T";}
+2014-03-26 15:54:08: [i] dummyAthenticationClass object created
+2014-03-26 15:54:08: [i] Authentication credentials: username=test password=1234-zxcv
+2014-03-26 15:54:08: <- auth(): b:1;
+2014-03-26 15:54:08: [i] creportSoapServerClass object created
+2014-03-26 15:54:08: -> AnalyzeCrediHistory(): O:8:"stdClass":3:{s:15:"taxpayer_number";s:10:"1234567890";s:11:"pawn_credit";s:1:"T";s:14:"request_issuer";s:1:"T";}
+2014-03-26 15:54:08: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"T";}
+2014-03-26 15:58:57: [i] dummyAthenticationClass object created
+2014-03-26 15:58:57: [i] Authentication credentials: username=test password=1234-zxcv
+2014-03-26 15:58:57: <- auth(): b:1;
+2014-03-26 15:58:57: [i] creportSoapServerClass object created
+2014-03-26 15:58:57: -> AnalyzeCrediHistory(): O:8:"stdClass":3:{s:15:"taxpayer_number";s:10:"1234567890";s:11:"pawn_credit";s:1:"T";s:14:"request_issuer";s:1:"T";}
+2014-03-26 15:58:57: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"T";}
+2014-03-26 16:02:03: [i] dummyAthenticationClass object created
+2014-03-26 16:02:03: [i] Authentication credentials: username=test password=1234-zxcv
+2014-03-26 16:02:03: <- auth(): b:1;
+2014-03-26 16:02:03: [i] creportSoapServerClass object created
+2014-03-26 16:02:03: -> AnalyzeCrediHistory(): O:8:"stdClass":3:{s:15:"taxpayer_number";s:10:"1234567890";s:11:"pawn_credit";s:1:"T";s:14:"request_issuer";s:1:"T";}
+2014-03-26 16:02:03: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"T";}
+2014-03-26 16:04:31: [i] dummyAthenticationClass object created
+2014-03-26 16:04:31: [i] Authentication credentials: username=test password=1234-zxcv
+2014-03-26 16:04:31: <- auth(): b:1;
+2014-03-26 16:04:31: [i] creportSoapServerClass object created
+2014-03-26 16:04:31: -> AnalyzeCrediHistory(): O:8:"stdClass":3:{s:15:"taxpayer_number";s:10:"1234567890";s:11:"pawn_credit";s:1:"T";s:14:"request_issuer";s:1:"T";}
+2014-03-26 16:04:31: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"T";}
+2014-03-26 16:21:15: [i] dummyAthenticationClass object created
+2014-03-26 16:21:15: [i] Authentication credentials: username=test password=1234-zxcv
+2014-03-26 16:21:15: <- auth(): b:1;
+2014-03-26 16:21:15: [i] creportSoapServerClass object created
+2014-03-26 16:21:15: -> AnalyzeCrediHistory(): O:8:"stdClass":3:{s:15:"taxpayer_number";s:10:"1234567890";s:11:"pawn_credit";s:1:"T";s:14:"request_issuer";s:1:"T";}
+2014-03-26 16:21:15: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"T";}
+2014-03-26 16:23:40: [i] dummyAthenticationClass object created
+2014-03-26 16:23:40: [i] Authentication credentials: username=test password=1234-zxcv
+2014-03-26 16:23:40: <- auth(): b:1;
+2014-03-26 16:23:40: [i] creportSoapServerClass object created
+2014-03-26 16:23:40: -> AnalyzeCrediHistory(): O:8:"stdClass":3:{s:15:"taxpayer_number";s:10:"1234567890";s:11:"pawn_credit";s:1:"T";s:14:"request_issuer";s:1:"T";}
+2014-03-26 16:23:40: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"T";}
+2014-03-26 16:31:35: [i] dummyAthenticationClass object created
+2014-03-26 16:31:35: [i] Authentication credentials: username=test password=1234-zxcv
+2014-03-26 16:31:35: <- auth(): b:1;
+2014-03-26 16:31:35: [i] creportSoapServerClass object created
+2014-03-26 16:31:35: -> AnalyzeCrediHistory(): O:8:"stdClass":3:{s:15:"taxpayer_number";s:10:"1234567890";s:11:"pawn_credit";s:1:"T";s:14:"request_issuer";s:1:"T";}
+2014-03-26 16:31:35: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"T";}
+2014-03-26 16:32:46: [i] dummyAthenticationClass object created
+2014-03-26 16:32:46: [i] Authentication credentials: username=test password=1234-zxcv
+2014-03-26 16:32:46: <- auth(): b:1;
+2014-03-26 16:32:46: [i] creportSoapServerClass object created
+2014-03-26 16:32:46: -> AnalyzeCrediHistory(): O:8:"stdClass":3:{s:15:"taxpayer_number";s:10:"1234567890";s:11:"pawn_credit";s:1:"T";s:14:"request_issuer";s:1:"T";}
+2014-03-26 16:32:46: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"T";}
+2014-03-26 16:41:45: [i] dummyAthenticationClass object created
+2014-03-26 16:41:45: [i] Authentication credentials: username=test password=1234-zxcv
+2014-03-26 16:41:45: <- auth(): b:1;
+2014-03-26 16:41:45: [i] creportSoapServerClass object created
+2014-03-26 16:41:45: -> AnalyzeCrediHistory(): O:8:"stdClass":3:{s:15:"taxpayer_number";s:10:"1234567890";s:11:"pawn_credit";s:1:"T";s:14:"request_issuer";s:1:"T";}
+2014-03-26 16:41:45: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"T";}
+2014-03-26 16:48:23: [i] dummyAthenticationClass object created
+2014-03-26 16:48:23: [i] Authentication credentials: username=test password=1234-zxcv
+2014-03-26 16:48:23: <- auth(): b:1;
+2014-03-26 16:48:23: [i] creportSoapServerClass object created
+2014-03-26 16:48:23: -> AnalyzeCrediHistory(): O:8:"stdClass":3:{s:15:"taxpayer_number";s:10:"1234567890";s:11:"pawn_credit";s:1:"T";s:14:"request_issuer";s:1:"T";}
+2014-03-26 16:48:23: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"T";}
+2014-03-26 16:59:15: [i] dummyAthenticationClass object created
+2014-03-26 16:59:15: [i] Authentication credentials: username=test password=1234-zxcv
+2014-03-26 16:59:15: <- auth(): b:1;
+2014-03-26 16:59:15: [i] creportSoapServerClass object created
+2014-03-26 16:59:15: -> AnalyzeCrediHistory(): O:8:"stdClass":3:{s:15:"taxpayer_number";s:10:"1234567890";s:11:"pawn_credit";s:1:"T";s:14:"request_issuer";s:1:"T";}
+2014-03-26 16:59:15: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"T";}
+2014-03-26 17:01:18: [i] dummyAthenticationClass object created
+2014-03-26 17:01:18: [i] Authentication credentials: username=test password=1234-zxcv
+2014-03-26 17:01:18: <- auth(): b:1;
+2014-03-26 17:01:18: [i] creportSoapServerClass object created
+2014-03-26 17:01:18: -> AnalyzeCrediHistory(): O:8:"stdClass":3:{s:15:"taxpayer_number";s:10:"1234567890";s:11:"pawn_credit";s:1:"T";s:14:"request_issuer";s:1:"T";}
+2014-03-26 17:01:18: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"T";}
+2014-03-26 17:22:02: [i] dummyAthenticationClass object created
+2014-03-26 17:22:02: [i] Authentication credentials: username=test password=1234-zxcv
+2014-03-26 17:22:02: <- auth(): b:1;
+2014-03-26 17:22:02: [i] creportSoapServerClass object created
+2014-03-26 17:22:02: -> AnalyzeCrediHistory(): O:8:"stdClass":3:{s:15:"taxpayer_number";s:10:"1234567890";s:11:"pawn_credit";s:1:"T";s:14:"request_issuer";s:1:"T";}
+2014-03-26 17:22:02: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"T";}
+2014-03-26 17:26:55: [i] dummyAthenticationClass object created
+2014-03-26 17:26:55: [i] Authentication credentials: username=test password=1234-zxcv
+2014-03-26 17:26:55: <- auth(): b:1;
+2014-03-26 17:26:55: [i] creportSoapServerClass object created
+2014-03-26 17:26:55: -> AnalyzeCrediHistory(): O:8:"stdClass":3:{s:15:"taxpayer_number";s:10:"1234567890";s:11:"pawn_credit";s:1:"T";s:14:"request_issuer";s:1:"T";}
+2014-03-26 17:26:55: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"T";}
+2014-03-26 17:33:31: [i] dummyAthenticationClass object created
+2014-03-26 17:33:31: [i] Authentication credentials: username=test password=1234-zxcv
+2014-03-26 17:33:31: <- auth(): b:1;
+2014-03-26 17:33:31: [i] creportSoapServerClass object created
+2014-03-26 17:33:31: -> AnalyzeCrediHistory(): O:8:"stdClass":3:{s:15:"taxpayer_number";s:10:"1234567890";s:11:"pawn_credit";s:1:"T";s:14:"request_issuer";s:1:"T";}
+2014-03-26 17:33:31: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"T";}
+2014-03-27 09:54:52: [i] dummyAthenticationClass object created
+2014-03-27 09:54:52: [i] Authentication credentials: username=test password=1234-zxcv
+2014-03-27 09:54:52: <- auth(): b:1;
+2014-03-27 09:54:52: [i] creportSoapServerClass object created
+2014-03-27 09:54:52: -> AnalyzeCrediHistory(): O:8:"stdClass":3:{s:15:"taxpayer_number";s:10:"1234567890";s:11:"pawn_credit";s:1:"T";s:14:"request_issuer";s:1:"T";}
+2014-03-27 09:54:52: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"T";}
+2014-03-27 10:19:34: [i] dummyAthenticationClass object created
+2014-03-27 10:19:34: [i] Authentication credentials: username=test password=1234-zxcv
+2014-03-27 10:19:34: <- auth(): b:1;
+2014-03-27 10:19:34: [i] creportSoapServerClass object created
+2014-03-27 10:19:34: -> AnalyzeCrediHistory(): O:8:"stdClass":3:{s:15:"taxpayer_number";s:10:"1234567890";s:11:"pawn_credit";s:1:"T";s:14:"request_issuer";s:1:"T";}
+2014-03-27 10:19:34: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"T";}
+2014-03-27 10:21:22: [i] dummyAthenticationClass object created
+2014-03-27 10:21:22: [i] Authentication credentials: username=test password=1234-zxcv
+2014-03-27 10:21:22: <- auth(): b:1;
+2014-03-27 10:21:22: [i] creportSoapServerClass object created
+2014-03-27 10:21:22: -> AnalyzeCrediHistory(): O:8:"stdClass":3:{s:15:"taxpayer_number";s:10:"1234567890";s:11:"pawn_credit";s:1:"T";s:14:"request_issuer";s:1:"T";}
+2014-03-27 10:21:22: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"T";}
+2014-03-31 09:55:53: [i] dummyAthenticationClass object created
+2014-03-31 09:55:53: [i] Authentication credentials: username=test password=1234-zxcv
+2014-03-31 09:55:53: <- auth(): b:1;
+2014-03-31 09:55:53: [i] creportSoapServerClass object created
+2014-03-31 09:55:53: -> AnalyzeCrediHistory(): O:8:"stdClass":3:{s:15:"taxpayer_number";s:10:"1234567890";s:11:"pawn_credit";s:1:"T";s:14:"request_issuer";s:1:"T";}
+2014-03-31 09:55:53: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"T";}
+2014-04-08 10:53:17: [i] dummyAthenticationClass object created
+2014-04-08 10:53:17: [i] Authentication credentials: username=test password=1234-zxcv
+2014-04-08 10:53:17: <- auth(): b:1;
+2014-04-08 10:53:17: [i] creportSoapServerClass object created
+2014-04-08 10:53:17: -> AnalyzeCrediHistory(): O:8:"stdClass":3:{s:15:"taxpayer_number";s:1:"?";s:11:"pawn_credit";s:1:"?";s:14:"request_issuer";s:1:"?";}
+2014-04-08 10:53:17: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"T";}
+2014-04-08 10:53:24: [i] dummyAthenticationClass object created
+2014-04-08 10:53:24: [i] Authentication credentials: username=test password=1234-zxcv
+2014-04-08 10:53:24: <- auth(): b:1;
+2014-04-08 10:53:24: [i] creportSoapServerClass object created
+2014-04-08 10:53:24: -> AnalyzeCrediHistory(): O:8:"stdClass":3:{s:15:"taxpayer_number";s:0:"";s:11:"pawn_credit";s:0:"";s:14:"request_issuer";s:1:"?";}
+2014-04-08 10:53:24: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"T";}
+2014-04-08 10:53:25: [i] dummyAthenticationClass object created
+2014-04-08 10:53:25: [i] Authentication credentials: username=test password=1234-zxcv
+2014-04-08 10:53:25: <- auth(): b:1;
+2014-04-08 10:53:25: [i] creportSoapServerClass object created
+2014-04-08 10:53:25: -> AnalyzeCrediHistory(): O:8:"stdClass":3:{s:15:"taxpayer_number";s:0:"";s:11:"pawn_credit";s:0:"";s:14:"request_issuer";s:1:"?";}
+2014-04-08 10:53:25: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"T";}
+2014-04-08 10:54:55: [i] dummyAthenticationClass object created
+2014-04-08 10:54:55: [i] Authentication credentials: username=test password=1234-zxcv
+2014-04-08 10:54:55: <- auth(): b:1;
+2014-04-08 10:54:55: [i] creportSoapServerClass object created
+2014-04-08 10:54:55: -> AnalyzeCrediHistory(): O:8:"stdClass":2:{s:11:"pawn_credit";s:0:"";s:14:"request_issuer";s:1:"?";}
+2014-04-08 10:54:55: [!] Server fault: Ошибка в работе функции AnalyzeCrediHistory: a:2:{s:9:"errorCode";d:2147483651;s:12:"errorMessage";s:66:"Element: taxpayer_number not found in AnalyzeCreditHistoryRequest!";}
+2014-04-08 10:55:07: [i] dummyAthenticationClass object created
+2014-04-08 10:55:07: [i] Authentication credentials: username=test password=1234-zxcv
+2014-04-08 10:55:07: <- auth(): b:1;
+2014-04-08 10:55:07: [i] creportSoapServerClass object created
+2014-04-08 10:55:07: -> AnalyzeCrediHistory(): O:8:"stdClass":3:{s:15:"taxpayer_number";s:1:"1";s:11:"pawn_credit";s:0:"";s:14:"request_issuer";s:1:"?";}
+2014-04-08 10:55:07: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"F";}
+2014-04-08 10:55:11: [i] dummyAthenticationClass object created
+2014-04-08 10:55:11: [i] Authentication credentials: username=test password=1234-zxcv
+2014-04-08 10:55:11: <- auth(): b:1;
+2014-04-08 10:55:11: [i] creportSoapServerClass object created
+2014-04-08 10:55:11: -> AnalyzeCrediHistory(): O:8:"stdClass":3:{s:15:"taxpayer_number";s:1:"2";s:11:"pawn_credit";s:0:"";s:14:"request_issuer";s:1:"?";}
+2014-04-08 10:55:11: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"T";}
+2014-04-08 11:56:21: [i] dummyAthenticationClass object created
+2014-04-08 11:56:22: [i] Authentication credentials: username=test password=1234-zxcv
+2014-04-08 11:56:22: <- auth(): b:1;
+2014-04-08 11:56:22: [i] creportSoapServerClass object created
+2014-04-08 11:56:22: -> AnalyzeCrediHistory(): O:8:"stdClass":3:{s:15:"taxpayer_number";s:1:"2";s:11:"pawn_credit";s:0:"";s:14:"request_issuer";s:1:"?";}
+2014-04-08 11:56:22: [!] Server fault: Ошибка в работе функции AnalyzeCrediHistory: a:2:{s:9:"errorCode";d:2147483652;s:12:"errorMessage";s:42:"Element: taxpayer_number has wrong format!";}
+2014-04-08 11:57:20: [i] dummyAthenticationClass object created
+2014-04-08 11:57:20: [i] Authentication credentials: username=test password=1234-zxcv
+2014-04-08 11:57:20: <- auth(): b:1;
+2014-04-08 11:57:20: [i] creportSoapServerClass object created
+2014-04-08 11:57:20: -> AnalyzeCrediHistory(): O:8:"stdClass":3:{s:15:"taxpayer_number";s:1:"2";s:11:"pawn_credit";s:0:"";s:14:"request_issuer";s:1:"?";}
+2014-04-08 11:57:20: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"T";}
+2014-04-08 11:57:27: [i] dummyAthenticationClass object created
+2014-04-08 11:57:27: [i] Authentication credentials: username=test password=1234-zxcv
+2014-04-08 11:57:27: <- auth(): b:1;
+2014-04-08 11:57:27: [i] creportSoapServerClass object created
+2014-04-08 11:57:27: -> AnalyzeCrediHistory(): O:8:"stdClass":3:{s:15:"taxpayer_number";s:1:"w";s:11:"pawn_credit";s:0:"";s:14:"request_issuer";s:1:"?";}
+2014-04-08 11:57:27: [!] Server fault: Ошибка в работе функции AnalyzeCrediHistory: a:2:{s:9:"errorCode";d:2147483652;s:12:"errorMessage";s:42:"Element: taxpayer_number has wrong format!";}
+2014-04-08 11:57:59: [i] dummyAthenticationClass object created
+2014-04-08 11:57:59: [i] Authentication credentials: username=test password=1234-zxcv
+2014-04-08 11:57:59: <- auth(): b:1;
+2014-04-08 11:57:59: [i] creportSoapServerClass object created
+2014-04-08 11:57:59: -> AnalyzeCrediHistory(): O:8:"stdClass":3:{s:15:"taxpayer_number";s:1:"3";s:11:"pawn_credit";s:0:"";s:14:"request_issuer";s:1:"?";}
+2014-04-08 11:57:59: [!] Server fault: Ошибка в работе функции AnalyzeCrediHistory: a:2:{s:9:"errorCode";d:2147483652;s:12:"errorMessage";s:41:"Element: request_issuer has wrong format!";}
+2014-04-08 11:58:11: [i] dummyAthenticationClass object created
+2014-04-08 11:58:11: [i] Authentication credentials: username=test password=1234-zxcv
+2014-04-08 11:58:11: <- auth(): b:1;
+2014-04-08 11:58:11: [i] creportSoapServerClass object created
+2014-04-08 11:58:11: -> AnalyzeCrediHistory(): O:8:"stdClass":3:{s:15:"taxpayer_number";s:1:"3";s:11:"pawn_credit";s:0:"";s:14:"request_issuer";s:1:"w";}
+2014-04-08 11:58:11: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"F";}
+2014-04-08 12:05:53: [i] dummyAthenticationClass object created
+2014-04-08 12:05:53: [i] Authentication credentials: username=test password=1234-zxcv
+2014-04-08 12:05:53: <- auth(): b:1;
+2014-04-08 12:05:53: [i] creportSoapServerClass object created
+2014-04-08 12:05:53: -> AnalyzeCrediHistory(): O:8:"stdClass":3:{s:15:"taxpayer_number";s:1:"3";s:11:"pawn_credit";s:0:"";s:14:"request_issuer";s:3:"w.e";}
+2014-04-08 12:05:53: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"F";}
+2014-04-08 17:30:30: [i] dummyAthenticationClass object created
+2014-04-08 17:30:30: [i] Authentication credentials: username=test password=1234-zxcv
+2014-04-08 17:30:30: <- auth(): b:1;
+2014-04-08 17:30:30: [i] creportSoapServerClass object created
+2014-04-08 17:30:30: -> AnalyzeCrediHistory(): O:8:"stdClass":2:{s:15:"taxpayer_number";s:8:"12345678";s:11:"pawn_credit";s:1:"T";}
+2014-04-08 17:30:30: [!] Server fault: Ошибка в работе функции AnalyzeCrediHistory: a:2:{s:9:"errorCode";d:2147483651;s:12:"errorMessage";s:65:"Element: request_issuer not found in AnalyzeCreditHistoryRequest!";}
+2014-04-08 17:31:15: [i] dummyAthenticationClass object created
+2014-04-08 17:31:15: [i] Authentication credentials: username=test password=1234-zxcv
+2014-04-08 17:31:15: <- auth(): b:1;
+2014-04-08 17:31:15: [i] creportSoapServerClass object created
+2014-04-08 17:31:15: -> AnalyzeCrediHistory(): O:8:"stdClass":3:{s:15:"taxpayer_number";s:8:"12345678";s:11:"pawn_credit";s:1:"T";s:14:"request_issuer";s:1:"T";}
+2014-04-08 17:31:15: [!] Server fault: Ошибка в работе функции AnalyzeCrediHistory: a:2:{s:9:"errorCode";d:2147483652;s:12:"errorMessage";s:41:"Element: request_issuer has wrong format!";}
+2014-04-08 17:31:29: [i] dummyAthenticationClass object created
+2014-04-08 17:31:29: [i] Authentication credentials: username=test password=1234-zxcv
+2014-04-08 17:31:29: <- auth(): b:1;
+2014-04-08 17:31:29: [i] creportSoapServerClass object created
+2014-04-08 17:31:29: -> AnalyzeCrediHistory(): O:8:"stdClass":3:{s:15:"taxpayer_number";s:8:"12345678";s:11:"pawn_credit";s:1:"T";s:14:"request_issuer";s:3:"w.e";}
+2014-04-08 17:31:29: <- AnalyzeCrediHistory(): O:28:"AnalyzeCreditHistoryResponse":1:{s:8:"positive";s:1:"T";}

@@ -196,12 +196,46 @@ class HistoryContract extends CActiveRecord
             }
             return false;
         }
-        public function isGrowthArrearsByContractCritical($contract_id){
-            $sql="
-                select * from history_contracts 
-                where factor_id = 10 and value !='0' and payment_date>(CURRENT_TIMESTAMP - INTERVAL '37 months') and contract_id =".$contract_id."
-                order by payment_date";
-            $hcs = $this->model()->findAllBySql($sql);
+        public function isGrowthArrearsByContractCritical($bureau_id, $contract_id, $days, $isUnsecuredCredit){ // анализ прироста просрочки
+            if($bureau_id==2){ // ubki
+                if($isUnsecuredCredit)
+                    if($days>365*3)
+                        $sql="
+                            select * from history_contracts 
+                            where factor_id = 10 and value !='0' and payment_date>(CURRENT_TIMESTAMP - INTERVAL '61 months') and contract_id =".$contract_id."
+                            order by payment_date";
+                    else
+                        $sql="
+                            select * from history_contracts 
+                            where factor_id = 10 and value !='0' and payment_date>(CURRENT_TIMESTAMP - INTERVAL '37 months') and contract_id =".$contract_id."
+                            order by payment_date";
+                else 
+                    $sql="
+                            select * from history_contracts 
+                            where factor_id = 10 and value !='0' and contract_id =".$contract_id."
+                            order by payment_date";
+
+                $hcs = $this->model()->findAllBySql($sql);
+            }else{ // mbki
+                if($isUnsecuredCredit)
+                    if($days>365*3)
+                        $sql="
+                            select * from history_contracts 
+                            where factor_id = 2 and CAST(coalesce(value, '0') AS real)>0 and payment_date>(CURRENT_TIMESTAMP - INTERVAL '61 months') and contract_id =".$contract_id."
+                            order by payment_date";
+                    else
+                        $sql="
+                            select * from history_contracts 
+                            where factor_id = 2 and CAST(coalesce(value, '0') AS real)>0 and payment_date>(CURRENT_TIMESTAMP - INTERVAL '37 months') and contract_id =".$contract_id."
+                            order by payment_date";
+                else 
+                    $sql="
+                            select * from history_contracts 
+                            where factor_id = 2 and CAST(coalesce(value, '0') AS real)>0 and contract_id =".$contract_id."
+                            order by payment_date";
+
+                $hcs = $this->model()->findAllBySql($sql);
+            }
             if(count($hcs)<1)                
                 return false;
             $c_id=0;
@@ -210,17 +244,17 @@ class HistoryContract extends CActiveRecord
             foreach ($hcs as $c) {
                 if($c_id!=$c->contract_id){
                     $c_id = $c->contract_id;
-                    $v=-$c->value;
+                    $v=abs($c->value);
                 } else{
                     $d=new DateTime($c->payment_date);
                     if($d->diff($curr_date)->days > 365){
-                        if ((-$c->value-$v)>100)
+                        if ((abs($c->value)-$v)>100)
                             return true;
                     }else{
-                        if ((-$c->value-$v)>50)
+                        if ((abs($c->value)-$v)>50)
                             return true;
                     }
-                    $v =-$c->value;
+                    $v =abs($c->value);
                 }
             }
             return false;
@@ -232,21 +266,80 @@ class HistoryContract extends CActiveRecord
             $c = $this->model()->findBySql($sql);
             return isset($c)? $c->max_delay:0;
         }
-        public function getLastDelayDateByContract($contract_id){
-            $sql="
-                select max(payment_date) as payment_date from history_contracts 
-                where factor_id = 10 and value !='0' and payment_date>(CURRENT_TIMESTAMP - INTERVAL '37 months') and contract_id =".$contract_id;
-            $c = $this->model()->findBySql($sql);
-            return isset($c)? $c->payment_date:null;
+        public function getLastDelayDateByContract($bureau_id, $contract_id, $days, $isUnsecuredCredit){ // дата последней просрочки
+            if($bureau_id==2){ // ubki
+                if($isUnsecuredCredit)
+                    if($days>365*3)
+                        $sql="
+                            select max(payment_date) as payment_date from history_contracts 
+                            where factor_id = 10 and value !='0' and payment_date>(CURRENT_TIMESTAMP - INTERVAL '61 months') and contract_id =".$contract_id;
+                    else 
+                        $sql="
+                            select max(payment_date) as payment_date from history_contracts 
+                            where factor_id = 10 and value !='0' and payment_date>(CURRENT_TIMESTAMP - INTERVAL '37 months') and contract_id =".$contract_id;
+                else 
+                    $sql="
+                        select max(payment_date) as payment_date from history_contracts 
+                        where factor_id = 10 and value !='0' and contract_id =".$contract_id;
+
+                $c = $this->model()->findBySql($sql);
+                return isset($c)? $c->payment_date:null;
+            }else{ //mbki
+                if($isUnsecuredCredit)
+                    if($days>365*3)
+                        $sql="
+                            select max(payment_date) as payment_date from history_contracts 
+                            where factor_id = 2 and CAST(coalesce(value, '0') AS real)>0 and payment_date>(CURRENT_TIMESTAMP - INTERVAL '61 months') and contract_id =".$contract_id;
+                    else 
+                        $sql="
+                            select max(payment_date) as payment_date from history_contracts 
+                            where factor_id = 2 and CAST(coalesce(value, '0') AS real)>0 and payment_date>(CURRENT_TIMESTAMP - INTERVAL '37 months') and contract_id =".$contract_id;
+                else 
+                    $sql="
+                        select max(payment_date) as payment_date from history_contracts 
+                        where factor_id = 2 and CAST(coalesce(value, '0') AS real)>0 and contract_id =".$contract_id;
+
+                $c = $this->model()->findBySql($sql);
+                return isset($c)? $c->payment_date:null;
+            }
         }
-        public function getExceedingDurationCountByContract($contract_id, $low, $high){ // #1.15
+        public function getExceedingDurationCountByContract($bureau_id, $contract_id, $low, $high, $days, $isUnsecuredCredit){ // #1.15
             // границы интервала ВХОДЯТ, т.е. <= , >=
-            $sql = "
-                select count(*) as delay_count from history_contracts hc                
-                where factor_id=8 and contract_id=".$contract_id." and CAST(coalesce(value, '0') AS integer)  between ".$low." and ".$high."
-                and payment_date>(CURRENT_TIMESTAMP - INTERVAL '37 months')" ;
-            $c = $this->model()->findBySql($sql);
-            return isset($c)? $c->delay_count:0;
+            if($bureau_id==2){ // ubki
+                if($isUnsecuredCredit)
+                    if($days>365*3)
+                        $sql = "select count(*) as delay_count from history_contracts hc                
+                            where factor_id=8 and contract_id=".$contract_id." and CAST(coalesce(value, '0') AS integer)  between ".$low." and ".$high."
+                            and payment_date>(CURRENT_TIMESTAMP - INTERVAL '61 months')" ;
+                    else 
+                        $sql = "select count(*) as delay_count from history_contracts hc                
+                            where factor_id=8 and contract_id=".$contract_id." and CAST(coalesce(value, '0') AS integer)  between ".$low." and ".$high."
+                            and payment_date>(CURRENT_TIMESTAMP - INTERVAL '37 months')" ;
+                else 
+                    $sql = "select count(*) as delay_count from history_contracts hc                
+                            where factor_id=8 and contract_id=".$contract_id." and CAST(coalesce(value, '0') AS integer)  between ".$low." and ".$high;
+                $c = $this->model()->findBySql($sql);
+                return isset($c)? $c->delay_count:0;
+            }else{ // mbki
+                if(($low >= 60)and($high<=91)) // k90
+                    if($isUnsecuredCredit)
+                        if($days>365*3)
+                            $sql = "select count(*) as id from history_contracts where payment_date >(CURRENT_TIMESTAMP - INTERVAL '61 months') and  factor_id =1 and contract_id=".$contract_id." and CAST(coalesce(value, '0') AS real)=3";
+                        else
+                            $sql = "select count(*) as id from history_contracts where payment_date >(CURRENT_TIMESTAMP - INTERVAL '37 months') and  factor_id =1 and contract_id=".$contract_id." and CAST(coalesce(value, '0') AS real)=3";
+                    else
+                        $sql = "select count(*) as id from history_contracts where factor_id =1 and contract_id=".$contract_id." and CAST(coalesce(value, '0') AS real)=3";
+                elseif(($low >= 90)and($high<=1200))    
+                    if($isUnsecuredCredit)
+                        if($days>365*3)
+                            $sql = "select count(*) as id from history_contracts where payment_date >(CURRENT_TIMESTAMP - INTERVAL '61 months') and  factor_id =1 and contract_id=".$contract_id." and CAST(coalesce(value, '0') AS real)>3";
+                        else
+                            $sql = "select count(*) as id from history_contracts where payment_date >(CURRENT_TIMESTAMP - INTERVAL '37 months') and  factor_id =1 and contract_id=".$contract_id." and CAST(coalesce(value, '0') AS real)>3";
+                    else
+                        $sql = "select count(*) as id from history_contracts where factor_id =1 and contract_id=".$contract_id." and CAST(coalesce(value, '0') AS real)>3";
+                $c = $this->model()->findBySql($sql);
+                return isset($c)? $c->id:0;
+            }
         }
         public function getLastDelayByContract($contract_id){
             $sql="
@@ -256,48 +349,246 @@ class HistoryContract extends CActiveRecord
             $c = $this->model()->findBySql($sql);
             return isset($c)? $c->value:null;
         }
-        public function isHistoryByContract($contract_id, $days, $isUnsecuredCredit){ // есть ли история по кредиту? 
+        public function isHistoryByContract($bureau_id, $contract_id, $days, $isUnsecuredCredit){ // есть ли история по кредиту? 
+            if($bureau_id==2){ // ubki
+                if($isUnsecuredCredit)
+                    if($days>365*3)
+                        $sql="select count(*) as id from history_contracts where payment_date >(CURRENT_TIMESTAMP - INTERVAL '61 months') and factor_id=5 and value='Y' and contract_id=".$contract_id;
+                    else
+                        $sql="select count(*) as id from history_contracts where payment_date >(CURRENT_TIMESTAMP - INTERVAL '37 months') and factor_id=5 and value='Y' and contract_id=".$contract_id;
+                else 
+                    $sql="select count(*) as id from history_contracts where factor_id=5 and value='Y' and contract_id=".$contract_id;
+
+                $c = $this->model()->findBySql($sql);
+    //            echo '$contract_id='.$contract_id.'; count='.var_dump(+$c->id);
+                return +$c->id>3 ? true:false;
+            }else { // mbki
+                if($isUnsecuredCredit)
+                    if($days>365*3)
+                        $sql="select count(*) as id from history_contracts where payment_date >(CURRENT_TIMESTAMP - INTERVAL '61 months') and contract_id=".$contract_id."
+                            group by factor_id order by id desc limit 1";
+                    else
+                        $sql="select count(*) as id from history_contracts where payment_date >(CURRENT_TIMESTAMP - INTERVAL '37 months') and contract_id=".$contract_id."
+                            group by factor_id order by id desc limit 1";
+                else 
+                    $sql="select count(*) as id from history_contracts where contract_id=".$contract_id."
+                            group by factor_id order by id desc limit 1";
+
+                $c = $this->model()->findBySql($sql);
+    //            echo '$contract_id='.$contract_id.'; count='.var_dump(+$c->id);
+                return +$c->id>3 ? true:false;
+            }
+        }
+        public function getFirstOverdueSum($bureau_id, $contract_id, $days, $isUnsecuredCredit){ // с какой суммы возникла история
+            if($bureau_id==2){ // ubki
+                if($isUnsecuredCredit)
+                    if($days>365*3)
+                        $sql="select * from history_contracts 
+                            where payment_date >(CURRENT_TIMESTAMP - INTERVAL '61 months') and factor_id=10 and value != '0' and contract_id=".$contract_id.
+                            " order by payment_date limit 1";
+                    else
+                        $sql="select * from history_contracts 
+                            where payment_date >(CURRENT_TIMESTAMP - INTERVAL '37 months') and factor_id=10 and value != '0' and contract_id=".$contract_id.
+                            " order by payment_date limit 1";
+                else 
+                    $sql="select * from history_contracts where factor_id=10 and value != '0' and contract_id=".$contract_id." order by payment_date limit 1";
+
+                $c = $this->model()->findBySql($sql);
+    //            echo '$contract_id='.$contract_id.'; count='.var_dump($c);
+                return isset($c)? abs(+$c->value):0;
+            }else{ // mbki
+                if($isUnsecuredCredit)
+                    if($days>365*3)
+                        $sql="select * from history_contracts where payment_date >(CURRENT_TIMESTAMP - INTERVAL '61 months') and factor_id =2 and contract_id=".$contract_id.
+                            " and CAST(coalesce(value, '0') AS real)>0 order by payment_date limit 1";
+                    else
+                        $sql="select * from history_contracts where payment_date >(CURRENT_TIMESTAMP - INTERVAL '37 months') and factor_id =2 and contract_id=".$contract_id.
+                            " and CAST(coalesce(value, '0') AS real)>0 order by payment_date limit 1";
+                            
+                else 
+                    $sql="select * from history_contracts where factor_id =2 and contract_id=".$contract_id." and CAST(coalesce(value, '0') AS real)>0 order by payment_date limit 1";
+
+                $c = $this->model()->findBySql($sql);
+//                echo '$contract_id='.$contract_id.'; count='.var_dump($c);
+                return isset($c)? +$c->value:0;                
+            }
+        }
+        public function getMaxOverdue($bureau_id, $contract_id, $days, $isUnsecuredCredit){ // максимальная сумма просрочки за всю историю
+            if($bureau_id==2){ // ubki
+                if($isUnsecuredCredit)
+                    if($days>365*3)
+                        $sql="select * from history_contracts 
+                            where payment_date >(CURRENT_TIMESTAMP - INTERVAL '61 months') and factor_id=10 and value != '0' and contract_id=".$contract_id.
+                            " order by CAST(coalesce(value, '0') AS real) limit 1";
+                    else
+                        $sql="select * from history_contracts 
+                            where payment_date >(CURRENT_TIMESTAMP - INTERVAL '37 months') and factor_id=10 and value != '0' and contract_id=".$contract_id.
+                            " order by CAST(coalesce(value, '0') AS real) limit 1";
+                else 
+                    $sql="select * from history_contracts where factor_id=10 and value != '0' and contract_id=".$contract_id." order by CAST(coalesce(value, '0') AS real) limit 1";
+
+                $c = $this->model()->findBySql($sql);
+                return abs($c->value);
+            }else{ // mbki
+                if($isUnsecuredCredit)
+                    if($days>365*3)
+                        $sql="select * from history_contracts 
+                            where payment_date >(CURRENT_TIMESTAMP - INTERVAL '61 months') and factor_id=2 and value != '0' and contract_id=".$contract_id.
+                            " order by CAST(coalesce(value, '0') AS real) desc limit 1";
+                    else
+                        $sql="select * from history_contracts 
+                            where payment_date >(CURRENT_TIMESTAMP - INTERVAL '37 months') and factor_id=2 and value != '0' and contract_id=".$contract_id.
+                            " order by CAST(coalesce(value, '0') AS real) desc limit 1";
+                else 
+                    $sql="select * from history_contracts where factor_id =2 and contract_id=".$contract_id."  order by CAST(coalesce(value, '0') AS real) desc limit 1";
+
+                $c = $this->model()->findBySql($sql);
+                return +$c->value;
+            }
+        }
+        public function getLastOverdueSum($bureau_id, $contract_id, $days, $isUnsecuredCredit){ // сумма последнего платежа
+            if($bureau_id==2){ // ubki
+                if($isUnsecuredCredit)
+                    if($days>365*3)
+                        $sql="select * from history_contracts 
+                            where payment_date >(CURRENT_TIMESTAMP - INTERVAL '61 months') and factor_id=10 and contract_id=".$contract_id.
+                            " order by payment_date desc limit 1";
+                    else
+                        $sql="select * from history_contracts 
+                            where payment_date >(CURRENT_TIMESTAMP - INTERVAL '37 months') and factor_id=10 and contract_id=".$contract_id.
+                            " order by payment_date desc limit 1";
+                else 
+                    $sql="select * from history_contracts where factor_id=10 and contract_id=".$contract_id." order by payment_date desc limit 1";
+
+                $c = $this->model()->findBySql($sql);
+                return isset($c)? abs($c->value):0;
+            }else{
+                if($isUnsecuredCredit)
+                    if($days>365*3)
+                        $sql="select * from history_contracts 
+                            where payment_date >(CURRENT_TIMESTAMP - INTERVAL '61 months') and factor_id=2 and contract_id=".$contract_id.
+                            " order by payment_date desc limit 1";
+                    else
+                        $sql="select * from history_contracts 
+                            where payment_date >(CURRENT_TIMESTAMP - INTERVAL '37 months') and factor_id=2 and contract_id=".$contract_id.
+                            " order by payment_date desc limit 1";
+                else 
+                    $sql="select * from history_contracts where factor_id=2 and contract_id=".$contract_id." order by payment_date desc limit 1";
+
+                $c = $this->model()->findBySql($sql);
+                return isset($c)? +$c->value:0;
+            }
+        }
+        public function is3LastPaymentsCorrect($contract_id, $days, $isUnsecuredCredit){
             if($isUnsecuredCredit)
                 if($days>365*3)
-                    $sql="select count(*) as id from history_contracts where payment_date >(CURRENT_TIMESTAMP - INTERVAL '61 months') and factor_id=5 and contract_id=".$contract_id;
-                else
-                    $sql="select count(*) as id from history_contracts where payment_date >(CURRENT_TIMESTAMP - INTERVAL '37 months') and factor_id=5 and contract_id=".$contract_id;
+                    $sql = "select min(CAST(coalesce(value, '0') AS real)) as value from history_contracts where id in
+                        (select id from history_contracts 
+                        where payment_date >(CURRENT_TIMESTAMP - INTERVAL '61 months') and factor_id=8 and contract_id=".$contract_id."
+                        order by payment_date desc limit 4)";
+                else 
+                    $sql = "select min(CAST(coalesce(value, '0') AS real)) as value from history_contracts where id in
+                        (select id from history_contracts 
+                        where payment_date >(CURRENT_TIMESTAMP - INTERVAL '37 months') and factor_id=8 and contract_id=".$contract_id."
+                        order by payment_date desc limit 4)";
             else 
-                $sql="select count(*) as id from history_contracts where factor_id=5 and contract_id=".$contract_id;
+                $sql = "select min(CAST(coalesce(value, '0') AS real)) as value from history_contracts where id in
+                        (select id from history_contracts 
+                        where factor_id=8 and contract_id=".$contract_id." order by payment_date desc limit 4)";
             
             $c = $this->model()->findBySql($sql);
-            return $c->id>3 ? true:false;
+            if (isset($c))
+                return $c->value<=30? true:false;
+            else 
+                return true; // ???????????????
+            
         }
-        public function getFirstOverdueSum($contract_id, $days, $isUnsecuredCredit){ // с какой суммы возникла история
+        public function getMaxDelayDays($contract_id, $days, $isUnsecuredCredit){
             if($isUnsecuredCredit)
                 if($days>365*3)
-                    $sql="select * from history_contracts 
-                        where payment_date >(CURRENT_TIMESTAMP - INTERVAL '61 months') and factor_id=10 and value != '0' and contract_id=".$contract_id.
-                        " order by payment_date limit 1";
-                else
-                    $sql="select * from history_contracts 
-                        where payment_date >(CURRENT_TIMESTAMP - INTERVAL '37 months') and factor_id=10 and value != '0' and contract_id=".$contract_id.
-                        " order by payment_date limit 1";
+                    $sql = "select (CAST(coalesce(value, '0') AS integer)) as value from history_contracts 
+                        where payment_date >(CURRENT_TIMESTAMP - INTERVAL '61 months') and 
+                        factor_id=8 and contract_id=".$contract_id."
+                        order by CAST(coalesce(value, '0') AS integer) desc limit 1";
+                else 
+                    $sql = "select (CAST(coalesce(value, '0') AS integer)) as value from history_contracts 
+                        where payment_date >(CURRENT_TIMESTAMP - INTERVAL '37 months') and 
+                        factor_id=8 and contract_id=".$contract_id."
+                        order by CAST(coalesce(value, '0') AS integer) desc limit 1";
             else 
-                $sql="select * from history_contracts where factor_id=10 and value != '0' and contract_id=".$contract_id." order by payment_date limit 1";
-            
+                $sql = "select (CAST(coalesce(value, '0') AS integer)) as value from history_contracts 
+                        where factor_id=8 and contract_id=".$contract_id."
+                        order by CAST(coalesce(value, '0') AS integer) desc limit 1";
             $c = $this->model()->findBySql($sql);
-            return abs($c->value);
+            return isset($c)? $c->value:0;
         }
-        public function getMaxOverdue($contract_id, $days, $isUnsecuredCredit){ // максимальная просрочка за всю историю
+        public function getMaxDelaySum($bureau_id, $contract_id, $days, $isUnsecuredCredit){
+            if($bureau_id==2){ // ubki
+                if($isUnsecuredCredit)
+                    if($days>365*3)
+                        $sql = "select (CAST(coalesce(value, '0') AS real)) as value from history_contracts 
+                            where payment_date >(CURRENT_TIMESTAMP - INTERVAL '61 months') and 
+                            factor_id=10 and contract_id=".$contract_id."
+                            order by CAST(coalesce(value, '0') AS real) limit 1";
+                    else 
+                        $sql = "select (CAST(coalesce(value, '0') AS real)) as value from history_contracts 
+                            where payment_date >(CURRENT_TIMESTAMP - INTERVAL '37 months') and 
+                            factor_id=10 and contract_id=".$contract_id."
+                            order by CAST(coalesce(value, '0') AS real) limit 1";
+                else 
+                    $sql = "select (CAST(coalesce(value, '0') AS real)) as value from history_contracts 
+                            where factor_id=10 and contract_id=".$contract_id."
+                            order by CAST(coalesce(value, '0') AS real) limit 1";
+                $c = $this->model()->findBySql($sql);
+                return isset($c)? abs($c->value):0;
+            }else{ //mbki
+                if($isUnsecuredCredit)
+                    if($days>365*3)
+                        $sql = "select (CAST(coalesce(value, '0') AS real)) as value from history_contracts 
+                            where value !='-' and payment_date >(CURRENT_TIMESTAMP - INTERVAL '61 months') and 
+                            factor_id=2 and contract_id=".$contract_id."
+                            order by CAST(coalesce(value, '0') AS real) desc limit 1";
+                    else 
+                        $sql = "select (CAST(coalesce(value, '0') AS real)) as value from history_contracts 
+                            where value !='-' and payment_date >(CURRENT_TIMESTAMP - INTERVAL '37 months') and 
+                            factor_id=2 and contract_id=".$contract_id."
+                            order by CAST(coalesce(value, '0') AS real) desc limit 1";
+                else 
+                    $sql = "select (CAST(coalesce(value, '0') AS real)) as value from history_contracts 
+                            where value !='-' and factor_id=2 and contract_id=".$contract_id."
+                            order by CAST(coalesce(value, '0') AS real) desc limit 1";
+                $c = $this->model()->findBySql($sql);
+//                echo '$contract_id='.$contract_id.'; count='.var_dump(+$c->value);
+                return isset($c)? +$c->value:0;
+            }
+        }
+        public function getLastPaymentDate($contract_id, $days, $isUnsecuredCredit){ // дата последнего известного платежа
             if($isUnsecuredCredit)
                 if($days>365*3)
-                    $sql="select * from history_contracts 
-                        where payment_date >(CURRENT_TIMESTAMP - INTERVAL '61 months') and factor_id=10 and value != '0' and contract_id=".$contract_id.
-                        " order by CAST(coalesce(value, '0') AS real) limit 1";
-                else
-                    $sql="select * from history_contracts 
-                        where payment_date >(CURRENT_TIMESTAMP - INTERVAL '37 months') and factor_id=10 and value != '0' and contract_id=".$contract_id.
-                        " order by CAST(coalesce(value, '0') AS real) limit 1";
+                    $sql="
+                        select max(payment_date) as payment_date from history_contracts 
+                        where factor_id = 10 and payment_date>(CURRENT_TIMESTAMP - INTERVAL '61 months') and contract_id =".$contract_id;
+                else 
+                    $sql="
+                        select max(payment_date) as payment_date from history_contracts 
+                        where factor_id = 10 and payment_date>(CURRENT_TIMESTAMP - INTERVAL '37 months') and contract_id =".$contract_id;
             else 
-                $sql="select * from history_contracts where factor_id=10 and value != '0' and contract_id=".$contract_id." order by CAST(coalesce(value, '0') AS real) limit 1";
+                $sql="
+                    select max(payment_date) as payment_date from history_contracts 
+                    where factor_id = 10 and contract_id =".$contract_id;
             
             $c = $this->model()->findBySql($sql);
-            return abs($c->value);
+            return isset($c)? $c->payment_date:null;
         }
+/*
+ * МБКИ
+К-во
+просрочек
+-       K7      <=7
+1       K30     <=30
+2       K60     <=60
+3       K90     <=90
+>3      Kmax    >90
+ */        
+        
 }
