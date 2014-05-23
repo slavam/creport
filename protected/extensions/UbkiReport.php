@@ -75,10 +75,9 @@ class UbkiReport {
                 'startDate'=>(string)$cr['DS'],
                 'stopDate'=>(string)$cr['DE'],
                 'creditType'=>(string)$cr['CR_Type'],
-                'creditTypeName'=>  $this->creditTypeCode2Name((string)$cr['CR_Type']),
+                'creditTypeName'=>$this->creditTypeCode2Name((string)$cr['CR_Type']),
                 'currencyCode'=>((string)$cr['Curr']=='980'? 'UAH':((string)$cr['Curr']=='840'? 'USD':(string)$cr['Curr'])),
                 'crSetAmount'=>(string)$cr['crSetAmount'],
-//                'crSetAmount'=>(string)$cr['crSetAmount'],
                 'amount'=>(string)$cr['Amount'],
                 'flClose'=>(string)$cr['FlClose'],
                 'amtCurr'=>(string)$cr['AmtCurr'],
@@ -149,7 +148,7 @@ class UbkiReport {
                 'amtExp'=>(string)$v['AmtExp'],
                 'daysExp'=>(string)$v['DaysExp'],
                 'crSetAmount'=>$crSetAmount,
-                    );      
+            );      
         return $payments;
     }
 

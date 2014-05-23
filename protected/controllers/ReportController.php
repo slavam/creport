@@ -84,12 +84,6 @@ class ReportController extends Controller
         $this->render('inn',array('model'=>$model));
     }
     
-//    public function actionGetINN(){
-//        if (isset($_POST['my_button'])){
-//            $this->redirect(array('getReportByINN','inn'=>$_POST['inn']));
-//        }
-//        $this->render('getINN');
-//    }
     private function get_client_ip() {
         $ipaddress = '';
         if (getenv('HTTP_CLIENT_IP'))
@@ -126,25 +120,17 @@ class ReportController extends Controller
         
         if (isset($last_xml_report)){
              $xml = new SimpleXMLElement($last_xml_report->xml_report);
-//             var_dump(unserialize('77'));
              switch ($last_xml_report->bureau_id) {
                  case 2: // UBKI
-//                     if ($this->actionSaveCreditReport($xml))
-//                         var_dump ("Сохранено");
                      $bki_report = new UbkiReport($xml);
-//                     var_dump(unserialize(serialize($bki_report)));
                      $this->actionShowUbkiReportJq($bki_report);
                  break;
                  case 3: // MBKI
-//                     if ($this->actionSaveCreditReport($xml))
-//                         var_dump ("Сохранено");
 //                     var_dump($xml->Report->Subject); //->xpath('//SummaryInformation'));
                      $bki_report = new MbkiReport($xml);
-//                     var_dump(unserialize(serialize($bki_report)));
                      $this->actionShowReportJq($bki_report);
                  break;
              }
-//             $lastname = $this->query_attribute($xml->r, "key", "5")->LST['uaLName'];
         } else {
              $bki_report = '';
              $this->redirect(array('inn'));
@@ -288,59 +274,66 @@ class ReportController extends Controller
 //                            var_dump($ctr['crSetAmount']);
                             $contract->save();
                             foreach ($ctr['payments'] as $p) {
-                                $hist = new HistoryContract();
-                                $hist->contract_id = $contract->id;
-                                $hist->month = $p['month'];
-                                $hist->year = $p['year'];
-                                $hist->value=$p['flPay'];
-                                $hist->factor_id=5;
-                                $hist->payment_date=$p['year'].'-'.$p['month'].'-01';
-                                $hist->save();
+                                $this->saveUbkiHistoryContract($contract->id, $p, 5);
+                                $this->saveUbkiHistoryContract($contract->id, $p, 6);
+                                $this->saveUbkiHistoryContract($contract->id, $p, 7);
+                                $this->saveUbkiHistoryContract($contract->id, $p, 8);
+                                $this->saveUbkiHistoryContract($contract->id, $p, 9);
+                                $this->saveUbkiHistoryContract($contract->id, $p, 10);
                                 
-                                $hist = new HistoryContract();
-                                $hist->contract_id = $contract->id;
-                                $hist->month = $p['month'];
-                                $hist->year = $p['year'];
-                                $hist->value=$p['amtCurr'];
-                                $hist->factor_id=6;
-                                $hist->payment_date=$p['year'].'-'.$p['month'].'-01';
-                                $hist->save();
-                                
-                                $hist = new HistoryContract();
-                                $hist->contract_id = $contract->id;
-                                $hist->month = $p['month'];
-                                $hist->year = $p['year'];
-                                $hist->value=$p['amtExp'];
-                                $hist->factor_id=10;
-                                $hist->payment_date=$p['year'].'-'.$p['month'].'-01';
-                                $hist->save();
-                                
-                                $hist = new HistoryContract();
-                                $hist->contract_id = $contract->id;
-                                $hist->month = $p['month'];
-                                $hist->year = $p['year'];
-                                $hist->value=$ctr['crSetAmount'];
-                                $hist->factor_id=7;
-                                $hist->payment_date=$p['year'].'-'.$p['month'].'-01';
-                                $hist->save();
-                                
-                                $hist = new HistoryContract();
-                                $hist->contract_id = $contract->id;
-                                $hist->month = $p['month'];
-                                $hist->year = $p['year'];
-                                $hist->value=$p['daysExp'];
-                                $hist->factor_id=8;
-                                $hist->payment_date=$p['year'].'-'.$p['month'].'-01';
-                                $hist->save();
-                                
-                                $hist = new HistoryContract();
-                                $hist->contract_id = $contract->id;
-                                $hist->month = $p['month'];
-                                $hist->year = $p['year'];
-                                $hist->value=$p['flUse'];
-                                $hist->factor_id=9;
-                                $hist->payment_date=$p['year'].'-'.$p['month'].'-01';
-                                $hist->save();
+//                                $hist = new HistoryContract();
+//                                $hist->contract_id = $contract->id;
+//                                $hist->month = $p['month'];
+//                                $hist->year = $p['year'];
+//                                $hist->value=$p['flPay'];
+//                                $hist->factor_id=5;
+//                                $hist->payment_date=$p['year'].'-'.$p['month'].'-01';
+//                                $hist->save();
+//                                
+//                                $hist = new HistoryContract();
+//                                $hist->contract_id = $contract->id;
+//                                $hist->month = $p['month'];
+//                                $hist->year = $p['year'];
+//                                $hist->value=$p['amtCurr'];
+//                                $hist->factor_id=6;
+//                                $hist->payment_date=$p['year'].'-'.$p['month'].'-01';
+//                                $hist->save();
+//                                
+//                                $hist = new HistoryContract();
+//                                $hist->contract_id = $contract->id;
+//                                $hist->month = $p['month'];
+//                                $hist->year = $p['year'];
+//                                $hist->value=$p['amtExp'];
+//                                $hist->factor_id=10;
+//                                $hist->payment_date=$p['year'].'-'.$p['month'].'-01';
+//                                $hist->save();
+//                                
+//                                $hist = new HistoryContract();
+//                                $hist->contract_id = $contract->id;
+//                                $hist->month = $p['month'];
+//                                $hist->year = $p['year'];
+//                                $hist->value=$ctr['crSetAmount'];
+//                                $hist->factor_id=7;
+//                                $hist->payment_date=$p['year'].'-'.$p['month'].'-01';
+//                                $hist->save();
+//                                
+//                                $hist = new HistoryContract();
+//                                $hist->contract_id = $contract->id;
+//                                $hist->month = $p['month'];
+//                                $hist->year = $p['year'];
+//                                $hist->value=$p['daysExp'];
+//                                $hist->factor_id=8;
+//                                $hist->payment_date=$p['year'].'-'.$p['month'].'-01';
+//                                $hist->save();
+//                                
+//                                $hist = new HistoryContract();
+//                                $hist->contract_id = $contract->id;
+//                                $hist->month = $p['month'];
+//                                $hist->year = $p['year'];
+//                                $hist->value=$p['flUse'];
+//                                $hist->factor_id=9;
+//                                $hist->payment_date=$p['year'].'-'.$p['month'].'-01';
+//                                $hist->save();
                             }
                         }
                         foreach ($credit_report->query_hist as $il){ 
@@ -465,44 +458,48 @@ class ReportController extends Controller
                                     $month = substr($m, 0, $slash_pos);
                                     $year = '20'.substr($m, $slash_pos+1);
                                     if(count($ctr['hCTotalNumberOfOverdueInstalments'])>1){
-                                        $hist = new HistoryContract();
-                                        $hist->month = $month;
-                                        $hist->year = $year;
-                                        $hist->value=$this->fineMbkiValue($ctr['hCTotalNumberOfOverdueInstalments'][$i]['value']); //str_replace(',', '.', str_replace(' ', '', $ctr['hCTotalNumberOfOverdueInstalments'][$i]['value']));
-                                        $hist->contract_id = $contract->id;
-                                        $hist->factor_id=1;
-                                        $hist->payment_date=$year.'-'.$month.'-01';
-                                        $hist->save();
+                                        $this->saveMbkiHistoryContract($contract->id, $month, $year, $this->fineMbkiValue($ctr['hCTotalNumberOfOverdueInstalments'][$i]['value']), 1);
+//                                        $hist = new HistoryContract();
+//                                        $hist->month = $month;
+//                                        $hist->year = $year;
+//                                        $hist->value=$this->fineMbkiValue($ctr['hCTotalNumberOfOverdueInstalments'][$i]['value']); //str_replace(',', '.', str_replace(' ', '', $ctr['hCTotalNumberOfOverdueInstalments'][$i]['value']));
+//                                        $hist->contract_id = $contract->id;
+//                                        $hist->factor_id=1;
+//                                        $hist->payment_date=$year.'-'.$month.'-01';
+//                                        $hist->save();
                                     }
                                     if(count($ctr['hCTotalOverdueAmount'])>1){
-                                        $hist = new HistoryContract();
-                                        $hist->month = $month;
-                                        $hist->year = $year;
-                                        $hist->value=$this->fineMbkiValue($ctr['hCTotalOverdueAmount'][$i]['value']); //str_replace(',', '.', str_replace(' ', '', $ctr['hCTotalOverdueAmount'][$i]['value']));
-                                        $hist->contract_id = $contract->id;
-                                        $hist->factor_id=2;
-                                        $hist->payment_date=$year.'-'.$month.'-01';
-                                        $hist->save();
+                                        $this->saveMbkiHistoryContract($contract->id, $month, $year, $this->fineMbkiValue($ctr['hCTotalOverdueAmount'][$i]['value']), 2);
+//                                        $hist = new HistoryContract();
+//                                        $hist->month = $month;
+//                                        $hist->year = $year;
+//                                        $hist->value=$this->fineMbkiValue($ctr['hCTotalOverdueAmount'][$i]['value']); //str_replace(',', '.', str_replace(' ', '', $ctr['hCTotalOverdueAmount'][$i]['value']));
+//                                        $hist->contract_id = $contract->id;
+//                                        $hist->factor_id=2;
+//                                        $hist->payment_date=$year.'-'.$month.'-01';
+//                                        $hist->save();
                                     }
                                     if(count($ctr['hCResidualAmount'])>1){
-                                        $hist = new HistoryContract();
-                                        $hist->month = $month;
-                                        $hist->year = $year;
-                                        $hist->value=$this->fineMbkiValue($ctr['hCResidualAmount'][$i]['value']); //str_replace(',', '.', str_replace(' ', '', $ctr['hCResidualAmount'][$i]['value']));
-                                        $hist->contract_id = $contract->id;
-                                        $hist->factor_id=3;
-                                        $hist->payment_date=$year.'-'.$month.'-01';
-                                        $hist->save();
+                                        $this->saveMbkiHistoryContract($contract->id, $month, $year, $this->fineMbkiValue($ctr['hCResidualAmount'][$i]['value']), 3);
+//                                        $hist = new HistoryContract();
+//                                        $hist->month = $month;
+//                                        $hist->year = $year;
+//                                        $hist->value=$this->fineMbkiValue($ctr['hCResidualAmount'][$i]['value']); //str_replace(',', '.', str_replace(' ', '', $ctr['hCResidualAmount'][$i]['value']));
+//                                        $hist->contract_id = $contract->id;
+//                                        $hist->factor_id=3;
+//                                        $hist->payment_date=$year.'-'.$month.'-01';
+//                                        $hist->save();
                                     }
                                     if(count($ctr['hCCreditCardUsedInMonth'])>1){
-                                        $hist = new HistoryContract();
-                                        $hist->month = $month;
-                                        $hist->year = $year;
-                                        $hist->value=$ctr['hCCreditCardUsedInMonth'][$i]['value'];
-                                        $hist->contract_id = $contract->id;
-                                        $hist->factor_id=4;
-                                        $hist->payment_date=$year.'-'.$month.'-01';
-                                        $hist->save();
+                                        $this->saveMbkiHistoryContract($contract->id, $month, $year, $ctr['hCCreditCardUsedInMonth'][$i]['value'], 4);
+//                                        $hist = new HistoryContract();
+//                                        $hist->month = $month;
+//                                        $hist->year = $year;
+//                                        $hist->value=$ctr['hCCreditCardUsedInMonth'][$i]['value'];
+//                                        $hist->contract_id = $contract->id;
+//                                        $hist->factor_id=4;
+//                                        $hist->payment_date=$year.'-'.$month.'-01';
+//                                        $hist->save();
                                     }
                                 }
                             }
@@ -515,44 +512,48 @@ class ReportController extends Controller
                                     $month = substr($m, 0, $slash_pos);
                                     $year = '20'.substr($m, $slash_pos+1);
                                     if(count($ctr['hCTotalNumberOfOverdueInstalments24'])>1){
-                                        $hist = new HistoryContract();
-                                        $hist->month = $month;
-                                        $hist->year = $year;
-                                        $hist->value=$this->fineMbkiValue($ctr['hCTotalNumberOfOverdueInstalments24'][$i]['value']); //str_replace(',', '.', str_replace(' ', '', $ctr['hCTotalNumberOfOverdueInstalments24'][$i]['value']));
-                                        $hist->contract_id = $contract->id;
-                                        $hist->factor_id=1;
-                                        $hist->payment_date=$year.'-'.$month.'-01';
-                                        $hist->save();
+                                        $this->saveMbkiHistoryContract($contract->id, $month, $year, $this->fineMbkiValue($ctr['hCTotalNumberOfOverdueInstalments24'][$i]['value']), 1);
+//                                        $hist = new HistoryContract();
+//                                        $hist->month = $month;
+//                                        $hist->year = $year;
+//                                        $hist->value=$this->fineMbkiValue($ctr['hCTotalNumberOfOverdueInstalments24'][$i]['value']); //str_replace(',', '.', str_replace(' ', '', $ctr['hCTotalNumberOfOverdueInstalments24'][$i]['value']));
+//                                        $hist->contract_id = $contract->id;
+//                                        $hist->factor_id=1;
+//                                        $hist->payment_date=$year.'-'.$month.'-01';
+//                                        $hist->save();
                                     }
                                     if(count($ctr['hCTotalOverdueAmount24'])>1){
-                                        $hist = new HistoryContract();
-                                        $hist->month = $month;
-                                        $hist->year = $year;
-                                        $hist->value=$this->fineMbkiValue($ctr['hCTotalOverdueAmount24'][$i]['value']); //str_replace(',', '.', str_replace(' ', '', $ctr['hCTotalOverdueAmount24'][$i]['value']));
-                                        $hist->contract_id = $contract->id;
-                                        $hist->factor_id=2;
-                                        $hist->payment_date=$year.'-'.$month.'-01';
-                                        $hist->save();
+                                        $this->saveMbkiHistoryContract($contract->id, $month, $year, $this->fineMbkiValue($ctr['hCTotalOverdueAmount24'][$i]['value']), 2);
+//                                        $hist = new HistoryContract();
+//                                        $hist->month = $month;
+//                                        $hist->year = $year;
+//                                        $hist->value=$this->fineMbkiValue($ctr['hCTotalOverdueAmount24'][$i]['value']); //str_replace(',', '.', str_replace(' ', '', $ctr['hCTotalOverdueAmount24'][$i]['value']));
+//                                        $hist->contract_id = $contract->id;
+//                                        $hist->factor_id=2;
+//                                        $hist->payment_date=$year.'-'.$month.'-01';
+//                                        $hist->save();
                                     }
                                     if(count($ctr['hCResidualAmount24'])>1){
-                                        $hist = new HistoryContract();
-                                        $hist->month = $month;
-                                        $hist->year = $year;
-                                        $hist->value= $this->fineMbkiValue($ctr['hCResidualAmount24'][$i]['value']); // str_replace(',', '.', str_replace(' ', '', $ctr['hCResidualAmount24'][$i]['value']));
-                                        $hist->contract_id = $contract->id;
-                                        $hist->factor_id=3;
-                                        $hist->payment_date=$year.'-'.$month.'-01';
-                                        $hist->save();
+                                        $this->saveMbkiHistoryContract($contract->id, $month, $year, $this->fineMbkiValue($ctr['hCResidualAmount24'][$i]['value']), 3);
+//                                        $hist = new HistoryContract();
+//                                        $hist->month = $month;
+//                                        $hist->year = $year;
+//                                        $hist->value= $this->fineMbkiValue($ctr['hCResidualAmount24'][$i]['value']); // str_replace(',', '.', str_replace(' ', '', $ctr['hCResidualAmount24'][$i]['value']));
+//                                        $hist->contract_id = $contract->id;
+//                                        $hist->factor_id=3;
+//                                        $hist->payment_date=$year.'-'.$month.'-01';
+//                                        $hist->save();
                                     }
                                     if(count($ctr['hCCreditCardUsedInMonth24'])>1){
-                                        $hist = new HistoryContract();
-                                        $hist->month = $month;
-                                        $hist->year = $year;
-                                        $hist->value=$ctr['hCCreditCardUsedInMonth24'][$i]['value'];
-                                        $hist->contract_id = $contract->id;
-                                        $hist->factor_id=4;
-                                        $hist->payment_date=$year.'-'.$month.'-01';
-                                        $hist->save();
+                                        $this->saveMbkiHistoryContract($contract->id, $month, $year, $ctr['hCCreditCardUsedInMonth24'][$i]['value'], 4);
+//                                        $hist = new HistoryContract();
+//                                        $hist->month = $month;
+//                                        $hist->year = $year;
+//                                        $hist->value=$ctr['hCCreditCardUsedInMonth24'][$i]['value'];
+//                                        $hist->contract_id = $contract->id;
+//                                        $hist->factor_id=4;
+//                                        $hist->payment_date=$year.'-'.$month.'-01';
+//                                        $hist->save();
                                     }
                                 }
                             }
@@ -574,8 +575,38 @@ class ReportController extends Controller
          } else 
              return false;
      }
-     private function fineMbkiValue($src){
-         return $src=='-'? str_replace('-', '0', $src):str_replace(',', '.', str_replace(' ', '', $src));
+    private function fineMbkiValue($src){
+        return $src=='-'? str_replace('-', '0', $src):str_replace(',', '.', str_replace(' ', '', $src));
+    }
+
+    private function saveMbkiHistoryContract($contract_id, $month, $year, $value, $factor_id){
+        $hist = new HistoryContract();
+        $hist->month = $month;
+        $hist->year = $year;
+        $hist->value=$value; 
+        $hist->contract_id = $contract_id;
+        $hist->factor_id=$factor_id; 
+        $hist->payment_date=$year.'-'.$month.'-01';
+        $hist->save();         
+        return true;
+     }
+
+     private function saveUbkiHistoryContract($contract_id, $p, $factor_id){
+        $fl_value = array('5'=>'flPay', 
+            '6'=>'amtCurr', 
+            '7'=>'crSetAmount', 
+            '8'=>'daysExp',
+            '9'=>'flUse',
+            '10'=>'amtExp');
+        $hist = new HistoryContract();
+        $hist->contract_id = $contract_id;
+        $hist->month = $p['month'];
+        $hist->year = $p['year'];
+        $hist->value=$p[$fl_value[$factor_id]]; 
+        $hist->factor_id=$factor_id;
+        $hist->payment_date=$p['year'].'-'.$p['month'].'-01';
+        $hist->save();         
+        return true;
      }
 
      public function actionHistoryIsAbsent($inn, $date){

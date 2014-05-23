@@ -93,5 +93,10 @@ return array(
 	'params'=>array(
 		// this is used in contact page
 		'adminEmail'=>'webmaster@example.com',
+		// the LDAP information for authenticate
+	        'ldap' => array(
+        	    'host' => 'adir.vbr.ua',
+	            'domain' => '@adir.vbr.ua',
+        	), 
 	),
 );
