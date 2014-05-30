@@ -92,7 +92,7 @@ class UserIdentity extends CUserIdentity
 
         private function UserAuthenticate()
         {
-            $user = Users::model()->find('LOWER(login)=?', array(strtolower($this->name)));
+            $user = User::model()->find('LOWER(login)=?', array(strtolower($this->name)));
             if(!$user) $this->errorCode = self::ERROR_UNKNOWN_IDENTITY;  // ." ".self::ERROR_USERNAME_INVALID;
             else {
                     $this->_id = $user->id;

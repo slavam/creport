@@ -1,5 +1,5 @@
 <?php
-//define('DEBUG_LOG',1);
+define('DEBUG_LOG',1);
 
 class CreditHistorySoapHeaderClass
 {
@@ -13,14 +13,14 @@ class CreditHistorySoapHeaderClass
     public $namespace = 'http://ws.creditinfo.com/';
     public $name      = 'CigWsHeader';
 
-    private $login = 'test.vbr';
-    private $pass  = 'Test@1234';
+//    private $login = 'test.vbr';
+//    private $pass  = 'Test@1234';
     private $lang  = 'ru-RU';
     private $ver   = '1_0';
 
-    function __construct(){
-        $this->UserName = $this->login;
-        $this->Password = $this->pass;
+    function __construct($login, $pass){
+        $this->UserName = $login;
+        $this->Password = $pass;
         $this->Version  = $this->ver;
         $this->Culture  = $this->lang;
         //HACK!?
@@ -58,8 +58,11 @@ class CreditHistorySoapClass
 {
 //    private $soap;
     private $wsdl = 'https://test2.credithistory.com.ua/Service/Service.asmx?WSDL';
-
-    function __construct(){
+    private $login;
+    private $pw;
+    function __construct($login, $password){
+        $this->login = $login;
+        $this->pw = $password;
         try {
             $this->soapclient = new SoapClient($this->wsdl,
                 array(
@@ -85,7 +88,7 @@ class CreditHistorySoapClass
             }
     }
     private function buildSoapHeader(){
-        $soapheader = new CreditHistorySoapHeaderClass();
+        $soapheader = new CreditHistorySoapHeaderClass($this->login, $this->pw);
         $header =  new SoapHeader($soapheader->namespace,$soapheader->name,$soapheader,false);
         $this->soapclient->__setSoapHeaders(array($header));
     }

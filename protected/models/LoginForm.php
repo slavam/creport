@@ -9,7 +9,7 @@ class LoginForm extends CFormModel
 {
 	public $username;
 	public $password;
-	public $rememberMe;
+//	public $rememberMe;
 
 	private $_identity;
 
@@ -24,7 +24,7 @@ class LoginForm extends CFormModel
 			// username and password are required
 			array('username, password', 'required'),
 			// rememberMe needs to be a boolean
-			array('rememberMe', 'boolean'),
+//			array('rememberMe', 'boolean'),
 			// password needs to be authenticated
 			array('password', 'authenticate'),
 		);
@@ -35,9 +35,9 @@ class LoginForm extends CFormModel
 	 */
 	public function attributeLabels()
 	{
-		return array(
-			'rememberMe'=>'Remember me next time',
-		);
+//		return array(
+//			'rememberMe'=>'Remember me next time',
+//		);
 	}
 
 	/**
@@ -67,7 +67,8 @@ class LoginForm extends CFormModel
 		}
 		if($this->_identity->errorCode===UserIdentity::ERROR_NONE)
 		{
-			$duration=$this->rememberMe ? 3600*24*30 : 0; // 30 days
+//			$duration=$this->rememberMe ? 3600*24*30 : 0; // 30 days
+                        $duration=3600*24*30;
 			Yii::app()->user->login($this->_identity,$duration);
 			return true;
 		}

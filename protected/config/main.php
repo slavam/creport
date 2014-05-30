@@ -7,7 +7,7 @@
 // CWebApplication properties can be configured here.
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	'name'=>'Кредитные отчеты',
+	'name'=>'Кредитные отчеты (тестовый вариант)',
 
 	// preloading 'log' component
 	'preload'=>array('log'),
@@ -19,6 +19,7 @@ return array(
 		'application.extensions.*',
 		'application.helpers.*',
 	),
+	'homeUrl'=>array('report/inn'),
 
 	'modules'=>array(
 		// uncomment the following to enable the Gii tool

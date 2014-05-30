@@ -1,3 +1,6 @@
+<h3>
+<?php if($result>'') echo $result; ?>
+</h3>
 <?php $form=$this->beginWidget('CActiveForm', array(
 'id'=>'topic-form',
 'enableAjaxValidation'=>false,

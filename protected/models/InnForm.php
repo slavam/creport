@@ -3,8 +3,12 @@
 class InnForm extends CFormModel
 {
 	public $inn;
+        public $ubkiLogin = "v.morhachov";
+        public $ubkiPassword = "ntcnbhjdfybt";
+        public $mbkiLogin = 'test.vbr';
+        public $mbkiPassword = 'Test@1234';
 
-	/**
+        /**
 	 * Declares the validation rules.
 	 * The rules state that username and password are required,
 	 * and password needs to be authenticated.
