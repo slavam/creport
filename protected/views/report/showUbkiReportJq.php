@@ -53,6 +53,7 @@ $cs->registerScriptFile(Yii::app()->request->baseUrl.'/js/jquery.form.js');
 </script>
 
 <h2>Украинское Бюро Кредитных Историй</h2>
+<h3>Отчет сохранен в базе <?echo $date; ?></h3>
 
 <h3>1.Идентификация Субъекта Кредитной Истории (СКИ)</h3>
 <? echo isset($report->photo) ? ('<img src="'.$report->photo.'"></img>'): ( ''); ?>

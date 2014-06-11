@@ -53,6 +53,7 @@ $cs->registerScriptFile(Yii::app()->request->baseUrl.'/js/jquery.form.js');
 </script>
 
 <h2>Международное Бюро Кредитных Историй</h2>
+<h3>Отчет сохранен в базе <?echo $date; ?></h3>
 
 <?php
 echo '<h3>ID МБКИ: '.$report->mbkiId.'</h3>';

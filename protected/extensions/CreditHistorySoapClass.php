@@ -1,5 +1,5 @@
 <?php
-define('DEBUG_LOG',1);
+//define('DEBUG_LOG',1);
 
 class CreditHistorySoapHeaderClass
 {
@@ -66,26 +66,24 @@ class CreditHistorySoapClass
         try {
             $this->soapclient = new SoapClient($this->wsdl,
                 array(
-                        'soap_version' => SOAP_1_1,
-                        'trace' => true,
-                        'encoding' => 'UTF-8'
-                        )
-                );
+                    'soap_version' => SOAP_1_1,
+                    'trace' => true,
+                    'encoding' => 'UTF-8',
+                    )
+            );
             if(defined('DEBUG_LOG')){
                 echo '<H3>'.'Server functions'.'</H3>';
                 var_dump($this->soapclient->__getFunctions());
                 echo '<H3>'.'Server types'.'</H3>';
                 var_dump($this->soapclient->__getTypes());
             }
-
-
-            } catch (SoapFault $fault) {
-                            //trigger_error("SOAP Fault: (faultcode: {$fault->faultcode}, faultstring: {$fault->faultstring})", E_USER_ERROR);
-                if(defined('DEBUG_LOG')){
-                        echo '<H3>'.'Fault!'.'</H3>';
-                        var_dump($fault);
-                }
+        } catch (SoapFault $fault) {
+            trigger_error("SOAP Fault: (faultcode: {$fault->faultcode}, faultstring: {$fault->faultstring})", E_USER_ERROR);
+            if(defined('DEBUG_LOG')){
+                    echo '<H3>'.'Fault!'.'</H3>';
+                    var_dump($fault);
             }
+        }
     }
     private function buildSoapHeader(){
         $soapheader = new CreditHistorySoapHeaderClass($this->login, $this->pw);
@@ -108,10 +106,10 @@ class CreditHistorySoapClass
 
                 $response = $this->soapclient->SearchFrontOffice(array('parameters'=>$params));
                 //RETURNS FUCKING ANYXML TYPE - convert it to object
-                        return simplexml_load_string($response->SearchFrontOfficeResult->any);
+                return simplexml_load_string($response->SearchFrontOfficeResult->any);
 
         } catch (SoapFault $fault) {
-                        //trigger_error("SOAP Fault: (faultcode: {$fault->faultcode}, faultstring: {$fault->faultstring})", E_USER_ERROR);
+                        trigger_error("SOAP Fault: (faultcode: {$fault->faultcode}, faultstring: {$fault->faultstring})", E_USER_ERROR);
                         if(defined('DEBUG_LOG'))
                         {
                                 echo '<H3>'.'Fault!'.'</H3>';
@@ -131,43 +129,33 @@ class CreditHistorySoapClass
     public function callGetReport($ciid){
         $this->buildSoapHeader();
         try{
-				$keyValue = new GetReportKeyValueClass();
-				$keyValue->ciid=$ciid;
-				$keyValue->creditinfoId = $ciid;
-				$keyValue->remoteIp = '';
-                                $keyValue->reportVersion = '2';
-                                $keyValue->cipScore = '200101';
-			
-				$parameters = new GetReportParametersClass($keyValue);
-//                                $doc = new GetReportDocClass();
-//                                $doc->doc = $parameters;
-//				$parameters->doc = $keyValue;
-//                                $parameters->doc['keyValue']->ciid=$ciid;
-//                                $parameters->reportId = 200017;
-//                                var_dump($parameters);
-//				$params = new SoapVar($parameters, SOAP_ENC_OBJECT);
-                                $params = new SoapVar($parameters, SOAP_ENC_OBJECT);
+                        $keyValue = new GetReportKeyValueClass();
+                        $keyValue->ciid=$ciid;
+                        $keyValue->creditinfoId = $ciid;
+                        $keyValue->remoteIp = '';
+                        $keyValue->reportVersion = '2';
+                        $keyValue->cipScore = '200101';
+
+                        $parameters = new GetReportParametersClass($keyValue);
+                        $params = new SoapVar($parameters, SOAP_ENC_OBJECT);
 		        $response = $this->soapclient->GetReport(array('reportId' => 200017,'doc'=>$params));
 		        //RETURNS FUCKING ANYXML TYPE - convert it to object
-				return simplexml_load_string($response->GetReportResult->any);
-	
-		} catch (SoapFault $fault) {
-				//trigger_error("SOAP Fault: (faultcode: {$fault->faultcode}, faultstring: {$fault->faultstring})", E_USER_ERROR);
-				if(defined('DEBUG_LOG'))
-				{
-					echo '<H3>'.'Fault!'.'</H3>';
-					var_dump($fault);
-				}
-				
-				if(defined('DEBUG_LOG'))
-				{
-					echo '<H3>'.'Fault! Last Request'.'</H3>';
-					var_dump($this->soapclient->__getLastRequest());
-					echo '<H3>'.'Fault! Last Response'.'</H3>';
-					var_dump($this->soapclient->__getLastResponse());
-				}
-
-		}
+                        return simplexml_load_string($response->GetReportResult->any);
+        } catch (SoapFault $fault) {
+                        trigger_error("SOAP Fault: (faultcode: {$fault->faultcode}, faultstring: {$fault->faultstring})", E_USER_ERROR);
+                        if(defined('DEBUG_LOG'))
+                        {
+                                echo '<H3>'.'Fault!'.'</H3>';
+                                var_dump($fault);
+                        }
+                        if(defined('DEBUG_LOG'))
+                        {
+                                echo '<H3>'.'Fault! Last Request'.'</H3>';
+                                var_dump($this->soapclient->__getLastRequest());
+                                echo '<H3>'.'Fault! Last Response'.'</H3>';
+                                var_dump($this->soapclient->__getLastResponse());
+                        }
+        }
     }
 }
 ?>

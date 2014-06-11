@@ -4,7 +4,7 @@ class InnForm extends CFormModel
 {
 	public $inn;
         public $ubkiLogin = "v.morhachov";
-        public $ubkiPassword = "ntcnbhjdfybt";
+        public $ubkiPassword = '123456'; //vbr_test'; //"ntcnbhjdfybt";
         public $mbkiLogin = 'test.vbr';
         public $mbkiPassword = 'Test@1234';
 
@@ -25,10 +25,9 @@ class InnForm extends CFormModel
         {       
             $r = XmlReport::model()->getLastReport($this->inn);
             if (count($r)>0)
-                 return true;
+                return true;
             else
                 $this->addError($attribute, 'Для этого ИНН в базе нет данных');
         }
-        
 }
 ?>
