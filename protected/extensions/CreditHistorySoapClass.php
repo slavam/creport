@@ -57,7 +57,8 @@ class SearchFrontOfficeParametersClass
 class CreditHistorySoapClass
 {
 //    private $soap;
-    private $wsdl = 'https://test2.credithistory.com.ua/Service/Service.asmx?WSDL';
+//    private $wsdl = 'https://test2.credithistory.com.ua/Service/Service.asmx?WSDL';
+    private $wsdl = 'https://secure.credithistory.com.ua/service/service.asmx?WSDL'; 
     private $login;
     private $pw;
     function __construct($login, $password){

@@ -107,4 +107,9 @@ class XmlReport extends CActiveRecord
                 where bureau_id=".$bureau_id." and tax_payer_number='".$inn."' order by created_at desc limit 1";
             return $this->findBySql($sql);
         }
+        public function getLastReportByStamp($stamp){
+            $sql ="select * from xml_reports 
+                where chb_report_id='".$stamp."' order by created_at desc limit 1";
+            return $this->findBySql($sql);
+        }
 }

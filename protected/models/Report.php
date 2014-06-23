@@ -114,4 +114,9 @@ class Report extends CActiveRecord
             $res = $this->model()->findAllBySql($sql);
             return count($res)>0? $res[0]:null;
         }
+        public function getReportsByInn($inn){
+            $sql = "select * from reports where taxpayer_number = '".$inn."' order by created_at desc, issue_date desc";
+            $res = $this->model()->findAllBySql($sql);
+            return count($res)>0? $res:null;
+        }
 }

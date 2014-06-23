@@ -5,8 +5,8 @@ class InnForm extends CFormModel
 	public $inn;
         public $ubkiLogin = "v.morhachov";
         public $ubkiPassword = '123456'; //vbr_test'; //"ntcnbhjdfybt";
-        public $mbkiLogin = 'test.vbr';
-        public $mbkiPassword = 'Test@1234';
+        public $mbkiLogin = 'virtual.vbr'; //'test.vbr';
+        public $mbkiPassword = 'DRQb6Bs5Su';//'Test@1234';
 
         /**
 	 * Declares the validation rules.
@@ -18,6 +18,7 @@ class InnForm extends CFormModel
 		return array(
                     array('inn', 'required'),
                     array('inn', 'numerical', 'integerOnly'=>true),
+                    array('inn', 'length', 'is'=>10),
                     array('inn', 'validateIsReport', 'on'=>'my_test'),
 		);
 	}

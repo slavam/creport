@@ -33,12 +33,12 @@
                                 array('label'=>'Просмотр', 'url'=>array('/report/inn')),
                                 array('label'=>'Запрос', 'url'=>array('/report/innForQuery'), 'visible'=>!Yii::app()->user->isGuest),
                                 array('label'=>'Анализ', 'url'=>array('/report/getParamForAnalyze'), 'visible'=>!Yii::app()->user->isGuest),
-//				array('label'=>'Отчеты', 'url'=>array('/reportMBKI/getINN')),
+				array('label'=>'Активность', 'url'=>array('/nativeQuerie/indexJq'), 'visible'=>!Yii::app()->user->isGuest), //Yii::app()->user->right_id==1), //
                                 array('label'=>'Загрузка', 'url'=>array('/report/Multipleupload'), 'visible'=>!Yii::app()->user->isGuest), //array('/CrField/Multipleupload')),
 				array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
 				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
 			),
-		)); ?>
+		)); ?>         
 	</div><!-- mainmenu -->
 	<?php if(isset($this->breadcrumbs)):?>
 		<?php $this->widget('zii.widgets.CBreadcrumbs', array(

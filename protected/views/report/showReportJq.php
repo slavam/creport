@@ -54,6 +54,12 @@ $cs->registerScriptFile(Yii::app()->request->baseUrl.'/js/jquery.form.js');
 
 <h2>Международное Бюро Кредитных Историй</h2>
 <h3>Отчет сохранен в базе <?echo $date; ?></h3>
+<? 
+if(!Yii::app()->user->isGuest){
+    echo '<h3><a href='.Yii::app()->createUrl("report/showAnalyzeResult").'?inn='.$inn.'&type=1>Анализ (Кредит без залога) </a><br>'; 
+    echo '<a href='.Yii::app()->createUrl("report/showAnalyzeResult").'?inn='.$inn.'&type=2>Анализ (Кредит залоговый) </a></h3><br>'; 
+}
+?> 
 
 <?php
 echo '<h3>ID МБКИ: '.$report->mbkiId.'</h3>';
