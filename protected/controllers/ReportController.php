@@ -17,8 +17,13 @@ class ReportController extends Controller
             }
         }
     }
+
     private function is_report_in_db($xml){
-        if($this->query_attribute($xml->r, "key", "5")->LST['errcode']=='nocl')
+        if($xml->bureau_id==2)
+            $errorcode= $this->query_attribute($xml->r, "key", "5")->LST['errcode'];
+        else
+            $errorcode='';
+        if(($errorcode=='nocl')or($errorcode=='syserror'))
             return false;
         $inn_ubki = $this->query_attribute($xml->r, "key", "5")->LST['OKPO'];
         if (isset($inn_ubki))
@@ -37,7 +42,8 @@ class ReportController extends Controller
 //                var_dump($_FILES);
             foreach ($_FILES['image_name']['tmp_name'] as $key => $value) {
                 $xml = simplexml_load_file($value);
-                if($this->query_attribute($xml->r, "key", "5")->LST['errcode']=='nocl'){
+                $errorcode= $this->query_attribute($xml->r, "key", "5")->LST['errcode'];
+                if(($errorcode=='nocl')or($errorcode=='syserror')){
                     $res.="В УБКИ данных о клиенте нет. ИНН:".substr($_FILES['image_name']['name'][0],0,10).'<br>';
                     $report = new Report();
                     $report->report_type_id = 3; // reportNotAvailable
@@ -71,7 +77,7 @@ class ReportController extends Controller
                         $model->save();         
                         $this->createNativeQueryRecord($model->tax_payer_number, $model->bureau_id, 'Отчет загружен в базу из внешнего файла');
                         $res .= "Загружен отчет для ИНН:".$model->tax_payer_number.'<br>';
-                        $this->actionSaveCreditReport($xml);
+                        $this->actionSaveCreditReport($xml,substr($_FILES['image_name']['name'][0],0,10));
                     }else{
                         $res .= "Для ИНН:".substr($_FILES['image_name']['name'][0],0,10).' в базе уже есть этот же отчет. Файл не загружен.<br>';
                     }
@@ -89,7 +95,8 @@ class ReportController extends Controller
         if(isset($_POST['InnForm'])){
             $model->attributes=$_POST['InnForm'];
             if($model->validate())
-                $this->redirect(array('getReportByINN','inn'=>$model->inn)); //$_POST['inn']));
+                $this->redirect(array('showPreview','inn'=>$model->inn));
+//                $this->redirect(array('getReportByINN','inn'=>$model->inn)); //$_POST['inn']));
         }
         $this->render('inn',array('model'=>$model));
     }
@@ -124,17 +131,47 @@ class ReportController extends Controller
         $query->user_id = Yii::app()->user->id;
         $query->save();
     }
+    public function actionShowPreview(){
+        $inn = $_GET['inn'];
+        $log='';
+        $ubki_report = XmlReport::model()->getLastReportByBureau($inn, 2);
+        if(isset($ubki_report)){
+            $xml = new SimpleXMLElement($ubki_report->xml_report);
+            $errorcode= $this->query_attribute($xml->r, "key", "5")->LST['errcode'];
+            if(($errorcode=='nocl')or($errorcode=='syserror')){
+                $log .= '<br>В УБКИ нет данных на клиента с ИНН '.$inn;
+            } else {
+                $log .= '<br><a href='.Yii::app()->createUrl('report/showLastReportByBureau').'?bureau_id=2&inn='.$inn.'>Просмотреть последний отчет из УБКИ</a></h2>';
+            }
+        }  else {
+            $log .= '<br>В базе нет отчета из УБКИ по этому клиенту';
+        }
+        $mbki_report = XmlReport::model()->getLastReportByBureau($inn, 3);
+        if(isset($mbki_report)){
+            $xml = new SimpleXMLElement($mbki_report->xml_report);
+            if(isset($xml->Root->reportNotAvailable)){
+                $log .= '<br>В МБКИ нет данных на клиента с ИНН '.$inn;
+            } else {
+                $log .= '<br><a href='.Yii::app()->createUrl('report/showLastReportByBureau').'?bureau_id=3&inn='.$inn.'>Просмотреть последний отчет из МБКИ</a></h2>';
+            }
+        }  else {
+            $log .= '<br>В базе нет отчета из МБКИ по этому клиенту';
+        }
+        $this->render('showPreview',array('inn'=>$inn, 'log'=>$log));
+    }
 
     public function actionGetReportByINN(){
         $last_xml_report = XmlReport::model()->getLastReport($_GET['inn']);
-//        $this->createNativeQueryRecord($last_xml_report->tax_payer_number, $last_xml_report->bureau_id, 'Отчет выбран из таблицы xml_reports');
+        $errorcode= $this->query_attribute($last_xml_report->xml_report->r, "key", "5")->LST['errcode'];
         
         if (isset($last_xml_report)){
              $xml = new SimpleXMLElement($last_xml_report->xml_report);
-             if($this->query_attribute($xml->r, "key", "5")->LST['errcode']=='nocl'){
-//                 $this->redirect(array(''))
-                $this->render('showUbkiNotHaveClient', array('inn'=>$_GET['inn']));
+             if(isset($xml->Root->reportNotAvailable)){ // mbki history is absent
+                 $this->render('showUbkiNotHaveClient', array('inn'=>$_GET['inn'],'bureau'=>'МБКИ'));
              } else
+             if(($errorcode=='nocl')or($errorcode=='syserror'))
+                $this->render('showUbkiNotHaveClient', array('inn'=>$_GET['inn'],'bureau'=>'УБКИ'));
+             else
              switch ($last_xml_report->bureau_id) {
                  case 2: // UBKI
                      $bki_report = new UbkiReport($xml);
@@ -166,7 +203,7 @@ class ReportController extends Controller
              $inn = $bki_report->okpo;
          $this->render('showUbkiReportJq',array('inn'=>$inn, 'report'=>$bki_report, 'date'=>$created_at));
      }
-     public function actionSaveCreditReport($xml){
+     public function actionSaveCreditReport($xml,$inn){
          if(isset($xml)){
              $id = $xml->r->trace['ReqID'];
              $current_time = date("Y-m-d H:i:s", time());
@@ -178,7 +215,7 @@ class ReportController extends Controller
                  $report->created_at = $current_time;
                  $report->code_from_bureau = $xml->r->trace['ReqID'];
                  $report->issue_date = $credit_report->clDate>''? $credit_report->clDate:null;
-                 $report->taxpayer_number = $credit_report->okpo;
+                 $report->taxpayer_number = $inn; //$credit_report->okpo;
                  $report->report_type_id = 1;
                 if ($report->save()){
                     $ch_subject = new ChSubject();
@@ -192,7 +229,7 @@ class ReportController extends Controller
                     $ch_subject->middlename_ua = $credit_report->uaMName;
                     $ch_subject->birth_date=$credit_report->db>''? $credit_report->db: null;
                     $ch_subject->gender_id = $credit_report->sex=='M'? 1 :($credit_report->gender=='F'? 2: null); 
-                    $ch_subject->taxpayer_number =$credit_report->okpo;
+                    $ch_subject->taxpayer_number = $inn; //$credit_report->okpo;
 //                    $ch_subject->is_resident = $credit_report->residency=='1'? true:false;
 //                    $ch_subject->nationality_id = 
 //                    $ch_subject->citizenship_id
@@ -292,7 +329,7 @@ class ReportController extends Controller
                             $contract->credit_end_date=  $ctr['stopDate'] == 'null'? null:$ctr['stopDate'];
                             $contract->total_amount=$ctr['amount'];
                             $contract->outstanding_amount=$ctr['amtCurr'];
-//                            $contract->monthly_instalment_amount=$ctr['monthlyInstalmentAmountValue'];
+                            $contract->monthly_instalment_amount=$ctr['crSetAmount'];
                             $contract->overdue_amount=$ctr['amtExp'];
                             $contract->credit_type_id= (($ctr['creditType']=='01') or ($ctr['creditType']=='03') or ($ctr['creditType']=='04'))? 2:1;
 //                            var_dump($ctr['crSetAmount']);
@@ -382,7 +419,7 @@ class ReportController extends Controller
                  $report->created_at = $current_time;
                  $report->code_from_bureau = $credit_report->mbkiId; // usageIdentity;
                  $report->issue_date = $credit_report->updated>''? $credit_report->updated:null; //issueDate;
-                 $report->taxpayer_number = $credit_report->taxpayerNumber;
+                 $report->taxpayer_number = $inn; //$credit_report->taxpayerNumber;
                  $report->report_type_id = 1;
 //                 var_dump($report);
                 if ($report->save()){
@@ -396,7 +433,7 @@ class ReportController extends Controller
 //                    $middlename_ua
                     $ch_subject->birth_date=$credit_report->dateOfBirth>''? $credit_report->dateOfBirth:null;
                     $ch_subject->gender_id = $credit_report->gender=='2'? 2 :($credit_report->gender=='1'? 1: null); 
-                    $ch_subject->taxpayer_number =$credit_report->taxpayerNumber;
+                    $ch_subject->taxpayer_number = $inn; //$credit_report->taxpayerNumber;
                     $ch_subject->is_resident = $credit_report->residency=='1'? true:false;
 //                    $ch_subject->nationality_id = 
 //                    $ch_subject->citizenship_id
@@ -651,7 +688,8 @@ class ReportController extends Controller
                     $curr_date = new DateTime("now");
                     $get_report_date = new DateTime($native_report->created_at); //issue_date);
                     if($curr_date->diff($get_report_date)->days<31){ // report is actual
-                            $this->redirect(array('getReportByINN','inn'=>$model->inn)); //, 'source'=>$res)); // show report
+                        $this->redirect(array('showPreview','inn'=>$model->inn));
+//                            $this->redirect(array('getReportByINN','inn'=>$model->inn)); //, 'source'=>$res)); // show report
                     }
                 } 
                 $from_bureau = $this->makeRequestToBureaus($model);
@@ -665,7 +703,8 @@ class ReportController extends Controller
                     case 1: // убки
                     case 2: // мбки
                         $this->createNativeQueryRecord($model->inn, $from_bureau+1, 'Отчет выбран из бюро по запросу');
-                        $this->redirect(array('getReportByINN','inn'=>$model->inn));
+                        $this->redirect(array('showPreview','inn'=>$model->inn));
+//                        $this->redirect(array('getReportByINN','inn'=>$model->inn));
                         exit;
                 }
             }
@@ -676,32 +715,41 @@ class ReportController extends Controller
         $this->render('showBureauResponse',array('inn'=>$inn, 'response'=>$response));
     }
     public function actionShowLastReportByBureau(){
+        if($_GET['inn']>''){
         $last_report_by_bureau = XmlReport::model()->getLastReportByBureau($_GET['inn'],$_GET['bureau_id']);
         $this->showReportByBureau($last_report_by_bureau);
+        }  else {
+//            var_dump($last_report_by_bureau)
+        }
     }
 
     public function actionShowReportByStamp(){
         $stamp = $_GET['stamp'];
         $stamp = str_replace("$", "#", $stamp);
         $last_report_by_bureau = XmlReport::model()->getLastReportByStamp($stamp);
-        $this->showReportByBureau($last_report_by_bureau);
+        if(isset($last_report_by_bureau))
+            $this->showReportByBureau($last_report_by_bureau);
+        else 
+            var_dump($stamp);
     }
     
     public function showReportByBureau($report){
-//        $this->createNativeQueryRecord($report->tax_payer_number, $report->bureau_id, 'Отчет выбран из таблицы xml_reports');
+        
         try{
-            if($this->query_attribute($report->r, "key", "5")->LST['errcode']=='nocl')
-                $this->render('showUbkiNotHaveClient', array('inn'=>$_GET['inn']));
             $xml = new SimpleXMLElement($report->xml_report);
+            $errorcode= $this->query_attribute($xml->r, "key", "5")->LST['errcode'];
+            if(($errorcode=='nocl')or($errorcode=='syserror'))
+                $this->render('showUbkiNotHaveClient', array('inn'=>$_GET['inn']));
+            
         } catch (Exception $e) {
             trigger_error(sprintf(
             'SimpleXMLElement failed with error #%d: %s',
             $e->getCode(), $e->getMessage()),
             E_USER_ERROR);
         }
-        if($this->query_attribute($xml->r, "key", "5")->LST['errcode']=='nocl')
-            $this->render('showUbkiNotHaveClient', array('inn'=>$_GET['inn']));
-        else
+//        if($this->query_attribute($xml->r, "key", "5")->LST['errcode']=='nocl')
+//            $this->render('showUbkiNotHaveClient', array('inn'=>$_GET['inn']));
+//        else
             switch ($report->bureau_id) {
                 case 2: // UBKI
                     $bki_report = new UbkiReport($xml);
@@ -742,7 +790,7 @@ class ReportController extends Controller
                 $report->taxpayer_number = $mbkiResponse->Report->SubjectCode;
                 $report->save();
             }else {
-                $this->actionSaveCreditReport($mbkiResponse); // save report into DB
+                $this->actionSaveCreditReport($mbkiResponse, $query->inn); // save report into DB
                 $ret_value = 2;
             }
      }
@@ -752,8 +800,8 @@ class ReportController extends Controller
         $ubkiResponse = $this->getDataFromUbki($query); // request // ONLY TESTING MODE
         // ONLY TESTING MODE
         if(isset($ubkiResponse)){
-            $this->createNativeQueryRecord($ubkiResponse->r[1]->LST['OKPO'], 2, 'Отчет получен из УБКИ через web-сервис');
-            $this->actionSaveCreditReport($ubkiResponse); // save report into DB
+            $this->createNativeQueryRecord($query->inn, 2, 'Отчет получен из УБКИ через web-сервис');
+            $this->actionSaveCreditReport($ubkiResponse, $query->inn); // save report into DB
             $ret_value = $ret_value==2?3:1;
         }
         return $ret_value;
@@ -882,19 +930,65 @@ class ReportController extends Controller
     }
      
     public function actionShowAnalyzeResult(){
+        $inn = $_GET['inn'];
         $need_type = $_GET['type'];
         $log='';
-        $res = $this->analyzeOnly($_GET['inn'], $need_type, $log);
-        $this->render('showAnalyzeResult',array('inn'=>$_GET['inn'], 'type'=>$need_type, 'log'=>$log, 'verdict'=>$res)); //'model'=>$model));
+        $this->doAnalyze($inn, 2, $need_type, $log);
+        $this->doAnalyze($inn, 3, $need_type, $log);
+//        $header_report_ubki = Report::model()->getLastReportInBureauByInn($inn, 2);
+//        if(isset($header_report_ubki)){
+//            if($header_report_ubki->report_type_id!=3){
+//                $this->createNativeQueryRecord($inn, 2, 'Отчет выбран из таблицы reports для анализа');
+//                $log .= '<br>Последний кредитный отчет из УБКИ от '.$header_report_ubki->issue_date.'. ReportID='.$header_report_ubki->id;
+//                $log .= '<a href='.Yii::app()->createUrl('report/showLastReportByBureau').'?bureau_id=2&inn='.$inn.'> Просмотреть</a></h2>';        
+//                $res = $this->analyzeOnly($header_report_ubki, $need_type, $log);
+//                $log .= '<br><h3>'.$res.'</h3>';
+//            }else{
+//                $log.= '<br>В УБКИ нет данных по этому клиенту<br>';
+//            }
+//        }else{
+//            $log.= '<br>В базе нет данных из УБКИ по этому клиенту<br>';
+//        }
+//        $header_report_mbki = Report::model()->getLastReportInBureauByInn($inn, 3);
+//        if(isset($header_report_mbki)){
+//            if($header_report_mbki->report_type_id!=3){
+//                $this->createNativeQueryRecord($inn, 3, 'Отчет выбран из таблицы reports для анализа');
+//                $log .= '<br>Последний кредитный отчет из МБКИ от '.$header_report_mbki->issue_date.'. ReportID='.$header_report_mbki->id;
+//                $log .= '<a href='.Yii::app()->createUrl('report/showLastReportByBureau').'?bureau_id=3&inn='.$inn.'> Просмотреть</a></h2>';        
+//                $res = $this->analyzeOnly($header_report_mbki, $need_type, $log);
+//                $log .= '<br><h3>'.$res.'</h3>';
+//            }else{
+//                $log.= '<br>В МБКИ нет данных по этому клиенту<br>';
+//            }
+//        }else{
+//            $log.= '<br>В базе нет данных из МБКИ по этому клиенту<br>';
+//        }
+        $this->render('showAnalyzeResult',array('inn'=>$inn, 'type'=>$need_type, 'log'=>$log)); //, 'verdict'=>$res)); //'model'=>$model));
     }
-    
-    public function analyzeOnly($inn, $claim_type, &$log){
-        $header_report = Report::model()->getLastReportByInn($_GET['inn']);
-        $this->createNativeQueryRecord($_GET['inn'], $header_report->bureau_id, 'Отчет выбран из таблицы reports для анализа');
+    private function doAnalyze($inn, $bureau_id, $need_type, &$log){
+        $header_report = Report::model()->getLastReportInBureauByInn($inn, $bureau_id);
+        $bureau = $bureau_id==2? 'УБКИ':'МБКИ';
+        if(isset($header_report)){
+            if($header_report->report_type_id!=3){
+                $this->createNativeQueryRecord($inn, $bureau_id, 'Отчет выбран из базы для анализа');
+                $log .= '<br>Последний кредитный отчет из '.$bureau.' от '.$header_report->issue_date.'. ReportID='.$header_report->id;
+                $log .= '<a href='.Yii::app()->createUrl('report/showLastReportByBureau').'?bureau_id='.$bureau_id.'&inn='.$inn.'> Просмотреть</a></h2>';        
+                $res = $this->analyzeOnly($header_report, $need_type, $log);
+                $log .= '<br><h3>'.$res.'</h3>';
+            }else{
+                $log.= '<br>В '.$bureau.' нет данных по этому клиенту<br>';
+            }
+        }else{
+            $log.= '<br>В базе нет данных из '.$bureau.' по этому клиенту<br>';
+        }
+    }
+
+        public function analyzeOnly($header_report, $claim_type, &$log){
+//        $header_report = Report::model()->getLastReportByInn($inn); //$_GET['inn']);
+//        $this->createNativeQueryRecord($inn, $header_report->bureau_id, 'Отчет выбран из таблицы reports для анализа');
         $curr_date = new DateTime('now');
         $lastPaymentDate = new DateTime(Contract::model()->getLastPaymentDate($header_report->id, $header_report->bureau_id));
         $fromLastPaymentDays = $lastPaymentDate->diff($curr_date)->days;
-        $log = '<br>Последний кредитный отчет поступил из '.($header_report->bureau_id==2? 'УБКИ':'МБКИ').'. ReportID='.$header_report->id;
         $log .= '<br>=================== С момента последнего платежа прошло '.$fromLastPaymentDays.' дн.';
         $contracts = Contract::model()->getContractsByReport($header_report->id);
         $res = $this->hist_is_positive;
@@ -930,7 +1024,7 @@ class ReportController extends Controller
                     $log .= '<br>=================== Месячный платеж=>'.$monthlyPayment;
                     $log .= '<br>=================== Первая просрочка=>'.$firstOverdue;
                     $log .= '<br>=================== Допустимый прирост просрочки';
-                    if($this->isPositiveContractVar1($header_report->bureau_id, $contract->id, $fromLastPaymentDays, $isUnsecuredCredit, $need_type) ){
+                    if($this->isPositiveContractVar1($header_report->bureau_id, $contract->id, $fromLastPaymentDays, $isUnsecuredCredit, $claim_type) ){
                         $log .= '<br>=================== Статус кредита => Исполнен';
                         $log .= '<br>Variant 1 POSITIVE. Contract=>'.$contract->id.' ('.$contract->code.')';
                         continue;
@@ -939,7 +1033,7 @@ class ReportController extends Controller
                         $log .= '<br>Variant 1 NEGATIVE. Contract=>'.$contract->id.' ('.$contract->code.')';
                     }
                 }
-                if($need_type == 1){ // заявка на беззалоговый
+                if($claim_type == 1){ // заявка на беззалоговый
                     $lastDelayDate = HistoryContract::model()->getLastDelayDateByContract($header_report->bureau_id, $contract->id, $fromLastPaymentDays, $isUnsecuredCredit);
                     if(isset($lastDelayDate)){
                         $log .= '<br>===================Variant 2. Contract=>'.$contract->id.' ('.$contract->code.')';

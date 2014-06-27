@@ -82,6 +82,7 @@ $(function() {
         subGridRowExpanded: function (subgridDivId, rowId) {
 //            grid.setCell (row,col,val,{background:'#ff0000'});
             var inn = $('#list').getCell(rowId, 'inn');
+//            alert('inn='+inn)
             var subgridTableId = subgridDivId + "_t";
             var pager_id = "p_"+subgridTableId;
             var subgrid_pager_selector = pager_id;

@@ -19,17 +19,19 @@ class NativeQuerieController extends Controller{
         echo CJSON::encode($responce);
     }
     public function actionGetReportsByInn(){
-        $reports = Report::model()->getReportsByInn($_GET['inn']);
         $responce['rows']=array();
-        foreach ($reports as $i=>$r) {
-            $responce['rows'][$i]['id'] = $i+1;
-            $responce['rows'][$i]['cell'] = array(
-                $r->id,
-                $r->code_from_bureau,
-                $r->bureau_id==2? 'УБКИ':'МБКИ',
-                $r->issue_date,
-                $r->created_at
-                );
+        if($_GET['inn']>''){
+            $reports = Report::model()->getReportsByInn($_GET['inn']);
+            foreach ($reports as $i=>$r) {
+                $responce['rows'][$i]['id'] = $i+1;
+                $responce['rows'][$i]['cell'] = array(
+                    $r->id,
+                    $r->code_from_bureau,
+                    $r->bureau_id==2? 'УБКИ':'МБКИ',
+                    $r->issue_date,
+                    $r->created_at
+                    );
+            }
         }
         echo CJSON::encode($responce);
     }

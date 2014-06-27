@@ -432,17 +432,19 @@ $(function() {
         data[i]['flPay']=(data[i]['flPay']=='Y'?'Да':'Нет');
         data[i]['flUse']=(data[i]['flUse']=='Y'?'Да':'Нет');
         if(data[i]['daysExp'] == '0') 
-            data[i]['daysExp']='Нет';
+            data[i]['daysExp']='<font style="font-family:Tahoma;" color="#009900"><b>Нет</b>';
         else if((0<+data[i]['daysExp']) && (+data[i]['daysExp']<8)) 
                 data[i]['daysExp'] = 'менее 7-ми дней';
         else if((7<+data[i]['daysExp']) && (+data[i]['daysExp']<30))
             data[i]['daysExp'] = 'от 7 до 29 дней';
         else if((29<+data[i]['daysExp']) && (+data[i]['daysExp']<60))
             data[i]['daysExp'] = 'от 30 до 59 дней';
-        else if(59<+data[i]['daysExp']<90)
+        else if((59<+data[i]['daysExp']) && (+data[i]['daysExp']<90))
             data[i]['daysExp'] = 'от 60 до 89 дней';
         else
-            data[i]['daysExp'] = 'свыше 90 дней';
+            data[i]['daysExp'] = '<b>свыше 90 дней</b>';
+        if(+data[i]['amtExp']<0)
+            data[i]['amtExp']= '<font style="font-family:Tahoma;" color="#ff0000"><b>'+data[i]['amtExp']+'</b>';
         $('#payment'+<?echo $key;?>+'_list').jqGrid('addRowData',i+1,data[i]);
     }
     grid.jqGrid("sortGrid", "year", true); 
