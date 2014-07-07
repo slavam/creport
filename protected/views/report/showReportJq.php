@@ -57,6 +57,7 @@ $cs->registerScriptFile(Yii::app()->request->baseUrl.'/js/jquery.form.js');
 <? 
 if(!Yii::app()->user->isGuest){
     echo '<h3><a href='.Yii::app()->createUrl("report/showAnalyzeResult").'?inn='.$inn.'&type=1>Анализ (Кредит без залога) </a><br>'; 
+    echo '<a href='.Yii::app()->createUrl("report/showAnalyzeResult").'?inn='.$inn.'&type=3>Анализ (Кредит без залога без справки о доходах) </a><br>'; 
     echo '<a href='.Yii::app()->createUrl("report/showAnalyzeResult").'?inn='.$inn.'&type=2>Анализ (Кредит залоговый) </a></h3><br>'; 
 }
 ?> 
@@ -549,7 +550,11 @@ echo '<br>Роль субъекта: '.$c['subjectRole'].'<br>';
             Неоплаченная просроченная сумма платежей:
         </td>
     	<td>
-            <?php echo $c['overdueAmountValue'].' '.$c['overdueAmountCurrency']; ?>
+            <?php 
+            if(+$c['overdueAmountValue']!=0)
+                echo '<font color="#ff0000"><b>'.$c['overdueAmountValue'].' '.$c['overdueAmountCurrency'].'</b>';
+            else
+                echo $c['overdueAmountValue'].' '.$c['overdueAmountCurrency']; ?>
         </td>
     	<td>
             Неоплаченная просроченная сумма<br>
@@ -557,7 +562,11 @@ echo '<br>Роль субъекта: '.$c['subjectRole'].'<br>';
             установленным графиком платежей:<br>
         </td>
     	<td>
-            <?php echo $c['dueInterestAmountValue'].' '.$c['dueInterestAmountCurrency']; ?>
+            <?php 
+            if(+$c['dueInterestAmountValue']!=0)
+                echo '<font color="#ff0000"><b>'.$c['dueInterestAmountValue'].' '.$c['dueInterestAmountCurrency'].'</b>';
+            else
+                echo $c['dueInterestAmountValue'].' '.$c['dueInterestAmountCurrency']; ?>
         </td>        
     </tr>
 </table>
@@ -583,18 +592,13 @@ echo '<br>Роль субъекта: '.$c['subjectRole'].'<br>';
     <?if($c['hCTotalNumberOfOverdueInstalments']['description']>''){?>
     <tr>
         <td><?echo $c['hCTotalNumberOfOverdueInstalments']['description']; ?></td>
-        <td><?echo $c['hCTotalNumberOfOverdueInstalments']['month1']['value']; ?></td>
-        <td><?echo $c['hCTotalNumberOfOverdueInstalments']['month2']['value']; ?></td>
-        <td><?echo $c['hCTotalNumberOfOverdueInstalments']['month3']['value']; ?></td>
-        <td><?echo $c['hCTotalNumberOfOverdueInstalments']['month4']['value']; ?></td>
-        <td><?echo $c['hCTotalNumberOfOverdueInstalments']['month5']['value']; ?></td>
-        <td><?echo $c['hCTotalNumberOfOverdueInstalments']['month6']['value']; ?></td>
-        <td><?echo $c['hCTotalNumberOfOverdueInstalments']['month7']['value']; ?></td>
-        <td><?echo $c['hCTotalNumberOfOverdueInstalments']['month8']['value']; ?></td>
-        <td><?echo $c['hCTotalNumberOfOverdueInstalments']['month9']['value']; ?></td>
-        <td><?echo $c['hCTotalNumberOfOverdueInstalments']['month10']['value']; ?></td>
-        <td><?echo $c['hCTotalNumberOfOverdueInstalments']['month11']['value']; ?></td>
-        <td><?echo $c['hCTotalNumberOfOverdueInstalments']['month12']['value']; ?></td>
+        <?foreach ($c['hCTotalNumberOfOverdueInstalments'] as $i=>$m) 
+            if($i!='description')
+                if(+$m['value']!=0)
+                    echo '<td><font color="#ff0000"><b>'.$m['value'].'</b></td>';
+                else
+                    echo '<td>'.$m['value'].'</td>';
+        ?>
     </tr>
     <?}?>
     <?if($c['hCCreditCardUsedInMonth']['description']>''){?>
@@ -616,18 +620,15 @@ echo '<br>Роль субъекта: '.$c['subjectRole'].'<br>';
     <?}?>
     <tr>
         <td><?echo $c['hCTotalOverdueAmount']['description']; ?></td>
-        <td><?echo $c['hCTotalOverdueAmount']['month1']['value']; ?></td>
-        <td><?echo $c['hCTotalOverdueAmount']['month2']['value']; ?></td>
-        <td><?echo $c['hCTotalOverdueAmount']['month3']['value']; ?></td>
-        <td><?echo $c['hCTotalOverdueAmount']['month4']['value']; ?></td>
-        <td><?echo $c['hCTotalOverdueAmount']['month5']['value']; ?></td>
-        <td><?echo $c['hCTotalOverdueAmount']['month6']['value']; ?></td>
-        <td><?echo $c['hCTotalOverdueAmount']['month7']['value']; ?></td>
-        <td><?echo $c['hCTotalOverdueAmount']['month8']['value']; ?></td>
-        <td><?echo $c['hCTotalOverdueAmount']['month9']['value']; ?></td>
-        <td><?echo $c['hCTotalOverdueAmount']['month10']['value']; ?></td>
-        <td><?echo $c['hCTotalOverdueAmount']['month11']['value']; ?></td>
-        <td><?echo $c['hCTotalOverdueAmount']['month12']['value']; ?></td>
+        <?
+        if(isset($c['hCTotalOverdueAmount']))
+        foreach ($c['hCTotalOverdueAmount'] as $i=>$m) 
+            if($i!='description')
+                if(+$m['value']!=0)
+                    echo '<td><font color="#ff0000"><b>'.$m['value'].'</b></td>';
+                else
+                    echo '<td>'.$m['value'].'</td>';
+        ?>
     </tr>
 </table>
 <?if(isset($c['months24'][0]))
@@ -645,35 +646,46 @@ echo '<br>Роль субъекта: '.$c['subjectRole'].'<br>';
     <?if($c['hCTotalNumberOfOverdueInstalments24']['description']>''){?>
     <tr>
         <td><?echo $c['hCTotalNumberOfOverdueInstalments24']['description']; ?></td>
-        <td><?echo $c['hCTotalNumberOfOverdueInstalments24']['month1']['value']; ?></td>
-        <td><?echo $c['hCTotalNumberOfOverdueInstalments24']['month2']['value']; ?></td>
-        <td><?echo $c['hCTotalNumberOfOverdueInstalments24']['month3']['value']; ?></td>
-        <td><?echo $c['hCTotalNumberOfOverdueInstalments24']['month4']['value']; ?></td>
-        <td><?echo $c['hCTotalNumberOfOverdueInstalments24']['month5']['value']; ?></td>
-        <td><?echo $c['hCTotalNumberOfOverdueInstalments24']['month6']['value']; ?></td>
-        <td><?echo $c['hCTotalNumberOfOverdueInstalments24']['month7']['value']; ?></td>
-        <td><?echo $c['hCTotalNumberOfOverdueInstalments24']['month8']['value']; ?></td>
-        <td><?echo $c['hCTotalNumberOfOverdueInstalments24']['month9']['value']; ?></td>
-        <td><?echo $c['hCTotalNumberOfOverdueInstalments24']['month10']['value']; ?></td>
-        <td><?echo $c['hCTotalNumberOfOverdueInstalments24']['month11']['value']; ?></td>
-        <td><?echo $c['hCTotalNumberOfOverdueInstalments24']['month12']['value']; ?></td>
+        <?foreach ($c['hCTotalNumberOfOverdueInstalments24'] as $i=>$m) 
+            if($i!='description')
+                if(+$m['value']!=0)
+                    echo '<td><font color="#ff0000"><b>'.$m['value'].'</b></td>';
+                else
+                    echo '<td>'.$m['value'].'</td>';
+        ?>
     </tr>
 <?}?>
     <tr >
-        <td><?echo $c['hCTotalOverdueAmount24']['description']; ?></td>
-        <td><?echo $c['hCTotalOverdueAmount24']['month1']['value']; ?></td>
-        <td><?echo $c['hCTotalOverdueAmount24']['month2']['value']; ?></td>
-        <td><?echo $c['hCTotalOverdueAmount24']['month3']['value']; ?></td>
-        <td><?echo $c['hCTotalOverdueAmount24']['month4']['value']; ?></td>
-        <td><?echo $c['hCTotalOverdueAmount24']['month5']['value']; ?></td>
-        <td><?echo $c['hCTotalOverdueAmount24']['month6']['value']; ?></td>
-        <td><?echo $c['hCTotalOverdueAmount24']['month7']['value']; ?></td>
-        <td><?echo $c['hCTotalOverdueAmount24']['month8']['value']; ?></td>
-        <td><?echo $c['hCTotalOverdueAmount24']['month9']['value']; ?></td>
-        <td><?echo $c['hCTotalOverdueAmount24']['month10']['value']; ?></td>
-        <td><?echo $c['hCTotalOverdueAmount24']['month11']['value']; ?></td>
-        <td><?echo $c['hCTotalOverdueAmount24']['month12']['value']; ?></td>
+        <td><?echo $c['hCResidualAmount24']['description']; ?></td>
+        <?
+        if(isset($c['hCResidualAmount24']))
+        foreach ($c['hCResidualAmount24'] as $i=>$m) 
+            if($i!='description')
+                echo '<td>'.$m['value'].'</td>';
+        ?>
     </tr>
+    <tr >
+        <td><?echo $c['hCCreditCardUsedInMonth24']['description']; ?></td>
+        <?
+        if(isset($c['hCCreditCardUsedInMonth24']))
+        foreach ($c['hCCreditCardUsedInMonth24'] as $i=>$m) 
+            if($i!='description')
+                echo '<td>'.$m['value'].'</td>';
+        ?>
+    </tr>
+    <tr >
+        <td><?echo $c['hCTotalOverdueAmount24']['description']; ?></td>
+        <?
+        if(isset($c['hCTotalOverdueAmount24']))
+        foreach ($c['hCTotalOverdueAmount24'] as $i=>$m) 
+            if($i!='description')
+                if(+$m['value']!=0)
+                    echo '<td><font color="#ff0000"><b>'.$m['value'].'</b></td>';
+                else
+                    echo '<td>'.$m['value'].'</td>';
+        ?>
+    </tr>
+    
 </table>
 <?}?>
 <?    

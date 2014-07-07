@@ -27,7 +27,7 @@ class AnalyzeForm extends CFormModel
             if (isset($r))
                  return true;
             else
-                $this->addError($attribute, 'Для этого ИНН в системе нет данных. Выполните запрос в БКИ и повторите анализ');
+                $this->addError($attribute, 'Для этого ИНН в системе нет данных для анализа. Выполните запрос в БКИ и повторите анализ');
         }
         
 }

@@ -219,7 +219,8 @@ class MbkiReport {
                 'months24'=>array($this->getMonths($this->query_attribute($c->HistoricalCalendar,'months', '-24')->Months)),
                 'hCTotalNumberOfOverdueInstalments24'=>$this->getNumberOfOverdueInstalments($this->query_attribute($c->HistoricalCalendar, 'months', '-24')->HCTotalNumberOfOverdueInstalments),
                 'hCTotalOverdueAmount24'=>$this->getNumberOfOverdueInstalments($this->query_attribute($c->HistoricalCalendar, 'months', '-24')->HCTotalOverdueAmount),
-//                'hCTotalOverdueAmount'=>$this->getOverdueAmounts($c->HistoricalCalendar->HCTotalOverdueAmount)
+                'hCResidualAmount24'=>$this->getNumberOfOverdueInstalments($this->query_attribute($c->HistoricalCalendar, 'months', '-24')->HCResidualAmount),
+                'hCCreditCardUsedInMonth24'=>$this->getNumberOfOverdueInstalments($this->query_attribute($c->HistoricalCalendar, 'months', '-24')->HCCreditCardUsedInMonth),
                     );
         }
         if(isset($xml->Report->SearchInquiries->InquiryList->SearchInquiry))

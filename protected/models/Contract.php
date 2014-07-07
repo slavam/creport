@@ -158,9 +158,14 @@ class Contract extends CActiveRecord
         }
         public function getLastPaymentDate($report_id, $bureau_id){
             if($bureau_id==2){ //ubki
+            // по требованию ВМА от 20140704
+//                $sql = "select h_c.payment_date as application_date from history_contracts h_c
+//                            join contracts c on c.id=h_c.contract_id and report_id=".$report_id."
+//                            where factor_id=5 and value = 'Y' 
+//                            order by payment_date desc limit 1";
                 $sql = "select h_c.payment_date as application_date from history_contracts h_c
                             join contracts c on c.id=h_c.contract_id and report_id=".$report_id."
-                            where factor_id=5 and value = 'Y' 
+                            where factor_id=6 and (CAST(coalesce(value, '0') AS real))!=0 
                             order by payment_date desc limit 1";
                 $c = $this->model()->findBySql($sql);
                 return count($c)>0? $c->application_date : '';
@@ -208,5 +213,4 @@ class Contract extends CActiveRecord
             else
                 return $res;
         }
-                
 }

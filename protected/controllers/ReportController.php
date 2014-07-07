@@ -44,7 +44,7 @@ class ReportController extends Controller
                 $xml = simplexml_load_file($value);
                 $errorcode= $this->query_attribute($xml->r, "key", "5")->LST['errcode'];
                 if(($errorcode=='nocl')or($errorcode=='syserror')){
-                    $res.="В УБКИ данных о клиенте нет. ИНН:".substr($_FILES['image_name']['name'][0],0,10).'<br>';
+                    $res.="УБКИ ответило, что не имеет данных о клиенте ИНН:".substr($_FILES['image_name']['name'][0],0,10).'<br>';
                     $report = new Report();
                     $report->report_type_id = 3; // reportNotAvailable
                     $report->bureau_id = 2;
@@ -678,6 +678,8 @@ class ReportController extends Controller
      }
      
     public function actionInnForQuery(){
+        if(Yii::app()->user->isGuest)
+            $this->redirect(array('inn'));        
         $model=new InnForm;
         if(isset($_POST['InnForm'])){
             $model->attributes=$_POST['InnForm'];
@@ -696,13 +698,13 @@ class ReportController extends Controller
                 switch ($from_bureau) {
                     case 0: // нет
                     case 3:    // оба
-                        $this->createNativeQueryRecord($model->inn, 2, 'Отчет выбран из бюро по запросу');
-                        $this->createNativeQueryRecord($model->inn, 3, 'Отчет выбран из бюро по запросу');
+//                        $this->createNativeQueryRecord($model->inn, 2, 'Отчет выбран из бюро по запросу');
+//                        $this->createNativeQueryRecord($model->inn, 3, 'Отчет выбран из бюро по запросу');
                         $this->actionShowBureauResponse($model->inn, $from_bureau); 
                         exit;
                     case 1: // убки
                     case 2: // мбки
-                        $this->createNativeQueryRecord($model->inn, $from_bureau+1, 'Отчет выбран из бюро по запросу');
+//                        $this->createNativeQueryRecord($model->inn, $from_bureau+1, 'Отчет выбран из бюро по запросу');
                         $this->redirect(array('showPreview','inn'=>$model->inn));
 //                        $this->redirect(array('getReportByINN','inn'=>$model->inn));
                         exit;
@@ -716,8 +718,8 @@ class ReportController extends Controller
     }
     public function actionShowLastReportByBureau(){
         if($_GET['inn']>''){
-        $last_report_by_bureau = XmlReport::model()->getLastReportByBureau($_GET['inn'],$_GET['bureau_id']);
-        $this->showReportByBureau($last_report_by_bureau);
+            $last_report_by_bureau = XmlReport::model()->getLastReportByBureau($_GET['inn'],$_GET['bureau_id']);
+            $this->showReportByBureau($last_report_by_bureau);
         }  else {
 //            var_dump($last_report_by_bureau)
         }
@@ -734,32 +736,29 @@ class ReportController extends Controller
     }
     
     public function showReportByBureau($report){
-        
         try{
             $xml = new SimpleXMLElement($report->xml_report);
             $errorcode= $this->query_attribute($xml->r, "key", "5")->LST['errcode'];
-            if(($errorcode=='nocl')or($errorcode=='syserror'))
-                $this->render('showUbkiNotHaveClient', array('inn'=>$_GET['inn']));
-            
+            if(($errorcode=='nocl')or($errorcode=='syserror')){
+                $this->render('showUbkiNotHaveClient', array('inn'=>$_GET['inn'],'bureau'=>'УБКИ'));
+                exit;
+            }
         } catch (Exception $e) {
             trigger_error(sprintf(
             'SimpleXMLElement failed with error #%d: %s',
             $e->getCode(), $e->getMessage()),
             E_USER_ERROR);
         }
-//        if($this->query_attribute($xml->r, "key", "5")->LST['errcode']=='nocl')
-//            $this->render('showUbkiNotHaveClient', array('inn'=>$_GET['inn']));
-//        else
-            switch ($report->bureau_id) {
-                case 2: // UBKI
-                    $bki_report = new UbkiReport($xml);
-                    $this->actionShowUbkiReportJq($bki_report, $report->created_at);
-                break;
-                case 3: // MBKI
-                    $bki_report = new MbkiReport($xml);
-                    $this->actionShowReportJq($bki_report, $report->created_at);
-                break;
-            }
+        switch ($report->bureau_id) {
+            case 2: // UBKI
+                $bki_report = new UbkiReport($xml);
+                $this->actionShowUbkiReportJq($bki_report, $report->created_at);
+            break;
+            case 3: // MBKI
+                $bki_report = new MbkiReport($xml);
+                $this->actionShowReportJq($bki_report, $report->created_at);
+            break;
+        }
     }
 
      private function makeRequestToBureaus($query){
@@ -787,7 +786,7 @@ class ReportController extends Controller
                 $report->created_at = date("Y-m-d H:i:s", time());
                 $report->code_from_bureau = $mbkiResponse->Report->SubjectInfo->CreditinfoId; 
                 $report->issue_date = $mbkiResponse->Report['issued'];
-                $report->taxpayer_number = $mbkiResponse->Report->SubjectCode;
+                $report->taxpayer_number = $query->inn;
                 $report->save();
             }else {
                 $this->actionSaveCreditReport($mbkiResponse, $query->inn); // save report into DB
@@ -801,8 +800,20 @@ class ReportController extends Controller
         // ONLY TESTING MODE
         if(isset($ubkiResponse)){
             $this->createNativeQueryRecord($query->inn, 2, 'Отчет получен из УБКИ через web-сервис');
-            $this->actionSaveCreditReport($ubkiResponse, $query->inn); // save report into DB
-            $ret_value = $ret_value==2?3:1;
+            $errorcode= $this->query_attribute($ubkiResponse->r, "key", "5")->LST['errcode'];
+            if(($errorcode=='nocl')or($errorcode=='syserror')){
+                $report = new Report();
+                $report->report_type_id = 3; // reportNotAvailable
+                $report->bureau_id = 2;
+                $report->created_at = date("Y-m-d H:i:s", time());
+                $report->code_from_bureau = ''; 
+                $report->issue_date = null;
+                $report->taxpayer_number = $query->inn;
+                $report->save();
+            }else{
+                $this->actionSaveCreditReport($ubkiResponse, $query->inn); // save report into DB
+                $ret_value = $ret_value==2?3:1;
+            }
         }
         return $ret_value;
 //        $mbki_report_date = isset($mbkiResponse)? new DateTime($mbkiResponse->Report['issued']):null;
@@ -881,6 +892,8 @@ class ReportController extends Controller
         $model->save();                    
     }
     public function actionGetParamForAnalyze(){
+        if(Yii::app()->user->isGuest)
+            $this->redirect(array('inn'));
         $model=new AnalyzeForm;
         if(isset($_POST['AnalyzeForm'])){
             $model->attributes=$_POST['AnalyzeForm'];
@@ -930,10 +943,16 @@ class ReportController extends Controller
     }
      
     public function actionShowAnalyzeResult(){
+        if(Yii::app()->user->isGuest)
+            $this->redirect(array('inn'));
         $inn = $_GET['inn'];
         $need_type = $_GET['type'];
         $log='';
-        $this->doAnalyze($inn, 2, $need_type, $log);
+        $header_report = Report::model()->getLastReportInBureauByInn($inn, 2);
+        if($header_report->report_type_id!=3)
+            $this->doAnalyze($inn, 2, $need_type, $log);
+        else
+            $log .= '<br>Отчет из УБКИ не содержит КИ.';
         $this->doAnalyze($inn, 3, $need_type, $log);
 //        $header_report_ubki = Report::model()->getLastReportInBureauByInn($inn, 2);
 //        if(isset($header_report_ubki)){
@@ -983,9 +1002,7 @@ class ReportController extends Controller
         }
     }
 
-        public function analyzeOnly($header_report, $claim_type, &$log){
-//        $header_report = Report::model()->getLastReportByInn($inn); //$_GET['inn']);
-//        $this->createNativeQueryRecord($inn, $header_report->bureau_id, 'Отчет выбран из таблицы reports для анализа');
+    public function analyzeOnly($header_report, $claim_type, &$log){
         $curr_date = new DateTime('now');
         $lastPaymentDate = new DateTime(Contract::model()->getLastPaymentDate($header_report->id, $header_report->bureau_id));
         $fromLastPaymentDays = $lastPaymentDate->diff($curr_date)->days;
@@ -993,29 +1010,32 @@ class ReportController extends Controller
         $contracts = Contract::model()->getContractsByReport($header_report->id);
         $res = $this->hist_is_positive;
         if(count($contracts)>0)
-        foreach ($contracts as $contract) { // перебор контрактов
+            foreach ($contracts as $contract) { // перебор контрактов
             $isUnsecuredCredit = Contract::model()->isUnsecuredCredit($contract->contract_type_code, $header_report->bureau_id); // беззалоговый?
             if($this->isPositiveContractVar3($header_report->bureau_id, $contract->id, $fromLastPaymentDays, $isUnsecuredCredit)){ // позитив, т.к. история отсутствует
                 $log .= '<br>Variant 3 POSITIVE. Нет истории. Contract=>'.$contract->id.' ('.$contract->code.')';
                 continue;
             }else { // анализ истории
-                $log .= '<br>Variant 3 Есть история. Control continue. Contract=>'.$contract->id.' ('.$contract->code.')';
+                $log .= '<br>Есть история. Анализ продолжен. Contract=>'.$contract->id.' ('.$contract->code.')';
                 $log .= '<br>=================== Кредит '.($isUnsecuredCredit? 'беззалоговый':'под залог');
                 
                 if((($header_report->bureau_id==2) and (HistoryContract::model()->getMaxDelayDays($contract->id, $fromLastPaymentDays, $isUnsecuredCredit)==0)) or 
-                        (($header_report->bureau_id==3) and (HistoryContract::model()->getMaxDelaySum($header_report->bureau_id, $contract->id, $fromLastPaymentDays, $isUnsecuredCredit)==0))){ // кредит без просрочек
+                        (($header_report->bureau_id==3) and 
+                        (HistoryContract::model()->getMaxDelaySum($header_report->bureau_id, $contract->id, $fromLastPaymentDays, $isUnsecuredCredit)==0))){ // кредит без просрочек
                     $log .= '<br>Variant 0 POSITIVE. Кредит без просрочек (см. отчет). Contract=>'.$contract->id.' ('.$contract->code.')';
                     continue;
                 } 
                 $firstOverdue = HistoryContract::model()->getFirstOverdueSum($header_report->bureau_id, $contract->id, $fromLastPaymentDays, $isUnsecuredCredit);
-                if(($firstOverdue<=50) and ($firstOverdue>0)){ // нужно проверить по последнему варианту
+                if(($firstOverdue<=50) and ($firstOverdue>0)){ // нужно проверить по последнему (4) варианту
                     $log .= '<br>===================Variant 4. Contract=>'.$contract->id.' ('.$contract->code.')';
                     $log .= '<br>=================== Первая просрочка=>'.$firstOverdue;
                     if($this->isPositiveContractVar4($header_report->bureau_id, $contract->id, $fromLastPaymentDays, $isUnsecuredCredit, $log)){
                         $log .= '<br>Variant 4 POSITIVE. Contract=>'.$contract->id.' ('.$contract->code.')';
                         continue;
-                    }else
+                    }else{
                         $log .= '<br>Variant 4 NEGATIVE. Contract=>'.$contract->id.' ('.$contract->code.')';
+                        break;
+                    }
                 } 
                 $monthlyPayment = Contract::model()->getMonthlyPayment($contract, $header_report->bureau_id, $fromLastPaymentDays, $isUnsecuredCredit);
                 if(($firstOverdue<=$monthlyPayment) and ($firstOverdue>0) and
@@ -1031,21 +1051,31 @@ class ReportController extends Controller
                     }else{
                         $log .= '<br>=================== Статус кредита => Просрочен';
                         $log .= '<br>Variant 1 NEGATIVE. Contract=>'.$contract->id.' ('.$contract->code.')';
+                        break;
                     }
                 }
-                if($claim_type == 1){ // заявка на беззалоговый
+                if($claim_type != 2){ // заявка на беззалоговый
                     $lastDelayDate = HistoryContract::model()->getLastDelayDateByContract($header_report->bureau_id, $contract->id, $fromLastPaymentDays, $isUnsecuredCredit);
                     if(isset($lastDelayDate)){
                         $log .= '<br>===================Variant 2. Contract=>'.$contract->id.' ('.$contract->code.')';
                         $log .= '<br>=================== Кредит '.($isUnsecuredCredit? 'беззалоговый':'под залог');
                         $log .= '<br>=================== Дата последней просрочки=>'.$lastDelayDate;
-                        if($this->isPositiveContractVar2($header_report->bureau_id, $contract, $lastDelayDate, $fromLastPaymentDays, $isUnsecuredCredit, $log))
-                            $log .= '<br>Variant 2 POSITIVE. Contract=>'.$contract->id.' ('.$contract->code.')';
-                        else{
-                            $log .= '<br>Variant 2 NEGATIVE. Contract=>'.$contract->id.' ('.$contract->code.')';
-                            $res = $this->hist_is_negative;
-                            break;
-                        }
+                        if($claim_type==1) // беззалоговый со справкой
+                            if($this->isPositiveContractVar2($header_report->bureau_id, $contract, $lastDelayDate, $fromLastPaymentDays, $isUnsecuredCredit, $log))
+                                $log .= '<br>Variant 2 POSITIVE. Contract=>'.$contract->id.' ('.$contract->code.')';
+                            else{
+                                $log .= '<br>Variant 2 NEGATIVE. Contract=>'.$contract->id.' ('.$contract->code.')';
+                                $res = $this->hist_is_negative;
+                                break;
+                            }
+                        else //  беззалоговый без справки
+                            if($this->isPositiveContractVar2woRef($header_report->bureau_id, $contract, $lastDelayDate, $fromLastPaymentDays, $isUnsecuredCredit, $log))
+                                $log .= '<br>Variant 2 POSITIVE. Contract=>'.$contract->id.' ('.$contract->code.')';
+                            else{
+                                $log .= '<br>Variant 2 NEGATIVE. Contract=>'.$contract->id.' ('.$contract->code.')';
+                                $res = $this->hist_is_negative;
+                                break;
+                            }
                     } else
                         $log .= '<br>ERROR Which variant use?. Contract=>'.$contract->id.' ('.$contract->code.')';
                 }else { // заявка на залоговый
@@ -1175,16 +1205,80 @@ class ReportController extends Controller
         }
         return false;
      }
+     private function isPositiveContractVar2woRef($bureau_id, $contract, $lastDelayDate, $fromLastPaymentDays, $isUnsecuredCredit, &$log){
+        $monthlyPayment = Contract::model()->getMonthlyPayment($contract, $bureau_id, $fromLastPaymentDays, $isUnsecuredCredit);
+        $log .= '<br>=================== Месячный платеж=>'.$monthlyPayment;
+        $curr_date = new DateTime('now');
+        $l_d = new DateTime($lastDelayDate);
+        $c_s_d = new DateTime($contract->credit_start_date);
+        $c_e_d = new DateTime($contract->credit_end_date);
+        if($c_e_d > $curr_date)
+            $years_of_credit = (int)($c_s_d->diff($curr_date)->days/365);
+        else
+            $years_of_credit = (int)($c_s_d->diff($c_e_d)->days/365);
+        $log .= '<br>=================== Количество лет пользования кредитом=>'.$years_of_credit;
+        $k30 = HistoryContract::model()->getExceedingDurationCountByContract($bureau_id, $contract->id, 8, 30, $fromLastPaymentDays, $isUnsecuredCredit);
+        $k60 = HistoryContract::model()->getExceedingDurationCountByContract($bureau_id, $contract->id, 31, 60, $fromLastPaymentDays, $isUnsecuredCredit);
+        $k90 = HistoryContract::model()->getExceedingDurationCountByContract($bureau_id, $contract->id, 61, 90, $fromLastPaymentDays, $isUnsecuredCredit);
+        $kmax = HistoryContract::model()->getExceedingDurationCountByContract($bureau_id, $contract->id, 91, 1200, $fromLastPaymentDays, $isUnsecuredCredit);
+        $maxOverdue = HistoryContract::model()->getMaxOverdue($bureau_id, $contract->id, $fromLastPaymentDays, $isUnsecuredCredit);
+        $log .= '<br>=================== Максимальная просрочка=>'.$maxOverdue;
+        $lastKmaxDate = HistoryContract::model()->getLastKmaxDate($contract->id);
+        if(isset($lastKmaxDate))
+            $num = HistoryContract::model()->getNumPositivePayments($contract->id, $lastKmaxDate);
+        else 
+            $num=0;
+        $status = (HistoryContract::model()->getLastOverdueSum($bureau_id, $contract->id, $fromLastPaymentDays, $isUnsecuredCredit)==0);
+        if($status)
+            $log .= '<br>=================== Статус кредита => Исполнен';
+        else
+            $log .= '<br>=================== Статус кредита => Просрочен';
+        if($l_d->diff($curr_date)->days<365){
+            if (($maxOverdue<=$monthlyPayment*1.25) and
+                    ($k30<=(3+$years_of_credit)) and
+                    ($k60<=(3+$years_of_credit)) and
+                    ($k90<=(3+$years_of_credit)) and
+                    ($kmax<=$years_of_credit) and 
+                    ((isset($lastKmaxDate) and $num>0)or !(isset($lastKmaxDate))) and 
+                    $status){
+                $log .= '<br>=================== Sp <= Sr*1.25 ('.$maxOverdue.'<='.$monthlyPayment*1.25.')';
+                return true;
+            }else{
+                if($maxOverdue>$monthlyPayment*1.25)
+                    $log .= '<br>=================== Sp > Sr*1.25 ('.$maxOverdue.'>'.$monthlyPayment*1.25;
+            }
+        }else{
+            if (($maxOverdue<=$monthlyPayment*1.25) and
+                ($k30<=(5+$years_of_credit)) and
+                ($k60<=(5+$years_of_credit)) and
+                ($k90<=(5+$years_of_credit)) and
+                ($kmax<=$years_of_credit) and 
+                ((isset($lastKmaxDate) and $num>0)or !(isset($lastKmaxDate))) and 
+                $status){
+                    $log .= '<br>=================== Sp <= Sr*1.25 ('.$maxOverdue.'<='.$monthlyPayment*1.25.')';
+                    return true;
+                    }
+        }
+        return false;
+     }
 
      private function isPositiveContractVar1($bureau_id, $contract_id, $days, $isUnsecuredCredit, $contract_type){
          // максимальная сумма просроченной задолженности
         if (HistoryContract::model()->getMaxOverdue($bureau_id, $contract_id, $days, $isUnsecuredCredit)<=1000)
-                if($contract_type==1) // если заявка на беззалоговый, то проверим статус
-                    if (HistoryContract::model()->getLastOverdueSum($bureau_id, $contract_id, $days, $isUnsecuredCredit)==0) 
-                        return true;
-                    else 
+                if($contract_type!=2) // если заявка на беззалоговый, то проверим статус
+                    if (HistoryContract::model()->getLastOverdueSum($bureau_id, $contract_id, $days, $isUnsecuredCredit)==0) {
+                        if($contract_type==3){ // беззалоговый без справки
+                            $lastKmaxDate = HistoryContract::model()->getLastKmaxDate($contract_id);
+                            if(isset($lastKmaxDate)){
+                                $num = HistoryContract::model()->getNumPositivePayments($contract_id, $lastKmaxDate);
+                                return $num>1?true:false;
+                            } else 
+                                return TRUE;
+                        }else
+                            return true;
+                    }else 
                         return false;
-                else 
+                else // залоговый
                     return true;
         else
             return false;

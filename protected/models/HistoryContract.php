@@ -350,18 +350,25 @@ class HistoryContract extends CActiveRecord
             return isset($c)? $c->value:null;
         }
         public function isHistoryByContract($bureau_id, $contract_id, $days, $isUnsecuredCredit){ // есть ли история по кредиту? 
+            // 20140702 Проверку на наличие истории предлагаю изменить на факт задолженности в периоде если задолженность в течении периода есть, значит кредитная история есть (Для УБКИ и МБКИ). 
             if($bureau_id==2){ // ubki
                 if($isUnsecuredCredit)
                     if($days>365*3)
-                        $sql="select count(*) as id from history_contracts where payment_date >(CURRENT_TIMESTAMP - INTERVAL '61 months') and factor_id=5 and value='Y' and contract_id=".$contract_id;
+//                        $sql="select count(*) as id from history_contracts where payment_date >(CURRENT_TIMESTAMP - INTERVAL '61 months') and factor_id=5 and value='Y' and contract_id=".$contract_id;
+                        $sql="select count(*) as id from history_contracts where payment_date >(CURRENT_TIMESTAMP - INTERVAL '61 months') and factor_id=6 
+                            and CAST(coalesce(value, '0') AS real)<0 and contract_id=".$contract_id;
                     else
-                        $sql="select count(*) as id from history_contracts where payment_date >(CURRENT_TIMESTAMP - INTERVAL '37 months') and factor_id=5 and value='Y' and contract_id=".$contract_id;
+//                        $sql="select count(*) as id from history_contracts where payment_date >(CURRENT_TIMESTAMP - INTERVAL '37 months') and factor_id=5 and value='Y' and contract_id=".$contract_id;
+                        $sql="select count(*) as id from history_contracts where payment_date >(CURRENT_TIMESTAMP - INTERVAL '37 months') and factor_id=6
+                            and CAST(coalesce(value, '0') AS real)<0 and contract_id=".$contract_id;
                 else 
-                    $sql="select count(*) as id from history_contracts where factor_id=5 and value='Y' and contract_id=".$contract_id;
+//                    $sql="select count(*) as id from history_contracts where factor_id=5 and value='Y' and contract_id=".$contract_id;
+                    $sql="select count(*) as id from history_contracts where factor_id=6 and CAST(coalesce(value, '0') AS real)<0 and contract_id=".$contract_id;
+                
 
                 $c = $this->model()->findBySql($sql);
     //            echo '$contract_id='.$contract_id.'; count='.var_dump(+$c->id);
-                return +$c->id>3 ? true:false;
+                return +$c->id>=3 ? true:false;
             }else { // mbki
                 if($isUnsecuredCredit)
                     if($days>365*3)
@@ -580,7 +587,24 @@ class HistoryContract extends CActiveRecord
             $c = $this->model()->findBySql($sql);
             return isset($c)? $c->payment_date:null;
         }
-/*
+        public function getLastKmaxDate($contract_id){
+            $sql ="
+                select * from history_contracts where contract_id=".$contract_id.
+                    " and factor_id=8 and (CAST(coalesce(value, '0') AS real))>90 order by payment_date desc limit 1";
+            $c = $this->model()->findBySql($sql);
+            return isset($c)? $c->payment_date:null;
+        }
+        public function getNumPositivePayments($contract_id, $lastKmaxDate){
+            $sql ="
+                select * from history_contracts where contract_id=".$contract_id.
+                    " and payment_date>'".$lastKmaxDate."'".
+                    " and factor_id=8 and (CAST(coalesce(value, '0') AS real))=0";
+            $c = $this->model()->findAllBySql($sql);
+            return isset($c)? count($c):0;
+        }
+
+
+        /*
  * МБКИ
 К-во
 просрочек

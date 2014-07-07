@@ -57,6 +57,7 @@ $cs->registerScriptFile(Yii::app()->request->baseUrl.'/js/jquery.form.js');
 <? 
 if(!Yii::app()->user->isGuest){
     echo '<h3><a href='.Yii::app()->createUrl("report/showAnalyzeResult").'?inn='.$inn.'&type=1>Анализ (Кредит без залога) </a><br>'; 
+    echo '<a href='.Yii::app()->createUrl("report/showAnalyzeResult").'?inn='.$inn.'&type=3>Анализ (Кредит без залога без справки о доходах) </a><br>'; 
     echo '<a href='.Yii::app()->createUrl("report/showAnalyzeResult").'?inn='.$inn.'&type=2>Анализ (Кредит залоговый) </a></h3><br>'; 
 }
 ?> 

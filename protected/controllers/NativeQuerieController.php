@@ -10,7 +10,7 @@ class NativeQuerieController extends Controller{
             $responce['rows'][$i]['id'] = $i+1;
             $responce['rows'][$i]['cell'] = array(
                 $q->id,
-                isset($q->user_id)? $q->user->login:'Гость',
+                isset($q->user_id)? $q->user->login:'Гость-'.$q->author,
                 $q->taxpayer_number,
                 $q->result,
                 $q->created_at
