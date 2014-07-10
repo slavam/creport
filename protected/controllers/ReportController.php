@@ -75,7 +75,7 @@ class ReportController extends Controller
                             $model->chb_report_id = $xml->Report->Subject->CreditinfoId;
                         }
                         $model->save();         
-                        $this->createNativeQueryRecord($model->tax_payer_number, $model->bureau_id, 'Отчет загружен в базу из внешнего файла');
+                        $this->createNativeQueryRecord($model->tax_payer_number, $model->bureau_id, 5); //'Отчет загружен в базу из внешнего файла');
                         $res .= "Загружен отчет для ИНН:".$model->tax_payer_number.'<br>';
                         $this->actionSaveCreditReport($xml,substr($_FILES['image_name']['name'][0],0,10));
                     }else{
@@ -121,13 +121,14 @@ class ReportController extends Controller
         return $ipaddress; 
     }
 
-    public function createNativeQueryRecord($tax_payer_number, $bureau_id, $description){
+    public function createNativeQueryRecord($tax_payer_number, $bureau_id, $action_id){ //$description){
         $query = new NativeQuerie();
         $query->author = $this->get_client_ip();
         $query->created_at = date("Y-m-d H:i:s", time());
         $query->taxpayer_number = $tax_payer_number;
         $query->bureau_id = $bureau_id;
-        $query->result = $description;
+        $query->action_id = $action_id;
+//        $query->result = $description;
         $query->user_id = Yii::app()->user->id;
         $query->save();
     }
@@ -141,7 +142,7 @@ class ReportController extends Controller
             if(($errorcode=='nocl')or($errorcode=='syserror')){
                 $log .= '<br>В УБКИ нет данных на клиента с ИНН '.$inn;
             } else {
-                $log .= '<br><a href='.Yii::app()->createUrl('report/showLastReportByBureau').'?bureau_id=2&inn='.$inn.'>Просмотреть последний отчет из УБКИ</a></h2>';
+                $log .= '<br><a href='.Yii::app()->createUrl('report/showLastReportByBureau').'?bureau_id=2&inn='.$inn.'>Просмотреть последний отчет из УБКИ</a> (Данные от '.$xml->r[1]->LST['CLDATE'].')';
             }
         }  else {
             $log .= '<br>В базе нет отчета из УБКИ по этому клиенту';
@@ -149,14 +150,13 @@ class ReportController extends Controller
         $mbki_report = XmlReport::model()->getLastReportByBureau($inn, 3);
         if(isset($mbki_report)){
             $xml = new SimpleXMLElement($mbki_report->xml_report);
-            if(isset($xml->Root->reportNotAvailable)){
+            if(isset($xml->Root->reportNotAvailable))
                 $log .= '<br>В МБКИ нет данных на клиента с ИНН '.$inn;
-            } else {
-                $log .= '<br><a href='.Yii::app()->createUrl('report/showLastReportByBureau').'?bureau_id=3&inn='.$inn.'>Просмотреть последний отчет из МБКИ</a></h2>';
-            }
-        }  else {
+            else
+                $log .= '<br><a href='.Yii::app()->createUrl('report/showLastReportByBureau').'?bureau_id=3&inn='.$inn.'>Просмотреть последний отчет из МБКИ</a> (Данные от '.
+                        date("Y-m-d", strtotime($xml->Report['updated'])).')';
+        }else 
             $log .= '<br>В базе нет отчета из МБКИ по этому клиенту';
-        }
         $this->render('showPreview',array('inn'=>$inn, 'log'=>$log));
     }
 
@@ -686,7 +686,7 @@ class ReportController extends Controller
             if($model->validate()){
                 $native_report = Report::model()->getLastReportByInn($model->inn);
                 if(isset($native_report)){
-                    $this->createNativeQueryRecord($model->inn, $native_report->bureau_id, 'Отчет выбран из таблицы reports по запросу');
+                    $this->createNativeQueryRecord($model->inn, $native_report->bureau_id, 2); //'Отчет выбран из таблицы reports по запросу');
                     $curr_date = new DateTime("now");
                     $get_report_date = new DateTime($native_report->created_at); //issue_date);
                     if($curr_date->diff($get_report_date)->days<31){ // report is actual
@@ -778,7 +778,7 @@ class ReportController extends Controller
         $mbkiResponse = $this->getDataFromMbki($query); //inn);
         $ret_value=0;
         if(isset($mbkiResponse)){
-            $this->createNativeQueryRecord($mbkiResponse->Report->SubjectCode, 3, 'Отчет получен из МБКИ через web-сервис');
+            $this->createNativeQueryRecord($query->inn, 3, 4); //'Отчет получен из МБКИ через web-сервис');
             if(isset($mbkiResponse->Root->reportNotAvailable)){ // mbki history is absent
                 $report = new Report();
                 $report->report_type_id = 3; // reportNotAvailable
@@ -799,7 +799,7 @@ class ReportController extends Controller
         $ubkiResponse = $this->getDataFromUbki($query); // request // ONLY TESTING MODE
         // ONLY TESTING MODE
         if(isset($ubkiResponse)){
-            $this->createNativeQueryRecord($query->inn, 2, 'Отчет получен из УБКИ через web-сервис');
+            $this->createNativeQueryRecord($query->inn, 2, 3); //'Отчет получен из УБКИ через web-сервис');
             $errorcode= $this->query_attribute($ubkiResponse->r, "key", "5")->LST['errcode'];
             if(($errorcode=='nocl')or($errorcode=='syserror')){
                 $report = new Report();
@@ -989,7 +989,7 @@ class ReportController extends Controller
         $bureau = $bureau_id==2? 'УБКИ':'МБКИ';
         if(isset($header_report)){
             if($header_report->report_type_id!=3){
-                $this->createNativeQueryRecord($inn, $bureau_id, 'Отчет выбран из базы для анализа');
+                $this->createNativeQueryRecord($inn, $bureau_id, 1); //'Отчет выбран из базы для анализа');
                 $log .= '<br>Последний кредитный отчет из '.$bureau.' от '.$header_report->issue_date.'. ReportID='.$header_report->id;
                 $log .= '<a href='.Yii::app()->createUrl('report/showLastReportByBureau').'?bureau_id='.$bureau_id.'&inn='.$inn.'> Просмотреть</a></h2>';        
                 $res = $this->analyzeOnly($header_report, $need_type, $log);

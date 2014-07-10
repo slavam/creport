@@ -1,24 +1,18 @@
 <?php
 
 /**
- * This is the model class for table "native_queries".
+ * This is the model class for table "actions".
  *
- * The followings are the available columns in table 'native_queries':
+ * The followings are the available columns in table 'actions':
  * @property integer $id
- * @property string $created_at
- * @property string $taxpayer_number
- * @property integer $bureau_id
- * @property string $author
- * @property string $result
- * @property string $request
- * @property integer $user_id
+ * @property string $name
  */
-class NativeQuerie extends CActiveRecord
+class Action extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
-	 * @return NativeQuerie the static model class
+	 * @return Action the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -30,7 +24,7 @@ class NativeQuerie extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'native_queries';
+		return 'actions';
 	}
 
 	/**
@@ -41,11 +35,10 @@ class NativeQuerie extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('bureau_id, user_id, action_id', 'numerical', 'integerOnly'=>true),
-			array('created_at, taxpayer_number, author, result, request, user_id, action_id', 'safe'),
+			array('name', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, created_at, taxpayer_number, bureau_id, author, result, request, user_id, action_id', 'safe', 'on'=>'search'),
+			array('id, name', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -57,9 +50,6 @@ class NativeQuerie extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-                    'user' => array(self::BELONGS_TO, 'User', 'user_id'),
-                    'action' => array(self::BELONGS_TO, 'Action', 'action_id'),
-                    
 		);
 	}
 
@@ -70,14 +60,7 @@ class NativeQuerie extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'created_at' => 'Created At',
-			'taxpayer_number' => 'Taxpayer Number',
-			'bureau_id' => 'Bureau',
-			'author' => 'Author',
-			'result' => 'Result',
-			'request' => 'Request',
-                        'user_id' => 'User id',
-                        'action_id' => 'Action id',
+			'name' => 'Name',
 		);
 	}
 
@@ -93,12 +76,7 @@ class NativeQuerie extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('created_at',$this->created_at,true);
-		$criteria->compare('taxpayer_number',$this->taxpayer_number,true);
-		$criteria->compare('bureau_id',$this->bureau_id);
-		$criteria->compare('author',$this->author,true);
-		$criteria->compare('result',$this->result,true);
-		$criteria->compare('request',$this->request,true);
+		$criteria->compare('name',$this->name,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

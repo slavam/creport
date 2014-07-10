@@ -514,20 +514,25 @@ $(function() {
             <table bgcolor="white" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%">     
                 <tbody><tr>	     
                         <td align="center"><font style="font-size:15px;FONT-FAMILY:Arial Black,sans-serif;color:#72B773;">
-                            <?if((int)$report->rating['score']<251){?>
+                            <?if((int)$report->rating['score']<251){
+                                $img = 'lt251.png';?>
                                 <font style="font-size:18px;" color="#FF0000">очень низкий</font>
-                            <?}elseif (((int)$report->rating['score']>250) and ((int)$report->rating['score']<351)) { ?>
+                            <?}elseif (((int)$report->rating['score']>250) and ((int)$report->rating['score']<351)) { 
+                                $img = 'lt351.png';?>
                                 <font style="font-size:18px;" color="#FC9900">низкий</font>
-                            <?}elseif (((int)$report->rating['score']>350) and ((int)$report->rating['score']<451)) { ?>
+                            <?}elseif (((int)$report->rating['score']>350) and ((int)$report->rating['score']<451)) { 
+                                $img = 'lt451.png';?>
                                 <font style="font-size:18px;" color="#CDCD00">средний</font>
-                            <?}elseif (((int)$report->rating['score']>450) and ((int)$report->rating['score']<551)) { ?>
+                            <?}elseif (((int)$report->rating['score']>450) and ((int)$report->rating['score']<551)) { 
+                                $img = 'lt551.png';?>
                                 <font style="font-size:18px;" color="#99CC00">выше среднего</font>
-                            <?}else{?>
+                            <?}else{
+                                $img = 'lt999.png';?>
                                 <font style="font-size:18px;" color="#339966">высокий</font>
                             <?}?>
                     </font></td></tr>     
                     <tr>       
-                        <td align="center"><img src="<?php echo Yii::app()->request->baseUrl.'/images/CreditBa.png';?>" alt="" border="0" height="126" width="248"></td></tr>
+                        <td align="center"><img src="<?php echo Yii::app()->request->baseUrl.'/images/'.$img;?>" alt="" border="0" height="126" width="248"></td></tr>
                     <tr>	     
                         <td>&nbsp;</td>	  </tr>	  
                 </tbody>

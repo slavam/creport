@@ -12,7 +12,8 @@ class NativeQuerieController extends Controller{
                 $q->id,
                 isset($q->user_id)? $q->user->login:'Гость-'.$q->author,
                 $q->taxpayer_number,
-                $q->result,
+//                $q->result,
+                $q->action->name,
                 $q->created_at
                 );
         }
