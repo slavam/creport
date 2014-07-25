@@ -104,4 +104,8 @@ class NativeQuerie extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+        public function getQueries($start_date, $stop_date){
+            $sql = "select * from native_queries where created_at between '".$start_date."' and '".$stop_date."' order by created_at DESC";
+            return $this->model()->findAllBySql($sql);
+        }
 }

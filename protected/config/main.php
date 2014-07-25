@@ -50,6 +50,7 @@ return array(
 		),
         'db' => array(
 //            'connectionString' => 'pgsql:host=tz-sbt-web;port=5432;dbname=cr_development',
+//            'connectionString' => 'pgsql:host=web1-d00;port=5432;dbname=cr_development',
             'connectionString' => 'pgsql:host=dev1-d00;port=5432;dbname=cr_development',
             'username' => 'postgres',
             'password' => '1q2w3e4r',

@@ -4,7 +4,8 @@ class NativeQuerieController extends Controller{
         $this->render('indexJq');
     }
     public function actionGetQueries(){
-        $queries = NativeQuerie::model()->findAll(array('order' => 'user_id ASC, created_at DESC'));
+//        $queries = NativeQuerie::model()->findAll(array('order' => 'user_id ASC, created_at DESC'));
+        $queries = NativeQuerie::model()->getQueries($_GET['start_date'], $_GET['stop_date']);
         $responce['rows']=array();
         foreach ($queries as $i=>$q) {
             $responce['rows'][$i]['id'] = $i+1;
@@ -12,7 +13,6 @@ class NativeQuerieController extends Controller{
                 $q->id,
                 isset($q->user_id)? $q->user->login:'Гость-'.$q->author,
                 $q->taxpayer_number,
-//                $q->result,
                 $q->action->name,
                 $q->created_at
                 );
@@ -36,19 +36,14 @@ class NativeQuerieController extends Controller{
         }
         echo CJSON::encode($responce);
     }
-//    public function actionShowReportByStamp(){
-//        $last_report_by_bureau = XmlReport::model()->getLastReportByBureau($_GET['inn'],$_GET['bureau_id']);
-//        switch ($last_xml_report->bureau_id) {
-//            case 2: // UBKI
-//                $bki_report = new UbkiReport($xml);
-//                $this->actionShowUbkiReportJq($bki_report, $last_xml_report->created_at);
-//            break;
-//            case 3: // MBKI
-////                     var_dump($xml->Report->Subject); //->xpath('//SummaryInformation'));
-//                $bki_report = new MbkiReport($xml);
-//                $this->actionShowReportJq($bki_report, $last_xml_report->created_at);
-//            break;
-//        }        
-//    }
+    public function actionGetParams(){
+        $model = new ParamsQuerie;
+        if (isset($_POST['my_button'])){
+            $model->attributes=$_POST['ParamsQuerie'];
+            if($model->validate())
+                $this->redirect(array('indexJq','start_date'=>$model->start_date, 'stop_date'=>$model->stop_date));
+        }
+        $this->render('getParams',array('model'=>$model));
+    }
 }
 ?>

@@ -11,7 +11,7 @@
 <?php
     $this->widget('CMultiFileUpload', array(
             'name' => 'image_name',
-            'model'=> $model,
+//            'model'=> $model,
             'id'=>'imagepath',
             'accept' => 'xml', // useful for verifying files
             'duplicate' => 'Duplicate file!', // useful, i think

@@ -44,9 +44,9 @@ $cs->registerScriptFile(Yii::app()->request->baseUrl.'/js/jquery.form.js');
    $.jgrid.no_legacy_api = true;
    $.jgrid.useJSON = true;
 </script>
-
-<h2>Список запросов к системе</h2>
-
+<?php
+    echo '<h2>Список запросов к системе за период с '.$_GET['start_date'].' по '.$_GET['stop_date'].'</h2>';
+?>
 <table id="list"></table> 
 <div id="pager"></div> 
 
@@ -56,7 +56,7 @@ $(function() {
     var grid=$("#list");
 //    var pager_selector = "#pager";
     grid.jqGrid( {
-        url: "<?php  echo Yii::app()->createUrl('nativeQuerie/getQueries')?>",
+        url: "<?php  echo Yii::app()->createUrl('nativeQuerie/getQueries',array('start_date'=>$_GET['start_date'], 'stop_date'=>$_GET['stop_date']))?>",
         datatype : 'json',
         width : '800',
         height : '400',
@@ -135,11 +135,11 @@ $(function() {
             });
             
         },
-        gridComplete: function () {
+//        gridComplete: function () {
 //            var block_id = $('#list').getCell(rowId, 'id');
 //            if(grid.getGridParam("reccount")==1)
-                grid.expandSubGridRow(1); //grid.getDataIDs()); 
-        },
+//                grid.expandSubGridRow(1); //grid.getDataIDs()); 
+//        },
     	loadError: function(xhr, status, error) {alert('status: '+status+" error: "+error)}
     }).navGrid('#pager',{search:false, view:false, del:false, add:false, edit:false, refresh:false},
     {}, // default settings for edit
